@@ -1,5 +1,0 @@
-<map id="cppcodebasebuildscripts.docopt.AnyOptions" name="cppcodebasebuildscripts.docopt.AnyOptions">
-<area shape="rect" id="node2" href="$da/df4/classcppcodebasebuildscripts_1_1docopt_1_1_optional.html" title="{cppcodebasebuildscripts.docopt.\lOptional\n||+ match()\l}" alt="" coords="5,513,217,605"/>
-<area shape="rect" id="node3" href="$d1/d53/classcppcodebasebuildscripts_1_1docopt_1_1_parent_pattern.html" title="{cppcodebasebuildscripts.docopt.\lParentPattern\n|+ children\l|+ __init__()\l+ __repr__()\l+ flat()\l}" alt="" coords="5,344,217,465"/>
-<area shape="rect" id="node4" href="$d9/d37/classcppcodebasebuildscripts_1_1docopt_1_1_pattern.html" title="{cppcodebasebuildscripts.docopt.\lPattern\n||+ __eq__()\l+ __hash__()\l+ fix()\l+ fix_identities()\l+ fix_repeating_arguments()\l+ either()\l}" alt="" coords="5,131,217,296"/>
-</map>

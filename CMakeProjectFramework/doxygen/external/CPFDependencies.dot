@@ -1,0 +1,18 @@
+digraph "CPFTargetDependencyGraph" {
+node [
+ fontsize = "14", fontname="helvetica"
+];
+    "node30" [ label="app2A" shape="house"];
+    "node21" [ label="lib1" shape="polygon"];
+    "node30" -> "node21" // app2A -> lib1
+    "node13" [ label="lib0" shape="polygon"];
+    "node21" -> "node13" // lib1 -> lib0
+    "node28" [ label="libapp2A" shape="diamond"];
+    "node30" -> "node28" // app2A -> libapp2A
+    "node28" -> "node21" // libapp2A -> lib1
+    "node42" [ label="app2B" shape="house"];
+    "node42" -> "node21" // app2B -> lib1
+    "node38" [ label="libapp2B" shape="diamond"];
+    "node42" -> "node38" // app2B -> libapp2B
+    "node38" -> "node21" // libapp2B -> lib1
+}

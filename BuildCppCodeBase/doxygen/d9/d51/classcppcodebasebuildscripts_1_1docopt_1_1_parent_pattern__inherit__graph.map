@@ -1,8 +1,0 @@
-<map id="cppcodebasebuildscripts.docopt.ParentPattern" name="cppcodebasebuildscripts.docopt.ParentPattern">
-<area shape="rect" id="node4" href="$dd/d15/classcppcodebasebuildscripts_1_1docopt_1_1_either.html" title="{cppcodebasebuildscripts.docopt.\lEither\n||+ match()\l}" alt="" coords="5,513,217,605"/>
-<area shape="rect" id="node5" href="$dc/d3e/classcppcodebasebuildscripts_1_1docopt_1_1_one_or_more.html" title="{cppcodebasebuildscripts.docopt.\lOneOrMore\n||+ match()\l}" alt="" coords="241,513,453,605"/>
-<area shape="rect" id="node6" href="$da/df4/classcppcodebasebuildscripts_1_1docopt_1_1_optional.html" title="{cppcodebasebuildscripts.docopt.\lOptional\n||+ match()\l}" alt="" coords="477,513,689,605"/>
-<area shape="rect" id="node8" href="$d5/dda/classcppcodebasebuildscripts_1_1docopt_1_1_required.html" title="{cppcodebasebuildscripts.docopt.\lRequired\n||+ match()\l}" alt="" coords="713,513,925,605"/>
-<area shape="rect" id="node2" href="$d9/d37/classcppcodebasebuildscripts_1_1docopt_1_1_pattern.html" title="{cppcodebasebuildscripts.docopt.\lPattern\n||+ __eq__()\l+ __hash__()\l+ fix()\l+ fix_identities()\l+ fix_repeating_arguments()\l+ either()\l}" alt="" coords="359,131,571,296"/>
-<area shape="rect" id="node7" href="$d9/df9/classcppcodebasebuildscripts_1_1docopt_1_1_any_options.html" title="{cppcodebasebuildscripts.docopt.\lAnyOptions\n||}" alt="" coords="477,653,689,745"/>
-</map>
