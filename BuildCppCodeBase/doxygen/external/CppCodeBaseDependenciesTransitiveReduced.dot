@@ -1,0 +1,22 @@
+digraph CppCodeBaseTargetDependencyGraph {
+	node [fontname=helvetica,
+		fontsize=14
+	];
+	node30	 [label=app2A,
+		shape=house];
+	node28	 [label=libapp2A,
+		shape=diamond];
+	node30 -> node28;
+	node21	 [label=lib1,
+		shape=polygon];
+	node13	 [label=lib0,
+		shape=polygon];
+	node21 -> node13;
+	node28 -> node21;
+	node42	 [label=app2B,
+		shape=house];
+	node38	 [label=libapp2B,
+		shape=diamond];
+	node42 -> node38;
+	node38 -> node21;
+}

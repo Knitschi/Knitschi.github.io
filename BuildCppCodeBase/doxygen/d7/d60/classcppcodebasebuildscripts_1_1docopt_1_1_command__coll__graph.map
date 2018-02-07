@@ -1,0 +1,5 @@
+<map id="cppcodebasebuildscripts.docopt.Command" name="cppcodebasebuildscripts.docopt.Command">
+<area shape="rect" id="node2" href="$db/ddd/classcppcodebasebuildscripts_1_1docopt_1_1_argument.html" title="{cppcodebasebuildscripts.docopt.\lArgument\n||+ single_match()\l+ parse()\l}" alt="" coords="5,543,217,649"/>
+<area shape="rect" id="node3" href="$d9/de2/classcppcodebasebuildscripts_1_1docopt_1_1_child_pattern.html" title="{cppcodebasebuildscripts.docopt.\lChildPattern\n|+ name\l+ value\l|+ __init__()\l+ __repr__()\l+ flat()\l+ match()\l}" alt="" coords="5,344,217,495"/>
+<area shape="rect" id="node4" href="$d9/d37/classcppcodebasebuildscripts_1_1docopt_1_1_pattern.html" title="{cppcodebasebuildscripts.docopt.\lPattern\n||+ __eq__()\l+ __hash__()\l+ fix()\l+ fix_identities()\l+ fix_repeating_arguments()\l+ either()\l}" alt="" coords="5,131,217,296"/>
+</map>
