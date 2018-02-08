@@ -2616,13 +2616,6 @@
   </doc>
   <doc>
     <field name="type">file</field>
-    <field name="name">ccbPackageVersion_CPFBuildscripts.cmake</field>
-    <field name="url">de/d6a/ccb_package_version___c_p_f_buildscripts_8cmake.html</field>
-    <field name="keywords">ccbPackageVersion_CPFBuildscripts.cmake</field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">file</field>
     <field name="name">cpfPackageVersion_CPFBuildscripts.cmake</field>
     <field name="url">db/d20/cpf_package_version___c_p_f_buildscripts_8cmake.html</field>
     <field name="keywords">cpfPackageVersion_CPFBuildscripts.cmake</field>
@@ -2822,13 +2815,6 @@
     <field name="name">run_tests.py</field>
     <field name="url">dd/dcb/_c_p_f_machines_2run__tests_8py.html</field>
     <field name="keywords">run_tests.py</field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">file</field>
-    <field name="name">ccbPackageVersion_CPFCMake.cmake</field>
-    <field name="url">d1/d12/ccb_package_version___c_p_f_c_make_8cmake.html</field>
-    <field name="keywords">ccbPackageVersion_CPFCMake.cmake</field>
     <field name="text"></field>
   </doc>
   <doc>
@@ -3595,11 +3581,18 @@
     <field name="text">lib1 OpenCppCoverage Reports lib1-debug</field>
   </doc>
   <doc>
+    <field name="type">page</field>
+    <field name="name">todo</field>
+    <field name="url">dd/da0/todo.html</field>
+    <field name="keywords"></field>
+    <field name="text">Todo List Module CPFMachinesGroup Setup infrastructure on fresh systems and complete the list Describe how to generate an empty file and add documentation of parameters here page The CMakeProjectFramework Repository Write tutorial when things are done</field>
+  </doc>
+  <doc>
     <field name="type">group</field>
     <field name="name">CPFBuildscriptsGroup</field>
     <field name="url">d9/d8d/group___c_p_f_buildscripts_group.html</field>
     <field name="keywords">CPFBuildscripts</field>
-    <field name="text">A package that provides python scripts for simplifying CMake calls of CPFCMake projects Bli bla blub</field>
+    <field name="text">A package that provides python scripts for simplifying the CMake calls of CPF projects The package provides four python scripts that can be used for configuring and building a CPFCMake project CMake projects usually require calls to CMake to generate makefiles and build the project Depending on the project the calls can require quite a list of arguments The python scripts provided by the CPFBuildscripts package use the knowledge about the structure of the CPF project to reduce the length of those commands It is therefore highly recommended to use the CPFBuildscripts package in combination with the CPFCMake package</field>
   </doc>
   <doc>
     <field name="type">group</field>
@@ -3613,42 +3606,42 @@
     <field name="name">CPFJenkinsjobGroup</field>
     <field name="url">df/d9d/group___c_p_f_jenkinsjob_group.html</field>
     <field name="keywords">CPFJenkinsjob</field>
-    <field name="text">A package that provides a Jenkins job configuration for a CPF project This package uses the infrastructure from the CPFMachines package</field>
+    <field name="text">A package that provides a Jenkins job configuration for a CPF project The package contains the following functionality A generic jenkins pipeline groovy script that can be used to implement a build-job for a CPF project The setup.py script that builds on the CPFMachines setup script It adds job config xml files to the jenkins server that will run the CPF pipeline script The deploy_githooks.py script that installs hook scripts on all involved repositories that make sure the build-job is started when commits are pushed</field>
   </doc>
   <doc>
     <field name="type">group</field>
     <field name="name">CPFMachinesGroup</field>
     <field name="url">d5/d7b/group___c_p_f_machines_group.html</field>
     <field name="keywords">CPFMachines</field>
-    <field name="text">A package that provides a Jenkins job configuration for a CPF project This package uses the infrastructure from the CPFMachines package Problems Machine names in the config.json files should be given in lower case only or problems with authenticating ssh server hosts can occur I was not able to make name resolution for windows machines in the host network work inside the docker containers The machine names for the windows build-slaves therefore must be given as ip addresses to allow the jenkins-master to reach them</field>
+    <field name="text">Provides a script that sets up a jenkins-server jenkins-slaves and a web-server on machines in a local network The CPF infrastructure includes a Jenkins server build slaves and a web-server for hosting the generated html pages This package provides a python script for setting up these servers The setup script requires a user provided configuration file and ssh access to all involved machines in the network Usage Requirements At least one Linux Machine For Windows builds an additional Windows machine is required All machines must be in a local network that also contains the machine that runs the setup script Linux machines must be accessible via OpenSSH from the script-runner Linux machines must have docker installed Windows machines must be accessible via from the script-runner Windows machines must have the slave.jar copied to On windows build-slaves all tools that are required to run the CPF pipeline must be manually installed Setup infrastructure on fresh systems and complete the list Creating a config file The setup script reads a config file that can be used to define the number and location of build-slave some jenkins configuration etc Describe how to generate an empty file and add documentation of parameters here Problems Machine names in the config.json files should be given in lower case only or problems with authenticating ssh server hosts can occur I was not able to make name resolution for windows machines in the host network work inside the docker containers The machine names for the windows build-slaves therefore must be given as ip addresses to allow the jenkins-master to reach them</field>
   </doc>
   <doc>
     <field name="type">group</field>
     <field name="name">app2AGroup</field>
     <field name="url">d8/d0c/group__app2_a_group.html</field>
     <field name="keywords">app2A</field>
-    <field name="text">A command line application that does nothing The application is used to test the CPFCMake package Links The links can be broken if no project configuration generates the linked pages Downloads OpenCppCoverage Reports</field>
+    <field name="text">An empty C++ command line application used for testing the CPF Links The links can be broken if no project configuration generates the linked pages Downloads OpenCppCoverage Reports</field>
   </doc>
   <doc>
     <field name="type">group</field>
     <field name="name">app2BGroup</field>
     <field name="url">d2/dbe/group__app2_b_group.html</field>
     <field name="keywords">app2B</field>
-    <field name="text">A command line application that does nothing The application is used to test the CPFCMake package Links The links can be broken if no project configuration generates the linked pages Downloads OpenCppCoverage Reports</field>
+    <field name="text">An empty C++ command line application used for testing the CPF Links The links can be broken if no project configuration generates the linked pages Downloads OpenCppCoverage Reports</field>
   </doc>
   <doc>
     <field name="type">group</field>
     <field name="name">lib0Group</field>
     <field name="url">d5/d75/group__lib0_group.html</field>
     <field name="keywords">lib0</field>
-    <field name="text">A low-level libary for the CPFCMake package Links The links can be broken if no project configuration generates the linked pages Downloads OpenCppCoverage Reports ABI/API Compatibility Reports</field>
+    <field name="text">A C++ libary used for testing the CPF Links The links can be broken if no project configuration generates the linked pages Downloads OpenCppCoverage Reports ABI/API Compatibility Reports</field>
   </doc>
   <doc>
     <field name="type">group</field>
     <field name="name">lib1Group</field>
     <field name="url">d5/d23/group__lib1_group.html</field>
     <field name="keywords">lib1</field>
-    <field name="text">A mid-level libary for the CPFCMake package Links The links can be broken if no project configuration generates the linked pages Downloads OpenCppCoverage Reports ABI/API Compatibility Reports</field>
+    <field name="text">A C++ libary used for testing the CPF Links The links can be broken if no project configuration generates the linked pages Downloads OpenCppCoverage Reports ABI/API Compatibility Reports</field>
   </doc>
   <doc>
     <field name="type">namespace</field>
@@ -5701,6 +5694,6 @@
     <field name="name">index</field>
     <field name="url">index.html</field>
     <field name="keywords"></field>
-    <field name="text">The CMakeProjectFramework Repository Introduction The CMakeProjectFramework framework provides a solution for organizing a C++ software project When setting up a C++ Software project multiple tasks apart from writing the actual C++ code arise Organizing the code-base into smaller packages Versioning of the packages Setting up a CI-server Reducing the build to a view command line calls to allow it being build on the CI-server This also requires automatic retrieval of other software dependencies Setting up a build pipeline that also does additional tasks like running automated test static/dynamic analysis generate documentation etc Setting up a homepage for the project The packages of the CMakeProjectFramework try to solve the above mentioned problems by kitting some common tools from the C++ ecosystem together The tools used by the CMakeProjectFramework are CMake metabuildsystem Git code versioning hunter package manager Jenkins CI server Doxygen documentation generator The goal of the project is to ease the burden of setting up a complete C++ production environment Repository Content The CMakeProjectFramework repository contains the various subprojects of the CMakeProjectFramework The repository contains documentation of the CMakeProjectFramework and to provides the configuration for its official build job The implementation of the real functionality is located within the packages that are hosted by the CMakeProjectFramework repository Packages CPFBuildscripts CPFCMake CPFJenkinsjob CPFMachines Package Dependencies</field>
+    <field name="text">The CMakeProjectFramework Repository The code in this project is work in progress Currently there is not CI system set up for the repository that guarantees its working condition Introduction The CMakeProjectFramework framework provides a solution for organizing a cross-platform C++ software project When setting up a C++ Software project multiple tasks apart from writing the actual C++ code arise Organizing the code-base into smaller packages Versioning of the packages Setting up a CI-server Setting up a build pipeline that also does additional tasks like running automated test static/dynamic analysis generate documentation etc Automatic acquisition of external software dependencies Setting up a homepage for the project The packages of the CMakeProjectFramework try to solve the above mentioned problems by using a combination of some common tools from the C++ ecosystem The third party tools used by the CMakeProjectFramework are CMake metabuildsystem Git code versioning hunter package manager cotire cmake module for precompiled headers Jenkins CI server Doxygen documentation generator clang-tidy static code analyis valgrind dynamic code analysis OpenCppCoverage measure test coverage Setting up a CPF project Write tutorial when things are done Limitations The CMakeProjectFramework is currently only developed on Linux and Windows In the long run I would also like to support development on MacOS and cross-compiling to any other platform that is supported by CMake Project Organization The CMakeProjectFramework master repository contains some of the documentation of the CMakeProjectFramework and provides the configuration for its official build job The master repository also serves as an for the packages that implement the various aspects of the CI system The packages are located in their own repositories and added as Git submodules to the master repository The packages are CPFCMake Contains CMake code that implements the additional CI tasks as custom targets CPFBuildscripts Provides python scripts that shorten the frequently used CMake calls CPFMachines Provides a python script that sets up a Jenkins-CI server and build-slaves on remote machines via ssh CPFJenkinsjob Provides a jenkins pipeline script that implements a generic build-job for a CPF project Package Dependencies Here is a simplified graph the illustrates the dependencies between the packages of the CMakeProjectFramework MyBuildRepository represents a project that uses the CMakeProjectFramework In the long run the dependency between CPFCMake and CPFMachines should be removed by making CPFCMake acquire all of the third party software via hunter instead of using the pre-installed software from the build slaves</field>
   </doc>
 </add>

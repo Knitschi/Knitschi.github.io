@@ -55,45 +55,58 @@ $(function() {
 <div class="title">The CMakeProjectFramework Repository </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1>Introduction</h1>
-<p>The CMakeProjectFramework framework provides a solution for organizing a C++ software project. When setting up a C++ Software project multiple tasks apart from writing the actual C++ code arise.</p>
+<div class="textblock"><dl class="section note"><dt>Note</dt><dd>The code in this project is work in progress. Currently there is not CI system set up for the repository that guarantees its working condition.</dd></dl>
+<h1>Introduction</h1>
+<p>The CMakeProjectFramework framework provides a solution for organizing a cross-platform C++ software project. When setting up a C++ Software project multiple tasks apart from writing the actual C++ code arise.</p>
 <ul>
 <li>Organizing the code-base into smaller packages.</li>
 <li>Versioning of the packages.</li>
 <li>Setting up a CI-server.</li>
-<li>Reducing the build to a view command line calls to allow it being build on the CI-server. This also requires automatic retrieval of other software dependencies.</li>
 <li>Setting up a build pipeline that also does additional tasks like running automated test, static/dynamic analysis, generate documentation, etc.</li>
+<li>Automatic acquisition of external software dependencies.</li>
 <li>Setting up a homepage for the project.</li>
 </ul>
-<p>The packages of the CMakeProjectFramework try to solve the above mentioned problems by kitting some common tools from the C++ ecosystem together. The tools used by the CMakeProjectFramework are:</p>
+<p>The packages of the CMakeProjectFramework try to solve the above mentioned problems by using a combination of some common tools from the C++ ecosystem. The third party tools used by the CMakeProjectFramework are:</p>
 <ul>
 <li>CMake (metabuildsystem)</li>
 <li>Git (code versioning)</li>
 <li>hunter (package manager)</li>
-<li></li>
+<li>cotire (cmake module for precompiled headers)</li>
 <li>Jenkins (CI server)</li>
 <li>Doxygen (documentation generator)</li>
+<li>clang-tidy (static code analyis)</li>
+<li>valgrind (dynamic code analysis)</li>
+<li>OpenCppCoverage (measure test coverage)</li>
 </ul>
-<p>The goal of the project is to ease the burden of setting up a complete C++ production environment.</p>
-<h1>Repository Content</h1>
-<p>The CMakeProjectFramework repository contains the various subprojects of the CMakeProjectFramework. The repository contains documentation of the CMakeProjectFramework and to provides the configuration for its official build job.</p>
-<p>The implementation of the real functionality is located within the packages that are hosted by the CMakeProjectFramework repository.</p>
-<h2>Packages</h2>
+<h1>Setting up a CPF project</h1>
+<dl class="todo"><dt><b><a class="el" href="dd/da0/todo.html#_todo000001">Todo:</a></b></dt><dd>Write tutorial when things are done.</dd></dl>
+<h2>Limitations</h2>
+<p>The CMakeProjectFramework is currently only developed on Linux and Windows. In the long run I would also like to support development on MacOS, and cross-compiling to any other platform that is supported by CMake.</p>
+<h1>Project Organization</h1>
+<p>The CMakeProjectFramework master repository contains some of the documentation of the CMakeProjectFramework and provides the configuration for its official build job. The master repository also serves as an "owner" for the packages that implement the various aspects of the CI system. The packages are located in their own repositories and added as Git submodules to the master repository.</p>
+<p>The packages are:</p>
 <ul>
-<li>CPFBuildscripts</li>
-<li>CPFCMake</li>
-<li><a class="el" href="d0/d7b/namespace_c_p_f_jenkinsjob.html">CPFJenkinsjob</a></li>
-<li><a class="el" href="db/d51/namespace_c_p_f_machines.html">CPFMachines</a></li>
+<li><a class="el" href="da/dc8/group___c_p_f_c_make_group.html">CPFCMake</a>: Contains CMake code that implements the additional CI tasks as custom targets.</li>
+<li><a class="el" href="d9/d8d/group___c_p_f_buildscripts_group.html">CPFBuildscripts</a>: Provides python scripts that shorten the frequently used CMake calls.</li>
+<li><a class="el" href="d5/d7b/group___c_p_f_machines_group.html">CPFMachines</a>: Provides a python script that sets up a Jenkins-CI server and build-slaves on remote machines via ssh.</li>
+<li><a class="el" href="df/d9d/group___c_p_f_jenkinsjob_group.html">CPFJenkinsjob</a>: Provides a jenkins pipeline script that implements a generic build-job for a CPF project.</li>
 </ul>
 <h2>Package Dependencies</h2>
+<p>Here is a simplified graph the illustrates the dependencies between the packages of the CMakeProjectFramework.</p>
 <div class="dotgraph">
 <img src="dot_inline_dotgraph_1.png" alt="dot_inline_dotgraph_1.png" border="0" usemap="#dot_inline_dotgraph_1.map"/>
-<map name="dot_inline_dotgraph_1.map" id="dot_inline_dotgraph_1.map"></map>
+<map name="dot_inline_dotgraph_1.map" id="dot_inline_dotgraph_1.map"><area shape="rect" id="node1" href="df/d9d/group___c_p_f_jenkinsjob_group.html" title="CPFJenkinsjob" alt="" coords="343,121,478,169"/>
+<area shape="rect" id="node2" href="d9/d8d/group___c_p_f_buildscripts_group.html" title="CPFBuildscripts" alt="" coords="5,237,152,285"/>
+<area shape="rect" id="node3" href="da/dc8/group___c_p_f_c_make_group.html" title="CPFCMake" alt="" coords="329,353,439,401"/>
+<area shape="rect" id="node4" href="d5/d7b/group___c_p_f_machines_group.html" title="CPFMachines" alt="" coords="512,469,640,517"/>
+</map>
 </div>
- </div></div><!-- contents -->
+<p>MyBuildRepository represents a project that uses the CMakeProjectFramework.</p>
+<dl class="section note"><dt>Note</dt><dd>In the long run, the dependency between CPFCMake and CPFMachines should be removed by making CPFCMake acquire all of the third party software via hunter, instead of using the pre-installed software from the build slaves. </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Feb 7 2018 20:34:34 for MyCPFProject by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Feb 8 2018 14:33:10 for MyCPFProject by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
