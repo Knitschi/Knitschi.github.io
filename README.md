@@ -1,3 +1,3 @@
 This repository contains the generated documentation of some of my Github repositories.
 
-[BuildCppCodeBase Documentation](https://knitschi.github.io/BuildCppCodeBase/doxygen/index.html)
+[BuildCppCodeBase Documentation](https://knitschi.github.io/CMakeProjectFramework/doxygen/index.html)
