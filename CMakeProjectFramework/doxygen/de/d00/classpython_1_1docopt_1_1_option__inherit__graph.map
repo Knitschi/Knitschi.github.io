@@ -1,4 +1,0 @@
-<map id="python.docopt.Option" name="python.docopt.Option">
-<area shape="rect" id="node2" href="$d3/d36/classpython_1_1docopt_1_1_child_pattern.html" title="{python.docopt.ChildPattern\n|+ name\l+ value\l|+ __init__()\l+ __repr__()\l+ flat()\l+ match()\l}" alt="" coords="7,329,186,465"/>
-<area shape="rect" id="node3" href="$de/da9/classpython_1_1docopt_1_1_pattern.html" title="{python.docopt.Pattern\n||+ __eq__()\l+ __hash__()\l+ fix()\l+ fix_identities()\l+ fix_repeating_arguments()\l+ either()\l}" alt="" coords="5,131,188,281"/>
-</map>
