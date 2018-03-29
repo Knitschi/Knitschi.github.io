@@ -1,6 +1,0 @@
-<map id="CPFMachines.setup.MachinesController.build_and_start_jenkins_master" name="CPFMachines.setup.MachinesController.build_and_start_jenkins_master">
-<area shape="rect" id="node2" href="$d0/d78/class_c_p_f_machines_1_1setup_1_1_machines_controller.html#a9834f2a78d149d328810513c47a7d455" title="CPFMachines.setup.Machines\lController._get_jenkins\l_master_host_connection" alt="" coords="253,5,453,61"/>
-<area shape="rect" id="node3" href="$d0/d78/class_c_p_f_machines_1_1setup_1_1_machines_controller.html#a47e35bfdd495033dcf96bdf0a4a234de" title="CPFMachines.setup.Machines\lController._get_repository\l_host_name" alt="" coords="253,85,453,141"/>
-<area shape="rect" id="node4" href="$d0/d78/class_c_p_f_machines_1_1setup_1_1_machines_controller.html#aadd02b90bf797e91c00f318a50f86a5e" title="CPFMachines.setup.Machines\lController._get_slave_machine\l_host_names" alt="" coords="253,165,453,221"/>
-<area shape="rect" id="node5" href="$d0/d78/class_c_p_f_machines_1_1setup_1_1_machines_controller.html#ad5e05040d5cc0b360d60dc6b2139ff64" title="CPFMachines.setup.Machines\lController._get_web_server\l_host_names" alt="" coords="253,245,453,301"/>
-</map>

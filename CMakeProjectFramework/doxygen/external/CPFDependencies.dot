@@ -1,5 +1,0 @@
-digraph "CPFTargetDependencyGraph" {
-node [
- fontsize = "14", fontname="helvetica"
-];
-}
