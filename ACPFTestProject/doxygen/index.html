@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ACPFTestProject: Main Page</title>
+<title>ACPFTestProject: The ACPFTestProject CI-Project</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ACPFTestProject
    </div>
-   <div id="projectbrief">It really whips the coders ass!</div>
+   <div id="projectbrief">A CMakeProjectFramework example</div>
   </td>
  </tr>
  </tbody>
@@ -52,13 +52,48 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">ACPFTestProject Documentation</div>  </div>
+<div class="title">The ACPFTestProject CI-Project </div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><p>The project demonstrates the use of the <a href="https://github.com/Knitschi/CMakeProjectFramework"><b>CMakeProjectFramework</b></a>.</p>
+<p>The repository <em>owns</em> some packages.</p>
+<ul>
+<li>APackage (A <em>loose</em> C++ command line application package)</li>
+<li>CPackage (A <em>fixed</em> C++ library package)</li>
+<li>DPackage (A <em>loose</em> C++ library package)</li>
+<li>EPackage (A <em>loose</em> C++ library package)</li>
+</ul>
+<p>The repository uses some external packages.</p>
+<ul>
+<li>CPFCMake (CMake package, owned by the CMakeProjectFramework)</li>
+<li>CPFBuildscripts (Python package, owned by the CMakeProjectFramework)</li>
+<li>BPackage (C++ package, owned by <a href="https://github.com/Knitschi/BCPFTestProject"><b>BCPFTestProject</b></a>)</li>
+<li>FPackage (C++ package, owned by BCPFTestProject)</li>
+<li>GPackage (C++ package, owned by BCPFTestProject)</li>
+</ul>
+<p>All C++ packages contain only <em>Hello World</em> functionality.</p>
+<h1>Target Dependency Graph</h1>
+<p>The CPF configures CMake to generate the dependency graph of the projects binary targets. This graph visualizes the <em>levelization</em> of your libraries and is used by the static analysis to prevent circular dependencies between your libraries. Two versions of the dependency graph of your project are generated. The first contains all direct and indirect dependencies, but does not display test targets. The second is the transitive reduced version of the first graph which removes direct dependencies from the graph if an indirect dependency already exists. This helps with reducing visual clutter in the graph.</p>
+<p>Here is an example how you can add the two graphs to your documentation.</p>
+<p><div class="dotgraph">
+<img src="dot_CPFDependencies.png" alt="dot_CPFDependencies.png" border="0" usemap="#dot_CPFDependencies.map"/>
+<map name="dot_CPFDependencies.map" id="dot_CPFDependencies.map"></map>
+<div class="caption">
+Target dependency graph with all dependencies</div>
+</div>
+ <br />
+</p>
+<p><div class="dotgraph">
+<img src="dot_CPFDependenciesTransitiveReduced.png" alt="dot_CPFDependenciesTransitiveReduced.png" border="0" usemap="#dot_CPFDependenciesTransitiveReduced.map"/>
+<map name="dot_CPFDependenciesTransitiveReduced.map" id="dot_CPFDependenciesTransitiveReduced.map"></map>
+<div class="caption">
+Transitive reduced target dependency graph</div>
+</div>
+</p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 30 2018 10:56:19 for ACPFTestProject by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 30 2018 13:46:51 for ACPFTestProject by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

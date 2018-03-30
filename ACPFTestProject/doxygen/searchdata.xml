@@ -332,6 +332,13 @@
   </doc>
   <doc>
     <field name="type">file</field>
+    <field name="name">ACPFTestProjectDocs.dox</field>
+    <field name="url">de/d31/_a_c_p_f_test_project_docs_8dox.html</field>
+    <field name="keywords">ACPFTestProjectDocs.dox</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
     <field name="name">cpfPackageVersion_DPackage.cmake</field>
     <field name="url">de/da4/cpf_package_version___d_package_8cmake.html</field>
     <field name="keywords">cpfPackageVersion_DPackage.cmake</field>
@@ -477,5 +484,12 @@
     <field name="url">d6/de2/namespacee.html</field>
     <field name="keywords">e</field>
     <field name="text">The namespace of the EPackage package</field>
+  </doc>
+  <doc>
+    <field name="type">page</field>
+    <field name="name">index</field>
+    <field name="url">index.html</field>
+    <field name="keywords"></field>
+    <field name="text">The ACPFTestProject CI-Project The project demonstrates the use of the CMakeProjectFramework The repository owns some packages APackage A loose C++ command line application package CPackage A fixed C++ library package DPackage A loose C++ library package EPackage A loose C++ library package The repository uses some external packages CPFCMake CMake package owned by the CMakeProjectFramework CPFBuildscripts Python package owned by the CMakeProjectFramework BPackage C++ package owned by BCPFTestProject FPackage C++ package owned by BCPFTestProject GPackage C++ package owned by BCPFTestProject All C++ packages contain only Hello World functionality Target Dependency Graph The CPF configures CMake to generate the dependency graph of the projects binary targets This graph visualizes the levelization of your libraries and is used by the static analysis to prevent circular dependencies between your libraries Two versions of the dependency graph of your project are generated The first contains all direct and indirect dependencies but does not display test targets The second is the transitive reduced version of the first graph which removes direct dependencies from the graph if an indirect dependency already exists This helps with reducing visual clutter in the graph Here is an example how you can add the two graphs to your documentation Target dependency graph with all dependencies Transitive reduced target dependency graph</field>
   </doc>
 </add>
