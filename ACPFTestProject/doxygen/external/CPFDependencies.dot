@@ -2,27 +2,27 @@ digraph "CPFTargetDependencyGraph" {
 node [
  fontsize = "11", fontname="Helvetica-Bold"
 ];
-    "node134" [ label="APackage" shape="house"];
-    "node56" [ label="BPackage" shape="diamond"];
-    "node134" -> "node56" // APackage -> BPackage
-    "node99" [ label="CPackage" shape="diamond"];
-    "node134" -> "node99" // APackage -> CPackage
-    "node16" [ label="libSwitchWarningsOff" shape="box"];
-    "node99" -> "node16" // CPackage -> libSwitchWarningsOff
-    "node115" [ label="DPackage" shape="diamond"];
-    "node134" -> "node115" // APackage -> DPackage
-    "node124" [ label="EPackage" shape="diamond"];
-    "node134" -> "node124" // APackage -> EPackage
-    "node67" [ label="FPackage" shape="diamond"];
-    "node134" -> "node67" // APackage -> FPackage
-    "node82" [ label="GPackage" shape="diamond"];
-    "node134" -> "node82" // APackage -> GPackage
-    "node135" [ label="libAPackage" shape="diamond"];
-    "node134" -> "node135" // APackage -> libAPackage
-    "node135" -> "node56" // libAPackage -> BPackage
-    "node135" -> "node99" // libAPackage -> CPackage
-    "node135" -> "node115" // libAPackage -> DPackage
-    "node135" -> "node124" // libAPackage -> EPackage
-    "node135" -> "node67" // libAPackage -> FPackage
-    "node135" -> "node82" // libAPackage -> GPackage
+    "node81" [ label="APackage" shape="house"];
+    "node28" [ label="BPackage" shape="polygon"];
+    "node81" -> "node28" // APackage -> BPackage
+    "node53" [ label="CPackage" shape="polygon"];
+    "node81" -> "node53" // APackage -> CPackage
+    "node12" [ label="libSwitchWarningsOff" shape="box"];
+    "node53" -> "node12" // CPackage -> libSwitchWarningsOff
+    "node64" [ label="DPackage" shape="polygon"];
+    "node81" -> "node64" // APackage -> DPackage
+    "node73" [ label="EPackage" shape="polygon"];
+    "node81" -> "node73" // APackage -> EPackage
+    "node36" [ label="FPackage" shape="polygon"];
+    "node81" -> "node36" // APackage -> FPackage
+    "node44" [ label="GPackage" shape="polygon"];
+    "node81" -> "node44" // APackage -> GPackage
+    "node79" [ label="libAPackage" shape="diamond"];
+    "node81" -> "node79" // APackage -> libAPackage
+    "node79" -> "node28" // libAPackage -> BPackage
+    "node79" -> "node53" // libAPackage -> CPackage
+    "node79" -> "node64" // libAPackage -> DPackage
+    "node79" -> "node73" // libAPackage -> EPackage
+    "node79" -> "node36" // libAPackage -> FPackage
+    "node79" -> "node44" // libAPackage -> GPackage
 }
