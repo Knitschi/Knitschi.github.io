@@ -1,0 +1,9 @@
+var _c_p_f_machines =
+[
+    [ "How to setup the CPFMachines infrastructure", "de/d15/_c_p_f_machines_usage.html", null ],
+    [ "Automatic build-Job execution", "d7/d1f/_c_p_f_machines_hook_setup.html", null ],
+    [ "The CPFMachines config file", "dd/d47/_c_p_f_machines_config_file.html", null ],
+    [ "Machines and Container", "d2/d67/_c_p_f_machines_container.html", null ],
+    [ "Manual Tests", "de/d5a/_c_p_f_machines_tests.html", null ],
+    [ "Current problems", "d9/daf/_c_p_f_machines_problems.html", null ]
+];

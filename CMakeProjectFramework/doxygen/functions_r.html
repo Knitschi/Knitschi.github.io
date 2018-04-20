@@ -9,10 +9,26 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() {
+    if ($('.searchresults').length > 0) { searchBox.DOMSearchField().focus(); }
+  });
+  /* @license-end */
+</script>
 <link rel="search" href="search_opensearch.php?v=opensearch.xml" type="application/opensearchdescription+xml" title="CMakeProjectFramework"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="DoxygenStylesheet.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -25,6 +41,17 @@
    </div>
    <div id="projectbrief">A CMake and Jenkins based C++ CI pipeline.</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+          <div class="left">
+            <form id="FSearchBox" action="search.html" method="get">
+              <img id="MSearchSelect" src="search/mag.png" alt=""/>
+              <input type="text" id="MSearchField" name="query" value="Search" size="20" accesskey="S" 
+                     onfocus="searchBox.OnSearchFieldFocus(true)" 
+                     onblur="searchBox.OnSearchFieldFocus(false)"/>
+            </form>
+          </div><div class="right"></div>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,20 +63,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,true,'search.html','Search');
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-  $(document).ready(function() {
-    if ($('.searchresults').length > 0) { searchBox.DOMSearchField().focus(); }
-  });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('functions_r.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="contents">
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
@@ -62,9 +92,6 @@ $(function() {
 </li>
 <li>repository
 : <a class="el" href="d8/d4b/class_c_p_f_machines_1_1config__data_1_1_c_p_f_job_config.html#a274c7b9873fc777ad44bb842f39ca161">CPFMachines.config_data.CPFJobConfig</a>
-</li>
-<li>repository_host_config
-: <a class="el" href="d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#a9592a7bd27ac742073a15996be0a7771">CPFMachines.config_data.ConfigData</a>
 </li>
 <li>repository_host_infos
 : <a class="el" href="db/d8f/class_c_p_f_machines_1_1hook__config_1_1_hook_config_data.html#adb6f2702d250717757dfa12de01be2e6">CPFMachines.hook_config.HookConfigData</a>
@@ -81,11 +108,14 @@ $(function() {
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 29 2018 12:18:43 for CMakeProjectFramework by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.14
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Fri Apr 20 2018 12:12:32 for CMakeProjectFramework by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
 </body>
 </html>

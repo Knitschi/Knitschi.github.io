@@ -9,10 +9,26 @@
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="../../search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() {
+    if ($('.searchresults').length > 0) { searchBox.DOMSearchField().focus(); }
+  });
+  /* @license-end */
+</script>
 <link rel="search" href="../../search_opensearch.php?v=opensearch.xml" type="application/opensearchdescription+xml" title="CMakeProjectFramework"/>
 <link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+<link href="../../DoxygenStylesheet.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -25,6 +41,17 @@
    </div>
    <div id="projectbrief">A CMake and Jenkins based C++ CI pipeline.</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+          <div class="left">
+            <form id="FSearchBox" action="../../search.html" method="get">
+              <img id="MSearchSelect" src="../../search/mag.png" alt=""/>
+              <input type="text" id="MSearchField" name="query" value="Search" size="20" accesskey="S" 
+                     onfocus="searchBox.OnSearchFieldFocus(true)" 
+                     onblur="searchBox.OnSearchFieldFocus(false)"/>
+            </form>
+          </div><div class="right"></div>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,24 +63,23 @@
 var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 /* @license-end */
 </script>
-<script type="text/javascript" src="../../menudata.js"></script>
-<script type="text/javascript" src="../../menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('../../',true,true,'search.html','Search');
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-  $(document).ready(function() {
-    if ($('.searchresults').length > 0) { searchBox.DOMSearchField().focus(); }
-  });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="../../db/d51/namespace_c_p_f_machines.html">CPFMachines</a></li><li class="navelem"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html">config_data</a></li>  </ul>
-</div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('d8/df0/namespace_c_p_f_machines_1_1config__data.html','../../');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -76,13 +102,15 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/class_c_p_f_machines_1_1config__data_1_1_host_machine_info.html">HostMachineInfo</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d3c/class_c_p_f_machines_1_1config__data_1_1_h_t_t_p_s_repository_host_config.html">HTTPSRepositoryHostConfig</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d65/class_c_p_f_machines_1_1config__data_1_1_jenkins_config.html">JenkinsConfig</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d80/class_c_p_f_machines_1_1config__data_1_1_jenkins_master_host_config.html">JenkinsMasterHostConfig</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4f/class_c_p_f_machines_1_1config__data_1_1_jenkins_slave_config.html">JenkinsSlaveConfig</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d3c/class_c_p_f_machines_1_1config__data_1_1_repository_host_config.html">RepositoryHostConfig</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dae/class_c_p_f_machines_1_1config__data_1_1_s_s_h_repository_host_config.html">SSHRepositoryHostConfig</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d6c/class_c_p_f_machines_1_1config__data_1_1_webserver_config.html">WebserverConfig</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,8 +136,8 @@ Variables</h2></td></tr>
 <tr class="separator:aa21d615bfc789649b96dad16e5be2057"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbd4f309ac659f174f1c864f3bb7b8f9"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#adbd4f309ac659f174f1c864f3bb7b8f9">KEY_MACHINE_ID</a> = 'MachineID'</td></tr>
 <tr class="separator:adbd4f309ac659f174f1c864f3bb7b8f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf9626b2be64bfe7b78c50e8a0d17807"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#abf9626b2be64bfe7b78c50e8a0d17807">KEY_MACHINE_NAME</a> = 'HostNameOrIP'</td></tr>
-<tr class="separator:abf9626b2be64bfe7b78c50e8a0d17807"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0b9e54c33affc0f4e31dc7f75aaf3fc"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#ad0b9e54c33affc0f4e31dc7f75aaf3fc">KEY_HOST</a> = 'HostNameOrIP'</td></tr>
+<tr class="separator:ad0b9e54c33affc0f4e31dc7f75aaf3fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ee2f593dc5dd9602f5cd2f7be9742ea"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#a6ee2f593dc5dd9602f5cd2f7be9742ea">KEY_USER</a> = 'User'</td></tr>
 <tr class="separator:a6ee2f593dc5dd9602f5cd2f7be9742ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9504034e4ad9a93901739c5eae43412"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#af9504034e4ad9a93901739c5eae43412">KEY_PASSWORD</a> = 'Password'</td></tr>
@@ -122,10 +150,12 @@ Variables</h2></td></tr>
 <tr class="separator:aab4b5fc43071383c196efb72220628d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1c3d57e1aea98627538c1c81555a226"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#ac1c3d57e1aea98627538c1c81555a226">KEY_HOST_JENKINS_MASTER_SHARE</a> = 'HostJenkinsMasterShare'</td></tr>
 <tr class="separator:ac1c3d57e1aea98627538c1c81555a226"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ae15fc7c864c8f1e30764541ece1c27"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#a6ae15fc7c864c8f1e30764541ece1c27">KEY_REPOSITORY_HOST</a> = 'RepositoryHost'</td></tr>
-<tr class="separator:a6ae15fc7c864c8f1e30764541ece1c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10f208f499e112bc6db66aa52cdf8bf4"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#a10f208f499e112bc6db66aa52cdf8bf4">KEY_SSH_REPOSITORY_HOSTS</a> = 'SSHRepositoryHosts'</td></tr>
+<tr class="separator:a10f208f499e112bc6db66aa52cdf8bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbf1c2e372f7989e29eaf349e511e324"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#afbf1c2e372f7989e29eaf349e511e324">KEY_SSH_DIR</a> = 'SSHDir'</td></tr>
 <tr class="separator:afbf1c2e372f7989e29eaf349e511e324"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5debe1b5f549cd6ea5d8c8d1a67eedce"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#a5debe1b5f549cd6ea5d8c8d1a67eedce">KEY_HTTPS_REPOSITORY_HOSTS</a> = 'HTTPSRepositoryHosts'</td></tr>
+<tr class="separator:a5debe1b5f549cd6ea5d8c8d1a67eedce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a470b34c8ee9bc5a5438a73cafe58c62b"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#a470b34c8ee9bc5a5438a73cafe58c62b">KEY_JENKINS_SLAVES</a> = 'JenkinsSlaves'</td></tr>
 <tr class="separator:a470b34c8ee9bc5a5438a73cafe58c62b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8edb234a0e597358145a77a7fb08e61c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#a8edb234a0e597358145a77a7fb08e61c">KEY_EXECUTORS</a> = &quot;Executors&quot;</td></tr>
@@ -204,10 +234,10 @@ it has a non empty value.
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="../../d8/df0/namespace_c_p_f_machines_1_1config__data_afb7594c2b665cb91a7a1a34870107134_icgraph.png" border="0" usemap="#d8/df0/namespace_c_p_f_machines_1_1config__data_afb7594c2b665cb91a7a1a34870107134_icgraph" alt=""/></div>
 <map name="d8/df0/namespace_c_p_f_machines_1_1config__data_afb7594c2b665cb91a7a1a34870107134_icgraph" id="d8/df0/namespace_c_p_f_machines_1_1config__data_afb7594c2b665cb91a7a1a34870107134_icgraph">
-<area shape="rect" id="node2" href="../../d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#acc09b2f084fb5bd2eedf7653d2d5cfee" title="CPFMachines.config\l_data.ConfigData.get\l_host_info" alt="" coords="221,85,364,141"/>
-<area shape="rect" id="node3" href="../../d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#a2846d897964e0df83a1ea747fd462646" title="CPFMachines.config\l_data.ConfigData.is\l_linux_machine" alt="" coords="439,5,581,61"/>
-<area shape="rect" id="node4" href="../../d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#aee864188a4ab580047084b9d02f0b616" title="CPFMachines.config\l_data.ConfigData.is\l_windows_machine" alt="" coords="439,85,581,141"/>
-<area shape="rect" id="node5" href="../../db/d8f/class_c_p_f_machines_1_1hook__config_1_1_hook_config_data.html#a567c1fd160556dccdfb3addc14b4f51d" title="CPFMachines.hook_config.\lHookConfigData.get_host_info" alt="" coords="412,190,608,231"/>
+<area shape="rect" id="node2" href="../../d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#acc09b2f084fb5bd2eedf7653d2d5cfee" title="CPFMachines.config\l_data.ConfigData.get\l_host_info" alt="" coords="237,85,396,141"/>
+<area shape="rect" id="node3" href="../../d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#a2846d897964e0df83a1ea747fd462646" title="CPFMachines.config\l_data.ConfigData.is\l_linux_machine" alt="" coords="478,5,626,61"/>
+<area shape="rect" id="node4" href="../../d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#aee864188a4ab580047084b9d02f0b616" title="CPFMachines.config\l_data.ConfigData.is\l_windows_machine" alt="" coords="478,85,626,141"/>
+<area shape="rect" id="node5" href="../../db/d8f/class_c_p_f_machines_1_1hook__config_1_1_hook_config_data.html#a567c1fd160556dccdfb3addc14b4f51d" title="CPFMachines.hook_config.\lHookConfigData.get_host_info" alt="" coords="444,190,660,231"/>
 </map>
 </div>
 
@@ -237,17 +267,17 @@ it has a non empty value.
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="../../d8/df0/namespace_c_p_f_machines_1_1config__data_a731f1694fc53c30bed08cbeafdab123f_icgraph.png" border="0" usemap="#d8/df0/namespace_c_p_f_machines_1_1config__data_a731f1694fc53c30bed08cbeafdab123f_icgraph" alt=""/></div>
 <map name="d8/df0/namespace_c_p_f_machines_1_1config__data_a731f1694fc53c30bed08cbeafdab123f_icgraph" id="d8/df0/namespace_c_p_f_machines_1_1config__data_a731f1694fc53c30bed08cbeafdab123f_icgraph">
-<area shape="rect" id="node2" href="../../d0/d1d/class_c_p_f_machines_1_1hook__config__tests_1_1_test_hook_config.html#aed867f69f9637984509c02a360e928ed" title="CPFMachines.hook_config\l_tests.TestHookConfig.test\l_reading_the_config_file_works" alt="" coords="264,5,465,61"/>
-<area shape="rect" id="node3" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#a9f35d34c95bdfb3cb0ba2255db36151f" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_reading_the_config_file_works" alt="" coords="261,85,469,141"/>
-<area shape="rect" id="node4" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#ada37caea1b8d8efd167c6540d4e125d1" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_container\l_use_linux_machines" alt="" coords="261,166,469,237"/>
-<area shape="rect" id="node5" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#a8c188405245653125064eeb6b139e5bb" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_one_linux\l_machine_available" alt="" coords="261,261,469,331"/>
-<area shape="rect" id="node6" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#afcf46a0567e6a5efef2c2648e907326c" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_that_all\l_hosts_are_in_use" alt="" coords="261,355,469,426"/>
-<area shape="rect" id="node7" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#a3cf567dc5d6759d77eb261f9b5364f7a" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_that_container\l_hosts_have_temp_dir" alt="" coords="255,450,475,521"/>
-<area shape="rect" id="node8" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#a8d78af1918c64c622a9c6f0664a8e27b" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_that_host\l_accounts_are_unique" alt="" coords="261,545,469,615"/>
-<area shape="rect" id="node9" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#aeebf16dda1d4a7682ca6944acb085e92" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_that_host\l_ids_are_unique" alt="" coords="261,639,469,710"/>
-<area shape="rect" id="node10" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#acb4f80163bf7879e99f5ab5a270dd0bc" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_that_slave\l_executors_number" alt="" coords="261,734,469,805"/>
-<area shape="rect" id="node11" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#ac35ee8d70f22ddac1d8054f7c37220d3" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_version" alt="" coords="261,829,469,885"/>
-<area shape="rect" id="node12" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#a59a2cc02e0fd443fac0dac13742e19e6" title="CPFMachines.config\l_data.write_example\l_config_file" alt="" coords="293,909,436,965"/>
+<area shape="rect" id="node2" href="../../d0/d1d/class_c_p_f_machines_1_1hook__config__tests_1_1_test_hook_config.html#aed867f69f9637984509c02a360e928ed" title="CPFMachines.hook_config\l_tests.TestHookConfig.test\l_reading_the_config_file_works" alt="" coords="285,5,503,61"/>
+<area shape="rect" id="node3" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#a9f35d34c95bdfb3cb0ba2255db36151f" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_reading_the_config_file_works" alt="" coords="281,85,507,141"/>
+<area shape="rect" id="node4" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#ada37caea1b8d8efd167c6540d4e125d1" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_container\l_use_linux_machines" alt="" coords="281,166,507,237"/>
+<area shape="rect" id="node5" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#a8c188405245653125064eeb6b139e5bb" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_one_linux\l_machine_available" alt="" coords="281,261,507,331"/>
+<area shape="rect" id="node6" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#afcf46a0567e6a5efef2c2648e907326c" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_that_all\l_hosts_are_in_use" alt="" coords="281,355,507,426"/>
+<area shape="rect" id="node7" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#a3cf567dc5d6759d77eb261f9b5364f7a" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_that_container\l_hosts_have_temp_dir" alt="" coords="273,450,515,521"/>
+<area shape="rect" id="node8" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#a8d78af1918c64c622a9c6f0664a8e27b" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_that_host\l_accounts_are_unique" alt="" coords="281,545,507,615"/>
+<area shape="rect" id="node9" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#aeebf16dda1d4a7682ca6944acb085e92" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_that_host\l_ids_are_unique" alt="" coords="281,639,507,710"/>
+<area shape="rect" id="node10" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#acb4f80163bf7879e99f5ab5a270dd0bc" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_that_slave\l_executors_number" alt="" coords="281,734,507,805"/>
+<area shape="rect" id="node11" href="../../d0/da9/class_c_p_f_machines_1_1config__data__tests_1_1_test_config_data.html#ac35ee8d70f22ddac1d8054f7c37220d3" title="CPFMachines.config\l_data_tests.TestConfigData.test\l_validation_checks_version" alt="" coords="281,829,507,885"/>
+<area shape="rect" id="node12" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#a59a2cc02e0fd443fac0dac13742e19e6" title="CPFMachines.config\l_data.write_example\l_config_file" alt="" coords="317,909,471,965"/>
 </map>
 </div>
 
@@ -297,8 +327,8 @@ it has a non empty value.
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="../../d8/df0/namespace_c_p_f_machines_1_1config__data_a59a2cc02e0fd443fac0dac13742e19e6_cgraph.png" border="0" usemap="#d8/df0/namespace_c_p_f_machines_1_1config__data_a59a2cc02e0fd443fac0dac13742e19e6_cgraph" alt=""/></div>
 <map name="d8/df0/namespace_c_p_f_machines_1_1config__data_a59a2cc02e0fd443fac0dac13742e19e6_cgraph" id="d8/df0/namespace_c_p_f_machines_1_1config__data_a59a2cc02e0fd443fac0dac13742e19e6_cgraph">
-<area shape="rect" id="node2" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#a731f1694fc53c30bed08cbeafdab123f" title="CPFMachines.config\l_data.get_example_config_dict" alt="" coords="196,5,397,47"/>
-<area shape="rect" id="node3" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#ab018d438a8afa9bc1121bb596e6da29e" title="CPFMachines.config\l_data.write_json_file" alt="" coords="225,71,368,112"/>
+<area shape="rect" id="node2" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#a731f1694fc53c30bed08cbeafdab123f" title="CPFMachines.config\l_data.get_example_config_dict" alt="" coords="208,5,428,47"/>
+<area shape="rect" id="node3" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#ab018d438a8afa9bc1121bb596e6da29e" title="CPFMachines.config\l_data.write_json_file" alt="" coords="243,71,393,112"/>
 </map>
 </div>
 
@@ -339,7 +369,7 @@ it has a non empty value.
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="../../d8/df0/namespace_c_p_f_machines_1_1config__data_ab018d438a8afa9bc1121bb596e6da29e_icgraph.png" border="0" usemap="#d8/df0/namespace_c_p_f_machines_1_1config__data_ab018d438a8afa9bc1121bb596e6da29e_icgraph" alt=""/></div>
 <map name="d8/df0/namespace_c_p_f_machines_1_1config__data_ab018d438a8afa9bc1121bb596e6da29e_icgraph" id="d8/df0/namespace_c_p_f_machines_1_1config__data_ab018d438a8afa9bc1121bb596e6da29e_icgraph">
-<area shape="rect" id="node2" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#a59a2cc02e0fd443fac0dac13742e19e6" title="CPFMachines.config\l_data.write_example\l_config_file" alt="" coords="196,5,339,61"/>
+<area shape="rect" id="node2" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html#a59a2cc02e0fd443fac0dac13742e19e6" title="CPFMachines.config\l_data.write_example\l_config_file" alt="" coords="204,5,359,61"/>
 </map>
 </div>
 
@@ -402,6 +432,20 @@ it has a non empty value.
 
 </div>
 </div>
+<a id="ad0b9e54c33affc0f4e31dc7f75aaf3fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0b9e54c33affc0f4e31dc7f75aaf3fc">&#9670;&nbsp;</a></span>KEY_HOST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string CPFMachines.config_data.KEY_HOST = 'HostNameOrIP'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae1e8f4d59f398daaf941294a59509e4e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae1e8f4d59f398daaf941294a59509e4e">&#9670;&nbsp;</a></span>KEY_HOST_HTML_SHARE</h2>
 
@@ -424,6 +468,20 @@ it has a non empty value.
       <table class="memname">
         <tr>
           <td class="memname">string CPFMachines.config_data.KEY_HOST_JENKINS_MASTER_SHARE = 'HostJenkinsMasterShare'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5debe1b5f549cd6ea5d8c8d1a67eedce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5debe1b5f549cd6ea5d8c8d1a67eedce">&#9670;&nbsp;</a></span>KEY_HTTPS_REPOSITORY_HOSTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string CPFMachines.config_data.KEY_HTTPS_REPOSITORY_HOSTS = 'HTTPSRepositoryHosts'</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -598,20 +656,6 @@ it has a non empty value.
 
 </div>
 </div>
-<a id="abf9626b2be64bfe7b78c50e8a0d17807"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf9626b2be64bfe7b78c50e8a0d17807">&#9670;&nbsp;</a></span>KEY_MACHINE_NAME</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string CPFMachines.config_data.KEY_MACHINE_NAME = 'HostNameOrIP'</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a6e12a5aac040ef86a215f4c2015736ac"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6e12a5aac040ef86a215f4c2015736ac">&#9670;&nbsp;</a></span>KEY_OSTYPE</h2>
 
@@ -654,20 +698,6 @@ it has a non empty value.
 
 </div>
 </div>
-<a id="a6ae15fc7c864c8f1e30764541ece1c27"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ae15fc7c864c8f1e30764541ece1c27">&#9670;&nbsp;</a></span>KEY_REPOSITORY_HOST</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string CPFMachines.config_data.KEY_REPOSITORY_HOST = 'RepositoryHost'</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="afbf1c2e372f7989e29eaf349e511e324"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afbf1c2e372f7989e29eaf349e511e324">&#9670;&nbsp;</a></span>KEY_SSH_DIR</h2>
 
@@ -676,6 +706,20 @@ it has a non empty value.
       <table class="memname">
         <tr>
           <td class="memname">string CPFMachines.config_data.KEY_SSH_DIR = 'SSHDir'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a10f208f499e112bc6db66aa52cdf8bf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10f208f499e112bc6db66aa52cdf8bf4">&#9670;&nbsp;</a></span>KEY_SSH_REPOSITORY_HOSTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string CPFMachines.config_data.KEY_SSH_REPOSITORY_HOSTS = 'SSHRepositoryHosts'</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -753,11 +797,15 @@ it has a non empty value.
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 29 2018 12:18:43 for CMakeProjectFramework by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="../../doxygen.png" alt="doxygen"/>
-</a> 1.8.14
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../db/d51/namespace_c_p_f_machines.html">CPFMachines</a></li><li class="navelem"><a class="el" href="../../d8/df0/namespace_c_p_f_machines_1_1config__data.html">config_data</a></li>
+    <li class="footer">Generated on Fri Apr 20 2018 12:12:31 for CMakeProjectFramework by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
 </body>
 </html>

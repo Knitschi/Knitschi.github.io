@@ -1,6 +1,6 @@
 <map id="CPFMachines.config_data.get_checked_value" name="CPFMachines.config_data.get_checked_value">
-<area shape="rect" id="node2" href="$d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#acc09b2f084fb5bd2eedf7653d2d5cfee" title="CPFMachines.config\l_data.ConfigData.get\l_host_info" alt="" coords="221,85,364,141"/>
-<area shape="rect" id="node3" href="$d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#a2846d897964e0df83a1ea747fd462646" title="CPFMachines.config\l_data.ConfigData.is\l_linux_machine" alt="" coords="439,5,581,61"/>
-<area shape="rect" id="node4" href="$d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#aee864188a4ab580047084b9d02f0b616" title="CPFMachines.config\l_data.ConfigData.is\l_windows_machine" alt="" coords="439,85,581,141"/>
-<area shape="rect" id="node5" href="$db/d8f/class_c_p_f_machines_1_1hook__config_1_1_hook_config_data.html#a567c1fd160556dccdfb3addc14b4f51d" title="CPFMachines.hook_config.\lHookConfigData.get_host_info" alt="" coords="412,190,608,231"/>
+<area shape="rect" id="node2" href="$d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#acc09b2f084fb5bd2eedf7653d2d5cfee" title="CPFMachines.config\l_data.ConfigData.get\l_host_info" alt="" coords="237,85,396,141"/>
+<area shape="rect" id="node3" href="$d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#a2846d897964e0df83a1ea747fd462646" title="CPFMachines.config\l_data.ConfigData.is\l_linux_machine" alt="" coords="478,5,626,61"/>
+<area shape="rect" id="node4" href="$d6/d54/class_c_p_f_machines_1_1config__data_1_1_config_data.html#aee864188a4ab580047084b9d02f0b616" title="CPFMachines.config\l_data.ConfigData.is\l_windows_machine" alt="" coords="478,85,626,141"/>
+<area shape="rect" id="node5" href="$db/d8f/class_c_p_f_machines_1_1hook__config_1_1_hook_config_data.html#a567c1fd160556dccdfb3addc14b4f51d" title="CPFMachines.hook_config.\lHookConfigData.get_host_info" alt="" coords="444,190,660,231"/>
 </map>

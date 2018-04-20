@@ -9,10 +9,26 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(function() {
+    if ($('.searchresults').length > 0) { searchBox.DOMSearchField().focus(); }
+  });
+  /* @license-end */
+</script>
 <link rel="search" href="search_opensearch.php?v=opensearch.xml" type="application/opensearchdescription+xml" title="CMakeProjectFramework"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="DoxygenStylesheet.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -25,6 +41,17 @@
    </div>
    <div id="projectbrief">A CMake and Jenkins based C++ CI pipeline.</div>
   </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+          <div class="left">
+            <form id="FSearchBox" action="search.html" method="get">
+              <img id="MSearchSelect" src="search/mag.png" alt=""/>
+              <input type="text" id="MSearchField" name="query" value="Search" size="20" accesskey="S" 
+                     onfocus="searchBox.OnSearchFieldFocus(true)" 
+                     onblur="searchBox.OnSearchFieldFocus(false)"/>
+            </form>
+          </div><div class="right"></div>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -36,20 +63,23 @@
 var searchBox = new SearchBox("searchBox", "search",false,'Search');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(function() {
-  initMenu('',true,true,'search.html','Search');
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-  $(document).ready(function() {
-    if ($('.searchresults').length > 0) { searchBox.DOMSearchField().focus(); }
-  });
-});
-/* @license-end */</script>
-<div id="main-nav"></div>
-</div><!-- top -->
+$(document).ready(function(){initNavTree('namespacemembers_vars.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <div class="contents">
 &#160;
 
@@ -89,11 +119,17 @@ $(function() {
 <li>KEY_HOOKED_REPOSITORIES
 : <a class="el" href="dd/d68/namespace_c_p_f_machines_1_1hook__config.html#aef4edf7595883031a6d39a790ebf4f21">CPFMachines.hook_config</a>
 </li>
+<li>KEY_HOST
+: <a class="el" href="d8/df0/namespace_c_p_f_machines_1_1config__data.html#ad0b9e54c33affc0f4e31dc7f75aaf3fc">CPFMachines.config_data</a>
+</li>
 <li>KEY_HOST_HTML_SHARE
 : <a class="el" href="d8/df0/namespace_c_p_f_machines_1_1config__data.html#ae1e8f4d59f398daaf941294a59509e4e">CPFMachines.config_data</a>
 </li>
 <li>KEY_HOST_JENKINS_MASTER_SHARE
 : <a class="el" href="d8/df0/namespace_c_p_f_machines_1_1config__data.html#ac1c3d57e1aea98627538c1c81555a226">CPFMachines.config_data</a>
+</li>
+<li>KEY_HTTPS_REPOSITORY_HOSTS
+: <a class="el" href="d8/df0/namespace_c_p_f_machines_1_1config__data.html#a5debe1b5f549cd6ea5d8c8d1a67eedce">CPFMachines.config_data</a>
 </li>
 <li>KEY_JENKINS_ACCOUNT
 : <a class="el" href="dd/d68/namespace_c_p_f_machines_1_1hook__config.html#aaa9a02c62dfc991e62e93539e3208bd0">CPFMachines.hook_config</a>
@@ -143,9 +179,6 @@ $(function() {
 <li>KEY_MACHINE_ID
 : <a class="el" href="d8/df0/namespace_c_p_f_machines_1_1config__data.html#adbd4f309ac659f174f1c864f3bb7b8f9">CPFMachines.config_data</a>
 </li>
-<li>KEY_MACHINE_NAME
-: <a class="el" href="d8/df0/namespace_c_p_f_machines_1_1config__data.html#abf9626b2be64bfe7b78c50e8a0d17807">CPFMachines.config_data</a>
-</li>
 <li>KEY_OSTYPE
 : <a class="el" href="d8/df0/namespace_c_p_f_machines_1_1config__data.html#a6e12a5aac040ef86a215f4c2015736ac">CPFMachines.config_data</a>
 </li>
@@ -155,14 +188,14 @@ $(function() {
 <li>KEY_REPOSITORY
 : <a class="el" href="d8/df0/namespace_c_p_f_machines_1_1config__data.html#a3a4b9c93454b17804b99d3933ad05a45">CPFMachines.config_data</a>
 </li>
-<li>KEY_REPOSITORY_HOST
-: <a class="el" href="d8/df0/namespace_c_p_f_machines_1_1config__data.html#a6ae15fc7c864c8f1e30764541ece1c27">CPFMachines.config_data</a>
-</li>
 <li>KEY_REPOSITORY_MACHINES
 : <a class="el" href="dd/d68/namespace_c_p_f_machines_1_1hook__config.html#ae86c28db1a7e22fb27cb7695e7c182ce">CPFMachines.hook_config</a>
 </li>
 <li>KEY_SSH_DIR
 : <a class="el" href="d8/df0/namespace_c_p_f_machines_1_1config__data.html#afbf1c2e372f7989e29eaf349e511e324">CPFMachines.config_data</a>
+</li>
+<li>KEY_SSH_REPOSITORY_HOSTS
+: <a class="el" href="d8/df0/namespace_c_p_f_machines_1_1config__data.html#a10f208f499e112bc6db66aa52cdf8bf4">CPFMachines.config_data</a>
 </li>
 <li>KEY_TEMPDIR
 : <a class="el" href="d8/df0/namespace_c_p_f_machines_1_1config__data.html#a32421dfc9fb9e52ab67828329ad637c8">CPFMachines.config_data</a>
@@ -181,11 +214,14 @@ $(function() {
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 29 2018 12:18:43 for CMakeProjectFramework by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.14
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Fri Apr 20 2018 12:12:32 for CMakeProjectFramework by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
 </body>
 </html>
