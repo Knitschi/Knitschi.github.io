@@ -1,6 +1,6 @@
 digraph "CPFTargetDependencyGraph" {
 node [
- fontsize = "14", fontname="helvetica"
+ fontsize = "11", fontname="Helvetica-Bold"
 ];
     "node134" [ label="APackage" shape="house"];
     "node56" [ label="BPackage" shape="diamond"];
