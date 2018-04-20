@@ -2,10 +2,10 @@ digraph CPFTargetDependencyGraph {
 	node [fontname=helvetica,
 		fontsize=14
 	];
-	node19	 [label=BPackage,
-		shape=polygon];
-	node27	 [label=FPackage,
-		shape=polygon];
-	node35	 [label=GPackage,
-		shape=polygon];
+	node40	 [label=BPackage,
+		shape=diamond];
+	node51	 [label=FPackage,
+		shape=diamond];
+	node66	 [label=GPackage,
+		shape=diamond];
 }
