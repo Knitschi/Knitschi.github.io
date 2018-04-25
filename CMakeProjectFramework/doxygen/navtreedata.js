@@ -25,6 +25,7 @@ var NAVTREE =
 [
   [ "CMakeProjectFramework", "index.html", [
     [ "Overview", "index.html", "index" ],
+    [ "CPFTests", "d5/d25/_c_p_f_tests.html", null ],
     [ "Todo List", "dd/da0/todo.html", null ],
     [ "Bug List", "de/da5/bug.html", null ]
   ] ]

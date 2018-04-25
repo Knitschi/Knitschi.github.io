@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html" title="python.miscosaccess.Misc\lOsAccess" alt="" coords="5,5,196,47"/>
-<area shape="rect" id="node2" href="$d4/d39/classpython_1_1miscosaccess_1_1_fake_misc_os_access.html" title="python.miscosaccess.Fake\lMiscOsAccess" alt="" coords="244,5,436,47"/>
+<area shape="rect" id="node1" href="$de/d76/classpython_1_1filesystemaccess_1_1_fake_file_system_node.html" title="python.filesystemaccess.\lFakeFileSystemNode" alt="" coords="5,5,176,47"/>
+<area shape="rect" id="node2" href="$d0/dc2/classpython_1_1filesystemaccess_1_1_fake_file_system_file_node.html" title="python.filesystemaccess.\lFakeFileSystemFileNode" alt="" coords="224,5,395,47"/>
 </map>

@@ -1,8 +1,5 @@
 <map id="python.filelocations.FileLocations.get_full_path_config_file" name="python.filelocations.FileLocations.get_full_path_config_file">
-<area shape="rect" id="node2" href="$df/dee/classfilelocations_1_1_file_locations.html#a3fb98e9f94ac6d4028d148ec6f39bae8" title="filelocations.FileLocations.get\l_config_file_ending" alt="" coords="233,5,440,47"/>
-<area shape="rect" id="node3" href="$df/d5f/classpython_1_1filelocations_1_1_file_locations.html#a6bb7ce15d6679e32cb3963c3c654f27a" title="python.filelocations.File\lLocations.get_config_file_ending" alt="" coords="223,71,451,112"/>
-<area shape="rect" id="node4" href="$df/dee/classfilelocations_1_1_file_locations.html#a863066029c397736f4fb13647cc2d292" title="filelocations.FileLocations.get\l_full_path_configuration_folder" alt="" coords="229,136,445,177"/>
-<area shape="rect" id="node6" href="$df/d5f/classpython_1_1filelocations_1_1_file_locations.html#a744af5c52972605ac2c783c15e04d08a" title="python.filelocations.File\lLocations.get_full_path\l_configuration_folder" alt="" coords="252,202,421,258"/>
-<area shape="rect" id="node5" href="$df/dee/classfilelocations_1_1_file_locations.html#a27672b19348f7097ef36921dee0f12cd" title="filelocations.FileLocations.get\l_full_path_cpf_root" alt="" coords="499,136,705,177"/>
-<area shape="rect" id="node7" href="$df/d5f/classpython_1_1filelocations_1_1_file_locations.html#a2a6fdfd0ca1a242b4eac3b52d5b9517e" title="python.filelocations.File\lLocations.get_full_path\l_cpf_root" alt="" coords="517,202,687,258"/>
+<area shape="rect" id="node2" href="$df/d5f/classpython_1_1filelocations_1_1_file_locations.html#a6bb7ce15d6679e32cb3963c3c654f27a" title="python.filelocations.File\lLocations.get_config_file_ending" alt="" coords="212,5,421,47"/>
+<area shape="rect" id="node3" href="$df/d5f/classpython_1_1filelocations_1_1_file_locations.html#a744af5c52972605ac2c783c15e04d08a" title="python.filelocations.File\lLocations.get_full_path\l_configuration_folder" alt="" coords="237,71,396,127"/>
+<area shape="rect" id="node4" href="$df/d5f/classpython_1_1filelocations_1_1_file_locations.html#a2a6fdfd0ca1a242b4eac3b52d5b9517e" title="python.filelocations.File\lLocations.get_full_path\l_cpf_root" alt="" coords="469,71,628,127"/>
 </map>
