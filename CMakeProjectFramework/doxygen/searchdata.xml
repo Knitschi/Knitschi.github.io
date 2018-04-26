@@ -1011,23 +1011,23 @@
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00022</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00024</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00023</field>
     <field name="keywords"></field>
     <field name="text">__str__ format str</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00029</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00028</field>
     <field name="keywords"></field>
     <field name="text">OutputMode Enum</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00033</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
   </doc>
   <doc>
     <field name="type">source</field>
@@ -1046,91 +1046,133 @@
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00036</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00039</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00038</field>
     <field name="keywords"></field>
     <field name="text">MiscOsAccess</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00045</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00044</field>
     <field name="keywords"></field>
     <field name="text">execute_command OutputMode.ALWAYS print str</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00060</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00059</field>
     <field name="keywords"></field>
-    <field name="text">execute_command_output str os.getcwd print subprocess.Popen subprocess.PIPE subprocess.PIPE p.stdout line.decode rstrip OutputMode.ALWAYS print stdoutstrings.append p.stderr line.decode rstrip OutputMode.ALWAYS print stderrstrings.append p.returncode OutputMode.ON_ERROR print join print join CalledProcessError p.returncode join join</field>
+    <field name="text">execute_command_output str os.getcwd print subprocess.Popen subprocess.PIPE subprocess.STDOUT p.stdout line.decode rstrip OutputMode.ALWAYS print stdoutstrings.append p.returncode OutputMode.ON_ERROR print join CalledProcessError p.returncode join</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00118</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00109</field>
     <field name="keywords"></field>
     <field name="text">execute_commands_in_parallel subprocess.Popen subprocess.PIPE subprocess.PIPE communicate out.decode err.decode print print results.append _remove_line_separators new_list.append string.rstrip _get_printed_command os.getcwd str</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00167</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00158</field>
     <field name="keywords"></field>
     <field name="text">print_console print</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00170</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00161</field>
     <field name="keywords"></field>
     <field name="text">chdir os.chdir</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00174</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00165</field>
     <field name="keywords"></field>
     <field name="text">system platform.system</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00178</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00169</field>
     <field name="keywords"></field>
     <field name="text">cpu_count multiprocessing.cpu_count</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00183</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00174</field>
     <field name="keywords"></field>
     <field name="text">FakeMiscOsAccess MiscOsAccess</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00185</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00176</field>
     <field name="keywords"></field>
     <field name="text">__init__</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00190</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00181</field>
     <field name="keywords"></field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00191</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00182</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00183</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00184</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00185</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00186</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00187</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00188</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00189</field>
     <field name="keywords"></field>
     <field name="text"></field>
   </doc>
@@ -1139,96 +1181,47 @@
     <field name="name">miscosaccess.py</field>
     <field name="url">df/d96/miscosaccess_8py_source.html#l00192</field>
     <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00193</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00194</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00195</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00196</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00197</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
+    <field name="text">execute_command append</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
     <field name="url">df/d96/miscosaccess_8py_source.html#l00198</field>
     <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00201</field>
-    <field name="keywords"></field>
-    <field name="text">execute_command append</field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00207</field>
-    <field name="keywords"></field>
     <field name="text">execute_commands_in_parallel append len</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00214</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00205</field>
     <field name="keywords"></field>
     <field name="text">print_console</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00217</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00208</field>
     <field name="keywords"></field>
     <field name="text">chdir isdir</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00223</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00214</field>
     <field name="keywords"></field>
     <field name="text">mkdir mkdir</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00228</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00219</field>
     <field name="keywords"></field>
     <field name="text">system</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00231</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00222</field>
     <field name="keywords"></field>
     <field name="text">cpu_count _is_relative_path</field>
   </doc>
@@ -3396,20 +3389,6 @@
   </doc>
   <doc>
     <field name="type">file</field>
-    <field name="name">cpfAddPackage.cmake</field>
-    <field name="url">d4/dda/cpf_add_package_8cmake.html</field>
-    <field name="keywords">cpfAddPackage.cmake</field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">file</field>
-    <field name="name">cpfInit.cmake</field>
-    <field name="url">d7/d38/cpf_init_8cmake.html</field>
-    <field name="keywords">cpfInit.cmake</field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">file</field>
     <field name="name">cpfPackageVersion_CPFCMake.cmake</field>
     <field name="url">da/d6c/cpf_package_version___c_p_f_c_make_8cmake.html</field>
     <field name="keywords">cpfPackageVersion_CPFCMake.cmake</field>
@@ -3550,6 +3529,13 @@
   </doc>
   <doc>
     <field name="type">file</field>
+    <field name="name">cpfAddPackage.cmake</field>
+    <field name="url">d4/dda/cpf_add_package_8cmake.html</field>
+    <field name="keywords">cpfAddPackage.cmake</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
     <field name="name">cpfAddPipelineTarget.cmake</field>
     <field name="url">dd/dfb/cpf_add_pipeline_target_8cmake.html</field>
     <field name="keywords">cpfAddPipelineTarget.cmake</field>
@@ -3588,6 +3574,13 @@
     <field name="name">cpfGitUtilities.cmake</field>
     <field name="url">d8/dd0/cpf_git_utilities_8cmake.html</field>
     <field name="keywords">cpfGitUtilities.cmake</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">cpfInit.cmake</field>
+    <field name="url">d7/d38/cpf_init_8cmake.html</field>
+    <field name="keywords">cpfInit.cmake</field>
     <field name="text"></field>
   </doc>
   <doc>
@@ -7147,8 +7140,8 @@
   <doc>
     <field name="type">function</field>
     <field name="name">python.miscosaccess.CalledProcessError.__init__</field>
-    <field name="args">(self, returncode, cmd, stdout, stderr, cwd)</field>
-    <field name="url">db/df3/classpython_1_1miscosaccess_1_1_called_process_error.html#ae27d2561c6af0814a2cf76eccf42b6b1</field>
+    <field name="args">(self, returncode, cmd, stdout, cwd)</field>
+    <field name="url">db/df3/classpython_1_1miscosaccess_1_1_called_process_error.html#a8e8b36ac8cf3fd2bd1d9eac3cc9f015e</field>
     <field name="keywords">__init__ python.miscosaccess.CalledProcessError.__init__ python.miscosaccess.CalledProcessError</field>
     <field name="text"></field>
   </doc>
@@ -7179,13 +7172,6 @@
     <field name="name">python.miscosaccess.CalledProcessError.stdout</field>
     <field name="url">db/df3/classpython_1_1miscosaccess_1_1_called_process_error.html#a04eb5e67ea4f599390bc604fcbf23112</field>
     <field name="keywords">stdout python.miscosaccess.CalledProcessError.stdout python.miscosaccess.CalledProcessError</field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">variable</field>
-    <field name="name">python.miscosaccess.CalledProcessError.stderr</field>
-    <field name="url">db/df3/classpython_1_1miscosaccess_1_1_called_process_error.html#adb1e5199ffb9c71be2ae09bc13a8d397</field>
-    <field name="keywords">stderr python.miscosaccess.CalledProcessError.stderr python.miscosaccess.CalledProcessError</field>
     <field name="text"></field>
   </doc>
   <doc>
