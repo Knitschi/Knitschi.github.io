@@ -2,30 +2,30 @@ digraph CPFTargetDependencyGraph {
 	node [fontname="Helvetica-Bold",
 		fontsize=11
 	];
-	node81	 [label=APackage,
+	node80	 [label=APackage,
 		shape=house];
-	node79	 [label=libAPackage,
+	node78	 [label=libAPackage,
 		shape=diamond];
-	node81 -> node79;
-	node28	 [label=BPackage,
+	node80 -> node78;
+	node27	 [label=BPackage,
 		shape=polygon];
-	node53	 [label=CPackage,
+	node52	 [label=CPackage,
 		shape=polygon];
-	node12	 [label=libSwitchWarningsOff,
+	node11	 [label=libSwitchWarningsOff,
 		shape=box];
-	node53 -> node12;
-	node64	 [label=DPackage,
+	node52 -> node11;
+	node63	 [label=DPackage,
 		shape=polygon];
-	node73	 [label=EPackage,
+	node72	 [label=EPackage,
 		shape=polygon];
-	node36	 [label=FPackage,
+	node35	 [label=FPackage,
 		shape=polygon];
-	node44	 [label=GPackage,
+	node43	 [label=GPackage,
 		shape=polygon];
-	node79 -> node28;
-	node79 -> node53;
-	node79 -> node64;
-	node79 -> node73;
-	node79 -> node36;
-	node79 -> node44;
+	node78 -> node27;
+	node78 -> node52;
+	node78 -> node63;
+	node78 -> node72;
+	node78 -> node35;
+	node78 -> node43;
 }
