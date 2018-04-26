@@ -29,6 +29,7 @@ var NAVTREE =
     [ "Welcome to CPackage", "d5/dc9/md__sources__c_package__r_e_a_d_m_e.html", null ],
     [ "Welcome to DPackage", "d3/dc4/md__sources__d_package__r_e_a_d_m_e.html", null ],
     [ "Welcome to EPackage", "d5/d08/md__sources__e_package__r_e_a_d_m_e.html", null ],
+    [ "Welcome to libSwitchWarningsOff", "d2/d72/md__sources_lib_switch_warnings_off__r_e_a_d_m_e.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Classes", "annotated.html", [
       [ "Class Index", "classes.html", null ]

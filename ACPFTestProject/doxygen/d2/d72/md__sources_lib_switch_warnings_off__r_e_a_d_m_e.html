@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ACPFTestProject: Generated/VS2017-shared/_CPF/documentation/DPackageDocumentation.dox File Reference</title>
+<title>ACPFTestProject: Welcome to libSwitchWarningsOff</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -71,30 +71,25 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('de/d52/_d_package_documentation_8dox.html','../../');});
+$(document).ready(function(){initNavTree('d2/d72/md__sources_lib_switch_warnings_off__r_e_a_d_m_e.html','../../');});
 /* @license-end */
 </script>
 <div id="doc-content">
 <div class="header">
-  <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">Generated/VS2017-shared/_CPF/documentation/DPackageDocumentation.dox File Reference</div>  </div>
+<div class="title">Welcome to libSwitchWarningsOff </div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:df/d9e/namespaced"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9e/namespaced.html">d</a></td></tr>
-<tr class="memdesc:df/d9e/namespaced"><td class="mdescLeft">&#160;</td><td class="mdescRight">The namespace of the DPackage package. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-</div><!-- contents -->
+<div class="textblock"><p>This small CMake based C++ package provides two macros <code>SWITCH_WARNINGS_OFF</code> and <code>SWITCH_WARNINGS_ON</code>. The macros are supposed to be used to suppress warnings from external headers that often occur when compiling with high warning levels.</p>
+<p>Targets that link to <em>libSwitchWarningsOff</em> will automatically force include the header file that provides the macros, so no manual includes are required in order to use the macro.</p>
+<h2>Example</h2>
+<div class="fragment"><div class="line"><span class="comment">// file MySource.cpp</span></div><div class="line"><span class="preprocessor">#include &quot;MySource.h&quot;</span></div><div class="line"></div><div class="line"><a class="code" href="../../d3/d8f/_switch_warnings_off_8h.html#a0ba3bae234cfdb22f1292734e000a9df">SWITCH_WARNINGS_ON</a></div><div class="line"><span class="comment">// external headers that cause warnings during compilation</span></div><div class="line"><span class="preprocessor">#include &lt;gtest/gtest.h&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;QString&gt;</span></div><div class="line"><a class="code" href="../../d3/d8f/_switch_warnings_off_8h.html#ae7c631bf40210aa91f98eb2ccd7e1a3f">SWITCH_WARNINGS_OFF</a></div><div class="line"></div><div class="line"><span class="preprocessor">#include &quot;MyOtherSource.h&quot;</span></div><div class="line"></div><div class="line">...</div><div class="line">your code that should compile without warnings</div><div class="line">...</div></div><!-- fragment --><h2>Usage</h2>
+<p>The macro is known to work with VS, Gcc and Clang. Add the repository as git submodule to your CMake project and add it with <code>add_subdirectory()</code>. Then you should get a <em>libSwitchWarningsOff</em> target that you can link to your targets. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../de/d52/_d_package_documentation_8dox.html">DPackageDocumentation.dox</a></li>
     <li class="footer">Generated on Thu Apr 26 2018 14:57:34 for ACPFTestProject by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
