@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('df/ddd/classpython_1_1miscosaccess_1_1
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="../../df/db1/classpython_1_1miscosaccess_1_1_misc_os_access__inherit__graph.png" border="0" usemap="#python_8miscosaccess_8_misc_os_access_inherit__map" alt="Inheritance graph"/></div>
 <map name="python_8miscosaccess_8_misc_os_access_inherit__map" id="python_8miscosaccess_8_misc_os_access_inherit__map">
-<area shape="rect" id="node2" href="../../d4/d39/classpython_1_1miscosaccess_1_1_fake_misc_os_access.html" title="{python.miscosaccess.Fake\lMiscOsAccess\n|+ fake_file_system\l+ current_dir\l+ env_vars\l+ execute_command_arg\l+ console_output\l+ m_system\l+ m_cpu_count\l+ execute_commands_in\l_parallel_args\l+ execute_commands_in\l_parallel_results\l|+ __init__()\l+ execute_command()\l+ execute_commands_in\l_parallel()\l+ print_console()\l+ chdir()\l+ mkdir()\l+ system()\l+ cpu_count()\l}" alt="" coords="5,233,197,589"/>
+<area shape="rect" id="node2" href="../../d4/d39/classpython_1_1miscosaccess_1_1_fake_misc_os_access.html" title="{python.miscosaccess.Fake\lMiscOsAccess\n|+ fake_file_system\l+ current_dir\l+ env_vars\l+ execute_command_arg\l+ console_output\l+ m_system\l+ m_cpu_count\l+ execute_commands_in\l_parallel_args\l+ execute_commands_in\l_parallel_results\l|+ __init__()\l+ execute_command()\l+ execute_commands_in\l_parallel()\l+ print_console()\l+ chdir()\l+ mkdir()\l+ system()\l+ cpu_count()\l}" alt="" coords="11,248,194,604"/>
 </map>
 </div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -110,8 +110,10 @@ $(document).ready(function(){initNavTree('df/ddd/classpython_1_1miscosaccess_1_1
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1923344d3168bd63897a071e9f117c1d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#a1923344d3168bd63897a071e9f117c1d">execute_command</a> (self, command)</td></tr>
-<tr class="separator:a1923344d3168bd63897a071e9f117c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2d1cb8fda278815e8e33c8508988f49"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#ae2d1cb8fda278815e8e33c8508988f49">execute_command</a> (self, command, cwd=None)</td></tr>
+<tr class="separator:ae2d1cb8fda278815e8e33c8508988f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a867689295221d304992862ef423a747b"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#a867689295221d304992862ef423a747b">execute_command_output</a> (self, command, cwd=None, print_output=<a class="el" href="../../d0/d7c/classpython_1_1miscosaccess_1_1_output_mode.html#a1dd1d2790173687d110572593fd50364">OutputMode.ALWAYS</a>, print_command=False)</td></tr>
+<tr class="separator:a867689295221d304992862ef423a747b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a689141f5ed5d1e7fb8070e7482a82a2c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#a689141f5ed5d1e7fb8070e7482a82a2c">execute_commands_in_parallel</a> (self, commands, cwd=None, printOutput=True)</td></tr>
 <tr class="separator:a689141f5ed5d1e7fb8070e7482a82a2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a289dbfb0afecab9f8b5d8bf549b543ea"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#a289dbfb0afecab9f8b5d8bf549b543ea">print_console</a> (self, string)</td></tr>
@@ -173,8 +175,8 @@ This allows replacing the calls to these functions in tests.
 
 </div>
 </div>
-<a id="a1923344d3168bd63897a071e9f117c1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1923344d3168bd63897a071e9f117c1d">&#9670;&nbsp;</a></span>execute_command()</h2>
+<a id="ae2d1cb8fda278815e8e33c8508988f49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2d1cb8fda278815e8e33c8508988f49">&#9670;&nbsp;</a></span>execute_command()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,7 +191,13 @@ This allows replacing the calls to these functions in tests.
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>command</em>&#160;</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>cwd</em> = <code>None</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -202,15 +210,95 @@ This allows replacing the calls to these functions in tests.
 Use this version when you do not need the output string and only run one command
 in parallel.
 </pre> 
-<p class="reference">References python.miscosaccess.MiscOsAccess._get_printed_command().</p>
+<p class="reference">References <a class="el" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#a867689295221d304992862ef423a747b">python.miscosaccess.MiscOsAccess.execute_command_output()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><img src="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a1923344d3168bd63897a071e9f117c1d_cgraph.png" border="0" usemap="#df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a1923344d3168bd63897a071e9f117c1d_cgraph" alt=""/></div>
-<map name="df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a1923344d3168bd63897a071e9f117c1d_cgraph" id="df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a1923344d3168bd63897a071e9f117c1d_cgraph">
-<area shape="rect" id="node2" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#a276ec4deaa1f0ba0a51de5d68c7cd425" title="python.miscosaccess.Misc\lOsAccess._get_printed\l_command" alt="" coords="264,5,455,61"/>
+<div class="center"><img src="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_ae2d1cb8fda278815e8e33c8508988f49_cgraph.png" border="0" usemap="#df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_ae2d1cb8fda278815e8e33c8508988f49_cgraph" alt=""/></div>
+<map name="df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_ae2d1cb8fda278815e8e33c8508988f49_cgraph" id="df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_ae2d1cb8fda278815e8e33c8508988f49_cgraph">
+<area shape="rect" id="node2" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#a867689295221d304992862ef423a747b" title="python.miscosaccess.Misc\lOsAccess.execute_command\l_output" alt="" coords="251,5,448,61"/>
+<area shape="rect" id="node3" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#a276ec4deaa1f0ba0a51de5d68c7cd425" title="python.miscosaccess.Misc\lOsAccess._get_printed\l_command" alt="" coords="496,5,677,61"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a867689295221d304992862ef423a747b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a867689295221d304992862ef423a747b">&#9670;&nbsp;</a></span>execute_command_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def python.miscosaccess.MiscOsAccess.execute_command_output </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>cwd</em> = <code>None</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>print_output</em> = <code><a class="el" href="../../d0/d7c/classpython_1_1miscosaccess_1_1_output_mode.html#a1dd1d2790173687d110572593fd50364">OutputMode.ALWAYS</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>print_command</em> = <code>False</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">Executes the given command and returns a list with [ stdoutlineslist , stderrlineslist].
+The function will print output as soon as it is created when setting the print_output option.
+Note that when your command runs a python script, you have to add the python -u option to make
+sure the output is displayed immediately.
+
+The function throws a CalledProcessError when the command fails.
+
+The function currently only uses utf-8 encoded output strings. Other variants caused errors
+when calling python scripts that also call this function.
+</pre> 
+<p class="reference">References python.miscosaccess.MiscOsAccess._get_printed_command().</p>
+
+<p class="reference">Referenced by <a class="el" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#ae2d1cb8fda278815e8e33c8508988f49">python.miscosaccess.MiscOsAccess.execute_command()</a>.</p>
+<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a867689295221d304992862ef423a747b_cgraph.png" border="0" usemap="#df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a867689295221d304992862ef423a747b_cgraph" alt=""/></div>
+<map name="df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a867689295221d304992862ef423a747b_cgraph" id="df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a867689295221d304992862ef423a747b_cgraph">
+<area shape="rect" id="node2" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#a276ec4deaa1f0ba0a51de5d68c7cd425" title="python.miscosaccess.Misc\lOsAccess._get_printed\l_command" alt="" coords="251,5,432,61"/>
+</map>
+</div>
+<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a867689295221d304992862ef423a747b_icgraph.png" border="0" usemap="#df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a867689295221d304992862ef423a747b_icgraph" alt=""/></div>
+<map name="df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a867689295221d304992862ef423a747b_icgraph" id="df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a867689295221d304992862ef423a747b_icgraph">
+<area shape="rect" id="node2" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#ae2d1cb8fda278815e8e33c8508988f49" title="python.miscosaccess.Misc\lOsAccess.execute_command" alt="" coords="251,13,448,54"/>
 </map>
 </div>
 
@@ -258,14 +346,14 @@ The commands should be given in one string, like it would be typed into the comm
 The return code, standard output and error output can be retrieved from the returned list of dictionaries.
 </pre> 
 <p class="reference">References python.miscosaccess.MiscOsAccess._get_printed_command().</p>
-<div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-3-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
-<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-5-trigger" src="../../closed.png" alt="+"/> Here is the call graph for this function:</div>
+<div id="dynsection-5-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div id="dynsection-5-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a689141f5ed5d1e7fb8070e7482a82a2c_cgraph.png" border="0" usemap="#df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a689141f5ed5d1e7fb8070e7482a82a2c_cgraph" alt=""/></div>
 <map name="df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a689141f5ed5d1e7fb8070e7482a82a2c_cgraph" id="df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a689141f5ed5d1e7fb8070e7482a82a2c_cgraph">
-<area shape="rect" id="node2" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#a276ec4deaa1f0ba0a51de5d68c7cd425" title="python.miscosaccess.Misc\lOsAccess._get_printed\l_command" alt="" coords="272,5,463,61"/>
+<area shape="rect" id="node2" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html#a276ec4deaa1f0ba0a51de5d68c7cd425" title="python.miscosaccess.Misc\lOsAccess._get_printed\l_command" alt="" coords="257,5,439,61"/>
 </map>
 </div>
 
@@ -298,16 +386,16 @@ The return code, standard output and error output can be retrieved from the retu
 </div><div class="memdoc">
 
 <p class="reference">Referenced by <a class="el" href="../../d4/d39/classpython_1_1miscosaccess_1_1_fake_misc_os_access.html#aa992eef183dfaf5b70c68abaa05186fe">python.miscosaccess.FakeMiscOsAccess.chdir()</a>, <a class="el" href="../../d4/d39/classpython_1_1miscosaccess_1_1_fake_misc_os_access.html#a910471c6d11e6ea578430cd1121c2922">python.miscosaccess.FakeMiscOsAccess.execute_command()</a>, and <a class="el" href="../../d4/d39/classpython_1_1miscosaccess_1_1_fake_misc_os_access.html#add839d60d9ccccebfd8ce13ed550f0a3">python.miscosaccess.FakeMiscOsAccess.execute_commands_in_parallel()</a>.</p>
-<div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-4-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
-<div id="dynsection-4-summary" class="dynsummary" style="display:block;">
+<div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-6-trigger" src="../../closed.png" alt="+"/> Here is the caller graph for this function:</div>
+<div id="dynsection-6-summary" class="dynsummary" style="display:block;">
 </div>
-<div id="dynsection-4-content" class="dyncontent" style="display:none;">
+<div id="dynsection-6-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a289dbfb0afecab9f8b5d8bf549b543ea_icgraph.png" border="0" usemap="#df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a289dbfb0afecab9f8b5d8bf549b543ea_icgraph" alt=""/></div>
 <map name="df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a289dbfb0afecab9f8b5d8bf549b543ea_icgraph" id="df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access_a289dbfb0afecab9f8b5d8bf549b543ea_icgraph">
-<area shape="rect" id="node2" href="../../d4/d39/classpython_1_1miscosaccess_1_1_fake_misc_os_access.html#aa992eef183dfaf5b70c68abaa05186fe" title="python.miscosaccess.Fake\lMiscOsAccess.chdir" alt="" coords="271,5,463,47"/>
-<area shape="rect" id="node3" href="../../d4/d39/classpython_1_1miscosaccess_1_1_fake_misc_os_access.html#a910471c6d11e6ea578430cd1121c2922" title="python.miscosaccess.Fake\lMiscOsAccess.execute_command" alt="" coords="248,71,487,112"/>
-<area shape="rect" id="node4" href="../../d4/d39/classpython_1_1miscosaccess_1_1_fake_misc_os_access.html#add839d60d9ccccebfd8ce13ed550f0a3" title="python.miscosaccess.Fake\lMiscOsAccess.execute_commands\l_in_parallel" alt="" coords="244,137,491,193"/>
+<area shape="rect" id="node2" href="../../d4/d39/classpython_1_1miscosaccess_1_1_fake_misc_os_access.html#aa992eef183dfaf5b70c68abaa05186fe" title="python.miscosaccess.Fake\lMiscOsAccess.chdir" alt="" coords="259,5,442,47"/>
+<area shape="rect" id="node3" href="../../d4/d39/classpython_1_1miscosaccess_1_1_fake_misc_os_access.html#a910471c6d11e6ea578430cd1121c2922" title="python.miscosaccess.Fake\lMiscOsAccess.execute_command" alt="" coords="238,71,463,112"/>
+<area shape="rect" id="node4" href="../../d4/d39/classpython_1_1miscosaccess_1_1_fake_misc_os_access.html#add839d60d9ccccebfd8ce13ed550f0a3" title="python.miscosaccess.Fake\lMiscOsAccess.execute_commands\l_in_parallel" alt="" coords="235,137,467,193"/>
 </map>
 </div>
 
@@ -337,7 +425,7 @@ The return code, standard output and error output can be retrieved from the retu
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../de/d4a/namespacepython.html">python</a></li><li class="navelem"><a class="el" href="../../d0/ddd/namespacepython_1_1miscosaccess.html">miscosaccess</a></li><li class="navelem"><a class="el" href="../../df/ddd/classpython_1_1miscosaccess_1_1_misc_os_access.html">MiscOsAccess</a></li>
-    <li class="footer">Generated on Fri Apr 20 2018 13:59:10 for CMakeProjectFramework by
+    <li class="footer">Generated on Thu Apr 26 2018 10:00:50 for CMakeProjectFramework by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>

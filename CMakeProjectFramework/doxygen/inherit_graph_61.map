@@ -1,3 +1,13 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access.html" title="python.filesystemaccess.\lFileSystemAccess" alt="" coords="5,5,188,47"/>
+<area shape="rect" id="node2" href="$de/da9/classpython_1_1docopt_1_1_pattern.html" title="python.docopt.Pattern" alt="" coords="111,107,261,133"/>
+<area shape="rect" id="node3" href="$d3/d36/classpython_1_1docopt_1_1_child_pattern.html" title="python.docopt.ChildPattern" alt="" coords="314,56,493,83"/>
+<area shape="rect" id="node7" href="$d5/dd8/classpython_1_1docopt_1_1_parent_pattern.html" title="python.docopt.ParentPattern" alt="" coords="309,157,497,184"/>
+<area shape="rect" id="node4" href="$d7/db1/classpython_1_1docopt_1_1_argument.html" title="python.docopt.Argument" alt="" coords="551,5,715,32"/>
+<area shape="rect" id="node6" href="$d5/df1/classpython_1_1docopt_1_1_option.html" title="python.docopt.Option" alt="" coords="559,56,706,83"/>
+<area shape="rect" id="node5" href="$d5/d3e/classpython_1_1docopt_1_1_command.html" title="python.docopt.Command" alt="" coords="773,5,939,32"/>
+<area shape="rect" id="node8" href="$da/da3/classpython_1_1docopt_1_1_either.html" title="python.docopt.Either" alt="" coords="561,107,704,133"/>
+<area shape="rect" id="node9" href="$d5/d87/classpython_1_1docopt_1_1_one_or_more.html" title="python.docopt.OneOrMore" alt="" coords="545,157,720,184"/>
+<area shape="rect" id="node10" href="$d1/d4a/classpython_1_1docopt_1_1_optional.html" title="python.docopt.Optional" alt="" coords="555,208,711,235"/>
+<area shape="rect" id="node12" href="$db/d2e/classpython_1_1docopt_1_1_required.html" title="python.docopt.Required" alt="" coords="553,259,712,285"/>
+<area shape="rect" id="node11" href="$d2/d72/classpython_1_1docopt_1_1_any_options.html" title="python.docopt.AnyOptions" alt="" coords="768,208,944,235"/>
 </map>

@@ -189,7 +189,7 @@ allow the usage of a fake file-system for tests.
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="../../d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access_a7f5b08575e2e70a1b9b5fc50b0a79c35_icgraph.png" border="0" usemap="#d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access_a7f5b08575e2e70a1b9b5fc50b0a79c35_icgraph" alt=""/></div>
 <map name="d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access_a7f5b08575e2e70a1b9b5fc50b0a79c35_icgraph" id="d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access_a7f5b08575e2e70a1b9b5fc50b0a79c35_icgraph">
-<area shape="rect" id="node2" href="../../d7/d2c/classpython_1_1filesystemaccess_1_1_fake_file_system_access.html#a91458fc6173f56910cc6e6c5fb266453" title="python.filesystemaccess.\lFakeFileSystemAccess.mkdir" alt="" coords="236,5,441,47"/>
+<area shape="rect" id="node2" href="../../d7/d2c/classpython_1_1filesystemaccess_1_1_fake_file_system_access.html#a91458fc6173f56910cc6e6c5fb266453" title="python.filesystemaccess.\lFakeFileSystemAccess.mkdir" alt="" coords="224,5,421,47"/>
 </map>
 </div>
 
@@ -229,7 +229,7 @@ allow the usage of a fake file-system for tests.
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="../../d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access_afda0ed047ca1e842dfc03dc399c78ed0_icgraph.png" border="0" usemap="#d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access_afda0ed047ca1e842dfc03dc399c78ed0_icgraph" alt=""/></div>
 <map name="d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access_afda0ed047ca1e842dfc03dc399c78ed0_icgraph" id="d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access_afda0ed047ca1e842dfc03dc399c78ed0_icgraph">
-<area shape="rect" id="node2" href="../../d7/d2c/classpython_1_1filesystemaccess_1_1_fake_file_system_access.html#a27571c0fce889439b4bb6e5dccdde862" title="python.filesystemaccess.\lFakeFileSystemAccess.rmtree" alt="" coords="236,5,449,47"/>
+<area shape="rect" id="node2" href="../../d7/d2c/classpython_1_1filesystemaccess_1_1_fake_file_system_access.html#a27571c0fce889439b4bb6e5dccdde862" title="python.filesystemaccess.\lFakeFileSystemAccess.rmtree" alt="" coords="224,5,427,47"/>
 </map>
 </div>
 
@@ -356,7 +356,7 @@ Throws when path does not exist?
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="../../d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access_affd6167cd18cde1c860b309a1095e262_icgraph.png" border="0" usemap="#d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access_affd6167cd18cde1c860b309a1095e262_icgraph" alt=""/></div>
 <map name="d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access_affd6167cd18cde1c860b309a1095e262_icgraph" id="d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access_affd6167cd18cde1c860b309a1095e262_icgraph">
-<area shape="rect" id="node2" href="../../d7/d2c/classpython_1_1filesystemaccess_1_1_fake_file_system_access.html#a91458fc6173f56910cc6e6c5fb266453" title="python.filesystemaccess.\lFakeFileSystemAccess.mkdir" alt="" coords="236,5,441,47"/>
+<area shape="rect" id="node2" href="../../d7/d2c/classpython_1_1filesystemaccess_1_1_fake_file_system_access.html#a91458fc6173f56910cc6e6c5fb266453" title="python.filesystemaccess.\lFakeFileSystemAccess.mkdir" alt="" coords="228,5,425,47"/>
 </map>
 </div>
 
@@ -387,7 +387,11 @@ Throws when path does not exist?
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Removes a directory and all of its content.</pre> 
+<pre class="fragment">Removes a directory and all of its content.
+We use our own implementation because
+shutil.rmtree() fails when files are write
+protected on windows.
+</pre> 
 </div>
 </div>
 </div><!-- contents -->
@@ -396,7 +400,7 @@ Throws when path does not exist?
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../de/d4a/namespacepython.html">python</a></li><li class="navelem"><a class="el" href="../../d7/d04/namespacepython_1_1filesystemaccess.html">filesystemaccess</a></li><li class="navelem"><a class="el" href="../../d3/d0f/classpython_1_1filesystemaccess_1_1_file_system_access.html">FileSystemAccess</a></li>
-    <li class="footer">Generated on Fri Apr 20 2018 13:59:10 for CMakeProjectFramework by
+    <li class="footer">Generated on Thu Apr 26 2018 10:00:50 for CMakeProjectFramework by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>

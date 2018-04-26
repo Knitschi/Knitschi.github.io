@@ -1,4 +1,4 @@
 <map id="python.docopt.OneOrMore" name="python.docopt.OneOrMore">
-<area shape="rect" id="node2" href="$d5/dd8/classpython_1_1docopt_1_1_parent_pattern.html" title="{python.docopt.ParentPattern\n|+ children\l|+ __init__()\l+ __repr__()\l+ flat()\l}" alt="" coords="6,329,211,436"/>
-<area shape="rect" id="node3" href="$de/da9/classpython_1_1docopt_1_1_pattern.html" title="{python.docopt.Pattern\n||+ __eq__()\l+ __hash__()\l+ fix()\l+ fix_identities()\l+ fix_repeating_arguments()\l+ either()\l}" alt="" coords="5,131,212,281"/>
+<area shape="rect" id="node2" href="$d5/dd8/classpython_1_1docopt_1_1_parent_pattern.html" title="{python.docopt.ParentPattern\n|+ children\l|+ __init__()\l+ __repr__()\l+ flat()\l}" alt="" coords="5,329,193,436"/>
+<area shape="rect" id="node3" href="$de/da9/classpython_1_1docopt_1_1_pattern.html" title="{python.docopt.Pattern\n||+ __eq__()\l+ __hash__()\l+ fix()\l+ fix_identities()\l+ fix_repeating_arguments()\l+ either()\l}" alt="" coords="8,131,191,281"/>
 </map>

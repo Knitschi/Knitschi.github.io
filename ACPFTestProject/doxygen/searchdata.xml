@@ -254,6 +254,13 @@
   </doc>
   <doc>
     <field name="type">file</field>
+    <field name="name">README.md</field>
+    <field name="url">dd/daa/lib_switch_warnings_off_2_r_e_a_d_m_e_8md.html</field>
+    <field name="keywords">README.md</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
     <field name="name">Clang-static-release.config.cmake</field>
     <field name="url">d3/d9d/_clang-static-release_8config_8cmake.html</field>
     <field name="keywords">Clang-static-release.config.cmake</field>
@@ -413,6 +420,13 @@
     <field name="url">d5/d08/md__sources__e_package__r_e_a_d_m_e.html</field>
     <field name="keywords"></field>
     <field name="text">Welcome to EPackage This is a C++ dummy package intended for testing the CPF</field>
+  </doc>
+  <doc>
+    <field name="type">page</field>
+    <field name="name">md_Sources_libSwitchWarningsOff_README</field>
+    <field name="url">d2/d72/md__sources_lib_switch_warnings_off__r_e_a_d_m_e.html</field>
+    <field name="keywords"></field>
+    <field name="text">Welcome to libSwitchWarningsOff This small CMake based C++ package provides two macros SWITCH_WARNINGS_OFF and SWITCH_WARNINGS_ON The macros are supposed to be used to suppress warnings from external headers that often occur when compiling with high warning levels Targets that link to libSwitchWarningsOff will automatically force include the header file that provides the macros so no manual includes are required in order to use the macro Example Usage The macro is known to work with VS Gcc and Clang Add the repository as git submodule to your CMake project and add it with add_subdirectory() Then you should get a libSwitchWarningsOff target that you can link to your targets</field>
   </doc>
   <doc>
     <field name="type">group</field>
