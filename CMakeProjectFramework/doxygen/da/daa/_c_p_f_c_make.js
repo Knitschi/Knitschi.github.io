@@ -34,5 +34,14 @@ var _c_p_f_c_make =
     [ "Test targets", "d1/d4f/_c_p_f_c_make_test_targets.html", null ],
     [ "Distribution packages", "d3/d64/_c_p_f_distribution_packages.html", null ],
     [ "Documentation generation", "dc/d68/_c_p_f_documentation_generation.html", null ],
-    [ "Versioning", "d3/dae/_c_p_f_versioning.html", null ]
+    [ "Versioning", "d3/dae/_c_p_f_versioning.html", [
+      [ "Version Tags", "d3/dae/_c_p_f_versioning.html#CPFVersionTags", [
+        [ "Release version format", "d3/dae/_c_p_f_versioning.html#CPFReleaseVersion", null ],
+        [ "Internal version format", "d3/dae/_c_p_f_versioning.html#CPFInternalVersion", null ],
+        [ "Dirty versions", "d3/dae/_c_p_f_versioning.html#CPFDirtyVersions", null ]
+      ] ],
+      [ "Using the version number in the production code", "d3/dae/_c_p_f_versioning.html#CPFUseInProductionCode", null ],
+      [ "Version tags as validation stamps", "d3/dae/_c_p_f_versioning.html#CPFTagsAsValidationStamp", null ],
+      [ "Incrementing versions", "d3/dae/_c_p_f_versioning.html#CPFIncrementingVersions", null ]
+    ] ]
 ];

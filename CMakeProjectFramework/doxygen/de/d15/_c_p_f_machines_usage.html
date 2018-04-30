@@ -96,24 +96,24 @@ $(document).ready(function(){initNavTree('de/d15/_c_p_f_machines_usage.html','..
 <li>Windows machines must have the <code>slave.jar</code> copied to "C:\jenkins"?</li>
 <li>On windows build-slaves all tools that are required to run the CPF pipeline must be manually installed.</li>
 </ul>
-<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000010">Todo:</a></b></dt><dd><p class="startdd">Setup infrastructure on fresh systems and complete the list. </p>
+<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000009">Todo:</a></b></dt><dd><p class="startdd">Setup infrastructure on fresh systems and complete the list. </p>
 <p class="enddd">This section has overlapping content with <a class="el" href="../../d9/d9a/_c_p_f_setting_up_the_infrastructure.html">Setting up the CPF CI infrastructure</a>. We should merge them together.</p>
 </dd></dl>
 <h2>Setting up the infrastructure</h2>
 <p>After setting up the host-machines and getting the <a class="el" href="../../db/d51/namespace_c_p_f_machines.html">CPFMachines</a> package, you are ready to set up the servers that are involved in the CPF infrastructure. If you want to use the infrastructure for multiple projects, it is recommended that you create an extra CPF-project that holds the configuration files that are needed when running the setup scripts. If you use the jenkins server for a single CPF-project you can add the configuration files to the global files if that project. In both cases you will have to add the <a class="el" href="../../db/d51/namespace_c_p_f_machines.html">CPFMachines</a> and most likely the CPFJenkinsjob package to the CPF-project that holds the configuration files.</p>
 <h3>Machine configuration</h3>
-<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000011">Todo:</a></b></dt><dd>Automatically add the content of the example config file here and manually add comments.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000010">Todo:</a></b></dt><dd>Automatically add the content of the example config file here and manually add comments.</dd></dl>
 <h3>Running the script</h3>
 <p>When you added the configuration file to the project, you are ready to go. Start the setup script by running</p>
 <div class="fragment"><div class="line">python -m Sources.CPFMachines.setup Sources/MyCPFMachinesConfig.json</div></div><!-- fragment --><p>in the root directory of your project. This may take some time because some of the tools required for the pipeline build need to be compiled while setting up the docker container. If everything went well the script ends with the output</p>
 <div class="fragment"><div class="line">Successfully startet jenkins master, build slaves and the documentation server.</div></div><!-- fragment --><p>If you used the example config file, you should now be able to access the Jenkins web-interface under <a href="http://MyMaster:8080">http://MyMaster:8080</a> and the projects web-server under <a href="http://MyMaster:80">http://MyMaster:80</a>. However, the links to your projects will only work after running their build-jobs.</p>
-<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000012">Todo:</a></b></dt><dd>Change webserver file structure, that multiple project pages can be served (serachindex?) and an index.html in the base directory provides links to the single projects. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000011">Todo:</a></b></dt><dd>Change webserver file structure, that multiple project pages can be served (serachindex?) and an index.html in the base directory provides links to the single projects. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Apr 26 2018 19:51:56 for CMakeProjectFramework by
+    <li class="footer">Generated on Mon Apr 30 2018 14:09:25 for CMakeProjectFramework by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>

@@ -112,13 +112,13 @@ $(document).ready(function(){initNavTree('d2/d67/_c_p_f_machines_container.html'
 <p>The server is setup in the <code>jenkins-master</code> container. Manual changes to the server via the web-interface are lost when the <code>setupDockerContainer.sh</code> is re-run. This includes updates to plugins and jenkins itself. Therefore non-experimental changes must be implemented by changing the files in the <code>Infrastructure/DockerImages</code> directory. The web-page of the jenkins-server is <a href="https://jenkins.io/"><b>here</b></a>. There is a post-commit hook that starts the pipeline. The pipeline script builds the <code>pipeline</code> target on Linux and Windows in two configurations each. The pipeline script collects html output of the pipeline and copies it to a web-server.</p>
 <h2>Git</h2>
 <p>The Git repository is hosted on the DatenBunker machine in the directory <code>/share/GitRepositories/CppCodeBase</code>. The repository has a post-commit-hook that triggers the <a href="http://feldrechengeraet:8080/job/CppCodeBase_Build_PipeLine/">CppCodeBase_Build_Pipeline</a> job on the Jenkins server.</p>
-<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000008">Todo:</a></b></dt><dd>Buy a more powerfull build-machine to reduce the overall pipeline time. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000007">Todo:</a></b></dt><dd>Buy a more powerfull build-machine to reduce the overall pipeline time. </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Apr 26 2018 19:51:56 for CMakeProjectFramework by
+    <li class="footer">Generated on Mon Apr 30 2018 14:09:25 for CMakeProjectFramework by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>
