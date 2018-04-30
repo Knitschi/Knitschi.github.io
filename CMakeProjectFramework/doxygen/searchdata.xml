@@ -12,21 +12,21 @@
     <field name="name">1_Configure.py</field>
     <field name="url">d2/d20/1___configure_8py_source.html#l00001</field>
     <field name="keywords"></field>
-    <field name="text">Sources.CPFBuildscripts.python.docopt Sources.CPFBuildscripts.python docopt buildautomat.BuildAutomat _AUTOMAT.configure print sys.exit</field>
+    <field name="text">Sources.CPFBuildscripts.python.docopt Sources.CPFBuildscripts.python docopt buildautomat.BuildAutomat _AUTOMAT.configure print sys.exit sys.exit</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">2_Generate.py</field>
     <field name="url">d9/d12/2___generate_8py_source.html#l00001</field>
     <field name="keywords"></field>
-    <field name="text">Sources.CPFBuildscripts.python.docopt Sources.CPFBuildscripts.python docopt buildautomat.BuildAutomat _AUTOMAT.generate_make_files print sys.exit</field>
+    <field name="text">Sources.CPFBuildscripts.python.docopt Sources.CPFBuildscripts.python docopt buildautomat.BuildAutomat _AUTOMAT.generate_make_files print sys.exit sys.exit</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">3_Make.py</field>
     <field name="url">d1/dda/3___make_8py_source.html#l00001</field>
     <field name="keywords"></field>
-    <field name="text">Sources.CPFBuildscripts.python.docopt Sources.CPFBuildscripts.python.buildautomat docopt buildautomat.BuildAutomat _AUTOMAT.make print sys.exit</field>
+    <field name="text">Sources.CPFBuildscripts.python.docopt Sources.CPFBuildscripts.python.buildautomat docopt buildautomat.BuildAutomat _AUTOMAT.make print sys.exit sys.exit</field>
   </doc>
   <doc>
     <field name="type">source</field>
@@ -1249,16 +1249,65 @@
   <doc>
     <field name="type">source</field>
     <field name="name">run_tests.py</field>
-    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00023</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00025</field>
     <field name="keywords"></field>
-    <field name="text">testprojectfixture.BASE_TEST_DIR sys.argv</field>
+    <field name="text">parseKeyWordArgs arg.find Exception format Exception format value.strip value.strip</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">run_tests.py</field>
-    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00024</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00055</field>
     <field name="keywords"></field>
-    <field name="text">testprojectfixture.PARENT_CONFIG sys.argv del sys.argv del sys.argv unittest.main</field>
+    <field name="text">getKeywordArgument Exception format</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00064</field>
+    <field name="keywords"></field>
+    <field name="text">parseKeyWordArgs sys.argv</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00065</field>
+    <field name="keywords"></field>
+    <field name="text">testprojectfixture.BASE_TEST_DIR getKeywordArgument</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00066</field>
+    <field name="keywords"></field>
+    <field name="text">testprojectfixture.PARENT_CONFIG getKeywordArgument</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00067</field>
+    <field name="keywords"></field>
+    <field name="text">getKeywordArgument</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00073</field>
+    <field name="keywords"></field>
+    <field name="text">unittest.TestLoader</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00074</field>
+    <field name="keywords"></field>
+    <field name="text">test_loader.loadTestsFromName</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00075</field>
+    <field name="keywords"></field>
+    <field name="text">unittest.TextTestRunner run sys.exit result.wasSuccessful</field>
   </doc>
   <doc>
     <field name="type">source</field>
@@ -2910,7 +2959,7 @@
     <field name="name">acpftestproject_tests.py</field>
     <field name="url">df/dfe/acpftestproject__tests_8py_source.html#l00020</field>
     <field name="keywords"></field>
-    <field name="text">test_pipeline_build_works format testprojectfixture.PARENT_CONFIG</field>
+    <field name="text">test_build_works format testprojectfixture.PARENT_CONFIG testprojectfixture.PARENT_CONFIG</field>
   </doc>
   <doc>
     <field name="type">source</field>
@@ -3037,6 +3086,13 @@
     <field name="url">d5/dca/simpleonelibcpftestproject__tests_8py_source.html#l00026</field>
     <field name="keywords"></field>
     <field name="text">test_target_builds_work format testprojectfixture.PARENT_CONFIG miscosaccess.CalledProcessError miscosaccess.OutputMode.NEVER cm.exception.stdout</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">simpleonelibcpftestproject_tests.py</field>
+    <field name="url">d5/dca/simpleonelibcpftestproject__tests_8py_source.html#l00047</field>
+    <field name="keywords"></field>
+    <field name="text">test_configure_script miscosaccess.CalledProcessError format testprojectfixture.PARENT_CONFIG format testprojectfixture.PARENT_CONFIG execute_command_output</field>
   </doc>
   <doc>
     <field name="type">source</field>
@@ -3374,6 +3430,29 @@
     <field name="text"></field>
   </doc>
   <doc>
+    <field name="type">function</field>
+    <field name="name">CPFTests.run_tests.parseKeyWordArgs</field>
+    <field name="args">(arglist)</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#afd95fe5c077b106f735e74e29625aca8</field>
+    <field name="keywords">parseKeyWordArgs CPFTests.run_tests.parseKeyWordArgs CPFTests.run_tests parseKeyWordArgs CPFTests.run_tests.parseKeyWordArgs CPFTests.run_tests</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">function</field>
+    <field name="name">CPFTests.run_tests.getKeywordArgument</field>
+    <field name="args">(keyword, keywordargs)</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#a12ae9c4aa253cf78945e052dcd2d0055</field>
+    <field name="keywords">getKeywordArgument CPFTests.run_tests.getKeywordArgument CPFTests.run_tests getKeywordArgument CPFTests.run_tests.getKeywordArgument CPFTests.run_tests</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">variable</field>
+    <field name="name">CPFTests.run_tests.keywordargs</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#a1294d4a64f225010678eb42a958111c1</field>
+    <field name="keywords">keywordargs CPFTests.run_tests.keywordargs CPFTests.run_tests keywordargs CPFTests.run_tests.keywordargs CPFTests.run_tests</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
     <field name="type">variable</field>
     <field name="name">CPFTests.run_tests.BASE_TEST_DIR</field>
     <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#a4d2d9468bf36b120d89cf13910fb59c8</field>
@@ -3385,6 +3464,34 @@
     <field name="name">CPFTests.run_tests.PARENT_CONFIG</field>
     <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#a613cf30cbd7f9c24aa8ec8215fd41cdc</field>
     <field name="keywords">PARENT_CONFIG CPFTests.run_tests.PARENT_CONFIG CPFTests.run_tests PARENT_CONFIG CPFTests.run_tests.PARENT_CONFIG CPFTests.run_tests</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">variable</field>
+    <field name="name">CPFTests.run_tests.test_name</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#a1faecf1792f3885a302a59fd25adaf95</field>
+    <field name="keywords">test_name CPFTests.run_tests.test_name CPFTests.run_tests test_name CPFTests.run_tests.test_name CPFTests.run_tests</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">variable</field>
+    <field name="name">CPFTests.run_tests.test_loader</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#a5276c79c43de1c48cf098e95222fd781</field>
+    <field name="keywords">test_loader CPFTests.run_tests.test_loader CPFTests.run_tests test_loader CPFTests.run_tests.test_loader CPFTests.run_tests</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">variable</field>
+    <field name="name">CPFTests.run_tests.suite</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#afd55ce1f76cac84451b5b66877f2dc8d</field>
+    <field name="keywords">suite CPFTests.run_tests.suite CPFTests.run_tests suite CPFTests.run_tests.suite CPFTests.run_tests</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">variable</field>
+    <field name="name">CPFTests.run_tests.result</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#acda0a7de620580ae194a430c93844727</field>
+    <field name="keywords">result CPFTests.run_tests.result CPFTests.run_tests result CPFTests.run_tests.result CPFTests.run_tests</field>
     <field name="text"></field>
   </doc>
   <doc>
@@ -4695,7 +4802,7 @@
     <field name="name">index::CPFCMake::CPFCustomTargets</field>
     <field name="url">df/d03/_c_p_f_custom_targets.html</field>
     <field name="keywords"></field>
-    <field name="text">Custom targets The lists do not contain some private targets of the CPF that are only created as sub-steps of the targets that are of interest to the user A CPF project contains some targets that operate on the global level They either execute operations that can not be done for each package in separation or bundle up a certain kind of per-package targets In this case building the bundle target will simply build all per-package targets of that kind Here is a list of targets that can exist once per CPF project documentation distributionPackages dynamicAnalysis globalFiles pipeline runAllTests runFastTests staticAnalysis versionCompatibilityChecks INSTALL ALL_BUILD ZERO_CHECK Here is a list of targets that can exist once per CPF package package package _tests package _fixtures distributionPackages_ package dynamicAnalysis_ package install_ package runAllTests_ package runFastTests_ package staticAnalysis_ package checkAbiCompatibility_ binary_target This target runs doxygen to generate the documentation for all owned packages It can be disabled with the CPF_ENABLE_DOXYGEN_TARGET variable This target bundles the distributionPackages_ package targets This target bundles the dynamicAnalysis_ package targets This is only a file container target that does not execute any commands It holds all source files that are of global scope like tool configuration files global documentation etc The top-level bundle target that will make sure that all other targets are built This target bundles the runAllTests_ package targets This target bundles the runFastTests_ package targets This target is not contained in the pipeline target which always builds the runAllTests target This target bundles the runFastTests_ package targets It also checks that the dependency graph of the projects binary targets is acyclic This target bundles the checkAbiCompatibility_ binary_target targets This target bundles the install_ package targets This target builds all binary targets This target re-runs the CMake generate step The main binary target of the package The test executable that belongs to the package This target is only created if the addPackage() function has the TEST_FILES argument set The executable should run automated tests when executed An additional library that can be used to share test utility code between packages It is only created if the addPackage() function has the FIXTURE_FILES and PUBLIC_FIXTURE_HEADER arguments set Creates all distribution packages of the package A distribution package is a file that is distributed to users of the package This can be a zip file that contains the binaries or sources or an installer The target is only created if the addPackage() function has the DISTRIBUTION_PACKAGES argument set This target runs the test executable with OpenCppCoverage tool on Windows This adds a test coverage report to the html output On Linux it runs the test executable with the Valgrind tool This can detect memory leaks and undefined behavior The target can be disabled with the CPF_ENABLE_DYNAMIC_ANALYSIS_TARGET config variable This target copies the packages binary files and public headers to the CMAKE_INSTALL_PREFIX package directory Check if this can still be used like the Linux make install step without breaking the creation of the distribution packages This target runs all the tests in the package _tests executable The target can be disabled with the CPF_ENABLE_RUN_TESTS_TARGET config variable This target runs all the tests in the package _tests executable that have either the word FastFixture or FastTests included in their name It is the the users responsibility to make sure that the tests with those names are really fast tests The purpose of the target is to provide a way of executing only tests that are run quickly an which are therefor useful when working in a tight test-driven development cycle The target can be disabled with the CPF_ENABLE_RUN_TESTS_TARGET config variable This target only exists when compiling on Linux with the clang compiler It runs the clang-tidy tool on the packages source files The target can be disabled with the CPF_ENABLE_STATIC_ANALYSIS_TARGET config variable The target only exists when compiling on Linux with Gcc and with debug output It runs the Abi-Compliance-Checker tool on abi-dump files that are contained in the packages distribution targets The tool will add ABI/API compatibility reports to the html output directory This target is somewhat fragile because it requires the abi-dump files of the last internal and release version of the package These must be provided by the web-server that is setup by the CPFMachines infrastructure The target can be disabled with the CPF_ENABLE_ABI_API_COMPATIBILITY_CHECK_TARGETS config variable</field>
+    <field name="text">Custom targets The lists do not contain some private targets of the CPF that are only created as sub-steps of the targets that are of interest to the user A CPF project contains some targets that operate on the global level They either execute operations that can not be done for each package in separation or bundle up a certain kind of per-package targets In this case building the bundle target will simply build all per-package targets of that kind Here is a list of targets that can exist once per CPF project documentation distributionPackages dynamicAnalysis globalFiles pipeline runAllTests runFastTests staticAnalysis versionCompatibilityChecks INSTALL ALL_BUILD ZERO_CHECK Here is a list of targets that can exist once per CPF package package package _tests package _fixtures distributionPackages_ package dynamicAnalysis_ package install_ package runAllTests_ package runFastTests_ package staticAnalysis_ package checkAbiCompatibility_ binary_target This target runs doxygen to generate the documentation for all owned packages It can be disabled with the CPF_ENABLE_DOXYGEN_TARGET variable This target bundles the distributionPackages_ package targets This target bundles the dynamicAnalysis_ package targets This is only a file container target that does not execute any commands It holds all source files that are of global scope like tool configuration files global documentation etc The top-level bundle target that will make sure that all other targets are built This target bundles the runAllTests_ package targets This target bundles the runFastTests_ package targets This target is not contained in the pipeline target which always builds the runAllTests target This target bundles the runFastTests_ package targets It also checks that the dependency graph of the projects binary targets is acyclic This target bundles the checkAbiCompatibility_ binary_target targets This target bundles the install_ package targets This target builds all binary targets This target re-runs the CMake generate step The main binary target of the package The test executable that belongs to the package This target is only created if the addPackage() function has the TEST_FILES argument set The executable should run automated tests when executed An additional library that can be used to share test utility code between packages It is only created if the addPackage() function has the FIXTURE_FILES and PUBLIC_FIXTURE_HEADER arguments set Creates all distribution packages of the package A distribution package is a file that is distributed to users of the package This can be a zip file that contains the binaries or sources or an installer The target is only created if the addPackage() function has the DISTRIBUTION_PACKAGES argument set This target runs the test executable with OpenCppCoverage tool on Windows This adds a test coverage report to the html output On Linux it runs the test executable with the Valgrind tool This can detect memory leaks and undefined behavior When running Valgrind you also have to add the empty file Other/MyPackageValgrindSuppressions.supp file to the package which can be used to suppress false positives or unfixable issues that are found by Valgrind The target can be disabled with the CPF_ENABLE_DYNAMIC_ANALYSIS_TARGET config variable This target copies the packages binary files and public headers to the CMAKE_INSTALL_PREFIX package directory Check if this can still be used like the Linux make install step without breaking the creation of the distribution packages This target runs all the tests in the package _tests executable The target can be disabled with the CPF_ENABLE_RUN_TESTS_TARGET config variable This target runs all the tests in the package _tests executable that have either the word FastFixture or FastTests included in their name It is the the users responsibility to make sure that the tests with those names are really fast tests The purpose of the target is to provide a way of executing only tests that are run quickly an which are therefor useful when working in a tight test-driven development cycle The target can be disabled with the CPF_ENABLE_RUN_TESTS_TARGET config variable This target only exists when compiling on Linux with the clang compiler It runs the clang-tidy tool on the packages source files The target can be disabled with the CPF_ENABLE_STATIC_ANALYSIS_TARGET config variable The target only exists when compiling on Linux with Gcc and with debug output It runs the Abi-Compliance-Checker tool on abi-dump files that are contained in the packages distribution targets The tool will add ABI/API compatibility reports to the html output directory This target is somewhat fragile because it requires the abi-dump files of the last internal and release version of the package These must be provided by the web-server that is setup by the CPFMachines infrastructure The target can be disabled with the CPF_ENABLE_ABI_API_COMPATIBILITY_CHECK_TARGETS config variable</field>
   </doc>
   <doc>
     <field name="type">page</field>
@@ -6011,10 +6118,10 @@
   </doc>
   <doc>
     <field name="type">function</field>
-    <field name="name">CPFTests.acpftestproject_tests.ACPFTestProjectFixture.test_pipeline_build_works</field>
+    <field name="name">CPFTests.acpftestproject_tests.ACPFTestProjectFixture.test_build_works</field>
     <field name="args">(self)</field>
-    <field name="url">dd/d9f/class_c_p_f_tests_1_1acpftestproject__tests_1_1_a_c_p_f_test_project_fixture.html#ab0571795b1d0feb882098a33622426d6</field>
-    <field name="keywords">test_pipeline_build_works CPFTests.acpftestproject_tests.ACPFTestProjectFixture.test_pipeline_build_works CPFTests.acpftestproject_tests.ACPFTestProjectFixture</field>
+    <field name="url">dd/d9f/class_c_p_f_tests_1_1acpftestproject__tests_1_1_a_c_p_f_test_project_fixture.html#a54af8df43280241bb55ac1118a9eeaa9</field>
+    <field name="keywords">test_build_works CPFTests.acpftestproject_tests.ACPFTestProjectFixture.test_build_works CPFTests.acpftestproject_tests.ACPFTestProjectFixture</field>
     <field name="text"></field>
   </doc>
   <doc>
@@ -6192,6 +6299,14 @@
     <field name="args">(self)</field>
     <field name="url">d8/d14/class_c_p_f_tests_1_1simpleonelibcpftestproject__tests_1_1_simple_one_lib_c_p_f_test_project_fixture.html#abe508b10312321dd92544bcbf623f72d</field>
     <field name="keywords">test_target_builds_work CPFTests.simpleonelibcpftestproject_tests.SimpleOneLibCPFTestProjectFixture.test_target_builds_work CPFTests.simpleonelibcpftestproject_tests.SimpleOneLibCPFTestProjectFixture</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">function</field>
+    <field name="name">CPFTests.simpleonelibcpftestproject_tests.SimpleOneLibCPFTestProjectFixture.test_configure_script</field>
+    <field name="args">(self)</field>
+    <field name="url">d8/d14/class_c_p_f_tests_1_1simpleonelibcpftestproject__tests_1_1_simple_one_lib_c_p_f_test_project_fixture.html#ae40d200b25b0e4b2b56d85458d5d1861</field>
+    <field name="keywords">test_configure_script CPFTests.simpleonelibcpftestproject_tests.SimpleOneLibCPFTestProjectFixture.test_configure_script CPFTests.simpleonelibcpftestproject_tests.SimpleOneLibCPFTestProjectFixture</field>
     <field name="text"></field>
   </doc>
   <doc>

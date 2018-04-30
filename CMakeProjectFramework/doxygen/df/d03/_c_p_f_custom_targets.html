@@ -173,7 +173,7 @@ distributionPackages_&lt;package&gt;</h3>
 <p>Creates all <em>distribution packages</em> of the package. A <em>distribution package</em> is a file that is distributed to users of the package. This can be a zip file that contains the binaries or sources or an installer. The target is only created if the <code>addPackage()</code> function has the <code>DISTRIBUTION_PACKAGES</code> argument set.</p>
 <h3><a class="anchor" id="dynamicAnalysis_package"></a>
 dynamicAnalysis_&lt;package&gt;</h3>
-<p>This target runs the test executable with OpenCppCoverage tool on Windows. This adds a test coverage report to the html output. On Linux it runs the test executable with the Valgrind tool. This can detect memory leaks and undefined behavior.</p>
+<p>This target runs the test executable with OpenCppCoverage tool on Windows. This adds a test coverage report to the html output. On Linux it runs the test executable with the <em>Valgrind</em> tool. This can detect memory leaks and undefined behavior. When running <em>Valgrind</em> you also have to add the empty file <code>Other/MyPackageValgrindSuppressions.supp</code> file to the package which can be used to suppress false positives or unfixable issues that are found by <em>Valgrind</em>.</p>
 <p>The target can be disabled with the <code>CPF_ENABLE_DYNAMIC_ANALYSIS_TARGET</code> config variable.</p>
 <h3><a class="anchor" id="install_package"></a>
 install_&lt;package&gt;</h3>
@@ -202,7 +202,7 @@ checkAbiCompatibility_&lt;binary_target&gt;</h3>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Apr 30 2018 14:09:25 for CMakeProjectFramework by
+    <li class="footer">Generated on Mon Apr 30 2018 19:35:11 for CMakeProjectFramework by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>
