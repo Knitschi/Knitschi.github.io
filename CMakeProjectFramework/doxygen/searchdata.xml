@@ -3127,47 +3127,47 @@
     <field name="name">testprojectfixture.py</field>
     <field name="url">d4/da1/testprojectfixture_8py_source.html#l00027</field>
     <field name="keywords"></field>
-    <field name="text">setUp</field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">testprojectfixture.py</field>
-    <field name="url">d4/da1/testprojectfixture_8py_source.html#l00028</field>
-    <field name="keywords"></field>
-    <field name="text">filesystemaccess.FileSystemAccess</field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">testprojectfixture.py</field>
-    <field name="url">d4/da1/testprojectfixture_8py_source.html#l00029</field>
-    <field name="keywords"></field>
-    <field name="text">miscosaccess.MiscOsAccess</field>
+    <field name="text">setUp print format</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">testprojectfixture.py</field>
     <field name="url">d4/da1/testprojectfixture_8py_source.html#l00032</field>
     <field name="keywords"></field>
+    <field name="text">filesystemaccess.FileSystemAccess</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">testprojectfixture.py</field>
+    <field name="url">d4/da1/testprojectfixture_8py_source.html#l00033</field>
+    <field name="keywords"></field>
+    <field name="text">miscosaccess.MiscOsAccess</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">testprojectfixture.py</field>
+    <field name="url">d4/da1/testprojectfixture_8py_source.html#l00036</field>
+    <field name="keywords"></field>
     <field name="text">PurePosixPath joinpath exists rmtree mkdirs execute_command_output format</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">testprojectfixture.py</field>
-    <field name="url">d4/da1/testprojectfixture_8py_source.html#l00047</field>
+    <field name="url">d4/da1/testprojectfixture_8py_source.html#l00051</field>
     <field name="keywords"></field>
     <field name="text">replace_package_in_test_project_with_local PurePosixPath filelocations.get_cpf_root_dir_from_script_dir format this_root_dir.joinpath joinpath rmtree shutil.copytree str str execute_command execute_command format</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">testprojectfixture.py</field>
-    <field name="url">d4/da1/testprojectfixture_8py_source.html#l00066</field>
+    <field name="url">d4/da1/testprojectfixture_8py_source.html#l00070</field>
     <field name="keywords"></field>
     <field name="text">run_python_command system execute_command_output format execute_command_output format Exception</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">testprojectfixture.py</field>
-    <field name="url">d4/da1/testprojectfixture_8py_source.html#l00079</field>
+    <field name="url">d4/da1/testprojectfixture_8py_source.html#l00083</field>
     <field name="keywords"></field>
     <field name="text">is_visual_studio_config</field>
   </doc>
