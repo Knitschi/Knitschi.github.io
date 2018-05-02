@@ -12,21 +12,21 @@
     <field name="name">1_Configure.py</field>
     <field name="url">d2/d20/1___configure_8py_source.html#l00001</field>
     <field name="keywords"></field>
-    <field name="text">Sources.CPFBuildscripts.python.docopt Sources.CPFBuildscripts.python docopt buildautomat.BuildAutomat _AUTOMAT.configure print sys.exit</field>
+    <field name="text">Sources.CPFBuildscripts.python.docopt Sources.CPFBuildscripts.python docopt buildautomat.BuildAutomat _AUTOMAT.configure print sys.exit sys.exit</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">2_Generate.py</field>
     <field name="url">d9/d12/2___generate_8py_source.html#l00001</field>
     <field name="keywords"></field>
-    <field name="text">Sources.CPFBuildscripts.python.docopt Sources.CPFBuildscripts.python docopt buildautomat.BuildAutomat _AUTOMAT.generate_make_files print sys.exit</field>
+    <field name="text">Sources.CPFBuildscripts.python.docopt Sources.CPFBuildscripts.python docopt buildautomat.BuildAutomat _AUTOMAT.generate_make_files print sys.exit sys.exit</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">3_Make.py</field>
     <field name="url">d1/dda/3___make_8py_source.html#l00001</field>
     <field name="keywords"></field>
-    <field name="text">Sources.CPFBuildscripts.python.docopt Sources.CPFBuildscripts.python.buildautomat docopt buildautomat.BuildAutomat _AUTOMAT.make print sys.exit</field>
+    <field name="text">Sources.CPFBuildscripts.python.docopt Sources.CPFBuildscripts.python.buildautomat docopt buildautomat.BuildAutomat _AUTOMAT.make print sys.exit sys.exit</field>
   </doc>
   <doc>
     <field name="type">source</field>
@@ -1011,23 +1011,23 @@
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00022</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00024</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00023</field>
     <field name="keywords"></field>
     <field name="text">__str__ format str</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00029</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00028</field>
     <field name="keywords"></field>
     <field name="text">OutputMode Enum</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00033</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
   </doc>
   <doc>
     <field name="type">source</field>
@@ -1046,91 +1046,133 @@
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00036</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00039</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00038</field>
     <field name="keywords"></field>
     <field name="text">MiscOsAccess</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00045</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00044</field>
     <field name="keywords"></field>
     <field name="text">execute_command OutputMode.ALWAYS print str</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00060</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00059</field>
     <field name="keywords"></field>
-    <field name="text">execute_command_output str os.getcwd print subprocess.Popen subprocess.PIPE subprocess.PIPE p.stdout line.decode rstrip OutputMode.ALWAYS print stdoutstrings.append p.stderr line.decode rstrip OutputMode.ALWAYS print stderrstrings.append p.returncode OutputMode.ON_ERROR print join print join CalledProcessError p.returncode join join</field>
+    <field name="text">execute_command_output str os.getcwd print subprocess.Popen subprocess.PIPE subprocess.STDOUT p.stdout line.decode rstrip OutputMode.ALWAYS print stdoutstrings.append p.returncode OutputMode.ON_ERROR print join CalledProcessError p.returncode join</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00118</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00109</field>
     <field name="keywords"></field>
     <field name="text">execute_commands_in_parallel subprocess.Popen subprocess.PIPE subprocess.PIPE communicate out.decode err.decode print print results.append _remove_line_separators new_list.append string.rstrip _get_printed_command os.getcwd str</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00167</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00158</field>
     <field name="keywords"></field>
     <field name="text">print_console print</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00170</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00161</field>
     <field name="keywords"></field>
     <field name="text">chdir os.chdir</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00174</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00165</field>
     <field name="keywords"></field>
     <field name="text">system platform.system</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00178</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00169</field>
     <field name="keywords"></field>
     <field name="text">cpu_count multiprocessing.cpu_count</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00183</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00174</field>
     <field name="keywords"></field>
     <field name="text">FakeMiscOsAccess MiscOsAccess</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00185</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00176</field>
     <field name="keywords"></field>
     <field name="text">__init__</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00190</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00181</field>
     <field name="keywords"></field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00191</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00182</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00183</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00184</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00185</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00186</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00187</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00188</field>
+    <field name="keywords"></field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">miscosaccess.py</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00189</field>
     <field name="keywords"></field>
     <field name="text"></field>
   </doc>
@@ -1139,96 +1181,47 @@
     <field name="name">miscosaccess.py</field>
     <field name="url">df/d96/miscosaccess_8py_source.html#l00192</field>
     <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00193</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00194</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00195</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00196</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00197</field>
-    <field name="keywords"></field>
-    <field name="text"></field>
+    <field name="text">execute_command append</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
     <field name="url">df/d96/miscosaccess_8py_source.html#l00198</field>
     <field name="keywords"></field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00201</field>
-    <field name="keywords"></field>
-    <field name="text">execute_command append</field>
-  </doc>
-  <doc>
-    <field name="type">source</field>
-    <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00207</field>
-    <field name="keywords"></field>
     <field name="text">execute_commands_in_parallel append len</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00214</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00205</field>
     <field name="keywords"></field>
     <field name="text">print_console</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00217</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00208</field>
     <field name="keywords"></field>
     <field name="text">chdir isdir</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00223</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00214</field>
     <field name="keywords"></field>
     <field name="text">mkdir mkdir</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00228</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00219</field>
     <field name="keywords"></field>
     <field name="text">system</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">miscosaccess.py</field>
-    <field name="url">df/d96/miscosaccess_8py_source.html#l00231</field>
+    <field name="url">df/d96/miscosaccess_8py_source.html#l00222</field>
     <field name="keywords"></field>
     <field name="text">cpu_count _is_relative_path</field>
   </doc>
@@ -1256,16 +1249,65 @@
   <doc>
     <field name="type">source</field>
     <field name="name">run_tests.py</field>
-    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00023</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00025</field>
     <field name="keywords"></field>
-    <field name="text">testprojectfixture.BASE_TEST_DIR sys.argv</field>
+    <field name="text">parseKeyWordArgs arg.find Exception format Exception format value.strip value.strip</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">run_tests.py</field>
-    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00024</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00055</field>
     <field name="keywords"></field>
-    <field name="text">testprojectfixture.PARENT_CONFIG sys.argv del sys.argv del sys.argv unittest.main</field>
+    <field name="text">getKeywordArgument Exception format</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00064</field>
+    <field name="keywords"></field>
+    <field name="text">parseKeyWordArgs sys.argv</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00065</field>
+    <field name="keywords"></field>
+    <field name="text">testprojectfixture.BASE_TEST_DIR getKeywordArgument</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00066</field>
+    <field name="keywords"></field>
+    <field name="text">testprojectfixture.PARENT_CONFIG getKeywordArgument</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00067</field>
+    <field name="keywords"></field>
+    <field name="text">getKeywordArgument</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00073</field>
+    <field name="keywords"></field>
+    <field name="text">unittest.TestLoader</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00074</field>
+    <field name="keywords"></field>
+    <field name="text">test_loader.loadTestsFromName</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">run_tests.py</field>
+    <field name="url">de/dc9/_c_p_f_tests_2run__tests_8py_source.html#l00075</field>
+    <field name="keywords"></field>
+    <field name="text">unittest.TextTestRunner run sys.exit result.wasSuccessful</field>
   </doc>
   <doc>
     <field name="type">source</field>
@@ -2917,7 +2959,7 @@
     <field name="name">acpftestproject_tests.py</field>
     <field name="url">df/dfe/acpftestproject__tests_8py_source.html#l00020</field>
     <field name="keywords"></field>
-    <field name="text">test_pipeline_build_works format testprojectfixture.PARENT_CONFIG</field>
+    <field name="text">test_build_works format testprojectfixture.PARENT_CONFIG testprojectfixture.PARENT_CONFIG</field>
   </doc>
   <doc>
     <field name="type">source</field>
@@ -3044,6 +3086,13 @@
     <field name="url">d5/dca/simpleonelibcpftestproject__tests_8py_source.html#l00026</field>
     <field name="keywords"></field>
     <field name="text">test_target_builds_work format testprojectfixture.PARENT_CONFIG miscosaccess.CalledProcessError miscosaccess.OutputMode.NEVER cm.exception.stdout</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">simpleonelibcpftestproject_tests.py</field>
+    <field name="url">d5/dca/simpleonelibcpftestproject__tests_8py_source.html#l00047</field>
+    <field name="keywords"></field>
+    <field name="text">test_configure_script miscosaccess.CalledProcessError format testprojectfixture.PARENT_CONFIG format testprojectfixture.PARENT_CONFIG execute_command_output</field>
   </doc>
   <doc>
     <field name="type">source</field>
@@ -3381,6 +3430,29 @@
     <field name="text"></field>
   </doc>
   <doc>
+    <field name="type">function</field>
+    <field name="name">CPFTests.run_tests.parseKeyWordArgs</field>
+    <field name="args">(arglist)</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#afd95fe5c077b106f735e74e29625aca8</field>
+    <field name="keywords">parseKeyWordArgs CPFTests.run_tests.parseKeyWordArgs CPFTests.run_tests parseKeyWordArgs CPFTests.run_tests.parseKeyWordArgs CPFTests.run_tests</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">function</field>
+    <field name="name">CPFTests.run_tests.getKeywordArgument</field>
+    <field name="args">(keyword, keywordargs)</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#a12ae9c4aa253cf78945e052dcd2d0055</field>
+    <field name="keywords">getKeywordArgument CPFTests.run_tests.getKeywordArgument CPFTests.run_tests getKeywordArgument CPFTests.run_tests.getKeywordArgument CPFTests.run_tests</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">variable</field>
+    <field name="name">CPFTests.run_tests.keywordargs</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#a1294d4a64f225010678eb42a958111c1</field>
+    <field name="keywords">keywordargs CPFTests.run_tests.keywordargs CPFTests.run_tests keywordargs CPFTests.run_tests.keywordargs CPFTests.run_tests</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
     <field name="type">variable</field>
     <field name="name">CPFTests.run_tests.BASE_TEST_DIR</field>
     <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#a4d2d9468bf36b120d89cf13910fb59c8</field>
@@ -3395,17 +3467,31 @@
     <field name="text"></field>
   </doc>
   <doc>
-    <field name="type">file</field>
-    <field name="name">cpfAddPackage.cmake</field>
-    <field name="url">d4/dda/cpf_add_package_8cmake.html</field>
-    <field name="keywords">cpfAddPackage.cmake</field>
+    <field name="type">variable</field>
+    <field name="name">CPFTests.run_tests.test_name</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#a1faecf1792f3885a302a59fd25adaf95</field>
+    <field name="keywords">test_name CPFTests.run_tests.test_name CPFTests.run_tests test_name CPFTests.run_tests.test_name CPFTests.run_tests</field>
     <field name="text"></field>
   </doc>
   <doc>
-    <field name="type">file</field>
-    <field name="name">cpfInit.cmake</field>
-    <field name="url">d7/d38/cpf_init_8cmake.html</field>
-    <field name="keywords">cpfInit.cmake</field>
+    <field name="type">variable</field>
+    <field name="name">CPFTests.run_tests.test_loader</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#a5276c79c43de1c48cf098e95222fd781</field>
+    <field name="keywords">test_loader CPFTests.run_tests.test_loader CPFTests.run_tests test_loader CPFTests.run_tests.test_loader CPFTests.run_tests</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">variable</field>
+    <field name="name">CPFTests.run_tests.suite</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#afd55ce1f76cac84451b5b66877f2dc8d</field>
+    <field name="keywords">suite CPFTests.run_tests.suite CPFTests.run_tests suite CPFTests.run_tests.suite CPFTests.run_tests</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">variable</field>
+    <field name="name">CPFTests.run_tests.result</field>
+    <field name="url">d9/da1/namespace_c_p_f_tests_1_1run__tests.html#acda0a7de620580ae194a430c93844727</field>
+    <field name="keywords">result CPFTests.run_tests.result CPFTests.run_tests result CPFTests.run_tests.result CPFTests.run_tests</field>
     <field name="text"></field>
   </doc>
   <doc>
@@ -3550,6 +3636,13 @@
   </doc>
   <doc>
     <field name="type">file</field>
+    <field name="name">cpfAddPackage.cmake</field>
+    <field name="url">d4/dda/cpf_add_package_8cmake.html</field>
+    <field name="keywords">cpfAddPackage.cmake</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
     <field name="name">cpfAddPipelineTarget.cmake</field>
     <field name="url">dd/dfb/cpf_add_pipeline_target_8cmake.html</field>
     <field name="keywords">cpfAddPipelineTarget.cmake</field>
@@ -3588,6 +3681,13 @@
     <field name="name">cpfGitUtilities.cmake</field>
     <field name="url">d8/dd0/cpf_git_utilities_8cmake.html</field>
     <field name="keywords">cpfGitUtilities.cmake</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">cpfInit.cmake</field>
+    <field name="url">d7/d38/cpf_init_8cmake.html</field>
+    <field name="keywords">cpfInit.cmake</field>
     <field name="text"></field>
   </doc>
   <doc>
@@ -4702,7 +4802,7 @@
     <field name="name">index::CPFCMake::CPFCustomTargets</field>
     <field name="url">df/d03/_c_p_f_custom_targets.html</field>
     <field name="keywords"></field>
-    <field name="text">Custom targets The lists do not contain some private targets of the CPF that are only created as sub-steps of the targets that are of interest to the user A CPF project contains some targets that operate on the global level They either execute operations that can not be done for each package in separation or bundle up a certain kind of per-package targets In this case building the bundle target will simply build all per-package targets of that kind Here is a list of targets that can exist once per CPF project documentation distributionPackages dynamicAnalysis globalFiles pipeline runAllTests runFastTests staticAnalysis versionCompatibilityChecks INSTALL ALL_BUILD ZERO_CHECK Here is a list of targets that can exist once per CPF package package package _tests package _fixtures distributionPackages_ package dynamicAnalysis_ package install_ package runAllTests_ package runFastTests_ package staticAnalysis_ package checkAbiCompatibility_ binary_target This target runs doxygen to generate the documentation for all owned packages It can be disabled with the CPF_ENABLE_DOXYGEN_TARGET variable This target bundles the distributionPackages_ package targets This target bundles the dynamicAnalysis_ package targets This is only a file container target that does not execute any commands It holds all source files that are of global scope like tool configuration files global documentation etc The top-level bundle target that will make sure that all other targets are built This target bundles the runAllTests_ package targets This target bundles the runFastTests_ package targets This target is not contained in the pipeline target which always builds the runAllTests target This target bundles the runFastTests_ package targets It also checks that the dependency graph of the projects binary targets is acyclic This target bundles the checkAbiCompatibility_ binary_target targets This target bundles the install_ package targets This target builds all binary targets This target re-runs the CMake generate step The main binary target of the package The test executable that belongs to the package This target is only created if the addPackage() function has the TEST_FILES argument set The executable should run automated tests when executed An additional library that can be used to share test utility code between packages It is only created if the addPackage() function has the FIXTURE_FILES and PUBLIC_FIXTURE_HEADER arguments set Creates all distribution packages of the package A distribution package is a file that is distributed to users of the package This can be a zip file that contains the binaries or sources or an installer The target is only created if the addPackage() function has the DISTRIBUTION_PACKAGES argument set This target runs the test executable with OpenCppCoverage tool on Windows This adds a test coverage report to the html output On Linux it runs the test executable with the Valgrind tool This can detect memory leaks and undefined behavior The target can be disabled with the CPF_ENABLE_DYNAMIC_ANALYSIS_TARGET config variable This target copies the packages binary files and public headers to the CMAKE_INSTALL_PREFIX package directory Check if this can still be used like the Linux make install step without breaking the creation of the distribution packages This target runs all the tests in the package _tests executable The target can be disabled with the CPF_ENABLE_RUN_TESTS_TARGET config variable This target runs all the tests in the package _tests executable that have either the word FastFixture or FastTests included in their name It is the the users responsibility to make sure that the tests with those names are really fast tests The purpose of the target is to provide a way of executing only tests that are run quickly an which are therefor useful when working in a tight test-driven development cycle The target can be disabled with the CPF_ENABLE_RUN_TESTS_TARGET config variable This target only exists when compiling on Linux with the clang compiler It runs the clang-tidy tool on the packages source files The target can be disabled with the CPF_ENABLE_STATIC_ANALYSIS_TARGET config variable The target only exists when compiling on Linux with Gcc and with debug output It runs the Abi-Compliance-Checker tool on abi-dump files that are contained in the packages distribution targets The tool will add ABI/API compatibility reports to the html output directory This target is somewhat fragile because it requires the abi-dump files of the last internal and release version of the package These must be provided by the web-server that is setup by the CPFMachines infrastructure The target can be disabled with the CPF_ENABLE_ABI_API_COMPATIBILITY_CHECK_TARGETS config variable</field>
+    <field name="text">Custom targets The lists do not contain some private targets of the CPF that are only created as sub-steps of the targets that are of interest to the user A CPF project contains some targets that operate on the global level They either execute operations that can not be done for each package in separation or bundle up a certain kind of per-package targets In this case building the bundle target will simply build all per-package targets of that kind Here is a list of targets that can exist once per CPF project documentation distributionPackages dynamicAnalysis globalFiles pipeline runAllTests runFastTests staticAnalysis versionCompatibilityChecks INSTALL ALL_BUILD ZERO_CHECK Here is a list of targets that can exist once per CPF package package package _tests package _fixtures distributionPackages_ package dynamicAnalysis_ package install_ package runAllTests_ package runFastTests_ package staticAnalysis_ package checkAbiCompatibility_ binary_target This target runs doxygen to generate the documentation for all owned packages It can be disabled with the CPF_ENABLE_DOXYGEN_TARGET variable This target bundles the distributionPackages_ package targets This target bundles the dynamicAnalysis_ package targets This is only a file container target that does not execute any commands It holds all source files that are of global scope like tool configuration files global documentation etc The top-level bundle target that will make sure that all other targets are built This target bundles the runAllTests_ package targets This target bundles the runFastTests_ package targets This target is not contained in the pipeline target which always builds the runAllTests target This target bundles the runFastTests_ package targets It also checks that the dependency graph of the projects binary targets is acyclic This target bundles the checkAbiCompatibility_ binary_target targets This target bundles the install_ package targets This target builds all binary targets This target re-runs the CMake generate step The main binary target of the package The test executable that belongs to the package This target is only created if the addPackage() function has the TEST_FILES argument set The executable should run automated tests when executed An additional library that can be used to share test utility code between packages It is only created if the addPackage() function has the FIXTURE_FILES and PUBLIC_FIXTURE_HEADER arguments set Creates all distribution packages of the package A distribution package is a file that is distributed to users of the package This can be a zip file that contains the binaries or sources or an installer The target is only created if the addPackage() function has the DISTRIBUTION_PACKAGES argument set This target runs the test executable with OpenCppCoverage tool on Windows This adds a test coverage report to the html output On Linux it runs the test executable with the Valgrind tool This can detect memory leaks and undefined behavior When running Valgrind you also have to add the empty file Other/MyPackageValgrindSuppressions.supp file to the package which can be used to suppress false positives or unfixable issues that are found by Valgrind The target can be disabled with the CPF_ENABLE_DYNAMIC_ANALYSIS_TARGET config variable This target copies the packages binary files and public headers to the CMAKE_INSTALL_PREFIX package directory Check if this can still be used like the Linux make install step without breaking the creation of the distribution packages This target runs all the tests in the package _tests executable The target can be disabled with the CPF_ENABLE_RUN_TESTS_TARGET config variable This target runs all the tests in the package _tests executable that have either the word FastFixture or FastTests included in their name It is the the users responsibility to make sure that the tests with those names are really fast tests The purpose of the target is to provide a way of executing only tests that are run quickly an which are therefor useful when working in a tight test-driven development cycle The target can be disabled with the CPF_ENABLE_RUN_TESTS_TARGET config variable This target only exists when compiling on Linux with the clang compiler It runs the clang-tidy tool on the packages source files The target can be disabled with the CPF_ENABLE_STATIC_ANALYSIS_TARGET config variable The target only exists when compiling on Linux with Gcc and with debug output It runs the Abi-Compliance-Checker tool on abi-dump files that are contained in the packages distribution targets The tool will add ABI/API compatibility reports to the html output directory This target is somewhat fragile because it requires the abi-dump files of the last internal and release version of the package These must be provided by the web-server that is setup by the CPFMachines infrastructure The target can be disabled with the CPF_ENABLE_ABI_API_COMPATIBILITY_CHECK_TARGETS config variable</field>
   </doc>
   <doc>
     <field name="type">page</field>
@@ -4730,7 +4830,7 @@
     <field name="name">index::CPFCMake::CPFVersioning</field>
     <field name="url">d3/dae/_c_p_f_versioning.html</field>
     <field name="keywords"></field>
-    <field name="text">Versioning This page is about version numbers and automatic versioning in a CPF project release vs internal version how are versions read from git manual tagging vs buildjob tagging</field>
+    <field name="text">Versioning This page contains information on how the versioning problem is handled in the CPF The source of a version number is the Git repository that contains the package or CI-repository During the generate step The CPF determines the current version number of each package by reading the release version tags of the repository This version number is then used by the CPF while creating distribution packages or in the production code Because of the fully automated versioning-pipeline of a CPF project developers can rely that builds of two different commits will never have the same version number All repositories that are used for a CPF project should have the release version tag 0.0.0 at one of their first commits The CPF requires at least one release version tag for its versioning mechanism to work Package ownership Format major minor patch Examples 1.0.1 0.0.99 The version tags must follow the given pattern in order to be recognized by the CPF Tags of this form are called release versions The CPF assumes that the commits with the release versions are the ones that are provided to clients Release version tags must be manually added to the repository when the developer deems a commit worthy to be published This can also be done via the build-job that is provided by the CPFMachines package Format major minor patch commit-nr hash Examples 1.0.1.13 0.0.99.1 In order to have different version numbers for each build the CPF will determine internal version numbers for each package whenever the generate step is executed The first three digits are derived from the latest release version number that can be seen from the current commit in one of its preceding commits The commit-nr is the number of commit that have been made since the commit that has the release version This allows to see if an internal version is older or younger than another internal version However the commit number alone does not make the version unique as the development could have branched since the last release version This could lead to two commits with the same version number For this reason the version number also contains the first digits of the commit hash This part will be as long as is needed to make it unique If the repository has local changes that have not yet been committed the optional postfix is added to the version number Dirty versions can in general not be rebuild by other developers and should therefore not be considered when trying to reproduce bugs For C++ packages the CPF will automatically generate a header file that contains the current version number The version can be obtained in the C++ code by using assuming that you have a package MyPackage with namespace mp The package version can be accessed in the CMakeLists.txt file of the package via the PROJECT_VERSION variable after the call of the cpfInitPackageProject() function if you want to generate your own version files In the CPF the version tags in the repository are also used to mark commits for which the pipeline target was successfully build This is only enforced in combination with the build-job that is provided by the CPFMachines package The build-job adds version tags after successfully building a commit When this policy is followed developers can quickly see which commits are worth checking out when they try to build older versions Version numbers are incremented by adding new release version tags to the repository This can either be done manually or by setting certain parameters to the build-job that is provided by the CPFMachines package The CPF assumes that release version tags are unique and ordered where smaller versions can only be followed by larger versions Before you manually add a release version tag you should also make sure that the pipeline target of that commit builds for all your supported configurations The build-job of the CPFMachines package will make sure that all of these requirements are met when incrementing version numbers Tagging a commit with a release version</field>
   </doc>
   <doc>
     <field name="type">page</field>
@@ -4751,7 +4851,14 @@
     <field name="name">index::CPFMachines</field>
     <field name="url">d4/d62/_c_p_f_machines.html</field>
     <field name="keywords"></field>
-    <field name="text">Provides a script that sets up a jenkins-server jenkins-slaves and a web-server on machines in a local network The CPF infrastructure includes a Jenkins server build slaves and web-servers for hosting the generated html pages This package provides a python script for setting up these servers The setup script requires a user provided configuration file and ssh access to all involved machines in the network The jenkins server can be configured to contain build-jobs for CPF based repositories For each of these projects a web-server is set up to host the html content that is generated by the CPF-projects build pipeline CPFMachines also provides a python script to deploy post-receive hooks to the cpf-project repositories Index How to setup the CPFMachines infrastructure Automatic build-Job execution The CPFMachines config file Running the CPF Jenkins job Machines and Container Manual Tests Current problems</field>
+    <field name="text">Provides a script that sets up a jenkins-server jenkins-slaves and a web-server on machines in a local network The CPF infrastructure includes a Jenkins server build slaves and web-servers for hosting the generated html pages This package provides a python script for setting up these servers The setup script requires a user provided configuration file and ssh access to all involved machines in the network The jenkins server can be configured to contain build-jobs for CPF based repositories For each of these projects a web-server is set up to host the html content that is generated by the CPF-projects build pipeline CPFMachines also provides a python script to deploy post-receive hooks to the cpf-project repositories Index How to setup the CPFMachines infrastructure Automatic build-Job execution The CPFMachines config file The jenkins build-job Machines and Container Manual Tests Current problems</field>
+  </doc>
+  <doc>
+    <field name="type">page</field>
+    <field name="name">index::CPFMachines::CPFJenkinsJob</field>
+    <field name="url">d7/dd1/_c_p_f_jenkins_job.html</field>
+    <field name="keywords"></field>
+    <field name="text">The jenkins build-job The jenkins job that is created by this package is a parameterized job The parameters can be used to execute multiple tasks on a CPF CI-project when the job is started via the Jenkins web-interface In this mode the job verifies the commits made to an integration branch by building the pipeline in all configurations merge the commits to a main branch and add a new internal-version tag to mark the commit as a successful build The project web-page will be updated with the latest version of the generated documentation This mode is the most common use case which should be triggered automatically when pushing commits to an integration branch of the build repository or one of the package repositories To do an integration job following parameters must be set branchOrTag origin/ name MainBranch task integration package If a package was changed this must be set to the package name Note that this must be a package that has its versioning handled by this build project all other can be left at their defaults In this mode the job will overwrite an existing internal version tag with a release version and rebuild the tagged commit to create build artifacts with the new version In this case you need to specify which part/digit of the version number should be incremented The less significant digits are reset to zero This will also update the projects web-page To create a release tag the following parameters must be set branchOrTag existing internal version-tag task one of incrementMajor incrementMinor incrementPatch all other can be left at their defaults Sometimes it is necessary to rebuild an already integrated commit in order to recreate build artifacts In this mode the job will not touch the version tags are changed This will also update the projects web-page When none of the jobs default parameters are changed it executes this task for the master branch To rebuild an existing commit the following parameters must be set branchOrTag version-tag all other can be left at their defaults When working on the CMakeProjectFramework itself it is sometimes useful to speed up the build-job by running it with a reduced workload and without modifying the repository Reducing the workload can be achieved by limiting the build to a special configuration and/or a special target In this case the following parameters must be set branchOrTag origin/ someBranch this should be the branch you work on task rebuild package The package you work on cpfConfiguration The configuration you are interested in target The target that is build After a successful build the jenkins job accumulates the html output from all configurations that are specified in the cpfCIBuildConfigurations.json file This is done because not all pipeline steps are available for all configurations For example the OpenCppCoverage report can only be generated on Windows and would miss if only the html-pages generated by a Linux configuration were published The Doxygen output can be created by all configurations and only one will be used in the accumulated html output The build-job will take the output from the last configuration in cpfCIBuildConfigurations.json file that generates it This may be important when you want to use the output of a special configuration Note that the configuration can influence the actual content of the documentation an example is the dependency graph in which the node shapes are different for shared and static libraries After accumulation the content of the html directory is copied to the web-server that belongs build project and can be accessed via that server In case you want to use a custom jenkins-job for publishing the webpage the CPF-job creates a build-artifact that contains the complete html directory</field>
   </doc>
   <doc>
     <field name="type">page</field>
@@ -4821,7 +4928,7 @@
     <field name="name">todo</field>
     <field name="url">dd/da0/todo.html</field>
     <field name="keywords"></field>
-    <field name="text">Todo List Page Automatic build-Job execution Add documentation for hook config and how to run it Page CPF configurations Add documentation of the default configurations example configs etc Maybe put the section about the configuration mechanism from the working with a cpf project in here Page Current problems Add list Page Custom targets Check if this can still be used like the Linux make install step without breaking the creation of the distribution packages Page Distribution packages List all the currently available options for distribution packages Page How to setup the CPFMachines infrastructure Setup infrastructure on fresh systems and complete the list This section has overlapping content with Setting up the CPF CI infrastructure We should merge them together Automatically add the content of the example config file here and manually add comments Change webserver file structure that multiple project pages can be served serachindex and an index.html in the base directory provides links to the single projects Page Machines and Container Buy a more powerfull build-machine to reduce the overall pipeline time Page Setting up the CPF CI infrastructure Add more detailed instructions for the above steps Improve the setup script to allow the creation of an admin account on the first run Page Test targets Explain about test targets and the command line interface What options will the cpf give to the test exe in order to run fast tests and hand over test file directories Should it be possible for users to hand over their own options Page The CPFMachines config file This page should provde information about all the parameter in the config file and what they do Page Versioning release vs internal version how are versions read from git manual tagging vs buildjob tagging Page Working with a CPF project Find out what must be installed by hand to compile the project Describe updates and pushes</field>
+    <field name="text">Todo List Page Automatic build-Job execution Add documentation for hook config and how to run it Page CPF configurations Add documentation of the default configurations example configs etc Maybe put the section about the configuration mechanism from the working with a cpf project in here Page Current problems Add list Page Custom targets Check if this can still be used like the Linux make install step without breaking the creation of the distribution packages Page Distribution packages List all the currently available options for distribution packages Page How to setup the CPFMachines infrastructure Setup infrastructure on fresh systems and complete the list This section has overlapping content with Setting up the CPF CI infrastructure We should merge them together Automatically add the content of the example config file here and manually add comments Change webserver file structure that multiple project pages can be served serachindex and an index.html in the base directory provides links to the single projects Page Machines and Container Buy a more powerfull build-machine to reduce the overall pipeline time Page Setting up the CPF CI infrastructure Add more detailed instructions for the above steps Improve the setup script to allow the creation of an admin account on the first run Page Test targets Explain about test targets and the command line interface What options will the cpf give to the test exe in order to run fast tests and hand over test file directories Should it be possible for users to hand over their own options Page The CPFMachines config file This page should provde information about all the parameter in the config file and what they do Page Working with a CPF project Find out what must be installed by hand to compile the project Describe updates and pushes</field>
   </doc>
   <doc>
     <field name="type">page</field>
@@ -6011,10 +6118,10 @@
   </doc>
   <doc>
     <field name="type">function</field>
-    <field name="name">CPFTests.acpftestproject_tests.ACPFTestProjectFixture.test_pipeline_build_works</field>
+    <field name="name">CPFTests.acpftestproject_tests.ACPFTestProjectFixture.test_build_works</field>
     <field name="args">(self)</field>
-    <field name="url">dd/d9f/class_c_p_f_tests_1_1acpftestproject__tests_1_1_a_c_p_f_test_project_fixture.html#ab0571795b1d0feb882098a33622426d6</field>
-    <field name="keywords">test_pipeline_build_works CPFTests.acpftestproject_tests.ACPFTestProjectFixture.test_pipeline_build_works CPFTests.acpftestproject_tests.ACPFTestProjectFixture</field>
+    <field name="url">dd/d9f/class_c_p_f_tests_1_1acpftestproject__tests_1_1_a_c_p_f_test_project_fixture.html#a54af8df43280241bb55ac1118a9eeaa9</field>
+    <field name="keywords">test_build_works CPFTests.acpftestproject_tests.ACPFTestProjectFixture.test_build_works CPFTests.acpftestproject_tests.ACPFTestProjectFixture</field>
     <field name="text"></field>
   </doc>
   <doc>
@@ -6192,6 +6299,14 @@
     <field name="args">(self)</field>
     <field name="url">d8/d14/class_c_p_f_tests_1_1simpleonelibcpftestproject__tests_1_1_simple_one_lib_c_p_f_test_project_fixture.html#abe508b10312321dd92544bcbf623f72d</field>
     <field name="keywords">test_target_builds_work CPFTests.simpleonelibcpftestproject_tests.SimpleOneLibCPFTestProjectFixture.test_target_builds_work CPFTests.simpleonelibcpftestproject_tests.SimpleOneLibCPFTestProjectFixture</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">function</field>
+    <field name="name">CPFTests.simpleonelibcpftestproject_tests.SimpleOneLibCPFTestProjectFixture.test_configure_script</field>
+    <field name="args">(self)</field>
+    <field name="url">d8/d14/class_c_p_f_tests_1_1simpleonelibcpftestproject__tests_1_1_simple_one_lib_c_p_f_test_project_fixture.html#ae40d200b25b0e4b2b56d85458d5d1861</field>
+    <field name="keywords">test_configure_script CPFTests.simpleonelibcpftestproject_tests.SimpleOneLibCPFTestProjectFixture.test_configure_script CPFTests.simpleonelibcpftestproject_tests.SimpleOneLibCPFTestProjectFixture</field>
     <field name="text"></field>
   </doc>
   <doc>
@@ -7147,8 +7262,8 @@
   <doc>
     <field name="type">function</field>
     <field name="name">python.miscosaccess.CalledProcessError.__init__</field>
-    <field name="args">(self, returncode, cmd, stdout, stderr, cwd)</field>
-    <field name="url">db/df3/classpython_1_1miscosaccess_1_1_called_process_error.html#ae27d2561c6af0814a2cf76eccf42b6b1</field>
+    <field name="args">(self, returncode, cmd, stdout, cwd)</field>
+    <field name="url">db/df3/classpython_1_1miscosaccess_1_1_called_process_error.html#a8e8b36ac8cf3fd2bd1d9eac3cc9f015e</field>
     <field name="keywords">__init__ python.miscosaccess.CalledProcessError.__init__ python.miscosaccess.CalledProcessError</field>
     <field name="text"></field>
   </doc>
@@ -7179,13 +7294,6 @@
     <field name="name">python.miscosaccess.CalledProcessError.stdout</field>
     <field name="url">db/df3/classpython_1_1miscosaccess_1_1_called_process_error.html#a04eb5e67ea4f599390bc604fcbf23112</field>
     <field name="keywords">stdout python.miscosaccess.CalledProcessError.stdout python.miscosaccess.CalledProcessError</field>
-    <field name="text"></field>
-  </doc>
-  <doc>
-    <field name="type">variable</field>
-    <field name="name">python.miscosaccess.CalledProcessError.stderr</field>
-    <field name="url">db/df3/classpython_1_1miscosaccess_1_1_called_process_error.html#adb1e5199ffb9c71be2ae09bc13a8d397</field>
-    <field name="keywords">stderr python.miscosaccess.CalledProcessError.stderr python.miscosaccess.CalledProcessError</field>
     <field name="text"></field>
   </doc>
   <doc>

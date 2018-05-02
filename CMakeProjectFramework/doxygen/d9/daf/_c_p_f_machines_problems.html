@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('d9/daf/_c_p_f_machines_problems.html',
 When the machines access git repositories with the https protocol, the passwords for these repositories are stored in plain text via the git credential store mechanism on the build slaves and the jenkins master machine.</dd></dl>
 <h2>Trouble Shooting</h2>
 <p>The scripts in the <a class="el" href="../../db/d51/namespace_c_p_f_machines.html">CPFMachines</a> package rely on a rather complex environment that must be setup manually. A lot can go wrong here so here is a list of the most common problems.</p>
-<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000009">Todo:</a></b></dt><dd>Add list</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000008">Todo:</a></b></dt><dd>Add list</dd></dl>
 <h2>Notes</h2>
 <ul>
 <li>With the current implementation, parallel execution of the build-job is not possible. This is because the version of a commit must stay the same while the job is running, because the current version number is retrieved multiple times from the repository while the job is running. Chaning the number in the meantime would lead to inconsistencies. In the longer run it would be good to remove this limitation, which could be a showstopper for highly frequented projects with long buildtimes. Another problem is that we do not get a build for each push, which makes it harder to pinpoint failed builds to a specific push/developer.</li>
@@ -106,7 +106,7 @@ When the machines access git repositories with the https protocol, the passwords
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Apr 26 2018 10:00:49 for CMakeProjectFramework by
+    <li class="footer">Generated on Mon Apr 30 2018 19:35:11 for CMakeProjectFramework by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
   </ul>
