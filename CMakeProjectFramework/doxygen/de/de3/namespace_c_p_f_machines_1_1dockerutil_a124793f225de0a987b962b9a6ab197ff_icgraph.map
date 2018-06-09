@@ -1,8 +1,0 @@
-<map id="CPFMachines.dockerutil.run_command_in_container" name="CPFMachines.dockerutil.run_command_in_container">
-<area shape="rect" id="node2" href="$de/de3/namespace_c_p_f_machines_1_1dockerutil.html#ad58cf714a58007b6afd842ad747770a3" title="CPFMachines.dockerutil.copy\l_file_from_host_to_container" alt="" coords="240,47,436,89"/>
-<area shape="rect" id="node7" href="$de/de3/namespace_c_p_f_machines_1_1dockerutil.html#a9a73c8de9eb69c8572504e4bdf5b4e9f" title="CPFMachines.dockerutil.run\l_commands_in_container" alt="" coords="245,113,431,154"/>
-<area shape="rect" id="node3" href="$de/de3/namespace_c_p_f_machines_1_1dockerutil.html#a96a420e2eb1d16607fafd0127a19e6dc" title="CPFMachines.dockerutil.copy\l_textfile_to_container" alt="" coords="518,17,714,58"/>
-<area shape="rect" id="node5" href="$de/de3/namespace_c_p_f_machines_1_1dockerutil.html#a490801283761fbcfce25c5bf1e3f777c" title="CPFMachines.dockerutil.rtocontainercopy" alt="" coords="484,87,748,113"/>
-<area shape="rect" id="node4" href="$de/de3/namespace_c_p_f_machines_1_1dockerutil.html#abb935026ff3397744cdc9e35185eb32d" title="CPFMachines.dockerutil.copy\l_local_textfile_tree_to\l_container" alt="" coords="809,5,1005,61"/>
-<area shape="rect" id="node6" href="$de/de3/namespace_c_p_f_machines_1_1dockerutil.html#a35b972d46dfce7c533bece39cdbf53c5" title="CPFMachines.dockerutil.container\l_to_container_copy" alt="" coords="796,86,1017,127"/>
-</map>
