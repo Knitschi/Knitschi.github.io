@@ -1,8 +1,0 @@
-<map id="python.docopt.ParentPattern" name="python.docopt.ParentPattern">
-<area shape="rect" id="node4" href="$da/da3/classpython_1_1docopt_1_1_either.html" title="{python.docopt.Either\n||+ match()\l}" alt="" coords="5,484,148,561"/>
-<area shape="rect" id="node5" href="$d5/d87/classpython_1_1docopt_1_1_one_or_more.html" title="{python.docopt.OneOrMore\n||+ match()\l}" alt="" coords="172,484,347,561"/>
-<area shape="rect" id="node6" href="$d1/d4a/classpython_1_1docopt_1_1_optional.html" title="{python.docopt.Optional\n||+ match()\l}" alt="" coords="371,484,527,561"/>
-<area shape="rect" id="node8" href="$db/d2e/classpython_1_1docopt_1_1_required.html" title="{python.docopt.Required\n||+ match()\l}" alt="" coords="551,484,709,561"/>
-<area shape="rect" id="node2" href="$de/da9/classpython_1_1docopt_1_1_pattern.html" title="{python.docopt.Pattern\n||+ __eq__()\l+ __hash__()\l+ fix()\l+ fix_identities()\l+ fix_repeating_arguments()\l+ either()\l}" alt="" coords="263,131,445,281"/>
-<area shape="rect" id="node7" href="$d2/d72/classpython_1_1docopt_1_1_any_options.html" title="{python.docopt.AnyOptions\n||}" alt="" coords="361,609,537,687"/>
-</map>
