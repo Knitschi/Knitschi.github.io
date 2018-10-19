@@ -1,0 +1,8 @@
+digraph "CPFTargetDependencyGraph" {
+node [
+ fontsize = "11", fontname="Helvetica-Bold"
+];
+    "node18" [ label="BPackage" shape="polygon"];
+    "node25" [ label="FPackage" shape="polygon"];
+    "node32" [ label="GPackage" shape="polygon"];
+}
