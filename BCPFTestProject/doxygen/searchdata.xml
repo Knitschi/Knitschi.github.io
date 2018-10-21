@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">function.h</field>
+    <field name="url">d9/d84/_b_package_2function_8h_source.html#l00001</field>
+    <field name="keywords"></field>
+    <field name="text">b B_EXPORT</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">function.h</field>
+    <field name="url">d2/d61/_f_package_2function_8h_source.html#l00001</field>
+    <field name="keywords"></field>
+    <field name="text">f F_EXPORT</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">function.h</field>
+    <field name="url">de/d68/_g_package_2function_8h_source.html#l00001</field>
+    <field name="keywords"></field>
+    <field name="text">g G_EXPORT</field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">BPackageDocumentation.dox</field>
+    <field name="url">d5/d6b/_b_package_documentation_8dox.html</field>
+    <field name="keywords">BPackageDocumentation.dox</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">FPackageDocumentation.dox</field>
+    <field name="url">d8/d4f/_f_package_documentation_8dox.html</field>
+    <field name="keywords">FPackageDocumentation.dox</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">GPackageDocumentation.dox</field>
+    <field name="url">d6/d7e/_g_package_documentation_8dox.html</field>
+    <field name="keywords">GPackageDocumentation.dox</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">function.cpp</field>
+    <field name="url">d5/d8a/_b_package_2function_8cpp.html</field>
+    <field name="keywords">function.cpp</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">function</field>
+    <field name="name">b::function</field>
+    <field name="args">()</field>
+    <field name="url">da/d70/namespaceb.html#afbe888f33115541613aceaf5efe6e713</field>
+    <field name="keywords">function b::function b function b::function b function b::function b</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">function.cpp</field>
+    <field name="url">d6/dd0/_f_package_2function_8cpp.html</field>
+    <field name="keywords">function.cpp</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">function</field>
+    <field name="name">f::function</field>
+    <field name="args">()</field>
+    <field name="url">dd/d62/namespacef.html#a0767b0651c7edf9e647cc8525f5a5963</field>
+    <field name="keywords">function f::function f function f::function f function f::function f</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">function.cpp</field>
+    <field name="url">d0/d2a/_g_package_2function_8cpp.html</field>
+    <field name="keywords">function.cpp</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">function</field>
+    <field name="name">g::function</field>
+    <field name="args">()</field>
+    <field name="url">df/d3a/namespaceg.html#a187f5f9cf8f4922d1a4b69608e1f580f</field>
+    <field name="keywords">function g::function g function g::function g function g::function g</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">function.h</field>
+    <field name="url">d9/d84/_b_package_2function_8h.html</field>
+    <field name="keywords">function.h</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">function.h</field>
+    <field name="url">d2/d61/_f_package_2function_8h.html</field>
+    <field name="keywords">function.h</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">function.h</field>
+    <field name="url">de/d68/_g_package_2function_8h.html</field>
+    <field name="keywords">function.h</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">README.md</field>
+    <field name="url">d5/d32/_b_package_2_r_e_a_d_m_e_8md.html</field>
+    <field name="keywords">README.md</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">README.md</field>
+    <field name="url">d2/d94/_c_i_build_configurations_2_r_e_a_d_m_e_8md.html</field>
+    <field name="keywords">README.md</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">README.md</field>
+    <field name="url">d1/d08/_f_package_2_r_e_a_d_m_e_8md.html</field>
+    <field name="keywords">README.md</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">README.md</field>
+    <field name="url">df/d85/_g_package_2_r_e_a_d_m_e_8md.html</field>
+    <field name="keywords">README.md</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">Clang-shared-debug.config.cmake</field>
+    <field name="url">d8/d19/_clang-shared-debug_8config_8cmake.html</field>
+    <field name="keywords">Clang-shared-debug.config.cmake</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">Clang-static-release.config.cmake</field>
+    <field name="url">d3/d9d/_clang-static-release_8config_8cmake.html</field>
+    <field name="keywords">Clang-static-release.config.cmake</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">Gcc-shared-debug.config.cmake</field>
+    <field name="url">d8/dc1/_gcc-shared-debug_8config_8cmake.html</field>
+    <field name="keywords">Gcc-shared-debug.config.cmake</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">VS2017-shared.config.cmake</field>
+    <field name="url">dc/d95/_v_s2017-shared_8config_8cmake.html</field>
+    <field name="keywords">VS2017-shared.config.cmake</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">VS2017-static.config.cmake</field>
+    <field name="url">dd/dec/_v_s2017-static_8config_8cmake.html</field>
+    <field name="keywords">VS2017-static.config.cmake</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">cpfOwnedPackages.cmake</field>
+    <field name="url">db/df3/cpf_owned_packages_8cmake.html</field>
+    <field name="keywords">cpfOwnedPackages.cmake</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">BCPFTestProjectDoc.dox</field>
+    <field name="url">d0/d17/_b_c_p_f_test_project_doc_8dox.html</field>
+    <field name="keywords">BCPFTestProjectDoc.dox</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">page</field>
+    <field name="name">md_Sources_BPackage_README</field>
+    <field name="url">d5/dde/md__sources__b_package__r_e_a_d_m_e.html</field>
+    <field name="keywords"></field>
+    <field name="text">Welcome to BPackage This is a C++ dummy package intended for testing the CPF</field>
+  </doc>
+  <doc>
+    <field name="type">page</field>
+    <field name="name">md_Sources_CIBuildConfigurations_README</field>
+    <field name="url">da/d5e/md__sources__c_i_build_configurations__r_e_a_d_m_e.html</field>
+    <field name="keywords"></field>
+    <field name="text">CIBuildConfigurations The project configurations that are used to test the CMakeProjectFramework Therefore CPF projects should be guaranteed to work with either of these configurations</field>
+  </doc>
+  <doc>
+    <field name="type">page</field>
+    <field name="name">md_Sources_FPackage_README</field>
+    <field name="url">d4/d3d/md__sources__f_package__r_e_a_d_m_e.html</field>
+    <field name="keywords"></field>
+    <field name="text">Welcome to FPackage This is a C++ dummy package intended for testing the CPF</field>
+  </doc>
+  <doc>
+    <field name="type">page</field>
+    <field name="name">md_Sources_GPackage_README</field>
+    <field name="url">dd/ddf/md__sources__g_package__r_e_a_d_m_e.html</field>
+    <field name="keywords"></field>
+    <field name="text">Welcome to GPackage This is a C++ dummy package intended for testing the CPF</field>
+  </doc>
+  <doc>
+    <field name="type">group</field>
+    <field name="name">BPackageGroup</field>
+    <field name="url">dc/dfe/group___b_package_group.html</field>
+    <field name="keywords">BPackage</field>
+    <field name="text">A C++ libary used for testing the CPF Links The links can be broken if no project configuration creates the linked pages Downloads Will work if distribution packages are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports BPackage The links will work if the package has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_CHECK_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
+  </doc>
+  <doc>
+    <field name="type">group</field>
+    <field name="name">FPackageGroup</field>
+    <field name="url">d6/de8/group___f_package_group.html</field>
+    <field name="keywords">FPackage</field>
+    <field name="text">An empty C++ libary used for testing the CPF Links The links can be broken if no project configuration creates the linked pages Downloads Will work if distribution packages are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports FPackage The links will work if the package has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_CHECK_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
+  </doc>
+  <doc>
+    <field name="type">group</field>
+    <field name="name">GPackageGroup</field>
+    <field name="url">de/d2c/group___g_package_group.html</field>
+    <field name="keywords">GPackage</field>
+    <field name="text">An empty C++ libary used for testing the CPF Links The links can be broken if no project configuration creates the linked pages Downloads Will work if distribution packages are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports GPackage The links will work if the package has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_CHECK_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
+  </doc>
+  <doc>
+    <field name="type">namespace</field>
+    <field name="name">b</field>
+    <field name="url">da/d70/namespaceb.html</field>
+    <field name="keywords">b</field>
+    <field name="text">The namespace of the BPackage package</field>
+  </doc>
+  <doc>
+    <field name="type">namespace</field>
+    <field name="name">f</field>
+    <field name="url">dd/d62/namespacef.html</field>
+    <field name="keywords">f</field>
+    <field name="text">The namespace of the FPackage package</field>
+  </doc>
+  <doc>
+    <field name="type">namespace</field>
+    <field name="name">g</field>
+    <field name="url">df/d3a/namespaceg.html</field>
+    <field name="keywords">g</field>
+    <field name="text">The namespace of the GPackage package</field>
+  </doc>
+  <doc>
+    <field name="type">page</field>
+    <field name="name">index</field>
+    <field name="url">index.html</field>
+    <field name="keywords"></field>
+    <field name="text">The BPFTestProject CI-Project The project owns some C++ packages that are used as external packages in the ACPFTestProject The packages only contain Hello world functionality The packages are BPackage A loose C++ library package FPackage A loose C++ library package GPackage A loose C++ library package Links CI console output last build</field>
+  </doc>
+</add>
