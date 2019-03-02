@@ -1,0 +1,28 @@
+digraph "CPFTargetDependencyGraph" {
+node [
+ fontsize = "11", fontname="Helvetica-Bold"
+];
+    "node86" [ label="APackage" shape="house"];
+    "node29" [ label="BPackage" shape="diamond"];
+    "node86" -> "node29" // APackage -> BPackage
+    "node54" [ label="CPackage" shape="diamond"];
+    "node86" -> "node54" // APackage -> CPackage
+    "node20" [ label="libSwitchWarningsOff" shape="box"];
+    "node54" -> "node20" // CPackage -> libSwitchWarningsOff
+    "node65" [ label="DPackage" shape="diamond"];
+    "node86" -> "node65" // APackage -> DPackage
+    "node76" [ label="EPackage" shape="polygon"];
+    "node86" -> "node76" // APackage -> EPackage
+    "node37" [ label="FPackage" shape="diamond"];
+    "node86" -> "node37" // APackage -> FPackage
+    "node45" [ label="GPackage" shape="box"];
+    "node86" -> "node45" // APackage -> GPackage
+    "node84" [ label="libAPackage" shape="diamond"];
+    "node86" -> "node84" // APackage -> libAPackage
+    "node84" -> "node29" // libAPackage -> BPackage
+    "node84" -> "node54" // libAPackage -> CPackage
+    "node84" -> "node65" // libAPackage -> DPackage
+    "node84" -> "node76" // libAPackage -> EPackage
+    "node84" -> "node37" // libAPackage -> FPackage
+    "node84" -> "node45" // libAPackage -> GPackage
+}
