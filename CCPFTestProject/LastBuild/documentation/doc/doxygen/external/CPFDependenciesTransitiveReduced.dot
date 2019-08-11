@@ -1,0 +1,21 @@
+digraph CPFTargetDependencyGraph {
+	node [fontname="Helvetica-Bold",
+		fontsize=11
+	];
+	node67	 [label=APackage,
+		shape=house];
+	node63	 [label=libAPackage,
+		shape=polygon];
+	node67 -> node63;
+	node46	 [label=BPackage,
+		shape=polygon];
+	node42	 [label=CPackage,
+		shape=polygon];
+	node24	 [label=EPackage,
+		shape=box];
+	node63 -> node46;
+	node63 -> node42;
+	node63 -> node24;
+	node37	 [label=DPackage,
+		shape=polygon];
+}
