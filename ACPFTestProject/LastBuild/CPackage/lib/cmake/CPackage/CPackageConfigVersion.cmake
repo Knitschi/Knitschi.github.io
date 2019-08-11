@@ -9,12 +9,12 @@
 # The variable CVF_VERSION must be set before calling configure_file().
 
 
-set(PACKAGE_VERSION "1.1.6.24-5975")
+set(PACKAGE_VERSION "1.1.6.25-446c")
 
-if("1.1.6.24-5975" MATCHES "^([0-9]+\\.[0-9]+\\.[0-9]+)\\.") # strip the tweak version
+if("1.1.6.25-446c" MATCHES "^([0-9]+\\.[0-9]+\\.[0-9]+)\\.") # strip the tweak version
   set(CVF_VERSION_NO_TWEAK "${CMAKE_MATCH_1}")
 else()
-  set(CVF_VERSION_NO_TWEAK "1.1.6.24-5975")
+  set(CVF_VERSION_NO_TWEAK "1.1.6.25-446c")
 endif()
 
 if(PACKAGE_FIND_VERSION MATCHES "^([0-9]+\\.[0-9]+\\.[0-9]+)\\.") # strip the tweak version
