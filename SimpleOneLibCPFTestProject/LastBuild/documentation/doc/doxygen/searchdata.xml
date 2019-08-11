@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">fixture.h</field>
+    <field name="url">db/d1c/fixture_8h_source.html#l00001</field>
+    <field name="keywords"></field>
+    <field name="text">mylib</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">fixture.h</field>
+    <field name="url">db/d1c/fixture_8h_source.html#l00006</field>
+    <field name="keywords"></field>
+    <field name="text">MYLIB_TESTS_EXPORT MyFixture setUp</field>
+  </doc>
+  <doc>
+    <field name="type">source</field>
+    <field name="name">function.h</field>
+    <field name="url">dd/d67/function_8h_source.html#l00001</field>
+    <field name="keywords"></field>
+    <field name="text">mylib MYLIB_EXPORT</field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">ProjectDocumentation.dox</field>
+    <field name="url">dd/d2a/_project_documentation_8dox.html</field>
+    <field name="keywords">ProjectDocumentation.dox</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">fixture.cpp</field>
+    <field name="url">d7/d69/fixture_8cpp.html</field>
+    <field name="keywords">fixture.cpp</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">fixture.h</field>
+    <field name="url">db/d1c/fixture_8h.html</field>
+    <field name="keywords">fixture.h</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">function.cpp</field>
+    <field name="url">de/dea/function_8cpp.html</field>
+    <field name="keywords">function.cpp</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">function</field>
+    <field name="name">mylib::function</field>
+    <field name="args">()</field>
+    <field name="url">de/d57/namespacemylib.html#a955e0d247d5e5e096f449afbfe5697fa</field>
+    <field name="keywords">function mylib::function mylib function mylib::function mylib function mylib::function mylib</field>
+    <field name="text">A function that prints the version of MyLib A function that prints the version of MyLib A function that prints the version of MyLib</field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">function.h</field>
+    <field name="url">dd/d67/function_8h.html</field>
+    <field name="keywords">function.h</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">test_main.cpp</field>
+    <field name="url">d6/dd6/test__main_8cpp.html</field>
+    <field name="keywords">test_main.cpp</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">function</field>
+    <field name="name">main</field>
+    <field name="args">(int, char **)</field>
+    <field name="url">d6/dd6/test__main_8cpp.html#a2c3f6775325c30275d11c6abee2db6a0</field>
+    <field name="keywords">main</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">namespace</field>
+    <field name="name">mylib</field>
+    <field name="url">de/d57/namespacemylib.html</field>
+    <field name="keywords">mylib</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">class</field>
+    <field name="name">mylib::MyFixture</field>
+    <field name="url">d6/d59/classmylib_1_1_my_fixture.html</field>
+    <field name="keywords">MyFixture</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">function</field>
+    <field name="name">mylib::MyFixture::setUp</field>
+    <field name="args">()</field>
+    <field name="url">d6/d59/classmylib_1_1_my_fixture.html#a3d925e664782a1250147d628d2ed8d9b</field>
+    <field name="keywords">setUp mylib::MyFixture::setUp mylib::MyFixture</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">page</field>
+    <field name="name">index</field>
+    <field name="url">index.html</field>
+    <field name="keywords"></field>
+    <field name="text">Overview The SimpleOneLibCPFTestProject The project contains one fixed library package and is used as an example for the CMakeProjectFramework and a test project</field>
+  </doc>
+</add>

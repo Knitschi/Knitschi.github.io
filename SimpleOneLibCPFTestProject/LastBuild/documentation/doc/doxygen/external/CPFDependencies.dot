@@ -1,0 +1,6 @@
+digraph "CPFTargetDependencyGraph" {
+node [
+ fontsize = "11", fontname="Helvetica-Bold"
+];
+    "node22" [ label="MyLib" shape="polygon"];
+}
