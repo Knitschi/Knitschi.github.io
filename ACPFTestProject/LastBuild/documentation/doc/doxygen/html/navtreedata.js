@@ -24,22 +24,14 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "ACPFTestProject", "index.html", [
-    [ "The ACPFTestProject CI-Project", "index.html", null ],
-    [ "Welcome to APackage", "md__sources__a_package__r_e_a_d_m_e.html", null ],
-    [ "Welcome to CPackage", "md__sources__c_package__r_e_a_d_m_e.html", null ],
-    [ "Welcome to DPackage", "md__sources__d_package__r_e_a_d_m_e.html", null ],
-    [ "Welcome to EPackage", "md__sources__e_package__r_e_a_d_m_e.html", null ],
     [ "Modules", "modules.html", "modules" ],
-    [ "Classes", "annotated.html", [
-      [ "Class Index", "classes.html", null ]
-    ] ],
     [ "Namespace List", "namespaces.html", "namespaces" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"classes.html"
+"group___a_package_group.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

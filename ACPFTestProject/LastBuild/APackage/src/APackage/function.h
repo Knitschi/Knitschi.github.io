@@ -8,7 +8,9 @@ A_EXPORT int mainImpl(int argc, char **argv);
 
 namespace a
 {
-
+	/**
+	\short A doxygen comment.
+	*/
 	class A_EXPORT Blub : std::vector<int>
 	{
 	public:

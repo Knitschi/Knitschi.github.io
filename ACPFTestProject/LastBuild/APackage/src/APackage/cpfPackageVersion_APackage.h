@@ -7,7 +7,7 @@ namespace a
 {
 	inline const std::string& getPackageVersion()
 	{
-		static std::string version = "2.0.3.18-eb75";
+		static std::string version = "2.0.3.20-db67";
 		return version;
 	}
 }

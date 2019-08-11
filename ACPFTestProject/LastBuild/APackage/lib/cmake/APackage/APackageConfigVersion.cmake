@@ -9,12 +9,12 @@
 # The variable CVF_VERSION must be set before calling configure_file().
 
 
-set(PACKAGE_VERSION "2.0.3.18-eb75")
+set(PACKAGE_VERSION "2.0.3.20-db67")
 
-if("2.0.3.18-eb75" MATCHES "^([0-9]+\\.[0-9]+\\.[0-9]+)\\.") # strip the tweak version
+if("2.0.3.20-db67" MATCHES "^([0-9]+\\.[0-9]+\\.[0-9]+)\\.") # strip the tweak version
   set(CVF_VERSION_NO_TWEAK "${CMAKE_MATCH_1}")
 else()
-  set(CVF_VERSION_NO_TWEAK "2.0.3.18-eb75")
+  set(CVF_VERSION_NO_TWEAK "2.0.3.20-db67")
 endif()
 
 if(PACKAGE_FIND_VERSION MATCHES "^([0-9]+\\.[0-9]+\\.[0-9]+)\\.") # strip the tweak version
@@ -33,11 +33,6 @@ if(PACKAGE_FIND_VERSION STREQUAL PACKAGE_VERSION)
   set(PACKAGE_VERSION_EXACT TRUE)
 endif()
 
-
-# if the installed project requested no architecture check, don't perform the check
-if("FALSE")
-  return()
-endif()
 
 # if the installed or the using project don't have CMAKE_SIZEOF_VOID_P set, ignore it:
 if("${CMAKE_SIZEOF_VOID_P}" STREQUAL "" OR "8" STREQUAL "")

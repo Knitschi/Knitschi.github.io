@@ -1,3 +1,31 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title="STL iterator class. " alt="" coords="5,5,127,47"/>
+<area shape="rect" id="node1" title="STL class. " alt="" coords="5,337,105,364"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="162,388,317,415"/>
+<area shape="rect" id="node9" title="STL class. " alt="" coords="375,719,505,761"/>
+<area shape="rect" id="node35" title="STL class. " alt="" coords="373,413,507,454"/>
+<area shape="rect" id="node48" title="STL class. " alt="" coords="407,785,473,812"/>
+<area shape="rect" id="node49" title="STL class. " alt="" coords="403,836,477,863"/>
+<area shape="rect" id="node16" title="STL class. " alt="" coords="571,1010,703,1051"/>
+<area shape="rect" id="node19" title="STL class. " alt="" coords="569,566,705,607"/>
+<area shape="rect" id="node30" title="STL class. " alt="" coords="557,1075,718,1117"/>
+<area shape="rect" id="node33" title="STL class. " alt="" coords="592,1141,683,1168"/>
+<area shape="rect" id="node34" title="STL class. " alt="" coords="587,697,687,724"/>
+<area shape="rect" id="node17" title="STL class. " alt="" coords="800,973,895,1000"/>
+<area shape="rect" id="node18" title="STL class. " alt="" coords="796,1024,899,1051"/>
+<area shape="rect" id="node24" title="STL class. " alt="" coords="783,461,912,502"/>
+<area shape="rect" id="node27" title="STL class. " alt="" coords="768,526,927,567"/>
+<area shape="rect" id="node25" title="STL class. " alt="" coords="994,424,1085,451"/>
+<area shape="rect" id="node26" title="STL class. " alt="" coords="989,475,1089,501"/>
+<area shape="rect" id="node28" title="STL class. " alt="" coords="979,529,1099,556"/>
+<area shape="rect" id="node29" title="STL class. " alt="" coords="975,580,1104,607"/>
+<area shape="rect" id="node31" title="STL class. " alt="" coords="786,1079,909,1105"/>
+<area shape="rect" id="node32" title="STL class. " alt="" coords="781,1129,913,1156"/>
+<area shape="rect" id="node40" title="STL class. " alt="" coords="569,318,705,359"/>
+<area shape="rect" id="node43" title="STL class. " alt="" coords="555,383,720,425"/>
+<area shape="rect" id="node46" title="STL class. " alt="" coords="590,449,685,476"/>
+<area shape="rect" id="node47" title="STL class. " alt="" coords="585,5,689,32"/>
+<area shape="rect" id="node41" title="STL class. " alt="" coords="798,257,897,284"/>
+<area shape="rect" id="node42" title="STL class. " alt="" coords="794,308,901,335"/>
+<area shape="rect" id="node44" title="STL class. " alt="" coords="784,359,911,385"/>
+<area shape="rect" id="node45" title="STL class. " alt="" coords="779,409,915,436"/>
 </map>
