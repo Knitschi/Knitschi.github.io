@@ -15,12 +15,34 @@
         $(document).ready(function ()
         {
             
-            new RGraph.Pie('pi_ba1bc5e8-5268-4422-970f-0de77f3e75a5', [4, 0])
+            new RGraph.Pie('pi_79fa4f70-f409-41ed-afc6-b650abf7edf8', [5, 3])
+                .set('labels', ['Cover 62%','Uncover 38%'])
+                .set('colors', ['rgb(0,255,0)','rgb(255,0,0)'])
+                .set('linewidth', 1)
+                .set('shadow', true)
+                .set('tooltips', ['cover 5 lines (62%)', 'uncover 3 lines (38%)'])
+                .set('tooltips.event', 'onmousemove')
+                .set('labels.sticks', true)
+                .set('labels.sticks.length', 10)
+                .draw();
+            
+            new RGraph.Pie('pi_f77043d4-6cc5-4fb2-8778-b9069155dfe3', [1, 0])
                 .set('labels', ['Cover 100%','Uncover 0%'])
                 .set('colors', ['rgb(0,255,0)','rgb(255,0,0)'])
                 .set('linewidth', 1)
                 .set('shadow', true)
-                .set('tooltips', ['cover 4 lines (100%)', 'uncover 0 lines (0%)'])
+                .set('tooltips', ['cover 1 lines (100%)', 'uncover 0 lines (0%)'])
+                .set('tooltips.event', 'onmousemove')
+                .set('labels.sticks', true)
+                .set('labels.sticks.length', 10)
+                .draw();
+            
+            new RGraph.Pie('pi_db692568-dbea-4a4d-bdec-39b64dae34e9', [3, 0])
+                .set('labels', ['Cover 100%','Uncover 0%'])
+                .set('colors', ['rgb(0,255,0)','rgb(255,0,0)'])
+                .set('linewidth', 1)
+                .set('shadow', true)
+                .set('tooltips', ['cover 3 lines (100%)', 'uncover 0 lines (0%)'])
                 .set('tooltips.event', 'onmousemove')
                 .set('labels.sticks', true)
                 .set('labels.sticks.length', 10)
@@ -47,11 +69,33 @@
                 
                 <tr>
                     <td>
-            <canvas id="pi_ba1bc5e8-5268-4422-970f-0de77f3e75a5" width="280" height="100">Cover 100%</canvas>
+            <canvas id="pi_79fa4f70-f409-41ed-afc6-b650abf7edf8" width="280" height="100">Cover 62%</canvas>
                     </td>            
-                    <td>4</td>
+                    <td>8</td>
                     <td>            
-                       <a href="CPackage_tests-debug/function_tests.cpp.html">c:\jenkins\acpftestproject-vs2017-shared\c o\sources\cpackage\tests\function_tests.cpp</a> 
+                       <a href="CPackage_tests-debug/tests_main.cpp.html">c:\jenkins\acpftestproject-vs2017-shared\c o\sources\cpackage\tests\tests_main.cpp</a> 
+                      
+                    </td>
+                </tr>        
+                
+                <tr>
+                    <td>
+            <canvas id="pi_f77043d4-6cc5-4fb2-8778-b9069155dfe3" width="280" height="100">Cover 100%</canvas>
+                    </td>            
+                    <td>1</td>
+                    <td>            
+                       <a href="CPackage_tests-debug/function.cpp.html">c:\jenkins\acpftestproject-vs2017-shared\c o\sources\cpackage\function.cpp</a> 
+                      
+                    </td>
+                </tr>        
+                
+                <tr>
+                    <td>
+            <canvas id="pi_db692568-dbea-4a4d-bdec-39b64dae34e9" width="280" height="100">Cover 100%</canvas>
+                    </td>            
+                    <td>3</td>
+                    <td>            
+                       <a href="CPackage_tests-debug/function_fixture.cpp.html">c:\jenkins\acpftestproject-vs2017-shared\c o\sources\cpackage\tests\function_fixture.cpp</a> 
                       
                     </td>
                 </tr>        
