@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>Current problems &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CPFTests" href="../../CPFTests/documentation/CPFTests.html" />
+    <link rel="prev" title="Manual Tests" href="ManualTests.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../CPFTests/documentation/CPFTests.html" title="CPFTests"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ManualTests.html" title="Manual Tests"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFMachines.html" accesskey="U">CPFMachines</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="current-problems">
+<span id="cpfmachinesproblems"></span><h1>Current problems<a class="headerlink" href="#current-problems" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>Current Problems<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Machine names in the config.json files should be given in lower case only, or problems with authenticating ssh server hosts can occur.</p></li>
+<li><p>I was not able to make name resolution for windows machines in the host network work inside the docker containers. The machine names for the windows build-slaves
+therefore must be given as ip addresses to allow the jenkins-master to reach them.</p></li>
+</ul>
+<p>warning All machines should be within a trusted network as machine to machine communication is currently vulnerable to man in the middle attacks due to
+ignoring ssh host key checking.</p>
+<p>warning When the machines access git repositories with the https protocol, the passwords for these
+repositories are stored in plain text via the git credential store mechanism on the build slaves and the
+jenkins master machine.</p>
+</div>
+<div class="section" id="trouble-shooting">
+<h2>Trouble Shooting<a class="headerlink" href="#trouble-shooting" title="Permalink to this headline">¶</a></h2>
+<p>The scripts in the CPFMachines package rely on a rather complex environment that must be setup manually.
+A lot can go wrong here so here is a list of the most common problems.</p>
+<p>todo Add list</p>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>With the current implementation, parallel execution of the build-job is not possible.
+This is because the version of a commit must stay the same while the job is running, because
+the current version number is retrieved multiple times from the repository while the job is running.
+Chaning the number in the meantime would lead to inconsistencies. In the longer run it would be
+good to remove this limitation, which could be a showstopper for highly frequented projects with long
+buildtimes. Another problem is that we do not get a build for each push, which makes it harder to pinpoint
+failed builds to a specific push/developer.</p></li>
+<li><p>When using the CPF on Windows, one may be hitting the 260 character limit for filenames. On Windows 10, this
+limit can be switched off. When building on older windows versions, the user can try to reduce the length of his
+configuration names, package names or ci-project name.</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Current problems</a><ul>
+<li><a class="reference internal" href="#id1">Current Problems</a></li>
+<li><a class="reference internal" href="#trouble-shooting">Trouble Shooting</a></li>
+<li><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ManualTests.html"
+                        title="previous chapter">Manual Tests</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../CPFTests/documentation/CPFTests.html"
+                        title="next chapter">CPFTests</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/CPFMachines/documentation/ProblemsNotes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../CPFTests/documentation/CPFTests.html" title="CPFTests"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ManualTests.html" title="Manual Tests"
+             >previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFMachines.html" >CPFMachines</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

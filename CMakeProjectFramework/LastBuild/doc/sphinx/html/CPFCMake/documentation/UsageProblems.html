@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>Problems when using the CPF &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Problems that are encountered in Development" href="ImplementationProblems.html" />
+    <link rel="prev" title="Versioning" href="Versioning.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ImplementationProblems.html" title="Problems that are encountered in Development"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Versioning.html" title="Versioning"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFCMake.html" accesskey="U">CPFCMake</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="problems-when-using-the-cpf">
+<h1>Problems when using the CPF<a class="headerlink" href="#problems-when-using-the-cpf" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="known-problems-and-workarounds">
+<h2>Known Problems and Workarounds<a class="headerlink" href="#known-problems-and-workarounds" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="problem-when-using-qt-cmake-autouic-and-cmake-autorcc-in-combination-with-cpf-enable-precompiled-header">
+<span id="cotireqtincompatibility"></span><h3>Problem when using Qt CMAKE_AUTOUIC and CMAKE_AUTORCC in combination with CPF_ENABLE_PRECOMPILED_HEADER<a class="headerlink" href="#problem-when-using-qt-cmake-autouic-and-cmake-autorcc-in-combination-with-cpf-enable-precompiled-header" title="Permalink to this headline">¶</a></h3>
+<p>Using CMAKE_AUTOUIC and CMAKE_AUTORCC in combination with cotire can cause compile errors when Qt’s autogen targets
+are build. In this case you can use the ref cpfQt5AddUIAndQrcFiles function to fix the problem.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Problems when using the CPF</a><ul>
+<li><a class="reference internal" href="#known-problems-and-workarounds">Known Problems and Workarounds</a><ul>
+<li><a class="reference internal" href="#problem-when-using-qt-cmake-autouic-and-cmake-autorcc-in-combination-with-cpf-enable-precompiled-header">Problem when using Qt CMAKE_AUTOUIC and CMAKE_AUTORCC in combination with CPF_ENABLE_PRECOMPILED_HEADER</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Versioning.html"
+                        title="previous chapter">Versioning</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ImplementationProblems.html"
+                        title="next chapter">Problems that are encountered in Development</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/CPFCMake/documentation/UsageProblems.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ImplementationProblems.html" title="Problems that are encountered in Development"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Versioning.html" title="Versioning"
+             >previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFCMake.html" >CPFCMake</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

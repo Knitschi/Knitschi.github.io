@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>Project Organization &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CPFCMake" href="../CPFCMake/documentation/CPFCMake.html" />
+    <link rel="prev" title="Setting up the CPF CI server infrastructure" href="SettingUpTheCPFCIInfrastructure.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../CPFCMake/documentation/CPFCMake.html" title="CPFCMake"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="SettingUpTheCPFCIInfrastructure.html" title="Setting up the CPF CI server infrastructure"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="project-organization">
+<h1>Project Organization<a class="headerlink" href="#project-organization" title="Permalink to this headline">¶</a></h1>
+<p>The CMakeProjectFramework master repository contains some of the documentation of the CMakeProjectFramework and provides the configuration
+for its official build job. The master repository also serves as an “owner” for the packages that implement the various aspects
+of the CI system. The packages are located in their own repositories and added as Git submodules to the master repository.</p>
+<p>The packages are:</p>
+<div class="section" id="package-dependencies">
+<h2>Package Dependencies<a class="headerlink" href="#package-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Here is a simplified graph the illustrates the dependencies between the packages of the CMakeProjectFramework.</p>
+<div class="graphviz"><img src="../_images/graphviz-63877eb5017bcbe9234840ed925571d29aacd953.png" alt="digraph G {
+  node [ fontsize=11, fontname=&quot;Helvetica-Bold&quot; ]
+  edge [ fontsize=11, fontname=&quot;Helvetica&quot; ]
+  {
+
+    node [shape=box, fontcolor=&quot;#4665C0&quot;];
+    CPFBuildscripts [ URL=&quot;../CPFBuildscripts/documentation/CPFBuildscripts.html&quot;];
+    CPFCMake [ URL=&quot;../CPFCMake/documentation/CPFCMake.html&quot;];
+    CPFMachines [ URL=&quot;../CPFMachines/documentation/CPFMachines.html&quot;];
+  }
+  &quot;MyMachinesConfig&quot; -&gt; &quot;CPFMachines&quot; [ label=&quot;Uses setup script and provides config.&quot; ]
+  &quot;CPFMachines&quot; -&gt; &quot;CPFBuildscripts&quot; [ label=&quot;Uses scripts in buildjob.&quot; ]
+  &quot;CPFMachines&quot; -&gt; &quot;CPFCMake&quot; [ label=&quot;Uses CMake scripts for version tagging.&quot; ]
+  &quot;CPFBuildscripts&quot; -&gt; &quot;CPFCMake&quot; [ label=&quot;Uses custom targets and config file mechanics.&quot;  ]
+  &quot;CPFCMake&quot; -&gt; &quot;3rd party tools and libs&quot; [ label=&quot;Uses 3rd party tools in the build pipeline.&quot; style = dashed ]
+}" usemap="#G" class="graphviz" /></div>
+<map id="G" name="G">
+<area shape="rect" id="node1" href="../CPFBuildscripts/documentation/CPFBuildscripts.html" title="CPFBuildscripts" alt="" coords="5,229,143,277"/>
+<area shape="rect" id="node2" href="../CPFCMake/documentation/CPFCMake.html" title="CPFCMake" alt="" coords="149,341,250,389"/>
+<area shape="rect" id="node3" href="../CPFMachines/documentation/CPFMachines.html" title="CPFMachines" alt="" coords="255,117,375,165"/>
+</map><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the long run, the dependency between <em>CPFCMake</em> and <em>CPFMachines</em> should be removed
+by using package managers in <em>CPFCMake</em> to acquire all of the required third party software dependencies,
+instead of using the pre-installed software from the build slaves.</p>
+</div>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Add a description on how to get the dependencies with the supported package managers.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Project Organization</a><ul>
+<li><a class="reference internal" href="#package-dependencies">Package Dependencies</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="SettingUpTheCPFCIInfrastructure.html"
+                        title="previous chapter">Setting up the CPF CI server infrastructure</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../CPFCMake/documentation/CPFCMake.html"
+                        title="next chapter">CPFCMake</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documentation/ProjectOrganisation.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../CPFCMake/documentation/CPFCMake.html" title="CPFCMake"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="SettingUpTheCPFCIInfrastructure.html" title="Setting up the CPF CI server infrastructure"
+             >previous</a> |</li>
+  <li>
+    <img src="../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

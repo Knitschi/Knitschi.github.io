@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>Problems that are encountered in Development &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CPFBuildscripts" href="../../CPFBuildscripts/documentation/CPFBuildscripts.html" />
+    <link rel="prev" title="Problems when using the CPF" href="UsageProblems.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../CPFBuildscripts/documentation/CPFBuildscripts.html" title="CPFBuildscripts"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="UsageProblems.html" title="Problems when using the CPF"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFCMake.html" accesskey="U">CPFCMake</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="problems-that-are-encountered-in-development">
+<h1>Problems that are encountered in Development<a class="headerlink" href="#problems-that-are-encountered-in-development" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cmake-induced-problems">
+<h2>CMake induced Problems<a class="headerlink" href="#cmake-induced-problems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cmake-s-add-custom-command-does-not-support-generator-expressions-in-the-output-argument">
+<h3>CMake’s add_custom_command() does not support generator expressions in the OUTPUT argument<a class="headerlink" href="#cmake-s-add-custom-command-does-not-support-generator-expressions-in-the-output-argument" title="Permalink to this headline">¶</a></h3>
+<p>This limitation is the reason why we have the ugly workaround where we loop over
+all configurations and use the <code class="code docutils literal notranslate"><span class="pre">cpfAddConfigurationDependendCommand()</span></code> function.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://gitlab.kitware.com/cmake/cmake/issues/12877">CMake Issue 12877</a></p>
+</div>
+</div>
+<div class="section" id="it-is-not-possible-to-add-dependencies-to-the-cmake-generated-install-target">
+<span id="no-dependencies-for-install-target"></span><h3>It is not possible to add dependencies to the CMake generated INSTALL target<a class="headerlink" href="#it-is-not-possible-to-add-dependencies-to-the-cmake-generated-install-target" title="Permalink to this headline">¶</a></h3>
+<p>This prevents us from using cmake’s <code class="code docutils literal notranslate"><span class="pre">install()</span></code> command in combination
+with custom targets because we can not ensure that the custom target is build
+before the <code class="code docutils literal notranslate"><span class="pre">install</span></code> target. As a workaround we have to implement additional
+custom-targets for the installation operations.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://gitlab.kitware.com/cmake/cmake/issues/8438">CMake Issue 8438</a></p>
+</div>
+</div>
+<div class="section" id="cmake-does-not-support-lists-that-have-only-one-empty-element">
+<h3>CMake does not support lists that have only one empty element<a class="headerlink" href="#cmake-does-not-support-lists-that-have-only-one-empty-element" title="Permalink to this headline">¶</a></h3>
+<p>Because lists are implemented as ; separated strings and the notation
+does not have the list end with a ;, it is not possible to have a list
+with one empty element. This especially is a problem in algorithms which handle
+lists. Our function <code class="code docutils literal notranslate"><span class="pre">cpf_append_list()</span></code> is used to detect this problem,
+but when it occurs, there is no general solution to it.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://gitlab.kitware.com/cmake/cmake/issues/18009">CMake Issue 18009</a></p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Problems that are encountered in Development</a><ul>
+<li><a class="reference internal" href="#cmake-induced-problems">CMake induced Problems</a><ul>
+<li><a class="reference internal" href="#cmake-s-add-custom-command-does-not-support-generator-expressions-in-the-output-argument">CMake’s add_custom_command() does not support generator expressions in the OUTPUT argument</a></li>
+<li><a class="reference internal" href="#it-is-not-possible-to-add-dependencies-to-the-cmake-generated-install-target">It is not possible to add dependencies to the CMake generated INSTALL target</a></li>
+<li><a class="reference internal" href="#cmake-does-not-support-lists-that-have-only-one-empty-element">CMake does not support lists that have only one empty element</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="UsageProblems.html"
+                        title="previous chapter">Problems when using the CPF</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../CPFBuildscripts/documentation/CPFBuildscripts.html"
+                        title="next chapter">CPFBuildscripts</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/CPFCMake/documentation/ImplementationProblems.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../CPFBuildscripts/documentation/CPFBuildscripts.html" title="CPFBuildscripts"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="UsageProblems.html" title="Problems when using the CPF"
+             >previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFCMake.html" >CPFCMake</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>How to setup the CPFMachines infrastructure &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Automatic build-Job execution" href="BuildJobTriggerHooks.html" />
+    <link rel="prev" title="Welcome to CPFMachines" href="../README.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="BuildJobTriggerHooks.html" title="Automatic build-Job execution"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../README.html" title="Welcome to CPFMachines"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFMachines.html" accesskey="U">CPFMachines</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="how-to-setup-the-cpfmachines-infrastructure">
+<h1>How to setup the CPFMachines infrastructure<a class="headerlink" href="#how-to-setup-the-cpfmachines-infrastructure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>At least one Linux Machine.</p></li>
+<li><p>For Windows builds, an additional Windows machine is required.</p></li>
+<li><p>All machines must be in a local network, that also contains the machine that runs the setup script.</p></li>
+<li><p>All machines must be accessible via OpenSSH from the script-runner. Linux machines use the sshd service
+provided that can be installed with apt-get. The Windows machines use the OpenSSH server that is shipped
+with Windows.</p></li>
+<li><p>Linux machines must have docker installed.</p></li>
+<li><p>Windows machines must have the <cite>slave.jar</cite> copied to “C:jenkins”?</p></li>
+<li><p>On windows slaves, all build-tools that are required to run the CPF pipeline must be manually installed.</p></li>
+</ul>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Setup infrastructure on fresh systems and complete the list.</p>
+</div>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>This section has overlapping content with ref CPFSettingUpTheInfrastructure. We should merge them together.</p>
+</div>
+</div>
+<div class="section" id="setting-up-the-infrastructure">
+<h2>Setting up the infrastructure<a class="headerlink" href="#setting-up-the-infrastructure" title="Permalink to this headline">¶</a></h2>
+<p>After setting up the host-machines and getting the CPFMachines package,
+you are ready to set up the servers that are involved in the CPF infrastructure.
+If you want to use the infrastructure for multiple projects, it is recommended
+that you create an extra CPF-project that holds the configuration files that
+are needed when running the setup scripts. If you use the jenkins server for a
+single CPF-project you can add the configuration files to the global files if
+that project. In both cases you will have to add the CPFMachines and most likely
+the CPFJenkinsjob package to the CPF-project that holds the configuration files.</p>
+<div class="section" id="machine-configuration">
+<h3>Machine configuration<a class="headerlink" href="#machine-configuration" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Automatically add the content of the example config file here and manually add comments.</p>
+</div>
+</div>
+<div class="section" id="running-the-script">
+<h3>Running the script<a class="headerlink" href="#running-the-script" title="Permalink to this headline">¶</a></h3>
+<p>When you added the configuration file to the project, you are ready to go.
+Start the setup script by running</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m Sources.CPFMachines.setup Sources/MyCPFMachinesConfig.json
+</pre></div>
+</div>
+<p>in the root directory of your project. This may take some time because some of
+the tools required for the pipeline build need to be compiled while setting up
+the docker container. If everything went well the script ends with the output</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Successfully startet jenkins master, build slaves and the documentation server.
+</pre></div>
+</div>
+<p>If you used the example config file, you should now be able to access the Jenkins
+web-interface under [<a class="reference external" href="http://MyMaster:8080](http://MyMaster:8080">http://MyMaster:8080](http://MyMaster:8080</a>) and the projects
+web-server under [<a class="reference external" href="http://MyMaster:80](http://MyMaster:80">http://MyMaster:80](http://MyMaster:80</a>). However, the links to your
+projects will only work after running their build-jobs.</p>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Change webserver file structure, that multiple project pages can be served (serachindex?)
+and an index.html in the base directory provides links to the single projects.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How to setup the CPFMachines infrastructure</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#setting-up-the-infrastructure">Setting up the infrastructure</a><ul>
+<li><a class="reference internal" href="#machine-configuration">Machine configuration</a></li>
+<li><a class="reference internal" href="#running-the-script">Running the script</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../README.html"
+                        title="previous chapter">Welcome to CPFMachines</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="BuildJobTriggerHooks.html"
+                        title="next chapter">Automatic build-Job execution</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/CPFMachines/documentation/Usage.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="BuildJobTriggerHooks.html" title="Automatic build-Job execution"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../README.html" title="Welcome to CPFMachines"
+             >previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFMachines.html" >CPFMachines</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

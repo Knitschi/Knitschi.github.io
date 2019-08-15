@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>The CMakeProjectFramework &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="documentation/Introduction.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="documentation/Introduction.html" title="Introduction"
+             accesskey="N">next</a> |</li>
+  <li>
+    <img src="_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="#">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-project">
+<h1>The CMakeProjectFramework<a class="headerlink" href="#the-project" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>CMakeProjectFramework</strong> framework provides a solution for organizing a cross-platform Git and CMake based C++ software project.
+At the low level it implements the execution of additional tasks like test-execution, packaging or documentation generation.
+This part is implemented with CMake and can be used without the higher level part, which implements a Jenkins based CI-infrastructure that can
+be used to provide continuous integration services for a CPF project.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This project is work in progress. The release 1.0 has yet to come.</p>
+</div>
+<div class="section" id="index">
+<h2>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Introduction to the CPF:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation/Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/SolvedProblems.html">Problems solved by the CPF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/BasicConcepts.html">Basic Concepts</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Tutorials:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation/WorkingWithACPFProject.html">Working with a CPF Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/SettingUpACPFProject.html">Setting up a CPF project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation/SettingUpTheCPFCIInfrastructure.html">Setting up the CPF CI server infrastructure</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Developer References:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="documentation/ProjectOrganisation.html">Project Organization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CPFCMake/documentation/CPFCMake.html">CPFCMake</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CPFBuildscripts/documentation/CPFBuildscripts.html">CPFBuildscripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CPFMachines/documentation/CPFMachines.html">CPFMachines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CPFTests/documentation/CPFTests.html">CPFTests</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
+<p>In the smaller sized teams and companies that I have worked with, improving the CI system was often a somewhat neglected part of the development. Although the eco-system
+provides a number of open source tools that do the heavy lifting, it is still quite some work to integrate all the tools into a full featured CI production
+system. Implementing new features in the production code often had higher priority then the work on the infrastructure.</p>
+<p>This situation bugged me and I started to implement a CI pipeline and infrastructure for my own C++ toy code-base. At some point the <em>infrastructure</em> code started
+to get bigger then the C++ <em>payload</em> code. I decided to pull the <em>infrastructure</em> code out into its own repository which now has become the <strong>CMakeProjectFramework</strong>.</p>
+<p>At it’s current state the project is not battle tested. As far as I know I am the only user and the project currently lacks the generality to be useful
+to everybody. However, I am interested in changing that and making the project useful to hobby developers or small teams that have not yet a CI pipeline in place.
+If you are interested in using the project or joining its development, feel free to contact me via Github.</p>
+</div>
+<div class="section" id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The CMakeProjectFramework is currently only developed on Linux and Windows.
+In the long run I would also like to support development on MacOS,
+and cross-compiling to any other platform that is supported by CMake.</p></li>
+<li><p>Setting up the CI infrastructure currently requires still a lot of manual work.</p></li>
+<li><p>When using the <strong>CPF</strong> on Windows, one can easily run into the 260 character limit for filesystem paths.
+If this is hit, the only fix is to reduce the length of package names and the project name.
+On Windows 10 the limit can be switched off though.</p></li>
+</ul>
+</div>
+<div class="section" id="similar-projects">
+<h2>Similar projects<a class="headerlink" href="#similar-projects" title="Permalink to this headline">¶</a></h2>
+<p>Here is an incomplete list of projects that have functionality overlaps with the CPF.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://build2.org">build2</a></p></li>
+<li><p><a class="reference external" href="https://github.com/mesonbuild/meson">Meson</a></p></li>
+<li><p><a class="reference external" href="https://github.com/cmake-basis/BASIS">BASIS</a></p></li>
+<li><p><a class="reference external" href="https://github.com/DevSolar/jaws">JAWS</a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The CMakeProjectFramework</a><ul>
+<li><a class="reference internal" href="#index">Index</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#motivation">Motivation</a></li>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
+<li><a class="reference internal" href="#similar-projects">Similar projects</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="documentation/Introduction.html"
+                        title="next chapter">Introduction</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="documentation/Introduction.html" title="Introduction"
+             >next</a> |</li>
+  <li>
+    <img src="_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="#">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

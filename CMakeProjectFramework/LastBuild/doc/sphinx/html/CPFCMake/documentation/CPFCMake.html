@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>CPFCMake &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Welcome to CPFCMake" href="../README.html" />
+    <link rel="prev" title="Project Organization" href="../../documentation/ProjectOrganisation.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../README.html" title="Welcome to CPFCMake"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../../documentation/ProjectOrganisation.html" title="Project Organization"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cpfcmake">
+<span id="id1"></span><h1>CPFCMake<a class="headerlink" href="#cpfcmake" title="Permalink to this headline">¶</a></h1>
+<p>The CPFCMake package implements a rich-featured and standardized C++ CMake project that offers
+many tasks that are required for a continuous integration pipeline.
+This package is the most basic component of the CMakeProjectFramework.</p>
+<p>The package tries to solve the following problems:</p>
+<ul class="simple">
+<li><p>Abstract common CMake code to a higher level. CMakeProjectFramework projects are set up by using only
+a handfull of CMake functions that take a lot of arguments but hide implementation details.
+This makes the code in the <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> files shorter, cleaner and more descriptive.</p></li>
+<li><p>Providing a cannonical directory structure for a C++ project.</p></li>
+<li><p>Providing additional CI tasks like code-analysis or documentation-generation as custom targets.</p></li>
+<li><p>Package-versioning based on version tags provided by the Git repository.</p></li>
+<li><p>Modularisation of the code base into individual CMake packages.</p></li>
+<li><p>Use of cmake configuration files, which contain build configurations that outlive the deletion of the build directory and the <code class="code docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code> file.</p></li>
+</ul>
+<div class="section" id="index">
+<h2>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">Welcome to CPFCMake</a></li>
+<li class="toctree-l1"><a class="reference internal" href="APIDocModules.html">API Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="APIDocGlobalVariables.html">API Global Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConfigurationManagement.html">Configuration Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CustomTargets.html">Custom targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PackagesCMake.html">The packages.cmake file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TestTargets.html">Test targets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DistributionPackages.html">Distribution packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DocumentationTargets.html">Documentation generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsageProblems.html">Problems when using the CPF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ImplementationProblems.html">Problems that are encountered in Development</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CPFCMake</a><ul>
+<li><a class="reference internal" href="#index">Index</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../../documentation/ProjectOrganisation.html"
+                        title="previous chapter">Project Organization</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../README.html"
+                        title="next chapter">Welcome to CPFCMake</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/CPFCMake/documentation/CPFCMake.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../README.html" title="Welcome to CPFCMake"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../../documentation/ProjectOrganisation.html" title="Project Organization"
+             >previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

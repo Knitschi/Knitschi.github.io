@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>2_Generate.py &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3_Make.py" href="3_MakeDocs.html" />
+    <link rel="prev" title="1_Configure.py" href="1_ConfigureDocs.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="3_MakeDocs.html" title="3_Make.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="1_ConfigureDocs.html" title="1_Configure.py"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" accesskey="U">CPFBuildscripts</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="generate-py">
+<h1>2_Generate.py<a class="headerlink" href="#generate-py" title="Permalink to this headline">¶</a></h1>
+<p>This script runs the CMake generate step that creates the native “make files” for you chosen generator.</p>
+<div class="section" id="command-line-interface">
+<h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Usage:
+    2_Generate.py <span class="o">[</span>&lt;config_name&gt;<span class="o">]</span> <span class="o">[</span>--clean<span class="o">]</span> <span class="o">[</span>--help<span class="o">]</span>
+
+    Running this script will run CMake to generate the <span class="s2">&quot;make-files&quot;</span> <span class="k">for</span> the given
+    configuration. &lt;config_name&gt; must be the base-name of a configuration file
+    found in the <span class="s2">&quot;Configuration&quot;</span> sub-directory. After calling this script,
+    the makefiles can be found in the <span class="s2">&quot;Generated/&lt;config-name&gt; sub-directory.</span>
+<span class="s2">    When the &lt;config_name&gt; is given, an possibly existing &quot;</span>Generated/&lt;config-name&gt;<span class="s2">&quot;</span>
+<span class="s2">    directory will be deleted before running CMake. If the &lt;config_name&gt; option</span>
+<span class="s2">    is not given, the script will choose the first available config in the</span>
+<span class="s2">    &quot;</span>Configuration<span class="s2">&quot; directory. It will also not delete the &quot;</span>Generated/&lt;config-name&gt;<span class="s2">&quot;</span>
+<span class="s2">    directory, so this can be used for running CMake incrementally.</span>
+<span class="s2">    Note that when calling this for the first time, this step will download and</span>
+<span class="s2">    compile all dependencies that are handled with the hunter package manager,</span>
+<span class="s2">    so the execution may take some time.</span>
+
+<span class="s2">Options:</span>
+<span class="s2">    -c --clean              Deletes the Generated/&lt;config_name&gt; directory before</span>
+<span class="s2">                            running CMake to get a clean build-tree.</span>
+<span class="s2">    -h --help               Shows this page.</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2_Generate.py</a><ul>
+<li><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="1_ConfigureDocs.html"
+                        title="previous chapter">1_Configure.py</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="3_MakeDocs.html"
+                        title="next chapter">3_Make.py</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/CPFBuildscripts/documentation/2_GenerateDocs.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="3_MakeDocs.html" title="3_Make.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="1_ConfigureDocs.html" title="1_Configure.py"
+             >previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" >CPFBuildscripts</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

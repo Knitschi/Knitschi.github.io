@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>Setting up the CPF CI server infrastructure &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Project Organization" href="ProjectOrganisation.html" />
+    <link rel="prev" title="Setting up a CPF project" href="SettingUpACPFProject.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ProjectOrganisation.html" title="Project Organization"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="SettingUpACPFProject.html" title="Setting up a CPF project"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="setting-up-the-cpf-ci-server-infrastructure">
+<h1>Setting up the CPF CI server infrastructure<a class="headerlink" href="#setting-up-the-cpf-ci-server-infrastructure" title="Permalink to this headline">¶</a></h1>
+<p>This page contains a tutorial on how to use the scripts provided by the <em>CPFMachines</em> package to
+set up a continuous integration server infrastructure for you CPF projects. The tutorial assumes
+that you are familiar with the ‘<a class="reference internal" href="WorkingWithACPFProject.html#workingwithacpfproject"><span class="std std-ref">Working with a CPF Project</span></a>’ and the ‘<a class="reference internal" href="SettingUpACPFProject.html#settingupacpfproject"><span class="std std-ref">Setting up a CPF project</span></a> tutorials.
+The tutorial also assumes that you have a CPF project provided by a remote git repository that
+can be pulled and pushed to via the SSH protocol. It assumes you can clone that repository with</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; git clone --recursive ssh://myuser@mydebianpc:/home/myuser/repositories/MyCPFProject.git
+</pre></div>
+</div>
+<div class="section" id="step-by-step-tutorial-for-setting-up-the-cpf-ci-infrastructure">
+<h2>Step by step tutorial for setting up the CPF CI infrastructure<a class="headerlink" href="#step-by-step-tutorial-for-setting-up-the-cpf-ci-infrastructure" title="Permalink to this headline">¶</a></h2>
+<p>The main functionality of the <em>CPFMachines</em> package is provided by a python script <code class="code docutils literal notranslate"><span class="pre">setup.py</span></code>.
+The script accesses the machines that belong to your environment over SSH in order to setup a
+Jenkins CI server, build slaves and web-servers for your CPF project pages.
+The script reads a configuration <code class="code docutils literal notranslate"><span class="pre">.json</span></code> file that contains values like machine access data,
+the number of slaves that you desire, etc. This tutorial gives you an example on how to use
+create a correct configuration file, provide the host machines for your servers and finally
+how to run the <code class="code docutils literal notranslate"><span class="pre">setup.py</span></code> script.</p>
+<div class="section" id="create-a-repository-for-your-configuration-files">
+<h3>1. Create a repository for your configuration files<a class="headerlink" href="#create-a-repository-for-your-configuration-files" title="Permalink to this headline">¶</a></h3>
+<p>In order to use the <em>CPFMachines</em> package you will have to create some custom configuration files,
+that will define some basic properties of your server setup. It is not necessary but recommended
+that you add these files to a git repository. You can also use this repository to add other
+files with helper scripts and such that you use for handling your infrastructure.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; mkdir MyCPFMachines.git
+&gt; <span class="nb">cd</span> MyCPFMachines.git
+&gt; git init --bare --share
+&gt; <span class="nb">cd</span> ..
+&gt; git clone MyCPFMachines.git
+</pre></div>
+</div>
+<p>We now add the <em>CPFMachines</em> package as a git submodule.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; <span class="nb">cd</span> MyCPFMachines
+&gt; git submodule add https://github.com/Knitschi/CPFMachines.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="provide-host-machines-with-ssh-access">
+<h3>2. Provide host machines with SSH access<a class="headerlink" href="#provide-host-machines-with-ssh-access" title="Permalink to this headline">¶</a></h3>
+<p>If you want your CPF project to be build on Linux and Window, you have to at least provide one
+Debian 8.9 and one Windows 10 machine. This tutorial assumes this minimalist setup. The machines can be virtual or physical ones.
+After you learned the basics you can still add more machines for in order to provide more build slaves.
+If you do not care for Windows builds, you can leave away the Windows machine.
+If you only want to do Windows builds, you will still need the Linux machine as it will host the jenkins and
+web server.</p>
+<p>1. Get two fresh physical or virtual machines and install Windows 10 on one, and Debian 8.9 on the other. Both machines must be
+attached to the local network.
+2. Create an account on the Debian machine that can be accessed via SSH.
+3. Install docker on the debian machine.
+3. Create an account on the Windows machine that can be accessed via SSH with the Bitvise SSH server.
+4. Install build tools on the Windows machine.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently more manual steps are required</p>
+</div>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Add more detailed instructions for the above steps?</p>
+</div>
+<p>The further steps assume that you can now run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; ssh myuser@mydebianpc <span class="s2">&quot;echo blub&quot;</span>
+&gt; ssh myuser@mywindowspc <span class="s2">&quot;echo blub&quot;</span>
+</pre></div>
+</div>
+<p>on the machine that you want to use to run the <code class="code docutils literal notranslate"><span class="pre">setup.py</span></code> script. Replace the user and machine names with the ones
+that you actually use.</p>
+</div>
+<div class="section" id="create-a-configuration-file-for-your-infrastructure">
+<h3>3. Create a configuration file for your infrastructure<a class="headerlink" href="#create-a-configuration-file-for-your-infrastructure" title="Permalink to this headline">¶</a></h3>
+<p>We now add a configuration file to our MyCPFMachines repository. The file contains information about our host machines
+and which build-jobs we want to have on the CI server. Add a new file <code class="code docutils literal notranslate"><span class="pre">MyCPFMachines/MyConfig.json</span></code> with the following
+content:</p>
+<div class="section" id="myconfig-json">
+<h4>MyConfig.json<a class="headerlink" href="#myconfig-json" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;CPFMachinesVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;HostMachines&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;MachineID&quot;</span><span class="p">:</span> <span class="s2">&quot;MyMaster&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;HostNameOrIP&quot;</span><span class="p">:</span> <span class="s2">&quot;mydebianpc&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;User&quot;</span><span class="p">:</span> <span class="s2">&quot;myuser&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;OSType&quot;</span><span class="p">:</span> <span class="s2">&quot;Linux&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;TemporaryDirectory&quot;</span><span class="p">:</span> <span class="s2">&quot;/home/myuser/temp&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;MachineID&quot;</span><span class="p">:</span> <span class="s2">&quot;MyWindowsSlave&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;HostNameOrIP&quot;</span><span class="p">:</span> <span class="s2">&quot;mywindowspc&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;User&quot;</span><span class="p">:</span> <span class="s2">&quot;myuser&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;OSType&quot;</span><span class="p">:</span> <span class="s2">&quot;Windows&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;TemporaryDirectory&quot;</span><span class="p">:</span> <span class="s2">&quot;C:/temp&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;JenkinsConfig&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;UseUnconfiguredJenkins&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;JenkinsAdminUser&quot;</span><span class="p">:</span> <span class="s2">&quot;myuser&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;JenkinsAdminUserPassword&quot;</span><span class="p">:</span> <span class="s2">&quot;1234password&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;CPFJobs&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;JenkinsJobBasename&quot;</span><span class="p">:</span> <span class="s2">&quot;MyCPFProject&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Repository&quot;</span><span class="p">:</span> <span class="s2">&quot;ssh://myuser@mydebianpc:/home/myuser/repositories/MyCPFProject.git&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;WebServerConfig&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;MachineID&quot;</span><span class="p">:</span> <span class="s2">&quot;MyMaster&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;HostHTMLShare&quot;</span><span class="p">:</span> <span class="s2">&quot;/home/myuser/mycpfproject_html_share&quot;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;JenkinsMasterHost&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;MachineID&quot;</span><span class="p">:</span> <span class="s2">&quot;MyMaster&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;HostJenkinsMasterShare&quot;</span><span class="p">:</span> <span class="s2">&quot;/home/myuser/jenkins_home&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;JenkinsSlaves&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;MachineID&quot;</span><span class="p">:</span> <span class="s2">&quot;MyMaster&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;Executors&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;MachineID&quot;</span><span class="p">:</span> <span class="s2">&quot;MyWindowsSlave&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;Executors&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;RepositoryHost&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;MachineID&quot;</span><span class="p">:</span> <span class="s2">&quot;MyMaster&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;SSHDir&quot;</span><span class="p">:</span> <span class="s2">&quot;/home/myuser/.ssh&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>With this configuration you will get the jenkins master server, a jenkins linux agent and the web-server on the <code class="code docutils literal notranslate"><span class="pre">mydebianpc</span></code> machine.
+The <code class="code docutils literal notranslate"><span class="pre">mywindowspc</span></code> will be used to run a jenkins windows agent. Jenkins will be configured to have one build job <em>MyCPFProject</em> that
+will build your CPF project. You can get more information about the configuration file <a class="reference internal" href="../CPFMachines/documentation/ConfigurationFile.html#thecpfmachinesconfigfile"><span class="std std-ref">here</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Adding passwords for your accounts to the config file is optional. It may be saver to leave them out, but it comes with
+the inconvenience that you have to re-enter them whenever you want to run the <code class="code docutils literal notranslate"><span class="pre">setup.py</span></code> script.</p>
+</div>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Improve the setup script to allow the creation of an admin account on the first run.</p>
+</div>
+</div>
+</div>
+<div class="section" id="run-the-setup-py-script">
+<h3>4. Run the setup.py script<a class="headerlink" href="#run-the-setup-py-script" title="Permalink to this headline">¶</a></h3>
+<p>We now have done all the manual preparations that are necessary to install the servers.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; python -m CPFMachines.setup MySetup.json
+</pre></div>
+</div>
+<p>Running the script may take quite some time, as some of the required tools are freshly compiled when running the script.
+If the script fails to run successfully, see if you can find the problem on the trouble shooting page <a class="reference internal" href="../CPFMachines/documentation/ProblemsNotes.html#cpfmachinesproblems"><span class="std std-ref">here</span></a>.</p>
+</div>
+<div class="section" id="add-commit-hooks-to-your-repositories">
+<h3>5. Add commit hooks to your repositories<a class="headerlink" href="#add-commit-hooks-to-your-repositories" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Add instructions.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Setting up the CPF CI server infrastructure</a><ul>
+<li><a class="reference internal" href="#step-by-step-tutorial-for-setting-up-the-cpf-ci-infrastructure">Step by step tutorial for setting up the CPF CI infrastructure</a><ul>
+<li><a class="reference internal" href="#create-a-repository-for-your-configuration-files">1. Create a repository for your configuration files</a></li>
+<li><a class="reference internal" href="#provide-host-machines-with-ssh-access">2. Provide host machines with SSH access</a></li>
+<li><a class="reference internal" href="#create-a-configuration-file-for-your-infrastructure">3. Create a configuration file for your infrastructure</a><ul>
+<li><a class="reference internal" href="#myconfig-json">MyConfig.json</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#run-the-setup-py-script">4. Run the setup.py script</a></li>
+<li><a class="reference internal" href="#add-commit-hooks-to-your-repositories">5. Add commit hooks to your repositories</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="SettingUpACPFProject.html"
+                        title="previous chapter">Setting up a CPF project</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ProjectOrganisation.html"
+                        title="next chapter">Project Organization</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documentation/SettingUpTheCPFCIInfrastructure.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ProjectOrganisation.html" title="Project Organization"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="SettingUpACPFProject.html" title="Setting up a CPF project"
+             >previous</a> |</li>
+  <li>
+    <img src="../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

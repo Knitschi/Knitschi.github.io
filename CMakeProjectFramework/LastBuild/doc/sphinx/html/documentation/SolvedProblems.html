@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>Problems solved by the CPF &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Basic Concepts" href="BasicConcepts.html" />
+    <link rel="prev" title="Introduction" href="Introduction.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="BasicConcepts.html" title="Basic Concepts"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Introduction.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="problems-solved-by-the-cpf">
+<h1>Problems solved by the CPF<a class="headerlink" href="#problems-solved-by-the-cpf" title="Permalink to this headline">¶</a></h1>
+<p>This page is the sales brochure for the CPF. It lists a number of problems that I encountered while working on professional C++ projects
+and that the CPF tries to solve or wants to solve in the future. It should give you all the reasons you need for switching over to the
+CPF side of the force.</p>
+<div class="section" id="problems-encountered-in-day-to-day-development">
+<h2>Problems encountered in Day to Day Development<a class="headerlink" href="#problems-encountered-in-day-to-day-development" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-a-cmake-c-project-setup-right-requires-work-and-experience">
+<h3>Getting a CMake C++ Project Setup right requires Work and Experience<a class="headerlink" href="#getting-a-cmake-c-project-setup-right-requires-work-and-experience" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem:</strong> Your are new to the fascinating world of C++ and maybe even programming.
+You want to set up your long term cross-platform C++ code-base, but you have enough trouble
+with getting your source code to compile. You are not sure what a good directory
+structure for your code may be, how you can split your code into multiple libraries,
+how you can provide binary packages for your users and you are a little overwhelmed by CMake
+in general.</p>
+<p><strong>Solution:</strong>
+The CPF tries to find reasonable solutions for the above mentioned problems and tries
+to hide the CMake implementation details behind a relatively small interface. Using
+the CPF should reduce the time that you spend on maintaining the projects infrastructure.</p>
+</div>
+<div class="section" id="vanilla-cmake-can-not-store-multiple-project-configurations-outside-the-build-tree">
+<h3>Vanilla CMake can not store multiple Project Configurations outside the Build-Tree<a class="headerlink" href="#vanilla-cmake-can-not-store-multiple-project-configurations-outside-the-build-tree" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem:</strong> When using vanilla CMake, you can use <code class="code docutils literal notranslate"><span class="pre">-D</span></code> options to store one project
+configuration within the project’s build-tree. This does not completely fit your project’s needs which
+supports multiple configurations that you store outside the build-tree in some scripts
+that contain the call to CMake and store your <code class="code docutils literal notranslate"><span class="pre">-D</span></code> options.</p>
+<p><strong>Solution:</strong> The CPF adds a <a class="reference internal" href="../CPFCMake/documentation/ConfigurationManagement.html#configurationmanagement"><span class="std std-ref">configuration management</span></a> to your project that offers an
+<cite>official</cite> place for multiple configurations that are kept outside the build-tree.
+This also offers an interface for your CI server to query the available configurations
+that should be build.</p>
+</div>
+<div class="section" id="typing-lengthy-cmake-commands-is-tedious">
+<h3>Typing lengthy CMake Commands is tedious<a class="headerlink" href="#typing-lengthy-cmake-commands-is-tedious" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem:</strong> When running CMake from the command line your need to remember the lengthy
+commands and generator names.</p>
+<p><strong>Solution:</strong> The <a class="reference internal" href="../CPFBuildscripts/documentation/CPFBuildscripts.html#cpfbuildscripts"><span class="std std-ref">CPFBuildscripts</span></a> package provides python scripts that wrap the
+underlying cmake calls in order to reduce the amount of arguments that must be given by the user.
+This can be done because the scripts can exploit the <a class="reference internal" href="WorkingWithACPFProject.html#cannonicalprojectstructure"><span class="std std-ref">cannonical project structure</span></a> and the configurations
+provided by the <a class="reference internal" href="../CPFCMake/documentation/ConfigurationManagement.html#configurationmanagement"><span class="std std-ref">configuration management</span></a>.</p>
+</div>
+</div>
+<div class="section" id="problems-related-to-the-ci-pipeline">
+<h2>Problems related to the CI Pipeline<a class="headerlink" href="#problems-related-to-the-ci-pipeline" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="read-the-version-number-automatically-from-the-repository-and-inject-it-into-the-build">
+<h3>Read the Version Number automatically from the Repository and inject it into the Build<a class="headerlink" href="#read-the-version-number-automatically-from-the-repository-and-inject-it-into-the-build" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem:</strong> You want a unique version to be injected into the build for each commit.
+The version should come from your git repository and support official release versions
+as well as internal developer versions.</p>
+<p><strong>Solution:</strong> The CPF automatically reads version information from the release tags.
+It uses this information to derive an internal version number and inject it into the
+project via generated header files. The only manual work that must be done is setting
+<em>release</em> tags for the commits which are chosen to be official releases. If you choose
+to also use the build-job script that is provided by <a class="reference internal" href="../CPFMachines/documentation/CPFMachines.html#cpfmachines"><span class="std std-ref">CPFMachines</span></a>, the build-job
+will also add internal version tags for all successfully build commits.</p>
+</div>
+<div class="section" id="build-pipeline-parallelization">
+<h3>Build Pipeline Parallelization<a class="headerlink" href="#build-pipeline-parallelization" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem:</strong> You realized that implementing your CI pipeline with linear scripts caused
+your build-times become unacceptably long after adding additional pipeline tasks.
+The only way to shorten the turnover times is to parallelize the execution of independent
+tasks.</p>
+<p><strong>Solution:</strong> The CPF uses CMakes custom target mechanism to implement all build-steps.
+This allows your build-tool to run tasks in parallel that do not depend on each other.</p>
+</div>
+<div class="section" id="re-run-outdated-pipeline-steps-during-development">
+<h3>Re-run outdated Pipeline Steps during Development<a class="headerlink" href="#re-run-outdated-pipeline-steps-during-development" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem:</strong> While implementing your CI pipeline with linear scripts you realized that
+you would like to automatically re-execute your pipeline steps when source files change
+and to not re-execute them when they are up to date. You really do not have the time
+to implement a framework for this.</p>
+<p><strong>Solution:</strong> Again, with the custom targets we exploit that this functionality
+has already been implemented by your build-system.</p>
+</div>
+<div class="section" id="extend-the-build-pipeline-with-static-dynamic-code-analysis-documentation-generation-etc">
+<h3>Extend the Build Pipeline with static/dynamic Code Analysis, Documentation Generation, etc …<a class="headerlink" href="#extend-the-build-pipeline-with-static-dynamic-code-analysis-documentation-generation-etc" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem:</strong> Your build pipeline only creates the binaries for your project. You would like to
+further profit from your build server by adding more steps to the pipeline like, code analysis
+or documentation generation.</p>
+<p><strong>Solution:</strong> The CPF provides multiple optional pipeline steps like this that are based on free open-source
+tools. Among the integrated tools are: clang-tidy, clang-format, valgrind, OpenCppCoverage, sphinx
+and some others. To see the full list read the <a class="reference internal" href="../CPFCMake/documentation/CustomTargets.html#customtargets"><span class="std std-ref">custom targets</span></a> documentation.</p>
+</div>
+</div>
+<div class="section" id="problems-related-to-the-server-infrastructure">
+<h2>Problems related to the Server Infrastructure<a class="headerlink" href="#problems-related-to-the-server-infrastructure" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setting-up-a-jenkins-instance-with-multiple-build-clients">
+<h3>Setting up a Jenkins Instance with multiple Build-Clients<a class="headerlink" href="#setting-up-a-jenkins-instance-with-multiple-build-clients" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem:</strong> You need to setup a build-server and configure a build-job for your C++ project.</p>
+<p><strong>Solution:</strong> The CPF provides a script that sets-up the server and the build-job for your
+CPF project.</p>
+</div>
+<div class="section" id="publish-the-project-s-html-pages-on-a-web-server">
+<h3>Publish the Project’s html-pages on a Web-Server<a class="headerlink" href="#publish-the-project-s-html-pages-on-a-web-server" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem:</strong> You need a web-server to host the html-pages that are generated by your CI pipeline.</p>
+<p><strong>Solution</strong> The CPF will setup that server for you and the build-job will make sure that the
+html pages are updated with each build.</p>
+</div>
+<div class="section" id="version-control-for-the-build-infrastructure">
+<h3>Version Control for the Build Infrastructure<a class="headerlink" href="#version-control-for-the-build-infrastructure" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem:</strong> You installed a complex infrastructure of build-servers, build-jobs and web-servers.
+No you realize that you cannot remember how you did it, or that you forgot to maintain your documentation
+properly.</p>
+<p><strong>Solution:</strong> The CPF generates the server infrastructure completely from scripts using docker containers.
+This means that you can check your machine configuration into a repository and always re-create it when
+it somehow gets lost. The scripts also document how the machines are set up.</p>
+</div>
+</div>
+<div class="section" id="future-solutions">
+<h2>Future Solutions<a class="headerlink" href="#future-solutions" title="Permalink to this headline">¶</a></h2>
+<p>A list of problems that we would like to solve in the future.</p>
+<div class="section" id="make-switching-between-inlined-and-pre-build-dependencies-easy">
+<h3>Make Switching between inlined and pre-build Dependencies easy<a class="headerlink" href="#make-switching-between-inlined-and-pre-build-dependencies-easy" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem:</strong> When working on a large codebase, we would like to import packages that
+we do not change as binary packages in order to reduce build times. Sometimes it turns
+out that we need to change those packages after all, maybe in order to fix a bug.
+Now we would prefer if the package was inlined in our projects source tree in order
+to get quick edit-build cycles. The CPF wants to make this change possible by simply
+setting a flag in the configurations file. For inlined packages we can use git submodules
+and for binary packages the hunter package manager.</p>
+</div>
+<div class="section" id="support-non-monolithic-code-bases-of-arbitrary-size">
+<h3>Support non-monolithic code bases of arbitrary size<a class="headerlink" href="#support-non-monolithic-code-bases-of-arbitrary-size" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem:</strong> Your realized that putting your code-base into one monolithic repository
+forces you to globally adapt all packages to API-changes in a lower level package.
+You now want a solution with multiple repositories that allows using multiple versions
+of a package at the same time and do step-wise dependency updates.</p>
+<p><strong>Solution:</strong> By allowing separate repositories for package projects and build-projects,
+the CPF enables a non-monolithic setup. However I have not yet tested the CPF in real large
+code bases yet so I can not promise that it works.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Problems solved by the CPF</a><ul>
+<li><a class="reference internal" href="#problems-encountered-in-day-to-day-development">Problems encountered in Day to Day Development</a><ul>
+<li><a class="reference internal" href="#getting-a-cmake-c-project-setup-right-requires-work-and-experience">Getting a CMake C++ Project Setup right requires Work and Experience</a></li>
+<li><a class="reference internal" href="#vanilla-cmake-can-not-store-multiple-project-configurations-outside-the-build-tree">Vanilla CMake can not store multiple Project Configurations outside the Build-Tree</a></li>
+<li><a class="reference internal" href="#typing-lengthy-cmake-commands-is-tedious">Typing lengthy CMake Commands is tedious</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problems-related-to-the-ci-pipeline">Problems related to the CI Pipeline</a><ul>
+<li><a class="reference internal" href="#read-the-version-number-automatically-from-the-repository-and-inject-it-into-the-build">Read the Version Number automatically from the Repository and inject it into the Build</a></li>
+<li><a class="reference internal" href="#build-pipeline-parallelization">Build Pipeline Parallelization</a></li>
+<li><a class="reference internal" href="#re-run-outdated-pipeline-steps-during-development">Re-run outdated Pipeline Steps during Development</a></li>
+<li><a class="reference internal" href="#extend-the-build-pipeline-with-static-dynamic-code-analysis-documentation-generation-etc">Extend the Build Pipeline with static/dynamic Code Analysis, Documentation Generation, etc …</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#problems-related-to-the-server-infrastructure">Problems related to the Server Infrastructure</a><ul>
+<li><a class="reference internal" href="#setting-up-a-jenkins-instance-with-multiple-build-clients">Setting up a Jenkins Instance with multiple Build-Clients</a></li>
+<li><a class="reference internal" href="#publish-the-project-s-html-pages-on-a-web-server">Publish the Project’s html-pages on a Web-Server</a></li>
+<li><a class="reference internal" href="#version-control-for-the-build-infrastructure">Version Control for the Build Infrastructure</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#future-solutions">Future Solutions</a><ul>
+<li><a class="reference internal" href="#make-switching-between-inlined-and-pre-build-dependencies-easy">Make Switching between inlined and pre-build Dependencies easy</a></li>
+<li><a class="reference internal" href="#support-non-monolithic-code-bases-of-arbitrary-size">Support non-monolithic code bases of arbitrary size</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Introduction.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="BasicConcepts.html"
+                        title="next chapter">Basic Concepts</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documentation/SolvedProblems.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="BasicConcepts.html" title="Basic Concepts"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Introduction.html" title="Introduction"
+             >previous</a> |</li>
+  <li>
+    <img src="../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

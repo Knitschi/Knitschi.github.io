@@ -1,0 +1,1209 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>Setting up a CPF project &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Setting up the CPF CI server infrastructure" href="SettingUpTheCPFCIInfrastructure.html" />
+    <link rel="prev" title="Working with a CPF Project" href="WorkingWithACPFProject.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="SettingUpTheCPFCIInfrastructure.html" title="Setting up the CPF CI server infrastructure"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="WorkingWithACPFProject.html" title="Working with a CPF Project"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="setting-up-a-cpf-project">
+<span id="settingupacpfproject"></span><h1>Setting up a CPF project<a class="headerlink" href="#setting-up-a-cpf-project" title="Permalink to this headline">¶</a></h1>
+<p>This section shows how to create a CPF based project. Before doing so, it is recommended
+that you get acquainted with the <em>CMakeProjectFramework</em> by building the example project as
+described on the <a class="reference internal" href="WorkingWithACPFProject.html#workingwithacpfproject"><span class="std std-ref">Working with a CPF Project</span></a> page. Basic knowledge of CMake and how
+to work with Git is helpful but it should be possible to work through this
+tutorial without any preexisting knowledge of those tools.</p>
+<div class="section" id="step-by-step-tutorial-for-creating-a-cpf-project">
+<h2>Step by step tutorial for creating a CPF project<a class="headerlink" href="#step-by-step-tutorial-for-creating-a-cpf-project" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial will walk you through the steps that are required to create a CPF project.
+It starts with a very simple project that will then be extended to demonstrate more advanced features.
+The goal of the tutorial is to show you what must be done to create a new CPF project and to explain some details
+in the process. If you already know your way around a CPF project and you just want to create a new one, it is probably
+quicker if you simply copy the example project and remove the stuff that you do not need and rename the rest.</p>
+<p>This tutorial assumes that you work on Windows with Visual Studio 2017. It also assumes that you can run CMake and the python
+scripts from the command line without prepending the extra <code class="code docutils literal notranslate"><span class="pre">python</span></code> command. If you want to run this tutorial
+on Linux, you have to use the base <em>Linux</em> configuration in the configuration step instead of the <em>Windows</em> configuration.
+Until not stated differently, all commands should be executed in the projects root directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Differences on Linux</strong></p>
+<blockquote>
+<div><p>When working on Linux there are a few differences.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>The build output directory for the example executables is a slightly different directory with an additional <code class="code docutils literal notranslate"><span class="pre">bin</span></code> subdirectory.</p></li>
+<li><p>When running executables you have to prepend <code class="code docutils literal notranslate"><span class="pre">./</span></code> to the executable file.</p></li>
+<li><p>At some places you may have to replace <code class="code docutils literal notranslate"><span class="pre">\\</span></code> with <code class="code docutils literal notranslate"><span class="pre">/</span></code>.</p></li>
+<li><p>You will have to replace commands for filesystem operations with their Linux equivalents.</p></li>
+</ul>
+</div>
+<div class="section" id="create-the-repository">
+<h3>1. Create the repository<a class="headerlink" href="#create-the-repository" title="Permalink to this headline">¶</a></h3>
+<p>First you need a Git repository that will hold your CI project. For simplicity’s sake we create the <em>remote</em> git repository on the same machine
+that we use for working on the cloned repository. If you are familiar with setting up remote Git repositories you can
+also create it on a different machine.</p>
+<p>To create the remote repository navigate to a directory that is suited for holding the example repositories. If work with an older
+Windows version, make sure that it is a short path. Because of the deep nested directory structure, your CPF project may get into trouble with
+the 260 character path limit.
+Create the directory <code class="code docutils literal notranslate"><span class="pre">MyCPFProject.git</span></code>, open a command line and create the remote repository by executing the following commands:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; cd MyCPFProject.git
+&gt; git init --share --bare
+</pre></div>
+</div>
+<p>Clone the <em>remote</em> repository with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; cd ..
+&gt; git clone MyCPFProject.git
+</pre></div>
+</div>
+<p>This will create the <code class="code docutils literal notranslate"><span class="pre">MyCPFProject</span></code> directory. This is the root directory of your project
+that we will use to add and edit source files. In the next section we will add some basic files to that
+repository.</p>
+</div>
+<div class="section" id="basic-ci-project-files">
+<h3>2. Basic CI project files<a class="headerlink" href="#basic-ci-project-files" title="Permalink to this headline">¶</a></h3>
+<p>We now have the repository that will hold the files of our project.
+First we add the basic files that are required for a CPF project.
+You now have to create the files</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MyCPFProject
+│   .gitignore
+│
+└───Sources
+        CMakeLists.txt
+        packages.cmake
+</pre></div>
+</div>
+<p>with the following content:</p>
+<div class="section" id="gitignore">
+<h4>.gitignore<a class="headerlink" href="#gitignore" title="Permalink to this headline">¶</a></h4>
+<p>The file will make sure that directories and files that are generated by the CPF
+are ignored by git.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># file MyCPFProject/.gitignore
+
+Generated/**
+Generated
+Configuration/**
+Configuration
+1_Configure.py
+2_Generate.py
+3_Make.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="cmakelists-txt">
+<h4>CMakeLists.txt<a class="headerlink" href="#cmakelists-txt" title="Permalink to this headline">¶</a></h4>
+<p>This is the root <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file of your CPF project.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/CMakeLists.txt</span>
+
+<span class="nf">include(</span><span class="s">&quot;CPFCMake/cpfInit.cmake&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">cmake_minimum_required</span> <span class="nf">(</span><span class="no">VERSION</span><span class="w"> </span><span class="o">${</span><span class="nt">CPF_MINIMUM_CMAKE_VERSION</span><span class="o">}</span><span class="nf">)</span><span class="w"></span>
+
+<span class="nf">project(</span><span class="nb">MyCPFProject</span><span class="nf">)</span><span class="w"></span>
+
+<span class="nf">cpfAddPackages()</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">include(&quot;CPFCMake/cpfInit.cmake&quot;)</span></code>: Including <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfinitmodule"><span class="std std-ref">cpfInit.cmake</span></a> provides us with the <code class="code docutils literal notranslate"><span class="pre">CPF_MINIMUM_CMAKE_VERSION</span></code> variable that is
+used in the next line. Alternatively you can set your own minimum version that must be equal or
+higher then the version that is required by the CPF. The <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfinitmodule"><span class="std std-ref">cpfInit.cmake</span></a> module also includes further
+files to make the <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfaddpackages"><span class="std std-ref">cpfAddPackages()</span></a> function available that is used later. <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfinitmodule"><span class="std std-ref">cpfInit.cmake</span></a>
+also adds the cmake modules of the CPF to the <a class="reference external" href="https://cmake.org/cmake/help/latest/variable/CMAKE_MODULE_PATH.html">CMAKE_MODULE_PATH</a> which allows you to use the short include syntax from here on.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">project(MyCPFProject)</span></code>: This creates the so called <em>CI project</em>.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">cpfAddPackages()</span></code>: This function adds the packages to the CI project. The function reads the value of the <code class="code docutils literal notranslate"><span class="pre">CPF_PACKAGES</span></code>
+variable in the <code class="code docutils literal notranslate"><span class="pre">packages.cmake</span></code> file and adds them to the project by calling <a class="reference external" href="https://cmake.org/cmake/help/latest/command/add_subdirectory.html">add_subdirectory()</a>.
+<a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfaddpackages"><span class="std std-ref">cpfAddPackages()</span></a> also initiates some global variables and targets of the CPF.</p></li>
+</ul>
+</div>
+<div class="section" id="packages-cmake">
+<h4>packages.cmake<a class="headerlink" href="#packages-cmake" title="Permalink to this headline">¶</a></h4>
+<p>This file defines which packages are added with the call of <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfaddpackages"><span class="std std-ref">cpfAddPackages()</span></a>.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/packages.cmake</span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">CPF_PACKAGES</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>For now we have no packages available so the value of the package list <code class="code docutils literal notranslate"><span class="pre">CPF_PACKAGES</span></code> stays empty.
+We will modify this file later when we add our first packages.
+Read more about the file in chapter <a class="reference internal" href="../CPFCMake/documentation/PackagesCMake.html#packagescmake"><span class="std std-ref">The packages.cmake file</span></a>.</p>
+</div>
+<div class="section" id="add-the-basic-files-to-the-repository">
+<h4>Add the basic files to the repository<a class="headerlink" href="#add-the-basic-files-to-the-repository" title="Permalink to this headline">¶</a></h4>
+<p>After creating the listed files you should now commit them to the repository and add a first version tag.
+The tag is required by the CPF to determine the version number of the packages. If it is missing, the CPF
+will later cause errors.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; git add .
+&gt; git commit . -m&quot;Adds basic files&quot;
+&gt; git tag -a 0.0.0 -m&quot;The initial version&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="add-the-cpf-packages">
+<h3>3. Add the CPF packages<a class="headerlink" href="#add-the-cpf-packages" title="Permalink to this headline">¶</a></h3>
+<p>In the last section you added a <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file that uses some functions from the <em>CPFCMake</em> package.
+However, you do not have those functions yet available in your project. To change that we now add two packages
+in form of <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">git submodules</a>. Open a command line and navigate to the <code class="code docutils literal notranslate"><span class="pre">Sources</span></code> directory. Then run:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Sources&gt; git submodule add https://github.com/Knitschi/CPFCMake.git
+Sources&gt; git submodule add https://github.com/Knitschi/CPFBuildscripts.git
+</pre></div>
+</div>
+<p>The submodules <a class="reference internal" href="../CPFCMake/documentation/CPFCMake.html#cpfcmake"><span class="std std-ref">CPFCMake</span></a> and <a class="reference internal" href="../CPFBuildscripts/documentation/CPFBuildscripts.html#cpfbuildscripts"><span class="std std-ref">CPFBuildscripts</span></a> are part of the CMakeProjectFramework.
+Adding them to the source tree is not enough. We also have to add them to the <code class="code docutils literal notranslate"><span class="pre">packages.cmake</span></code>
+file as <code class="code docutils literal notranslate"><span class="pre">EXTERNAL</span></code> packages.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/packages.cmake</span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">CPF_PACKAGES</span><span class="w"></span>
+<span class="w">    </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">CPFCMake</span><span class="w"></span>
+<span class="w">    </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">CPFBuildscripts</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-generate-step-for-the-first-time">
+<h3>4. Run the generate step for the first time<a class="headerlink" href="#run-the-generate-step-for-the-first-time" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have acquired the CPF packages we can run the generate step to see if everything works.
+Run the following commands in the project root directory.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; Sources\CPFBuildscripts\0_CopyScripts.py
+&gt; 1_Configure.py VS --inherits Windows
+&gt; 2_Generate.py
+</pre></div>
+</div>
+<p>This creates the <code class="code docutils literal notranslate"><span class="pre">Configuration</span></code> and <code class="code docutils literal notranslate"><span class="pre">Generated</span></code> directories parallel to your <code class="code docutils literal notranslate"><span class="pre">Sources</span></code> directory.
+Your file tree should now look like this.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MyCPFProject
+│   .gitignore
+│   .gitmodules
+│   1_Configure.py
+│   2_Generate.py
+│   3_Make.py
+│
+├───Configuration
+│       VS.config.cmake
+│
+├───Generated
+│   └───VS
+│           ...
+│
+└───Sources
+    │   CMakeLists.txt
+    │   packages.cmake
+    │
+    ├───CPFBuildscripts
+    │       ...
+    │
+    └───CPFCMake
+            ...
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-the-myapp-application-package">
+<h3>5. Add the MyApp application package<a class="headerlink" href="#add-the-myapp-application-package" title="Permalink to this headline">¶</a></h3>
+<p>Our CI project is now ready. The only thing that is missing is some actual C++ code.
+In order to add some <em>payload</em> code, we add our first package to the <code class="code docutils literal notranslate"><span class="pre">MyCPFProject</span></code>
+repository. This is a package that creates an executable. Add the following
+file tree to the <code class="code docutils literal notranslate"><span class="pre">Sources</span></code> directory.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Sources
+│
+└───MyApp
+        CMakeLists.txt
+        function.cpp
+        function.h
+        main.cpp
+</pre></div>
+</div>
+<p>Set the content of the new files in the MyApp directory as follows.</p>
+<div class="section" id="id1">
+<h4>CMakeLists.txt<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/MyApp/CMakeLists.txt</span>
+
+<span class="nf">include(</span><span class="nb">cpfInitPackageProject</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">include(</span><span class="nb">cpfAddCppPackage</span><span class="nf">)</span><span class="w"></span>
+
+<span class="nf">cpfInitPackageProject()</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="nb">briefDescription</span><span class="w"> </span><span class="s">&quot;A C++ command line application that prints a string.&quot;</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set(</span><span class="w"> </span><span class="nb">longDescription</span><span class="w"> </span><span class="s">&quot;The application is so small that it needs no long description&quot;</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
+
+<span class="c">############################## list source files ##############################</span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_PRODUCTION_FILES</span><span class="w"></span>
+<span class="w">    </span><span class="nb">main.cpp</span><span class="w"></span>
+<span class="w">    </span><span class="nb">function.cpp</span><span class="w"></span>
+<span class="w">    </span><span class="nb">function.h</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_LINKED_LIBRARIES</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="c">################################# add Package #################################</span>
+<span class="nf">cpfAddCppPackage(</span><span class="w"></span>
+<span class="w">    </span><span class="no">PACKAGE_NAMESPACE</span><span class="w">   </span><span class="nb">ma</span><span class="w"></span>
+<span class="w">    </span><span class="no">TYPE</span><span class="w">                </span><span class="no">CONSOLE_APP</span><span class="w"></span>
+<span class="w">    </span><span class="no">BRIEF_DESCRIPTION</span><span class="w">   </span><span class="o">${</span><span class="nt">briefDescription</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LONG_DESCRIPTION</span><span class="w">    </span><span class="o">${</span><span class="nt">longDescription</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">PRODUCTION_FILES</span><span class="w">    </span><span class="o">${</span><span class="nt">PACKAGE_PRODUCTION_FILES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LINKED_LIBRARIES</span><span class="w">    </span><span class="o">${</span><span class="nt">PACKAGE_LINKED_LIBRARIES</span><span class="o">}</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">include(cpfInitPackageProject)</span></code>: Provides the <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfinitpackageproject"><span class="std std-ref">cpfInitPackageProject()</span></a> function.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">include(cpfAddCppPackage)</span></code>: Provides the <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfaddcpppackage"><span class="std std-ref">cpfAddCppPackage()</span></a> function.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">cpfInitPackageProject()</span></code>: This creates the package project and sets the <code class="code docutils literal notranslate"><span class="pre">PROJECT_VERSION</span></code> variables.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">set(</span> <span class="pre">briefDescription</span> <span class="pre">...</span></code> and <code class="code docutils literal notranslate"><span class="pre">set(</span> <span class="pre">longDescription</span> <span class="pre">...</span></code>: Basic descriptions of what your package
+does. The values may be used in auto-generated documentation or in distribution packages.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">set(</span> <span class="pre">PACKAGE_PRODUCTION_FILES</span> <span class="pre">...</span></code>: A list with the currently available source files of the package. This is
+a <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file after all ;-).</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">set(</span> <span class="pre">PACKAGE_LINKED_LIBRARIES</span> <span class="pre">...</span></code>: A list with targets on which the created package depends. For now we have
+no dependencies so the list is empty.</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">:ref:`cpfAddCppPackage`</span></code>: This function adds all the binary and custom targets that belong to
+a CPF C++ package. Most of <a class="reference internal" href="../CPFCMake/documentation/CPFCMake.html#cpfcmake"><span class="std std-ref">CPFCMake’s</span></a> functionality lies beneath this function.</p></li>
+</ul>
+</div>
+<div class="section" id="function-cpp">
+<h4>function.cpp<a class="headerlink" href="#function-cpp" title="Permalink to this headline">¶</a></h4>
+<p>This is a simple C++ file that implements a function. It represents your C++ code.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// file MyCPFProject/Sources/MyApp/function.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;MyApp/function.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;MyApp/cpfPackageVersion_MyApp.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">ma</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">function</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;MyApp (version &quot;</span> <span class="o">+</span> <span class="n">getPackageVersion</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;) greets the world!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The file includes the generated file <code class="code docutils literal notranslate"><span class="pre">cpfPackageVersion_MyApp.h</span></code> which provides function <code class="code docutils literal notranslate"><span class="pre">ma::getPackageVersion()</span></code> that returns the current version number
+of the package. Note that the include directories and the project directory structure in the CPF is laid-out that all includes can uniformly be
+written as <code class="code docutils literal notranslate"><span class="pre">\#include</span> <span class="pre">&lt;package/file.h&gt;</span></code>. As recommended in the section for the <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file we put our package functions into namespace <code class="code docutils literal notranslate"><span class="pre">ma</span></code>.</p>
+</div>
+<div class="section" id="function-h">
+<h4>function.h<a class="headerlink" href="#function-h" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// file MyCPFProject/Sources/MyApp/function.h</span>
+<span class="cp">#pragma once</span>
+<span class="cp">#include</span> <span class="cpf">&lt;MyApp/ma_export.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">ma</span>
+<span class="p">{</span>
+    <span class="n">MA_EXPORT</span> <span class="kt">bool</span> <span class="n">function</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note the use of the <code class="code docutils literal notranslate"><span class="pre">MA_EXPORT</span></code> export macro. The macro is provided by the <code class="code docutils literal notranslate"><span class="pre">ma_export.h</span></code> header
+which is generated by CMake. The <code class="code docutils literal notranslate"><span class="pre">MA_</span></code> prefix in the macro is derived from the <code class="code docutils literal notranslate"><span class="pre">PACKAGE_NAMESPACE</span> <span class="pre">ma</span></code>
+option in the call of <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfaddcpppackage"><span class="std std-ref">cpfAddCppPackage()</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Export Macros</strong></p>
+<p>Export macros are only needed when building shared libraries.
+However, it is good practice to let the clients of a library decide whether they want to use the library as a shared
+or a static library. So better make sure that you always add the export macro to symbols that are intended
+to be used by clients. If you do not add the macro in a shared library, you will get linker errors.</p>
+</div>
+</div>
+<div class="section" id="main-cpp">
+<h4>main.cpp<a class="headerlink" href="#main-cpp" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// file MyCPFProject/Sources/MyApp/main.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;MyApp/function.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">ma</span><span class="o">::</span><span class="n">function</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The CPF expects the main function to be in the file <code class="code docutils literal notranslate"><span class="pre">main.cpp</span></code>. In the case of a package that creates
+an executable, the CPF internally creates an extra library that contains all sources except the <code class="code docutils literal notranslate"><span class="pre">main.cpp</span></code> file.
+This is done to allow linking the complete functionality of the package to more than one executable.
+This is required when adding additional test executables to the package.</p>
+</div>
+<div class="section" id="add-the-owned-package-to-the-ci-project">
+<h4>Add the owned package to the CI project<a class="headerlink" href="#add-the-owned-package-to-the-ci-project" title="Permalink to this headline">¶</a></h4>
+<p>We now have to tell the CI-project that we added an <code class="code docutils literal notranslate"><span class="pre">OWNED</span></code> package. We do this by adding <code class="code docutils literal notranslate"><span class="pre">MyApp</span></code> to the
+<code class="code docutils literal notranslate"><span class="pre">packages.cmake</span></code> file.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/packages.cmake</span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">CPF_PACKAGES</span><span class="w"></span>
+<span class="w">    </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">CPFCMake</span><span class="w"></span>
+<span class="w">    </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">CPFBuildscripts</span><span class="w"></span>
+<span class="w">    </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">MyApp</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Finally commit the new files to the repository by running:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; git add Sources/MyApp
+&gt; git commit . -m&quot;Adds the MyApp package.&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-the-project">
+<h4>Build the project<a class="headerlink" href="#build-the-project" title="Permalink to this headline">¶</a></h4>
+<p>With all the files in place we can now generate and build the project. Note that you have to run a fresh generate
+whenever you change the <code class="code docutils literal notranslate"><span class="pre">packages.cmake</span></code> file. A <em>fresh</em> generate is executed when the <code class="code docutils literal notranslate"><span class="pre">--clean</span></code>
+option is given to the <code class="code docutils literal notranslate"><span class="pre">2_Generate.py</span></code> script. After that you can build the pipeline target and run the application.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 2_Generate.py --clean
+&gt; 3_Make.py --target pipeline
+&gt; Generated\VS\BuildStage\Debug\MyApp\MyApp-debug
+MyApp (version 0.0.0.2-73cc-dirty) greets the world!
+</pre></div>
+</div>
+<p>Your actual version number will be different and depends on the current
+state of your repository. You can read more about the CPF versioning mechanism <a class="reference internal" href="../CPFCMake/documentation/Versioning.html#versioning"><span class="std std-ref">here</span></a>.</p>
+<p>At this point our pipeline does not contain a lot of functionality. It only builds the MyApp target.
+The only thing to note here is that <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfaddcpppackage"><span class="std std-ref">cpfAddCppPackage()</span></a> created the library <code class="code docutils literal notranslate"><span class="pre">libMyApp</span></code> and the executable
+<code class="code docutils literal notranslate"><span class="pre">MyApp-debug</span></code>.</p>
+</div>
+</div>
+<div class="section" id="add-a-default-configuration">
+<h3>6. Add a default configuration<a class="headerlink" href="#add-a-default-configuration" title="Permalink to this headline">¶</a></h3>
+<p>For our first build we used one of the default configurations that are shipped with the CPF, <em>Linux</em> or <em>Windows</em>.
+In this section we add our own default configuration to the project. Default configurations can be thought of as
+configurations that are officially supported by our project. They are typically the configurations that are
+build by the continuous integration server.
+You can find more detailed information about configurations in the CPF <a class="reference internal" href="../CPFCMake/documentation/ConfigurationManagement.html#configurationmanagement"><span class="std std-ref">here</span></a>.
+For demonstration purposes we change the configuration to build shared libraries instead of static libraries.
+To create the new default configuration execute the following steps.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 1_Configure.py VS2017-shared --inherits Windows -D BUILD_SHARED_LIBS=ON
+&gt; mkdir Sources\CIBuildConfigurations
+&gt; move Configuration\VS2017-shared.config.cmake Sources\CIBuildConfigurations
+&gt; rmdir /s /q Configuration
+&gt; 1_Configure.py VS --inherits VS2017-shared
+&gt; 2_Generate.py
+&gt; git add Sources\CIBuildConfigurations
+&gt; git commit . -m&quot;Adds the default configuration VS2017-shared.&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>First we create a new configuration file that sets a different value for variable <code class="code docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code>.
+This variable is used to tell CMake to build shared libraries instead of static ones. This will change our implementation
+library <code class="code docutils literal notranslate"><span class="pre">libMyApp</span></code> into a shared library. Instead of using the <code class="code docutils literal notranslate"><span class="pre">-D</span></code> command line options, you can also
+edit the configuration file with a text-editor, which may be more convenient if multiple values are changed.</p></li>
+<li><p>Then we move the new configuration to the projects default configurations directory <code class="code docutils literal notranslate"><span class="pre">Sources/CIBuildConfigurations</span></code>.</p></li>
+<li><p>With the second configure step we use the new default configuration as our new local <em>VS</em> configuration.</p></li>
+<li><p>We regenerate our make-files with the new configuration.</p></li>
+<li><p>At the end we commit the new configuration file to the repository.</p></li>
+</ul>
+<p>Developers can now inherit from the new default configuration <code class="code docutils literal notranslate"><span class="pre">VS2017-shared</span></code> instead of
+manually setting all the required CMake variables in the <code class="code docutils literal notranslate"><span class="pre">1_Configure.py</span></code> step.</p>
+</div>
+<div class="section" id="add-the-library-package-mylib">
+<h3>7. Add the library package MyLib<a class="headerlink" href="#add-the-library-package-mylib" title="Permalink to this headline">¶</a></h3>
+<p>As your C++ project grows, it will at some point be reasonable to split it into multiple libraries.
+With the CPF we create libraries by adding a library package. In this example we assume that our library
+will be used by other projects. To allow this, we create a separate repository for the library package.
+We then add this repository as a git submodule to our <code class="code docutils literal notranslate"><span class="pre">MyCPFProject</span></code> repository.
+If you do not know if a library will be shared between projects, you can first add it directly to the
+CI repository to avoid the extra overhead of working with a git submodule. You can still put it
+in it’s own repository later.</p>
+<p>Create a new repository with the name <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code> using the same steps that you executed when creating the
+<code class="code docutils literal notranslate"><span class="pre">MyCPFProject</span></code> repository. You should end up with two empty repositories, <code class="code docutils literal notranslate"><span class="pre">MyLib.git</span></code> and <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code>.
+Both lie besides the <code class="code docutils literal notranslate"><span class="pre">MyCPFProject.git</span> <span class="pre">and</span> <span class="pre">:code:`MyCPFProject</span></code> directories. We will first add some files to
+the <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code> repository and then add it as a git submodule to <code class="code docutils literal notranslate"><span class="pre">MyCPFPRoject</span></code>.</p>
+<div class="section" id="add-content-to-the-mylib-repository">
+<h4>Add content to the MyLib repository<a class="headerlink" href="#add-content-to-the-mylib-repository" title="Permalink to this headline">¶</a></h4>
+<p>Add the following text-files to the <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code> repository and set the content as listed
+in the sections below.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MyLib
+    CMakeLists.txt
+    function.cpp
+    function.h
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4>CMakeLists.txt<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyLib/CMakeLists.txt</span>
+
+<span class="nf">include(</span><span class="nb">cpfInitPackageProject</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">include(</span><span class="nb">cpfAddCppPackage</span><span class="nf">)</span><span class="w"></span>
+
+<span class="nf">cpfInitPackageProject()</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="nb">briefDescription</span><span class="w"> </span><span class="s">&quot;A C++ library that prints a string.&quot;</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set(</span><span class="w"> </span><span class="nb">longDescription</span><span class="w"> </span><span class="s">&quot;The library is so small that it needs no long description&quot;</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
+
+<span class="c">############################## list source files ##############################</span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_PUBLIC_HEADERS</span><span class="w"></span>
+<span class="w">    </span><span class="nb">function.h</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_PRODUCTION_FILES</span><span class="w"></span>
+<span class="w">    </span><span class="nb">function.cpp</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_LINKED_LIBRARIES</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="c">################################# add Package #################################</span>
+<span class="nf">cpfAddCppPackage(</span><span class="w"></span>
+<span class="w">    </span><span class="no">PACKAGE_NAMESPACE</span><span class="w">       </span><span class="nb">ml</span><span class="w"></span>
+<span class="w">    </span><span class="no">TYPE</span><span class="w">                    </span><span class="no">LIB</span><span class="w"></span>
+<span class="w">    </span><span class="no">BRIEF_DESCRIPTION</span><span class="w">       </span><span class="o">${</span><span class="nt">briefDescription</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LONG_DESCRIPTION</span><span class="w">        </span><span class="o">${</span><span class="nt">longDescription</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">PUBLIC_HEADER</span><span class="w">           </span><span class="o">${</span><span class="nt">PACKAGE_PUBLIC_HEADERS</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">PRODUCTION_FILES</span><span class="w">        </span><span class="o">${</span><span class="nt">PACKAGE_PRODUCTION_FILES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LINKED_LIBRARIES</span><span class="w">        </span><span class="o">${</span><span class="nt">PACKAGE_LINKED_LIBRARIES</span><span class="o">}</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>This file has some differences compared to the <code class="code docutils literal notranslate"><span class="pre">MyApp\CMakeLists.txt</span></code> file.</p>
+<ul class="simple">
+<li><p>We changed the name of the namespace and the description of the package.</p></li>
+<li><p>We changed the <code class="code docutils literal notranslate"><span class="pre">TYPE</span> <span class="pre">argument</span></code> in the <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfaddcpppackage"><span class="std std-ref">cpfAddCppPackage()</span></a> call in order to create a library package.</p></li>
+<li><p>We added the <code class="code docutils literal notranslate"><span class="pre">PUBLIC_HEADER</span></code> argument to the <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfaddcpppackage"><span class="std std-ref">cpfAddCppPackage()</span></a> call. Libraries must provide
+public headers for consumers. With the argument we can define which of our headers are supposed to be public.
+Each library needs at least one public header or the project will fail to build.</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h4>function.cpp<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// file MyLib/function.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;MyLib/function.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;MyLib/cpfPackageVersion_MyLib.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">ml</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">function</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;MyLib (version &quot;</span> <span class="o">+</span> <span class="n">getPackageVersion</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;) greets the world!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h4>function.h<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// file MyLib/function.h</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;MyLib/ml_export.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">ml</span>
+<span class="p">{</span>
+        <span class="n">ML_EXPORT</span> <span class="kt">bool</span> <span class="n">function</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-the-new-files-to-the-mylib-repository">
+<h4>Add the new files to the MyLib repository<a class="headerlink" href="#add-the-new-files-to-the-mylib-repository" title="Permalink to this headline">¶</a></h4>
+<p>Now add, commit and push all files in the <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code> repository. We also add an initial
+version tag for the <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code> repository.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MyLib&gt; git add .
+MyLib&gt; git commit . -m&quot;Adds package files&quot;
+MyLib&gt; git tag -a 0.0.0 -m&quot;The initial version&quot;
+MyLib&gt; git push --all
+MyLib&gt; git push --tags
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-the-mylib-package-to-the-mycpfproject-repository">
+<h4>Add the MyLib package to the MyCPFProject repository<a class="headerlink" href="#add-the-mylib-package-to-the-mycpfproject-repository" title="Permalink to this headline">¶</a></h4>
+<p>Now add <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code> as a <em>loose owned</em> package to <code class="code docutils literal notranslate"><span class="pre">MyCPFProject</span></code> as a git submodule
+by running</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.../MyCPFProject/Sources&gt; git submodule add &lt;your full path&gt;/MyLib.git
+</pre></div>
+</div>
+<p>in the <code class="code docutils literal notranslate"><span class="pre">MyCPFProject/Sources</span></code> directory. This will yield a <code class="code docutils literal notranslate"><span class="pre">MyCPFProject/Sources/MyLib</span></code> directory
+that contains the files that you created in the above section. To finish the process of adding the MyLib package
+we have to extend some files in <code class="code docutils literal notranslate"><span class="pre">MyCPFProject</span></code>.</p>
+</div>
+<div class="section" id="id5">
+<h4>packages.cmake<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>We add the <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code> package as owned package to CI project by adding it in the <code class="code docutils literal notranslate"><span class="pre">packages.cmake</span></code> file.
+As the variable description states, it is essential that <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code> is added to the list before <code class="code docutils literal notranslate"><span class="pre">MyApp</span></code>
+or cmake will not be able to find <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code> when it adds <code class="code docutils literal notranslate"><span class="pre">MyApp</span></code>.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/packages.cmake</span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">CPF_PACKAGES</span><span class="w"></span>
+<span class="w">    </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">CPFCMake</span><span class="w"></span>
+<span class="w">    </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">CPFBuildscripts</span><span class="w"></span>
+<span class="w">    </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">MyLib</span><span class="w"></span>
+<span class="w">    </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">MyApp</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="myapp-cmakelists-txt">
+<h4>MyApp/CMakeLists.txt<a class="headerlink" href="#myapp-cmakelists-txt" title="Permalink to this headline">¶</a></h4>
+<p>To make the functionality of <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code> available in <code class="code docutils literal notranslate"><span class="pre">MyApp</span></code>,
+we have to add it to the linked libraries of <code class="code docutils literal notranslate"><span class="pre">MyApp</span></code>.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/MyApp/CMakeLists.txt</span>
+
+<span class="p">...</span><span class="w"></span>
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_LINKED_LIBRARIES</span><span class="w"></span>
+<span class="w">    </span><span class="nb">MyLib</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="myapp-function-cpp">
+<h4>MyApp/function.cpp<a class="headerlink" href="#myapp-function-cpp" title="Permalink to this headline">¶</a></h4>
+<p>We extend our original <code class="code docutils literal notranslate"><span class="pre">ma::function()</span></code> to also call <code class="code docutils literal notranslate"><span class="pre">ml::function()</span></code> from <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// file MyCPFProject/Sources/MyApp/function.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;MyApp/function.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;MyApp/cpfPackageVersion_MyApp.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;MyLib/function.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">ma</span>
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">function</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">ml</span><span class="o">::</span><span class="n">function</span><span class="p">();</span>
+
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;MyApp (version &quot;</span> <span class="o">+</span> <span class="n">getPackageVersion</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;) greets the world!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You now have to commit the changes to <code class="code docutils literal notranslate"><span class="pre">MyCPFProject</span></code> and regenerate the make-files in order to finish adding the library package.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; git commit . -m&quot;Adds MyLib submodule and uses it in MyApp.&quot;
+&gt; 2_Generate.py
+&gt; 3_Make.py
+&gt; Generated\VS\BuildStage\Debug\MyApp\MyApp-debug.exe
+MyLib (version 0.0.0) greets the world!
+MyApp (version 0.0.0.3-3d31) greets the world!
+</pre></div>
+</div>
+<p>You can see that <code class="code docutils literal notranslate"><span class="pre">MyApp</span></code> successfully calls the new function from MyLib.
+Again, your version numbers will be different. MyLib has a different version than MyApp
+because it lives in a different repository.</p>
+</div>
+</div>
+<div class="section" id="add-a-test-executable-to-mylib">
+<h3>8. Add a test executable to MyLib<a class="headerlink" href="#add-a-test-executable-to-mylib" title="Permalink to this headline">¶</a></h3>
+<p>The CPF packages are designed to contain an extra executable that runs automated tests for the packages
+production code. This section will show you how to enable such a test executable for the <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code> package.
+Add the new file <code class="code docutils literal notranslate"><span class="pre">MyLib_tests_main.cpp</span></code> to a new <code class="code docutils literal notranslate"><span class="pre">Tests</span></code> directory with the content</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// MyCPFProject/MyLib/Tests/MyLib_tests_main.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;MyLib/function.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Run tests for MyLib&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="n">ml</span><span class="o">::</span><span class="n">function</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In a real project you would probably use the main function that is provided by your test-framework
+instead of writing your own. Note that we placed the file into the arbitrary <code class="code docutils literal notranslate"><span class="pre">Tests</span></code> subdirectory
+which allows us to keep some order in our package. Change the packages <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file content
+to this:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/MyLib/CMakeLists.txt</span>
+
+<span class="nf">include(</span><span class="nb">cpfInitPackageProject</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">include(</span><span class="nb">cpfAddCppPackage</span><span class="nf">)</span><span class="w"></span>
+
+<span class="nf">cpfInitPackageProject()</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="nb">briefDescription</span><span class="w"> </span><span class="s">&quot;A C++ library that prints a string.&quot;</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set(</span><span class="w"> </span><span class="nb">longDescription</span><span class="w"> </span><span class="s">&quot;The library is so small that it needs no long description&quot;</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
+
+<span class="c">############################## list source files ##############################</span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_PUBLIC_HEADERS</span><span class="w"></span>
+<span class="w">    </span><span class="nb">function.h</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_PRODUCTION_FILES</span><span class="w"></span>
+<span class="w">    </span><span class="nb">function.cpp</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_TEST_FILES</span><span class="w"></span>
+<span class="w">    </span><span class="na">Tests/MyLib_tests_main.cpp</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_LINKED_LIBRARIES</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_LINKED_TEST_LIBRARIES</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="c">################################# add Package #################################</span>
+<span class="nf">cpfAddCppPackage(</span><span class="w"></span>
+<span class="w">    </span><span class="no">PACKAGE_NAMESPACE</span><span class="w">       </span><span class="nb">ml</span><span class="w"></span>
+<span class="w">    </span><span class="no">TYPE</span><span class="w">                    </span><span class="no">LIB</span><span class="w"></span>
+<span class="w">    </span><span class="no">BRIEF_DESCRIPTION</span><span class="w">       </span><span class="o">${</span><span class="nt">briefDescription</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LONG_DESCRIPTION</span><span class="w">        </span><span class="o">${</span><span class="nt">longDescription</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">PUBLIC_HEADER</span><span class="w">           </span><span class="o">${</span><span class="nt">PACKAGE_PUBLIC_HEADERS</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">PRODUCTION_FILES</span><span class="w">        </span><span class="o">${</span><span class="nt">PACKAGE_PRODUCTION_FILES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">TEST_FILES</span><span class="w">              </span><span class="o">${</span><span class="nt">PACKAGE_TEST_FILES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LINKED_LIBRARIES</span><span class="w">        </span><span class="o">${</span><span class="nt">PACKAGE_LINKED_LIBRARIES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LINKED_TEST_LIBRARIES</span><span class="w">   </span><span class="o">${</span><span class="nt">PACKAGE_LINKED_TEST_LIBRARIES</span><span class="o">}</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>We added two new lists, <code class="code docutils literal notranslate"><span class="pre">PACKAGE_TEST_FILES</span></code> and <code class="code docutils literal notranslate"><span class="pre">PACKAGE_LINKED_TEST_LIBRARIES</span></code> and handed them
+to the <code class="code docutils literal notranslate"><span class="pre">cpfAddCppPackage()</span></code> function. The <code class="code docutils literal notranslate"><span class="pre">PACKAGE_TEST_FILES</span></code> list should contain all source
+files that are used to build the test executable. the <code class="code docutils literal notranslate"><span class="pre">PACKAGE_LINKED_TEST_LIBRARIES</span></code> list
+can be used to add linked libraries that are only used by the test executable. This could be a test-framework
+library for example. In this example our test executable does not depend on any other library so we leave this empty.</p>
+<p>You can now build and run your test executable by calling:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 2_Generate.py
+&gt; 3_Make.py --target runAllTests
+...
+Run tests for MyLib
+
+MyLib (version 0.0.0.0-dirty) greets the world!
+...
+</pre></div>
+</div>
+<p>Somewhere in the build-log you should see the text output of the executable. Note that tests will not
+be re-run if you execute the build command a second time. You have to edit at least one source
+file of the package in order to outdate the test-run. If you then rebuild the <em>runAllTests</em> target
+it will automatically create new binaries and run the tests with those.</p>
+<p>For more information about the test targets of a CPF package see: <a class="reference internal" href="../CPFCMake/documentation/TestTargets.html#testtargets"><span class="std std-ref">Test targets</span></a></p>
+</div>
+<div class="section" id="add-a-fixture-library-to-mylib">
+<h3>9. Add a fixture library to MyLib<a class="headerlink" href="#add-a-fixture-library-to-mylib" title="Permalink to this headline">¶</a></h3>
+<p>When writing a lot of automated tests, it may become necessary to re-use test utility code from one package
+in another. For example this can be fake or mock classes that you provide to replace real implementations in tests.
+To make that possible, the CPF can create an extra <em>fixture</em> library per package that can contain reusable
+test code. To demonstrate this, add two files <code class="code docutils literal notranslate"><span class="pre">function_fixture.h</span></code> and <code class="code docutils literal notranslate"><span class="pre">function_fixture.cpp</span></code> to the
+MyLib package with the following content and add them to the <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file as shown below.</p>
+<div class="section" id="sources-mylib-tests-function-fixture-h">
+<h4>Sources/MyLib/Tests/function_fixture.h<a class="headerlink" href="#sources-mylib-tests-function-fixture-h" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// MyCPFProject/Sources/MyLib/Tests/function_fixture.h</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;MyLib/ml_tests_export.h&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">ml</span>
+<span class="p">{</span>
+    <span class="n">ML_TESTS_EXPORT</span> <span class="kt">void</span> <span class="n">prepareFunctionTest</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note that the fixture library uses a different export macro then the production library.</p>
+</div>
+<div class="section" id="sources-mylib-tests-function-fixture-cpp">
+<h4>Sources/MyLib/Tests/function_fixture.cpp<a class="headerlink" href="#sources-mylib-tests-function-fixture-cpp" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// MyCPFProject/Sources/MyLib/Tests/function_fixture.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;MyLib/Tests/function_fixture.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">ml</span>
+<span class="p">{</span>
+    <span class="kt">void</span> <span class="n">prepareFunctionTest</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Do reusable test preparations here&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sources-mylib-cmakelists-txt">
+<h4>Sources/MyLib/CMakeLists.txt<a class="headerlink" href="#sources-mylib-cmakelists-txt" title="Permalink to this headline">¶</a></h4>
+<p>For the fixture library we have to distinguish between public header files and other source files.
+Add the new files to new list variables and as arguments to the <code class="code docutils literal notranslate"><span class="pre">cpfAddCppPackage()</span></code> call as shown below.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/MyLib/CMakeLists.txt</span>
+<span class="p">...</span><span class="w"></span>
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_PUBLIC_FIXTURE_HEADER</span><span class="w"></span>
+<span class="w">    </span><span class="na">Tests/function_fixture.h</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">PACKAGE_FIXTURE_FILES</span><span class="w"></span>
+<span class="w">    </span><span class="na">Tests/function_fixture.cpp</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+<span class="p">...</span><span class="w"></span>
+
+<span class="nf">cpfAddCppPackage(</span><span class="w"></span>
+<span class="w">    </span><span class="no">PACKAGE_NAMESPACE</span><span class="w">       </span><span class="nb">ml</span><span class="w"></span>
+<span class="w">    </span><span class="no">TYPE</span><span class="w">                    </span><span class="no">LIB</span><span class="w"></span>
+<span class="w">    </span><span class="no">BRIEF_DESCRIPTION</span><span class="w">       </span><span class="o">${</span><span class="nt">briefDescription</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LONG_DESCRIPTION</span><span class="w">        </span><span class="o">${</span><span class="nt">longDescription</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">PUBLIC_HEADER</span><span class="w">           </span><span class="o">${</span><span class="nt">PACKAGE_PUBLIC_HEADERS</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">PRODUCTION_FILES</span><span class="w">        </span><span class="o">${</span><span class="nt">PACKAGE_PRODUCTION_FILES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">TEST_FILES</span><span class="w">              </span><span class="o">${</span><span class="nt">PACKAGE_TEST_FILES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">PUBLIC_FIXTURE_HEADER</span><span class="w">   </span><span class="o">${</span><span class="nt">PACKAGE_PUBLIC_FIXTURE_HEADER</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">FIXTURE_FILES</span><span class="w">           </span><span class="o">${</span><span class="nt">PACKAGE_FIXTURE_FILES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LINKED_LIBRARIES</span><span class="w">        </span><span class="o">${</span><span class="nt">PACKAGE_LINKED_LIBRARIES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LINKED_TEST_LIBRARIES</span><span class="w">   </span><span class="o">${</span><span class="nt">PACKAGE_LINKED_TEST_LIBRARIES</span><span class="o">}</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sources-mylib-tests-mylib-tests-main-cpp">
+<h4>Sources/MyLib/Tests/MyLib_tests_main.cpp<a class="headerlink" href="#sources-mylib-tests-mylib-tests-main-cpp" title="Permalink to this headline">¶</a></h4>
+<p>Use the new function in the test code. The fixture library is called <code class="code docutils literal notranslate"><span class="pre">&lt;package&gt;_fixtures</span></code> and is automatically linked to
+the test executable. If you need it in the tests of another package you have to add it to that packages <code class="code docutils literal notranslate"><span class="pre">PACKAGE_LINKED_TEST_LIBRARIES</span></code> variable.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// file MyCPFProject/Sources/MyLib/Tests/MyLib_tests_main.cpp</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;MyLib/function.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;MyLib/Tests/function_fixture.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Run tests for MyLib&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="n">ml</span><span class="o">::</span><span class="n">prepareFunctionTest</span><span class="p">();</span>
+
+    <span class="k">auto</span> <span class="n">result</span> <span class="o">=</span> <span class="n">ml</span><span class="o">::</span><span class="n">function</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="compile-and-run-the-fixture-code">
+<h4>Compile and run the fixture code<a class="headerlink" href="#compile-and-run-the-fixture-code" title="Permalink to this headline">¶</a></h4>
+<p>You can now compile and run your tests by calling</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 3_Make.py --target runAllTests
+...
+Run tests for MyLib
+
+Do reusable test preparations here
+MyLib (version 0.0.0.2-6f37-dirty) greets the world!
+...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="package-the-build-results-of-mylib">
+<h3>10. Package the build results of MyLib<a class="headerlink" href="#package-the-build-results-of-mylib" title="Permalink to this headline">¶</a></h3>
+<p>One part of a CI pipeline is to create some sort of package that can be downloaded by the users of the software.
+For applications this is usually an installer which can be arbitrarily complex. For libraries however,
+this often is just a ZIP archive that either holds the complete source code or the compiled artifacts and public headers.
+In the CPF nomenclature we call these package files <em>distribution packages</em> in order to distinguish them from the
+CPF code packages in the <code class="code docutils literal notranslate"><span class="pre">Sources</span></code> directory.</p>
+<p>The CPF has enough information about your package to create the simple compressed archive packages for you.
+To enable creating distribution packages that contain source files and binary files you have to add two more
+argument to the <code class="code docutils literal notranslate"><span class="pre">cpfAddCppPackage()</span></code> function.</p>
+<div class="section" id="id6">
+<h4>Sources/MyLib/CMakeLists.txt<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/MyLib/CMakeLists.txt</span>
+
+<span class="p">...</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="nb">developerBinaryPackageOptions</span><span class="w"></span>
+<span class="w">    </span><span class="no">DISTRIBUTION_PACKAGE_CONTENT_TYPE</span><span class="w">   </span><span class="no">CT_DEVELOPER</span><span class="w"></span>
+<span class="w">    </span><span class="no">DISTRIBUTION_PACKAGE_FORMATS</span><span class="w">        </span><span class="m">7</span><span class="no">Z</span><span class="w"> </span><span class="no">ZIP</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="nb">sourcePackageOptions</span><span class="w"></span>
+<span class="w">    </span><span class="no">DISTRIBUTION_PACKAGE_CONTENT_TYPE</span><span class="w">   </span><span class="no">CT_SOURCES</span><span class="w"></span>
+<span class="w">    </span><span class="no">DISTRIBUTION_PACKAGE_FORMATS</span><span class="w">        </span><span class="no">TGZ</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="p">...</span><span class="w"></span>
+
+<span class="nf">cpfAddCppPackage(</span><span class="w"></span>
+<span class="w">    </span><span class="no">PACKAGE_NAMESPACE</span><span class="w">       </span><span class="nb">ml</span><span class="w"></span>
+<span class="w">    </span><span class="no">TYPE</span><span class="w">                    </span><span class="no">LIB</span><span class="w"></span>
+<span class="w">    </span><span class="no">BRIEF_DESCRIPTION</span><span class="w">       </span><span class="o">${</span><span class="nt">briefDescription</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LONG_DESCRIPTION</span><span class="w">        </span><span class="o">${</span><span class="nt">longDescription</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">PUBLIC_HEADER</span><span class="w">           </span><span class="o">${</span><span class="nt">PACKAGE_PUBLIC_HEADERS</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">PRODUCTION_FILES</span><span class="w">        </span><span class="o">${</span><span class="nt">PACKAGE_PRODUCTION_FILES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">TEST_FILES</span><span class="w">              </span><span class="o">${</span><span class="nt">PACKAGE_TEST_FILES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">PUBLIC_FIXTURE_HEADER</span><span class="w">   </span><span class="o">${</span><span class="nt">PACKAGE_PUBLIC_FIXTURE_HEADER</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">FIXTURE_FILES</span><span class="w">           </span><span class="o">${</span><span class="nt">PACKAGE_FIXTURE_FILES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LINKED_LIBRARIES</span><span class="w">        </span><span class="o">${</span><span class="nt">PACKAGE_LINKED_LIBRARIES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">LINKED_TEST_LIBRARIES</span><span class="w">   </span><span class="o">${</span><span class="nt">PACKAGE_LINKED_TEST_LIBRARIES</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">DISTRIBUTION_PACKAGES</span><span class="w">   </span><span class="o">${</span><span class="nt">developerBinaryPackageOptions</span><span class="o">}</span><span class="w"></span>
+<span class="w">    </span><span class="no">DISTRIBUTION_PACKAGES</span><span class="w">   </span><span class="o">${</span><span class="nt">sourcePackageOptions</span><span class="o">}</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Note that due to the complexity of the option the <code class="code docutils literal notranslate"><span class="pre">DISTRIBUTION_PACKAGES</span></code> argument requires a list of nested key-word arguments.</p></li>
+<li><p>The options in this example will cause the creation of a <em>developer binary</em> package in the <code class="code docutils literal notranslate"><span class="pre">.7z</span></code> and <code class="code docutils literal notranslate"><span class="pre">.zip</span></code> format.
+<em>Developer binary</em> means, that the package will contain the compiled binaries and public headers.
+We also set options for creating a <code class="code docutils literal notranslate"><span class="pre">.tar.gz</span></code> archive that contains the packages sources.</p></li>
+<li><p>For more information about creating other kinds of distribution packages read: <a class="reference internal" href="../CPFCMake/documentation/DistributionPackages.html#distributionpackages"><span class="std std-ref">Distribution packages</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="create-the-distribution-package">
+<h4>Create the distribution package<a class="headerlink" href="#create-the-distribution-package" title="Permalink to this headline">¶</a></h4>
+<p>In order to create the specified packages, run</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 3_Make.py --target distributionPackages
+</pre></div>
+</div>
+<p>You should now have a directory <code class="code docutils literal notranslate"><span class="pre">MyCPFProject/Generated/VS/html/Downloads/MyLib/LastBuild</span></code> with the three archives</p>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">MyLib.\&lt;version\&gt;.Windows.src.tar.gz</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">MyLib.\&lt;version\&gt;.Windows.dev.Debug.7z</span></code></p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">MyLib.\&lt;version\&gt;.Windows.dev.Debug.zip</span></code></p></li>
+</ul>
+<p>The packages are added to the html directory so they can be directly downloaded from the projects web-page.</p>
+</div>
+</div>
+<div class="section" id="enable-using-pre-compiled-header-by-adding-the-cotire-module">
+<h3>11. Enable using pre-compiled header by adding the cotire module<a class="headerlink" href="#enable-using-pre-compiled-header-by-adding-the-cotire-module" title="Permalink to this headline">¶</a></h3>
+<p>This is an optional feature and you can skip this step if you do not want to use pre-compiled header.</p>
+<p><a class="reference external" href="https://github.com/sakra/cotire">Cotire</a> is a third party cmake module that implements the automatic use of pre-compiled headers.
+You can use this in your CPF project to speed up your builds.
+First you need to add cotire as an external package by executing</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Sources&gt; git submodule add https://github.com/Knitschi/cotire.git
+</pre></div>
+</div>
+<p>Note that we actually use a fork of cotire that was changed to better integrate with the CPF.
+We now add cotire to our external packages in the <code class="code docutils literal notranslate"><span class="pre">packages.cmake</span></code> file.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/packages.cmake</span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">CPF_PACKAGES</span><span class="w"></span>
+<span class="w">    </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">cotire</span><span class="w"></span>
+<span class="w">    </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">CPFCMake</span><span class="w"></span>
+<span class="w">    </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">CPFBuildscripts</span><span class="w"></span>
+<span class="w">    </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">MyLib</span><span class="w"></span>
+<span class="w">    </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">MyApp</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>As a last step we enable the use of cotire in our configuration.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 1_Configure.py VS --inherits VS2017-shared -D CPF_ENABLE_PRECOMPILED_HEADER=ON
+&gt; 2_Generate.py
+</pre></div>
+</div>
+<p>At this point we will not benefit much from using pre-compiled headers. Cotire will only
+add headers from external dependencies to the pre-compiled header and we only use <em>iostream</em> here.
+The speed-up that can be gained with this will show when the project includes many large headers.</p>
+<p>Cotire will also add a compiler option for including the generated prefix header which
+is not available to clients of our libraries. Therefore you should make sure that your headers
+include everything they need and do not rely on the inclusion of the prefix header.
+To enforce that you can add a CI configuration that uses <code class="code docutils literal notranslate"><span class="pre">CPF_ENABLE_PRECOMPILED_HEADER=OFF</span></code>.
+This configuration will fail to build when forget to add includes that are provided
+by the prefix header.</p>
+</div>
+<div class="section" id="add-a-doxygen-package-to-generate-the-documentation-of-your-ci-project">
+<h3>12. Add a Doxygen package to generate the documentation of your CI-project<a class="headerlink" href="#add-a-doxygen-package-to-generate-the-documentation-of-your-ci-project" title="Permalink to this headline">¶</a></h3>
+<p>This is an optional feature and you can skip this step if you do not want to use Doxygen as a documentation generator.
+In order to use this feature you have to download and install Doxygen on your developer machine and add it to
+the <code class="code docutils literal notranslate"><span class="pre">PATH</span></code> so you can run it from the command line.</p>
+<p>The CPF provides you with the <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfadddoxygenpackage"><span class="std std-ref">cpfAddDoxygenPackage()</span></a> function that can be used to add a custom target
+that runs &lt;a href=”<a class="reference external" href="http://www.doxygen.nl/index.html">http://www.doxygen.nl/index.html</a>”&gt;Doxygen&lt;/a&gt; on your CI-project.
+Doxygen parses your source files for special comments and generates an html documentation from it.</p>
+<p>We now add our own package that holds files for our global documentation. This package
+contains the doxygen configuration files and files that contain global documentation that does
+not really belong to any of your packages.</p>
+<p>Now add the following files.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Sources
+│
+└───documentation
+        CMakeLists.txt
+        MyProject.dox
+</pre></div>
+</div>
+<p>It is not required to use <code class="code docutils literal notranslate"><span class="pre">documentation</span></code> as the name of the package.
+The name of the package directory is also the name of the target that
+is later build to generate the documentation.</p>
+<div class="section" id="id7">
+<h4>CMakeLists.txt<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>In this <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file we add a custom-target package instead of
+the C++ packages that we added in the previous steps.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/documentation/CMakeLists.txt</span>
+
+<span class="nf">include(</span><span class="nb">cpfInitPackageProject</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">include(</span><span class="nb">cpfAddDoxygenPackage</span><span class="nf">)</span><span class="w"></span>
+
+<span class="nf">cpfInitPackageProject()</span><span class="w"></span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="nb">sources</span><span class="w"></span>
+<span class="w">    </span><span class="nb">MyProject.dox</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+
+<span class="nf">cpfAddDoxygenPackage(</span><span class="w"></span>
+<span class="w">    </span><span class="no">DOXYGEN_CONFIG_FILE</span><span class="w"> </span><span class="s">&quot;${CMAKE_CURRENT_SOURCE_DIR}/DoxygenConfig.txt&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="no">DOXYGEN_LAYOUT_FILE</span><span class="w"> </span><span class="s">&quot;${CMAKE_CURRENT_SOURCE_DIR}/DoxygenLayout.xml&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="no">DOXYGEN_STYLESHEET_FILE</span><span class="w"> </span><span class="s">&quot;${CMAKE_CURRENT_SOURCE_DIR}/DoxygenStylesheet.css&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="no">HTML_HEADER</span><span class="w"> </span><span class="s">&quot;${CMAKE_CURRENT_SOURCE_DIR}/header.html&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="no">HTML_FOOTER</span><span class="w"> </span><span class="s">&quot;${CMAKE_CURRENT_SOURCE_DIR}/footer.html&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="no">SOURCES</span><span class="w"> </span><span class="o">${</span><span class="nt">sources</span><span class="o">}</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="myproject-dox">
+<h4>MyProject.dox<a class="headerlink" href="#myproject-dox" title="Permalink to this headline">¶</a></h4>
+<p>This is an example of a file that contains global documentation.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// file MyCPFProject/Sources/documentation/MyProject.dox</span>
+
+<span class="cm">/**</span>
+<span class="cm">\mainpage Overview</span>
+
+<span class="cm"># MyProject #</span>
+
+<span class="cm">bli bla blub</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<p>We use doxygen to create the default versions of the config files <code class="code docutils literal notranslate"><span class="pre">DoxygenConfig.txt</span></code>, <code class="code docutils literal notranslate"><span class="pre">DoxygenLayout.xml</span></code>, <code class="code docutils literal notranslate"><span class="pre">DoxygenStylesheet.css</span></code>
+<code class="code docutils literal notranslate"><span class="pre">header.html</span></code> and <code class="code docutils literal notranslate"><span class="pre">footer.html</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Sources/documentation&gt;doxygen -g DoxygenConfig.txt
+Sources/documentation&gt;doxygen -l DoxygenLayout.xml
+Sources/documentation&gt;doxygen -w html header.html footer.html DoxygenStylesheet.css
+</pre></div>
+</div>
+<p>You can change these files to customize the content and looks of the generated html pages.
+For further information refer to the Doxygen documentation.
+Finally we add the package to the repository and the <code class="code docutils literal notranslate"><span class="pre">packages.cmake</span></code> file.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; git add Sources/documentation
+&gt; git commit . -m&quot;Adds the project doxygen documentation&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h4>packages.cmake<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># file MyCPFProject/Sources/packages.cmake</span>
+
+<span class="nf">set(</span><span class="w"> </span><span class="no">CPF_PACKAGES</span><span class="w"></span>
+<span class="w">    </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">cotire</span><span class="w"></span>
+<span class="w">    </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">CPFCMake</span><span class="w"></span>
+<span class="w">    </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">CPFBuildscripts</span><span class="w"></span>
+<span class="w">    </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">MyLib</span><span class="w"></span>
+<span class="w">    </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">MyApp</span><span class="w"></span>
+<span class="w">    </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">documentation</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>To harvest the fruits of your hard labor run</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 3_Make.py --target documentation
+</pre></div>
+</div>
+<p>You can now open <code class="code docutils literal notranslate"><span class="pre">Generated/VS/html/doxygen/html/index.html</span></code> in your browser to take a look at the generated html-page.
+There is not much to see here, because we have not added much content yet.
+The CPF can generate a standard doxygen documentation for your C++ packages that contains the descriptions from
+the <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> files. To activate this feature we add the <code class="code docutils literal notranslate"><span class="pre">GENERATE_PACKAGE_DOX_FILES</span></code> options to the
+<a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfaddcpppackage"><span class="std std-ref">cpfAddCppPackage()</span></a> calls in <code class="code docutils literal notranslate"><span class="pre">Sources/MyLib/CMakeLists.txt</span></code> and <code class="code docutils literal notranslate"><span class="pre">Sources/MyApp/CMakeLists.txt</span></code>.</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="p">...</span><span class="w"></span>
+<span class="nf">cpfAddCppPackage(</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"></span>
+<span class="w">    </span><span class="no">GENERATE_PACKAGE_DOX_FILES</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>You can now re-build your documentation target and the html-page should contain <em>Modules</em> sub-pages
+for the <code class="code docutils literal notranslate"><span class="pre">MyLib</span></code> and <code class="code docutils literal notranslate"><span class="pre">MyApp</span></code> packages that contain the description strings and some links to other
+generated content.</p>
+<p>For more details see: <a class="reference internal" href="../CPFCMake/documentation/DocumentationTargets.html#documentationgeneration"><span class="std std-ref">Documentation generation</span></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="cpfprojectsetupsummary-summary">
+<h2>CPFProjectSetupSummary Summary<a class="headerlink" href="#cpfprojectsetupsummary-summary" title="Permalink to this headline">¶</a></h2>
+<p>You now know the basics about setting up a CPF project. If you still have open questions, feel free to add an
+issue on github with your question.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Setting up a CPF project</a><ul>
+<li><a class="reference internal" href="#step-by-step-tutorial-for-creating-a-cpf-project">Step by step tutorial for creating a CPF project</a><ul>
+<li><a class="reference internal" href="#create-the-repository">1. Create the repository</a></li>
+<li><a class="reference internal" href="#basic-ci-project-files">2. Basic CI project files</a><ul>
+<li><a class="reference internal" href="#gitignore">.gitignore</a></li>
+<li><a class="reference internal" href="#cmakelists-txt">CMakeLists.txt</a></li>
+<li><a class="reference internal" href="#packages-cmake">packages.cmake</a></li>
+<li><a class="reference internal" href="#add-the-basic-files-to-the-repository">Add the basic files to the repository</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#add-the-cpf-packages">3. Add the CPF packages</a></li>
+<li><a class="reference internal" href="#run-the-generate-step-for-the-first-time">4. Run the generate step for the first time</a></li>
+<li><a class="reference internal" href="#add-the-myapp-application-package">5. Add the MyApp application package</a><ul>
+<li><a class="reference internal" href="#id1">CMakeLists.txt</a></li>
+<li><a class="reference internal" href="#function-cpp">function.cpp</a></li>
+<li><a class="reference internal" href="#function-h">function.h</a></li>
+<li><a class="reference internal" href="#main-cpp">main.cpp</a></li>
+<li><a class="reference internal" href="#add-the-owned-package-to-the-ci-project">Add the owned package to the CI project</a></li>
+<li><a class="reference internal" href="#build-the-project">Build the project</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#add-a-default-configuration">6. Add a default configuration</a></li>
+<li><a class="reference internal" href="#add-the-library-package-mylib">7. Add the library package MyLib</a><ul>
+<li><a class="reference internal" href="#add-content-to-the-mylib-repository">Add content to the MyLib repository</a></li>
+<li><a class="reference internal" href="#id2">CMakeLists.txt</a></li>
+<li><a class="reference internal" href="#id3">function.cpp</a></li>
+<li><a class="reference internal" href="#id4">function.h</a></li>
+<li><a class="reference internal" href="#add-the-new-files-to-the-mylib-repository">Add the new files to the MyLib repository</a></li>
+<li><a class="reference internal" href="#add-the-mylib-package-to-the-mycpfproject-repository">Add the MyLib package to the MyCPFProject repository</a></li>
+<li><a class="reference internal" href="#id5">packages.cmake</a></li>
+<li><a class="reference internal" href="#myapp-cmakelists-txt">MyApp/CMakeLists.txt</a></li>
+<li><a class="reference internal" href="#myapp-function-cpp">MyApp/function.cpp</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#add-a-test-executable-to-mylib">8. Add a test executable to MyLib</a></li>
+<li><a class="reference internal" href="#add-a-fixture-library-to-mylib">9. Add a fixture library to MyLib</a><ul>
+<li><a class="reference internal" href="#sources-mylib-tests-function-fixture-h">Sources/MyLib/Tests/function_fixture.h</a></li>
+<li><a class="reference internal" href="#sources-mylib-tests-function-fixture-cpp">Sources/MyLib/Tests/function_fixture.cpp</a></li>
+<li><a class="reference internal" href="#sources-mylib-cmakelists-txt">Sources/MyLib/CMakeLists.txt</a></li>
+<li><a class="reference internal" href="#sources-mylib-tests-mylib-tests-main-cpp">Sources/MyLib/Tests/MyLib_tests_main.cpp</a></li>
+<li><a class="reference internal" href="#compile-and-run-the-fixture-code">Compile and run the fixture code</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#package-the-build-results-of-mylib">10. Package the build results of MyLib</a><ul>
+<li><a class="reference internal" href="#id6">Sources/MyLib/CMakeLists.txt</a></li>
+<li><a class="reference internal" href="#create-the-distribution-package">Create the distribution package</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#enable-using-pre-compiled-header-by-adding-the-cotire-module">11. Enable using pre-compiled header by adding the cotire module</a></li>
+<li><a class="reference internal" href="#add-a-doxygen-package-to-generate-the-documentation-of-your-ci-project">12. Add a Doxygen package to generate the documentation of your CI-project</a><ul>
+<li><a class="reference internal" href="#id7">CMakeLists.txt</a></li>
+<li><a class="reference internal" href="#myproject-dox">MyProject.dox</a></li>
+<li><a class="reference internal" href="#id8">packages.cmake</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cpfprojectsetupsummary-summary">CPFProjectSetupSummary Summary</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="WorkingWithACPFProject.html"
+                        title="previous chapter">Working with a CPF Project</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="SettingUpTheCPFCIInfrastructure.html"
+                        title="next chapter">Setting up the CPF CI server infrastructure</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documentation/SettingUpACPFProject.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="SettingUpTheCPFCIInfrastructure.html" title="Setting up the CPF CI server infrastructure"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="WorkingWithACPFProject.html" title="Working with a CPF Project"
+             >previous</a> |</li>
+  <li>
+    <img src="../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

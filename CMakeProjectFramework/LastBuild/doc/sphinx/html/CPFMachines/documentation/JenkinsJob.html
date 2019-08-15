@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>The jenkins build-job &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Machines and Container" href="MachinesAndContainer.html" />
+    <link rel="prev" title="The CPFMachines config file" href="ConfigurationFile.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="MachinesAndContainer.html" title="Machines and Container"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ConfigurationFile.html" title="The CPFMachines config file"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFMachines.html" accesskey="U">CPFMachines</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-jenkins-build-job">
+<h1>The jenkins build-job<a class="headerlink" href="#the-jenkins-build-job" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="running-the-cpf-jenkins-job">
+<h2>Running the CPF Jenkins job<a class="headerlink" href="#running-the-cpf-jenkins-job" title="Permalink to this headline">¶</a></h2>
+<p>The jenkins job that is created by this package is a parameterized job. The parameters can be used to
+execute multiple tasks on a CPF CI-project when the job is started via the Jenkins web-interface.</p>
+<div class="section" id="integrating-new-commits">
+<h3>Integrating new commits<a class="headerlink" href="#integrating-new-commits" title="Permalink to this headline">¶</a></h3>
+<p>In this mode, the job verifies the commits made to an integration branch by building the pipeline in all
+configurations, merge the commits to a main branch and add a new internal-version tag to mark
+the commit as a successful build. The project web-page will be updated with the latest version of the
+generated documentation. This mode is the most common use case, which should be triggered automatically
+when pushing commits to an integration branch of the build repository or one of the package repositories.</p>
+<p>To do an integration job following parameters must be set:</p>
+<ul class="simple">
+<li><p>&lt;b&gt;branchOrTag:&lt;/b&gt; origin/&lt;name&gt;-int-&lt;MainBranch&gt;</p></li>
+<li><p>&lt;b&gt;task:&lt;/b&gt; integration</p></li>
+<li><dl class="simple">
+<dt>&lt;b&gt;package:&lt;/b&gt;   If a package was changed, this must be set to the package name.</dt><dd><p>Note that this must be a package that has its versioning handled by
+this build project.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>all other can be left at their defaults.</p>
+</div>
+<div class="section" id="tagging-a-commit-with-a-release-version">
+<h3>Tagging a commit with a release version<a class="headerlink" href="#tagging-a-commit-with-a-release-version" title="Permalink to this headline">¶</a></h3>
+<p>In this mode the job will overwrite an existing internal version tag with a release version and rebuild
+the tagged commit to create build artifacts with the new version. In this case you need to specify which
+part/digit of the version number should be incremented. The less significant digits are reset to zero.
+This will also update the projects web-page.</p>
+<p>To create a release tag, the following parameters must be set:</p>
+<ul class="simple">
+<li><p>&lt;b&gt;branchOrTag:&lt;/b&gt;  existing internal version-tag</p></li>
+<li><p>&lt;b&gt;task:&lt;/b&gt;         one of incrementMajor, incrementMinor, incrementPatch</p></li>
+</ul>
+<p>all other can be left at their defaults.</p>
+</div>
+<div class="section" id="rebuild-an-existing-commit">
+<h3>Rebuild an existing commit<a class="headerlink" href="#rebuild-an-existing-commit" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes it is necessary to rebuild an already integrated commit in order to recreate build artifacts.
+In this mode, the job will not touch the version tags are changed. This will also update the projects web-page.
+When none of the jobs default parameters are changed, it executes this task for the master branch.</p>
+<p>To rebuild an existing commit the following parameters must be set:</p>
+<ul class="simple">
+<li><p>&lt;b&gt;branchOrTag:&lt;/b&gt;  &lt;version-tag&gt;</p></li>
+</ul>
+<p>all other can be left at their defaults.</p>
+</div>
+<div class="section" id="testing-or-debugging-the-job-itself">
+<h3>Testing or debugging the job itself<a class="headerlink" href="#testing-or-debugging-the-job-itself" title="Permalink to this headline">¶</a></h3>
+<p>When working on the CMakeProjectFramework itself, it is sometimes useful to speed up the build-job by running it
+with a reduced workload and without modifying the repository. Reducing the workload can be achieved by limiting
+the build to a special configuration and/or a special target.</p>
+<p>In this case the following parameters must be set:</p>
+<ul class="simple">
+<li><p>&lt;b&gt;branchOrTag:&lt;/b&gt;       origin/&lt;someBranch&gt;  (this should be the branch you work on)</p></li>
+<li><p>&lt;b&gt;task:&lt;/b&gt;              rebuild</p></li>
+<li><p>&lt;b&gt;package:&lt;/b&gt;           The package you work on.</p></li>
+<li><p>&lt;b&gt;cpfConfiguration:&lt;/b&gt;  The configuration you are interested in.</p></li>
+<li><p>&lt;b&gt;target:&lt;/b&gt;            The target that is build.</p></li>
+</ul>
+</div>
+<div class="section" id="let-the-build-job-do-the-code-formatting">
+<h3>Let the build-job do the code formatting<a class="headerlink" href="#let-the-build-job-do-the-code-formatting" title="Permalink to this headline">¶</a></h3>
+<p>If you enabled the ref clang-format_package target, the build-job will
+format all the owned packages in your project on each execution.
+This is triggered if the c Sources/.clang-format file exits.</p>
+</div>
+</div>
+<div class="section" id="documentation-publishing">
+<h2>Documentation publishing<a class="headerlink" href="#documentation-publishing" title="Permalink to this headline">¶</a></h2>
+<p>After a successful build, the jenkins job accumulates the html output from all configurations
+that are specified in the c cpfCIBuildConfigurations.json file. This is done, because not all
+pipeline steps are available for all configurations. For example the OpenCppCoverage report can
+only be generated on Windows and would miss if only the html-pages generated by a Linux configuration
+were published. The Doxygen output can be created by all configurations and only one will be used
+in the accumulated html output. The build-job will take the output from the last configuration
+in c cpfCIBuildConfigurations.json file that generates it. This may be important when you want
+to use the output of a special configuration. Note that the configuration can influence the actual
+content of the documentation, an example is the dependency graph in which the node shapes are different
+for shared and static libraries.</p>
+<p>After accumulation the content of the html directory is copied to the web-server that belongs build
+project and can be accessed via that server. In case you want to use a custom jenkins-job for publishing the
+webpage, the CPF-job creates a build-artifact that contains the complete html directory.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The jenkins build-job</a><ul>
+<li><a class="reference internal" href="#running-the-cpf-jenkins-job">Running the CPF Jenkins job</a><ul>
+<li><a class="reference internal" href="#integrating-new-commits">Integrating new commits</a></li>
+<li><a class="reference internal" href="#tagging-a-commit-with-a-release-version">Tagging a commit with a release version</a></li>
+<li><a class="reference internal" href="#rebuild-an-existing-commit">Rebuild an existing commit</a></li>
+<li><a class="reference internal" href="#testing-or-debugging-the-job-itself">Testing or debugging the job itself</a></li>
+<li><a class="reference internal" href="#let-the-build-job-do-the-code-formatting">Let the build-job do the code formatting</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#documentation-publishing">Documentation publishing</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ConfigurationFile.html"
+                        title="previous chapter">The CPFMachines config file</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="MachinesAndContainer.html"
+                        title="next chapter">Machines and Container</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/CPFMachines/documentation/JenkinsJob.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="MachinesAndContainer.html" title="Machines and Container"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ConfigurationFile.html" title="The CPFMachines config file"
+             >previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFMachines.html" >CPFMachines</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

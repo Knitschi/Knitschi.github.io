@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>Documentation generation &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Versioning" href="Versioning.html" />
+    <link rel="prev" title="Distribution packages" href="DistributionPackages.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="Versioning.html" title="Versioning"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="DistributionPackages.html" title="Distribution packages"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFCMake.html" accesskey="U">CPFCMake</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="documentation-generation">
+<span id="documentationgeneration"></span><h1>Documentation generation<a class="headerlink" href="#documentation-generation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-doxygen-package">
+<h2>The Doxygen Package<a class="headerlink" href="#the-doxygen-package" title="Permalink to this headline">¶</a></h2>
+<p>Currently the CPF provides the ref cpfAddDoxygenPackage function to integrate &lt;a href=”<a class="reference external" href="http://www.stack.nl/~dimitri/doxygen/download.html">http://www.stack.nl/~dimitri/doxygen/download.html</a>”&gt;Doxygen&lt;/a&gt;
+based documentation generation into the CI-pipeline. Adding a doxygen package adds a custom
+target that runs doxygen with all the owned packages as input.</p>
+</div>
+<div class="section" id="searching">
+<h2>Searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h2>
+<p>The search functionality is configured to use the server-side search approach as described &lt;a href=”<a class="reference external" href="http://www.stack.nl/~dimitri/doxygen/manual/extsearch.html">http://www.stack.nl/~dimitri/doxygen/manual/extsearch.html</a>”&gt;here&lt;/a&gt;.
+To make it work these points must be implemented.</p>
+<ul class="simple">
+<li><p>The c DoxygenConfig.txt must contain the correct value for the c SEARCHENGINE_URL key. This means that the url of the c doxysearch.cgi file must be
+known and accessible &lt;b&gt;before&lt;/b&gt; generating the documentation. When the url of the documentation web-server changes, this value must be changed too.
+One can test if the cgi script works by entering c <a class="reference external" href="http://feldrechengeraet/cgi-bin/doxysearch.cgi?test">http://feldrechengeraet/cgi-bin/doxysearch.cgi?test</a>. This should return &lt;tt&gt;test succesfull&lt;/tt&gt;.
+The file c search/search.js in the doxygen directory should also contain a correct linkt to the c doxysearch.cgi file.</p></li>
+<li><p>The web-server needs access to the right c doxysearch.cgi file which is provided by Doxygen. The c doxysearch.cgi file must come
+from the same version of doxygen that is used to generate the html files and the c doxysearch.db search database.</p></li>
+<li><p>The webserver must be configured to use cgi scripts, which is done by providing the serve-cgi-bin.conf file with the docker-image of the webserver.
+The Dockerfile makes sure the file is copied into the container.</p></li>
+<li><p>The help generation needs to execute the c doxyindexer.exe to create the c doxysearch.db serach-index for the c doxysearch.cgi. This is done in
+the python script c 7_GenerateDocumentation.py</p></li>
+<li><p>The generated files must be copied to the documentation server container with the command</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker cp /var/lib/jenkins/www/html docserver:/var/www
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-a-dependency-graph">
+<h2>Adding a dependency graph<a class="headerlink" href="#adding-a-dependency-graph" title="Permalink to this headline">¶</a></h2>
+<p>CMake allows to generate a dependency graph for the packages in a CI-project.
+This dependency graph can be integrated into your doxygen documentation. The doxygen target
+will also create a second <em>transitive reduced</em> version of the dependency graph.
+The transitive reduced graph does not show direct dependencies when an indirect dependency exists.
+This resulst in a cleaner graph, which may sometimes be favoured to the complete graph.</p>
+<p>These graphs can be added to the documentation by adding the lines</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">graphviz</span><span class="p">::</span> CPFDependencies.dot The projects dependency graph
+<span class="p">..</span> <span class="ow">graphviz</span><span class="p">::</span> CPFDependenciesTransitiveReduced.dot The projects transitive reduced target dependency graph
+</pre></div>
+</div>
+<p>to one of your doxygen comments.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Documentation generation</a><ul>
+<li><a class="reference internal" href="#the-doxygen-package">The Doxygen Package</a></li>
+<li><a class="reference internal" href="#searching">Searching</a></li>
+<li><a class="reference internal" href="#adding-a-dependency-graph">Adding a dependency graph</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="DistributionPackages.html"
+                        title="previous chapter">Distribution packages</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Versioning.html"
+                        title="next chapter">Versioning</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/CPFCMake/documentation/DocumentationTargets.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="Versioning.html" title="Versioning"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="DistributionPackages.html" title="Distribution packages"
+             >previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFCMake.html" >CPFCMake</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

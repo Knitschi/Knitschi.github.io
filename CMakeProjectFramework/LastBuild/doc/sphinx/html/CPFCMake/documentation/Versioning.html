@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>Versioning &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Problems when using the CPF" href="UsageProblems.html" />
+    <link rel="prev" title="Documentation generation" href="DocumentationTargets.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="UsageProblems.html" title="Problems when using the CPF"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="DocumentationTargets.html" title="Documentation generation"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFCMake.html" accesskey="U">CPFCMake</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="versioning">
+<span id="id1"></span><h1>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">¶</a></h1>
+<p>This page contains information on how the versioning problem is handled in the CPF.</p>
+<div class="section" id="version-tags">
+<h2>Version Tags<a class="headerlink" href="#version-tags" title="Permalink to this headline">¶</a></h2>
+<p>The source of a version number is the Git repository that contains the package or CI-repository. During the <em>generate step</em>, The CPF
+determines the current version number of each package by reading the release version tags of the repository.
+This version number is then used by the <em>CPF</em> while creating distribution packages or in the production code.
+Because of the fully automated versioning-pipeline of a CPF project, developers can rely that builds of two different
+commits will never have the same version number.</p>
+<p>note All repositories that are used for a CPF project should have the release version tag c 0.0.0 at one
+of their first commits. The CPF requires at least one release version tag for its versioning mechanism to
+work.</p>
+<p>see ref PackageOwnership</p>
+</div>
+<div class="section" id="release-version-format">
+<h2>Release version format<a class="headerlink" href="#release-version-format" title="Permalink to this headline">¶</a></h2>
+<p>&lt;b&gt;Format:&lt;/b&gt;    &amp;lt;major&amp;gt;.&amp;lt;minor&amp;gt;.&amp;lt;patch&amp;gt;
+&lt;b&gt;Examples:&lt;/b&gt;   c 1.0.1, c 0.0.99</p>
+<p>The version tags must follow the given pattern in order to be recognized by the <em>CPF</em>.
+Tags of this form are called <em>release versions</em>. The <em>CPF</em> assumes that the commits with the release versions
+are the ones that are provided to clients. Release version tags must be manually added to the repository
+when the developer deems a commit worthy to be published. This can also be done via the build-job
+that is provided by the CPFMachines package.</p>
+</div>
+<div class="section" id="internal-version-format">
+<span id="internalversion"></span><h2>Internal version format<a class="headerlink" href="#internal-version-format" title="Permalink to this headline">¶</a></h2>
+<p>&lt;b&gt;Format:&lt;/b&gt;     &amp;lt;major&amp;gt;.&amp;lt;minor&amp;gt;.&amp;lt;patch&amp;gt;.&amp;lt;commit-nr.&amp;gt;-&amp;lt;hash&amp;gt;
+&lt;b&gt;Examples:&lt;/b&gt;   c 1.0.1.13-af4d, c 0.0.99.1-3h9k0s</p>
+<p>In order to have different version numbers for each build, the <em>CPF</em> will determine <em>internal version numbers</em>
+for each package whenever the <em>generate step</em> is executed. The first three <em>digits</em> are derived from
+the latest release version number that can be <em>seen</em> from the current commit in one of its preceding
+commits. The c &lt;commit-nr.&gt; is the number of commit that have been made since the commit that has
+the release version. This allows to see if an internal version is older or younger than another
+internal version. However the commit number alone does not make the version unique, as the development
+could have branched since the last release version. This could lead to two commits with the same
+version number. For this reason the version number also contains the first digits of the commit hash.
+This part will be as long as is needed to make it unique.</p>
+</div>
+<div class="section" id="dirty-versions">
+<h2>Dirty versions<a class="headerlink" href="#dirty-versions" title="Permalink to this headline">¶</a></h2>
+<p>If the repository has local changes that have not yet been committed, the optional c -dirty postfix
+is added to the version number. Dirty versions can in general not be rebuild by other developers
+and should therefore not be considered when trying to reproduce bugs.</p>
+</div>
+<div class="section" id="using-the-version-number-in-the-production-code">
+<h2>Using the version number in the production code<a class="headerlink" href="#using-the-version-number-in-the-production-code" title="Permalink to this headline">¶</a></h2>
+<p>For C++ packages, the <em>CPF</em> will automatically generate a header file that
+contains the current version number. The version can be obtained in the C++
+code by using:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;MyPackage/cpfPackageVersion_MyPackage.h&gt;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">version</span> <span class="o">=</span> <span class="n">mp</span><span class="o">::</span><span class="n">getPackageVersion</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>assuming that you have a package c MyPackage with namespace c mp.</p>
+<p>The package version can be accessed in the c CMakeLists.txt file of
+the package via the c PROJECT_VERSION variable after the call of the
+c cpfInitPackageProject() function if you want to generate your own
+version files.</p>
+</div>
+<div class="section" id="version-tags-as-validation-stamps">
+<h2>Version tags as validation stamps<a class="headerlink" href="#version-tags-as-validation-stamps" title="Permalink to this headline">¶</a></h2>
+<p>In the CPF the version tags in the repository are also used to mark commits for
+which the pipeline target was successfully build. This is only enforced in combination
+with the build-job that is provided by the CPFMachines package. The build-job adds
+version tags after successfully building a commit. When this policy is followed, developers
+can quickly see which commits are worth checking out when they try to build older versions.</p>
+</div>
+<div class="section" id="incrementing-versions">
+<h2>Incrementing versions<a class="headerlink" href="#incrementing-versions" title="Permalink to this headline">¶</a></h2>
+<p>Version numbers are incremented by adding new release version tags to the repository.
+This can either be done manually or by setting certain parameters to the build-job
+that is provided by the <em>CPFMachines</em> package. The CPF assumes that release version
+tags are unique and <em>ordered</em>, where smaller versions can only be followed by larger
+versions. Before you manually add a release version tag, you should also make sure
+that the pipeline target of that commit builds for all your supported configurations.</p>
+<p>The build-job of the <em>CPFMachines</em> package will make sure that all of these requirements
+are met, when incrementing version numbers.</p>
+<p>see ref CPFJobSubsection2</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Versioning</a><ul>
+<li><a class="reference internal" href="#version-tags">Version Tags</a></li>
+<li><a class="reference internal" href="#release-version-format">Release version format</a></li>
+<li><a class="reference internal" href="#internal-version-format">Internal version format</a></li>
+<li><a class="reference internal" href="#dirty-versions">Dirty versions</a></li>
+<li><a class="reference internal" href="#using-the-version-number-in-the-production-code">Using the version number in the production code</a></li>
+<li><a class="reference internal" href="#version-tags-as-validation-stamps">Version tags as validation stamps</a></li>
+<li><a class="reference internal" href="#incrementing-versions">Incrementing versions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="DocumentationTargets.html"
+                        title="previous chapter">Documentation generation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="UsageProblems.html"
+                        title="next chapter">Problems when using the CPF</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/CPFCMake/documentation/Versioning.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="UsageProblems.html" title="Problems when using the CPF"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="DocumentationTargets.html" title="Documentation generation"
+             >previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFCMake.html" >CPFCMake</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

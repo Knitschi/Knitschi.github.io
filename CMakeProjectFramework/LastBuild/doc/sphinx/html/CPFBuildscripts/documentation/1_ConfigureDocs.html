@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>1_Configure.py &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2_Generate.py" href="2_GenerateDocs.html" />
+    <link rel="prev" title="0_CopyScripts.py" href="0_CopyScriptsDocs.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="2_GenerateDocs.html" title="2_Generate.py"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="0_CopyScriptsDocs.html" title="0_CopyScripts.py"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" accesskey="U">CPFBuildscripts</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="configure-py">
+<h1>1_Configure.py<a class="headerlink" href="#configure-py" title="Permalink to this headline">¶</a></h1>
+<p>This script instantiates a configuration file in the c Configuration directory.</p>
+<div class="section" id="command-line-interface">
+<h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Usage:
+    1_Configure.py &lt;config_name&gt; <span class="o">[</span>--inherits &lt;parent_config&gt;<span class="o">]</span> <span class="o">[</span>-D definition<span class="o">]</span>...
+
+    Running this script generates the file
+
+    Configuration/&lt;config_name&gt;.config.cmake
+
+    which contains a <span class="nb">set</span> of CMake variables that define one configuration of a CPF project.
+    The configuration defines which compiler or make-file generator is used and other arbitrary
+    settings. The generated config file can be changed by each developer to tweak the build or
+    <span class="nb">set</span> different paths to dependencies.
+
+    The short way of using this script is by only giving the &lt;config_name&gt; argument
+    which in this <span class="k">case</span> must be the name of one of the existing config file names that
+    can be found at the following locations.
+
+    &lt;root&gt;/Configuration
+    &lt;root&gt;/Sources/CIBuildConfigurations
+    &lt;root&gt;/Sources/CPFCMake/DefaultConfigurations
+
+    If you want to create a configuration with a new name you can also specify
+    the --inherits to pass in the parent configuration which allows you to <span class="nb">set</span>
+    &lt;config_name&gt; freely.
+
+    For more information about configurations see:
+    https://knitschi.github.io/CMakeProjectFramework/doxygen/html/d7/d8d/_c_p_f_configuration.html
+
+Options:
+
+--inherits &lt;parent_config&gt;  This option must be <span class="nb">set</span> to an existing configuration from
+                            which variable definitions are inherited.
+
+-D definition               This option can be given to <span class="nb">set</span> CMake variables
+                            int the generated file over the <span class="nb">command</span> line.
+                            This may be useful on a build-server.
+                            &lt;definition&gt; should look something like this:
+                            <span class="nv">HUNTER_ROOT</span><span class="o">=</span>/home/hunter_root
+
+--list                      When this argument is given, the script will list
+                            the available existing configurations instead
+                            of generating a new file.
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1_Configure.py</a><ul>
+<li><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="0_CopyScriptsDocs.html"
+                        title="previous chapter">0_CopyScripts.py</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="2_GenerateDocs.html"
+                        title="next chapter">2_Generate.py</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/CPFBuildscripts/documentation/1_ConfigureDocs.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="2_GenerateDocs.html" title="2_Generate.py"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="0_CopyScriptsDocs.html" title="0_CopyScripts.py"
+             >previous</a> |</li>
+  <li>
+    <img src="../../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+
+          <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" >CPFBuildscripts</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

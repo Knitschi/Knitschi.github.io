@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+  <title>Working with a CPF Project &mdash; CMakeProjectFramework 0.0.0.507-e2d9 Documentation</title>
+
+    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="shortcut icon" href="../_static/CPFLogo.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Setting up a CPF project" href="SettingUpACPFProject.html" />
+    <link rel="prev" title="Basic Concepts" href="BasicConcepts.html" />
+  
+ 
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="SettingUpACPFProject.html" title="Setting up a CPF project"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="BasicConcepts.html" title="Basic Concepts"
+             accesskey="P">previous</a> |</li>
+  <li>
+    <img src="../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="working-with-a-cpf-project">
+<span id="workingwithacpfproject"></span><h1>Working with a CPF Project<a class="headerlink" href="#working-with-a-cpf-project" title="Permalink to this headline">¶</a></h1>
+<p>This page provides practical information on how to do the day to day tasks that arise when working with a <em>CPF</em> project.
+The text refers to an example project that can be retrieved from Github to illustrate the required steps.</p>
+<div class="section" id="setting-up-the-environment">
+<h2>Setting up the Environment<a class="headerlink" href="#setting-up-the-environment" title="Permalink to this headline">¶</a></h2>
+<p>Before you start, you have to install the basic tools that are used by the CMakeProjectFramework.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Find out what must be installed by hand to compile the project.</p>
+</div>
+<p>Windows</p>
+<ul class="simple">
+<li><p>Visual Studio 2017</p></li>
+<li><p>Git</p></li>
+<li><p>Python3</p></li>
+<li><p>CMake 3.12.1</p></li>
+<li><p>OpenCppCoverage (optional)</p></li>
+<li><p>Doxygen</p></li>
+</ul>
+<p>Linux</p>
+<ul class="simple">
+<li><p>Gcc</p></li>
+<li><p>Git</p></li>
+<li><p>Python3</p></li>
+<li><p>CMake 3.12.1</p></li>
+<li><p>Clang (optional)</p></li>
+<li><p>Valgrind (optional)</p></li>
+<li><p>Doxygen</p></li>
+</ul>
+<p>Git, Python and CMake should be callable from the command-line. (add them to PATH on Windows)</p>
+</div>
+<div class="section" id="cloning-the-example-project">
+<h2>Cloning the Example Project<a class="headerlink" href="#cloning-the-example-project" title="Permalink to this headline">¶</a></h2>
+<p>A CPF project must be based on a git repository. The CMake code relies on it when determining package versions and when
+handling packages that can be contained in git submodules. Because of the contained submodules the repository
+must be cloned by using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; git clone --recursive https://github.com/Knitschi/ACPFTestProject.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-generate-and-build-a-cpf-project">
+<h2>Configure, generate and build a CPF project<a class="headerlink" href="#configure-generate-and-build-a-cpf-project" title="Permalink to this headline">¶</a></h2>
+<p>In order to build a freshly cloned CPF project, four commands need to be exectuted. Sadly this is
+a little more effort then the normal two steps (<em>generate</em> and <em>build</em>) that are used for a <em>vanilla</em> CMake project.
+The steps are implemented with the following <em>Python 3</em> scripts.</p>
+<ul class="simple">
+<li><p><strong>0_CopyScripts.py:</strong> Copies the other scripts to the projects root directory.</p></li>
+<li><p><strong>1_Configure.py:</strong> Adds a CMake configuration for the project.</p></li>
+<li><p><strong>2_Generate.py:</strong> Create the <em>make-files</em> for a project configuration.</p></li>
+<li><p><strong>3_Make.py:</strong> Build the project.</p></li>
+</ul>
+<p>If you have your operating system configured to run <code class="code docutils literal notranslate"><span class="pre">.py</span></code> files with python 3, you can omit the explicit call to <code class="code docutils literal notranslate"><span class="pre">python</span></code> in the following command line examples.
+If this is not the case, make sure the <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code> call returns a 3.X version. On Linux you may need to use the command
+<code class="code docutils literal notranslate"><span class="pre">python3</span></code> instead of <code class="code docutils literal notranslate"><span class="pre">python</span></code>.</p>
+<div class="section" id="the-copy-step">
+<h3>The Copy Step<a class="headerlink" href="#the-copy-step" title="Permalink to this headline">¶</a></h3>
+<p>In order to execute the copy step run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...<span class="se">\A</span>CPFTestProject&gt; python Sources/CPFBuildscripts/0_CopyScripts.py
+</pre></div>
+</div>
+<p>in the project root directory.</p>
+<p>This step copies some python scripts into the project’s root directory. The scripts are
+provided by the CPFBuildscripts package. The scripts are only copied to shorten the command-line
+calls while working with the project. This step only needs to be executed
+once after cloning the repository.</p>
+</div>
+<div class="section" id="the-configuration-step">
+<span id="configurationstep"></span><h3>The Configuration Step<a class="headerlink" href="#the-configuration-step" title="Permalink to this headline">¶</a></h3>
+<p>In order to generate a configuration file run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.../ACPFTestProject&gt; python 1_Configure.py VS --inherits VS2017-shared
+</pre></div>
+</div>
+<p>on Windows or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.../ACPFTestProject&gt; python3 1_Configure.py Gcc --inherits Gcc-shared-debug
+</pre></div>
+</div>
+<p>on Linux in the project root directory.</p>
+<p>The purpose of the configuration step is to create the <code class="code docutils literal notranslate"><span class="pre">Configuration/&lt;config&gt;.config.cmake</span></code> file that contains a set of CMake cache variables.
+These variables determine things like the CMake <em>generator</em>, or which custom targets are included in the pipeline.
+The config file is used instead of the usual variable definitions in the CMake generate step.
+The name of the configuration (here <code class="code docutils literal notranslate"><span class="pre">VS</span></code> or <code class="code docutils literal notranslate"><span class="pre">Gcc</span></code>) can be chosen freely.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">--inherits</span></code> option determines a base configuration from which the created file inherits default values for all required variables.
+The base configuration can be provided by the CPFCMake package or the projects <code class="code docutils literal notranslate"><span class="pre">CIBuildConfigurations</span></code> directory, which is the common
+use case. Some of the values in the configuration file, like library locations or test file directories must be set to values that are
+specific to the machine onto which the project was cloned.
+After running the script you have the chance to edit the default values in the created configuration file in order to change the values to something
+that is adequate for the local build. On a CI server it may sometimes be useful to set non default values of variables directly with the command line
+call. This can be done by adding <code class="code docutils literal notranslate"><span class="pre">-D</span></code> options to the script call.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...<span class="se">\A</span>CPFTestProject&gt; 1_Configure.py VS --inherits VS2017-shared -D <span class="nv">HUNTER_ROOT</span><span class="o">=</span><span class="s2">&quot;C:/MyHunterLibs&quot;</span> -D <span class="nv">CPF_TEST_FILES_DIR</span><span class="o">==</span><span class="s2">&quot;C:/Temp&quot;</span>
+</pre></div>
+</div>
+<p>A project can have multiple configurations in parallel. This can be achieved by running the <code class="code docutils literal notranslate"><span class="pre">1_Configure.py</span></code> script, multiple times
+with different configuration names. However, if only one configuration is available, the configuration argument can be omitted
+in the following generate and build steps.</p>
+<div class="section" id="notes-on-the-configuration-file-mechanism">
+<h4>Notes on the Configuration File Mechanism<a class="headerlink" href="#notes-on-the-configuration-file-mechanism" title="Permalink to this headline">¶</a></h4>
+<p>The custom mechanism with the additional configuration file distinguishes the workflow of the CPF project from the
+standard CMake command line workflow, where the configure and generate step are executed at the same time.
+A disadvantage of CPF’s config file mechanism is that configuration information is duplicated in the <code class="code docutils literal notranslate"><span class="pre">config.cmake</span></code> file and the <code class="code docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code> file.
+The developer has to remember that instead of editing the <code class="code docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code> file one now has to edit the <code class="code docutils literal notranslate"><span class="pre">config.cmake</span></code> file and then
+re-execute the generate step.
+The additional command line call may also come unexpected to developers who are used to work with <em>normal</em> CMake projects.</p>
+<p>However, CMake itself provides a similar three step work-flow when using the CMake-GUI application.
+Here the user can also change values of variables in the <code class="code docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code> file before executing the generate step.
+This indicates that there is a certain need for a three-step approach.</p>
+<p>The CPF mechanism has some advantages over the two step work-flow which in my opinion outweigh the disadvantages.</p>
+<ul class="simple">
+<li><p>Developers are relieved of remembering long lists of variable definitions that need to be typed
+whenever they need to re-generate the project. Especially when working on CMake code it becomes often necessary
+to delete the build directory in order to create fresh project. With the CPF mechanism the manual work of creating a
+project configuration is not lost when the build directory is deleted.</p></li>
+<li><p>The project can define default configurations that are used by the projects CI job. This can be used
+to define <em>officially</em> supported compiler configurations and platforms.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-generate-step">
+<span id="generatestep"></span><h3>The Generate Step<a class="headerlink" href="#the-generate-step" title="Permalink to this headline">¶</a></h3>
+<p>To execute the generate step run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...<span class="se">\A</span>CPFTestProject&gt; python 2_Generate.py VS
+</pre></div>
+</div>
+<p>on Windows or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.../ACPFTestProject&gt; python3 2_Generate.py Gcc
+</pre></div>
+</div>
+<p>on Linux in the project root directory.</p>
+<p>The generate step is the equivalent to the normally used <code class="code docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-H.</span> <span class="pre">-B_build</span> <span class="pre">-G&quot;generator&quot;</span> <span class="pre">-D...</span></code> call.
+In fact running the command will print the underlying CMake command line.
+The command creates the build-directory <code class="code docutils literal notranslate"><span class="pre">Generated/VS</span></code> that holds the generated <em>make-files</em> for the generator that is set
+in the config file. In this example this is the Visual Studio solution for the Windows case and the make files
+in the Linux case.</p>
+<ul class="simple">
+<li><p>When the configuration argument is not given, the script will use the first configuration that is available in the <code class="code docutils literal notranslate"><span class="pre">Configuration</span></code> directory.</p></li>
+<li><p>You can use the <code class="code docutils literal notranslate"><span class="pre">--clean</span></code> option to delete the complete <code class="code docutils literal notranslate"><span class="pre">Generated\&lt;config&gt;</span></code> directory before executing the generate step.
+This is sometimes necessary when an existing configuration is changed.</p></li>
+</ul>
+</div>
+<div class="section" id="the-build-step">
+<span id="buildstep"></span><h3>The Build Step<a class="headerlink" href="#the-build-step" title="Permalink to this headline">¶</a></h3>
+<p>To execute a full build run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...<span class="se">\A</span>CPFTestProject&gt; python 3_Make.py VS --target pipeline --config Debug
+</pre></div>
+</div>
+<p>on Windows or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.../ACPFTestProject&gt; python3 3_Make.py Gcc --target pipeline
+</pre></div>
+</div>
+<p>on Linux. This will compile the binaries as well as executing extra pipeline tasks like running the tests, do code analysis,
+generate the documentation or other steps that your project may have enabled via its configuration file.</p>
+<ul class="simple">
+<li><p>When the configuration argument is not given, the script will use the first configuration for which the generate step was already executed.</p></li>
+<li><p>Adding the <code class="code docutils literal notranslate"><span class="pre">--clean</span></code> option will cause a complete rebuild instead of an incremental one.</p></li>
+<li><p>With the <code class="code docutils literal notranslate"><span class="pre">--target</span></code> option one can specify which target should be build. During development this is useful if only
+a smaller part of the pipeline should be executed. Here is a <a class="reference internal" href="../CPFCMake/documentation/CustomTargets.html#customtargets"><span class="std std-ref">list of available custom targets</span></a>.
+If the <code class="code docutils literal notranslate"><span class="pre">--target</span></code> option is omitted completely, the script will only build the binary targets of the project.</p></li>
+<li><p>The <code class="code docutils literal notranslate"><span class="pre">--config</span></code> option is only required for multi-configuration generators like Visual Studio. If it is not
+specified, the <code class="code docutils literal notranslate"><span class="pre">Debug</span></code> configuration will be build.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="the-anatomy-of-a-cpf-project">
+<h2>The Anatomy of a CPF Project<a class="headerlink" href="#the-anatomy-of-a-cpf-project" title="Permalink to this headline">¶</a></h2>
+<p>Now that you have built the project, it is time to take a look at the content of the test project.</p>
+<div class="section" id="the-canonical-directory-structure">
+<span id="cannonicalprojectstructure"></span><h3>The canonical Directory Structure<a class="headerlink" href="#the-canonical-directory-structure" title="Permalink to this headline">¶</a></h3>
+<p>The CMakeProjectFramework enforces a fixed directory structure for the top level directories of the project.
+Here are the most important parts of that directory layout.
+Note that depending on the configuration that you built, not all of the shown directories and files will exist in your project.
+Many of the displayed directories do not exist in a freshly cloned CPF project.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ACPFTestProject
+│   .gitignore
+│   .gitmodules
+│   1_Configure.py
+│   2_Generate.py
+│   3_Make.py
+│   README.rst
+│   ... <span class="o">[</span>other scripts that <span class="nb">help</span> with day to day tasks<span class="o">]</span>
+│
+├───Configuration
+│       VS.config.cmake
+│       Gcc.config.cmake
+│       ... <span class="o">[</span>more configuration files<span class="o">]</span>
+│
+├───Generated
+│   ├───VS
+│   │   │   CMakeCache.txt
+│   │   │   CMakeGraphVizOptions.cmake
+│   │   │   CPFDependencies.dot
+│   │   │
+│   │   ├───BuildStage
+│   │   ├───html
+│   │   ├───_CPF
+│   │   ├───_pckg
+│   │   ... <span class="o">[</span>the usual CMake generated directories and files<span class="o">]</span>
+│   │
+│   ├───Gcc
+│   ... <span class="o">[</span>more configuration directories<span class="o">]</span>
+│
+└───Sources
+    │   CMakeLists.txt
+    │   packages.cmake
+    │
+    ├───CIBuildConfigurations
+    │   cpfCiBuildConfigurations.json
+    │   VS2017-shared.config.cmake
+    │   Gcc-shared-debug.config.cmake
+    │   ... <span class="o">[</span>more config files<span class="o">]</span>
+    │
+    ├───APackage
+    │   │   CMakeLists.txt
+    │   │   <span class="k">function</span>.cpp
+    │   │   <span class="k">function</span>.h
+    │   │   ... <span class="o">[</span>more package <span class="nb">source</span> files<span class="o">]</span>
+    │   │
+    │   ├───MyCustomDirectory
+    │   │   ... <span class="o">[</span><span class="nb">source</span> files in sub-directories<span class="o">]</span>
+    │   │
+    │   ... <span class="o">[</span>more package subdirectories<span class="o">]</span>
+    │
+    ├───BPackage
+    │
+    ... <span class="o">[</span>more package directories or global file directories<span class="o">]</span>
+</pre></div>
+</div>
+<div class="section" id="the-root-directory">
+<h4>The Root Directory<a class="headerlink" href="#the-root-directory" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="code docutils literal notranslate"><span class="pre">ACPFTestProject</span></code> directory is the root directory of the project. This is the directory that you get when cloning a CPF project.
+Most of the command line operations that are needed to handle the CPF project are executed in this directory. The directory contains
+scripts to configure and build the project. It also contains the <a class="reference internal" href="#sources-dir"><span class="std std-ref">Sources</span></a>, <a class="reference internal" href="#configuration-dir"><span class="std std-ref">Configuration</span></a> and <a class="reference internal" href="#generated-dir"><span class="std std-ref">Generated</span></a> directories.
+The <a class="reference internal" href="#sources-dir"><span class="std std-ref">Sources</span></a> directory is stored in the repository, while the other two are generated when setting up the project.</p>
+</div>
+<div class="section" id="the-sources-directory">
+<span id="sources-dir"></span><h4>The Sources Directory<a class="headerlink" href="#the-sources-directory" title="Permalink to this headline">¶</a></h4>
+<p>The <em>Sources</em> directory contains all the files that are checked into the repository.
+After cloning a CPF repository, this should be the only existing directory in the cpf-root-directory. The Sources directory contains
+the root <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file of the repository, global files and directories for the packages that contain the <em>payload</em> code
+of the project. There is a set of files that are in every CPF project.</p>
+<ul class="simple">
+<li><p><strong>CMakeLists.txt:</strong> The root <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file creates the CI-project. This is the <em>host</em> project that contains the
+package projects that are created by the packages <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> files. The CPF dependencies are pulled in by including the
+<a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfinitmodule"><span class="std std-ref">cpfInit</span></a> module. The Packages are added by calling the <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfaddpackages"><span class="std std-ref">cpfAddPackages()</span></a> function. Both are provided by the <a class="reference internal" href="../CPFCMake/documentation/CPFCMake.html#cpfcmake"><span class="std std-ref">CPFCMake</span></a> package.</p></li>
+<li><p><strong>packages.cmake:</strong> This file defines a CMake variable that holds a list of package names that are <code class="code docutils literal notranslate"><span class="pre">OWNED</span></code> by this
+CI-project or are <code class="code docutils literal notranslate"><span class="pre">EXTERNAL</span></code> packages. <em>Owned</em> means, that the CI-job that builds this repository is responsible for verifying that all automated checks for
+the package pass before it is marked with a version tag. More information about package ownership can be found <a class="reference internal" href="BasicConcepts.html#packageownership"><span class="std std-ref">here</span></a>.</p></li>
+<li><p><strong>CIBuildConfigurations:</strong> This directory provides the CI job with information about the project configurations that should
+be build by the CI job. These configurations are defined in files like <code class="code docutils literal notranslate"><span class="pre">VS.config.cmake</span></code> which contain a
+set of CMake cache variables. More information about the config file mechanism can be found <a class="reference internal" href="#configurationstep"><span class="std std-ref">here</span></a>.</p></li>
+<li><p><strong>CIBuildConfigurations/cpfCiBuildConfigurations.json:</strong> A file that contains a list of configurations that are build by the
+projects CI job. This is only needed if the infrastructure provided by <a class="reference internal" href="../CPFMachines/documentation/CPFMachines.html#cpfmachines"><span class="std std-ref">CPFMachines</span></a> is used.</p></li>
+<li><p><strong>APackage:</strong> A directory that contains a package. The name of the package directory can be chosen by the user.
+It also defines the name of the main library, executable or custom target that is created by this package.
+A CPF project can have multiple package directories.
+The package directory contains all source files that belong to the package. These can hold the production code, test code or
+the package documentation. The package directory must contain a <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file that calls the
+<a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfinitpackageproject"><span class="std std-ref">cpfInitPackageProject()</span></a> and one of the <code class="code docutils literal notranslate"><span class="pre">cpfAdd&lt;X&gt;Package()</span></code> functions. The directory structure within the package directory can be chosen freely.
+The relative directories of source files must be prepended when adding the files to the packages <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file.</p></li>
+</ul>
+</div>
+<div class="section" id="the-configuration-directory">
+<span id="configuration-dir"></span><h4>The Configuration Directory<a class="headerlink" href="#the-configuration-directory" title="Permalink to this headline">¶</a></h4>
+<p>The <em>Configuration</em> directory contains CMake files that define the locally used configurations of the project. This directory is
+generated by calling the <code class="code docutils literal notranslate"><span class="pre">1_Configure.py</span></code> script in the <a class="reference internal" href="#configurationstep"><span class="std std-ref">configuration step</span></a>.
+This directory is used to keep manually created project configurations out of the potentially short lived <em>Generated</em> directory.</p>
+</div>
+<div class="section" id="the-generated-directory">
+<span id="generated-dir"></span><h4>The Generated Directory<a class="headerlink" href="#the-generated-directory" title="Permalink to this headline">¶</a></h4>
+<p>The <em>Generated</em> directory contains all files that are generated by the <a class="reference internal" href="#generatestep"><span class="std std-ref">generate-</span></a> and <a class="reference internal" href="#buildstep"><span class="std std-ref">build step</span></a>.
+All contents of that directory can be deleted without loosing any manual work.
+However you will have to re-execute the <em>generate</em> and <em>build</em> step after deleting this directory.</p>
+<p>The <em>Generated</em> directory contains one subdirectory for each configuration for which the <em>generate</em> step is executed.
+The configuration directories are the CMake <em>build</em> directories that contain the usual CMake generated files as well
+as some special directories that are created by the CMake code of the CPF.</p>
+<p><strong>CPF specific Build Directory Content:</strong></p>
+<ul class="simple">
+<li><p><strong>Generated/&lt;config&gt;/html:</strong> The primary output directory of the project. It contains created distribution packages in the <code class="code docutils literal notranslate"><span class="pre">Downloads</span></code> subdirectory.
+The <code class="code docutils literal notranslate"><span class="pre">doxygen</span></code> subdirectory contains the entry page of the generated project page, which leads to the documentation and other optionally generated
+html pages like coverage report.</p></li>
+<li><p><strong>Generated/&lt;config&gt;/BuildStage:</strong> This directory contains all the binaries that are generated when building the project. When running an
+executable during debugging or automated testing, it is run from within this directory.</p></li>
+<li><p><strong>Generated/&lt;config&gt;/_CPF:</strong> A directory that is used for all internal files that are generated by the custom targets of the CPFCMake package.
+If everything goes well, the contents are only of interest when developing the CPFCMake package itself.</p></li>
+<li><p><strong>Generated/&lt;config&gt;/_pckg:</strong> A directory that is used to accumulate the contents of the created distribution packages.
+If everything goes well, the contents are only of interest when developing the CPFCMake package itself.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ci-project-package-projects-and-package-ownership-in-practice">
+<h3>CI project, Package Projects and Package Ownership in Practice<a class="headerlink" href="#ci-project-package-projects-and-package-ownership-in-practice" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="BasicConcepts.html#basicconcepts"><span class="std std-ref">basic concepts</span></a> page mentions, that the <em>CPF</em> wants to separate CI-functionality related cmake code from <em>payload</em> code.
+In the repository this is reflected by the two layers of <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> files. The CI-project is defined by
+the root <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file in the <em>Sources</em> directory. The package projects are defined by the <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> files
+in the <code class="code docutils literal notranslate"><span class="pre">Sources/&lt;package&gt;</span></code> directories.</p>
+<p>In the <em>ACPFTestProject</em> we have quite a number of packages. The packages <em>APackage</em>, <em>CPackage</em>, <em>DPackage</em> <em>documentation</em> and <em>EPackage</em>.
+are listed in the <code class="code docutils literal notranslate"><span class="pre">Sources/packages.cmake</span></code> file, which defines them as <em>owned</em> packages. This means that
+it is this CI-project’s responsibility to provide their <em>official</em> build pipeline that ensures that they build and work.
+CPackage and documentation are <em>fixed</em> packages, which means that they are in the same repository as the CI-project. It is called <em>fixed</em>
+because this fixes the package version to the version of the CI-project. The other owned packages are <em>loose</em>, because
+they are pulled in via the git-submodule mechanism which allows them to have their version incremented independently
+from the other packages.</p>
+<p>The packages <em>BPackage</em>, <em>CPFBuildscripts</em>, <em>CPFCMake</em>, <em>documentation</em>, <em>FPackage</em>, <em>GPackage</em>
+and <em>libSwitchWarningsOff</em> are external packages. External packages are always pulled in via the git-submodule mechanism.</p>
+</div>
+</div>
+<div class="section" id="common-git-operations-on-a-cpf-project">
+<h2>Common Git Operations on a CPF Project<a class="headerlink" href="#common-git-operations-on-a-cpf-project" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Describe to most common git operations. (update of packages etc. )</p>
+</div>
+</div>
+<div class="section" id="consuming-binary-library-packages-created-by-a-cpf-project">
+<h2>Consuming Binary Library Packages created by a CPF Project<a class="headerlink" href="#consuming-binary-library-packages-created-by-a-cpf-project" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../CPFCMake/documentation/APIDocModules.html#cpfaddcpppackage"><span class="std std-ref">cpfAddCppPackage()</span></a> allows you to create binary packages for your library targets.
+These packages contain <em>.cmake</em> files that can be used by other <em>CMake</em> based projects to consume
+your libraries with the <code class="code docutils literal notranslate"><span class="pre">find_package(</span> <span class="pre">...</span> <span class="pre">CONFIG</span> <span class="pre">...</span> <span class="pre">)</span></code> function.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Currently binary packages with <a class="reference internal" href="../CPFCMake/documentation/Versioning.html#internalversion"><span class="std std-ref">internal versions</span></a> are not consumable
+by other CMake projects. This is because the standard package files do not know how to handle the internal
+version number format of the <em>CPF</em>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Working with a CPF Project</a><ul>
+<li><a class="reference internal" href="#setting-up-the-environment">Setting up the Environment</a></li>
+<li><a class="reference internal" href="#cloning-the-example-project">Cloning the Example Project</a></li>
+<li><a class="reference internal" href="#configure-generate-and-build-a-cpf-project">Configure, generate and build a CPF project</a><ul>
+<li><a class="reference internal" href="#the-copy-step">The Copy Step</a></li>
+<li><a class="reference internal" href="#the-configuration-step">The Configuration Step</a><ul>
+<li><a class="reference internal" href="#notes-on-the-configuration-file-mechanism">Notes on the Configuration File Mechanism</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-generate-step">The Generate Step</a></li>
+<li><a class="reference internal" href="#the-build-step">The Build Step</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-anatomy-of-a-cpf-project">The Anatomy of a CPF Project</a><ul>
+<li><a class="reference internal" href="#the-canonical-directory-structure">The canonical Directory Structure</a><ul>
+<li><a class="reference internal" href="#the-root-directory">The Root Directory</a></li>
+<li><a class="reference internal" href="#the-sources-directory">The Sources Directory</a></li>
+<li><a class="reference internal" href="#the-configuration-directory">The Configuration Directory</a></li>
+<li><a class="reference internal" href="#the-generated-directory">The Generated Directory</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ci-project-package-projects-and-package-ownership-in-practice">CI project, Package Projects and Package Ownership in Practice</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#common-git-operations-on-a-cpf-project">Common Git Operations on a CPF Project</a></li>
+<li><a class="reference internal" href="#consuming-binary-library-packages-created-by-a-cpf-project">Consuming Binary Library Packages created by a CPF Project</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="BasicConcepts.html"
+                        title="previous chapter">Basic Concepts</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="SettingUpACPFProject.html"
+                        title="next chapter">Setting up a CPF project</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/documentation/WorkingWithACPFProject.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="SettingUpACPFProject.html" title="Setting up a CPF project"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="BasicConcepts.html" title="Basic Concepts"
+             >previous</a> |</li>
+  <li>
+    <img src="../_static/CPFLogo_16.png" alt=""
+         style="vertical-align: middle; margin-top: -2px" />
+  </li>
+  <li>
+    <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
+  </li>
+  <li>
+    <a href="../index.html">0.0.0.507-e2d9 Documentation</a> &#187;
+  </li>
+ 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Knitschi.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>
