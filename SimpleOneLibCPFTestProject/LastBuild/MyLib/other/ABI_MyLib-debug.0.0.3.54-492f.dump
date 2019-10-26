@@ -7,8 +7,8 @@ $VAR1 = {
                          'function.h' => 1
                        },
           'Language' => 'C++',
-          'LibraryName' => 'MyLib-debug.so.0.0.3.48-7249',
-          'LibraryVersion' => '0.0.3.48-7249',
+          'LibraryName' => 'MyLib-debug.so.0.0.3.54-492f',
+          'LibraryVersion' => '0.0.3.54-492f',
           'MissedOffsets' => '1',
           'MissedRegs' => '1',
           'NameSpaces' => {
@@ -40,7 +40,7 @@ $VAR1 = {
                           },
           'SymbolVersion' => {},
           'Symbols' => {
-                         'MyLib-debug.so.0.0.3.48-7249' => {
+                         'MyLib-debug.so.0.0.3.54-492f' => {
                                                              '_ZN5mylib8functionEv' => 1,
                                                              '_fini' => 1,
                                                              '_init' => 1
@@ -54,7 +54,7 @@ $VAR1 = {
                                  }
                         },
           'UndefinedSymbols' => {
-                                  'MyLib-debug.so.0.0.3.48-7249' => {
+                                  'MyLib-debug.so.0.0.3.54-492f' => {
                                                                       '_ITM_deregisterTMCloneTable' => 0,
                                                                       '_ITM_registerTMCloneTable' => 0,
                                                                       '_Jv_RegisterClasses' => 0,

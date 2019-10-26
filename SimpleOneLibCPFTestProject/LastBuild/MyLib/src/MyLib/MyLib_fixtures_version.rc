@@ -3,8 +3,8 @@
 #include <winresrc.h>
 
 VS_VERSION_INFO VERSIONINFO
-	FILEVERSION        0, 0, 3, 48	// We have to use the pseudo-release version here we get build errors.
-	PRODUCTVERSION     0, 0, 3, 48	// Sadly this means that this version is wrong for internal builds.
+	FILEVERSION        0, 0, 3, 54	// We have to use the pseudo-release version here we get build errors.
+	PRODUCTVERSION     0, 0, 3, 54	// Sadly this means that this version is wrong for internal builds.
 	FILEFLAGSMASK      0x3fL
 	FILEFLAGS          VS_FF_PRERELEASE
 	FILEOS             VOS_NT_WINDOWS32
@@ -17,12 +17,12 @@ VS_VERSION_INFO VERSIONINFO
 	BEGIN
 	VALUE "CompanyName", "Dummy Owner" "\0"
 	VALUE "FileDescription", "A library that contains utilities for tests of the MyLib library." "\0"
-	VALUE "FileVersion", "0.0.3.48-7249" "\0"
+	VALUE "FileVersion", "0.0.3.54-492f" "\0"
 	VALUE "InternalName", "MyLib_fixtures" "\0"
 	VALUE "LegalCopyright", "Copyright 2019 Dummy Owner" "\0"
 	VALUE "OriginalFilename", "MyLib_fixtures-debug.dll" "\0"
 	VALUE "ProductName", "MyLib"
-	VALUE "ProductVersion", "0.0.3.48-7249" "\0"
+	VALUE "ProductVersion", "0.0.3.54-492f" "\0"
 	END
 	END
 	BLOCK "VarFileInfo"

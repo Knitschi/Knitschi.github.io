@@ -7,7 +7,7 @@ namespace mylib
 {
 	inline const std::string& getPackageVersion()
 	{
-		static std::string version = "0.0.3.48-7249";
+		static std::string version = "0.0.3.54-492f";
 		return version;
 	}
 }
