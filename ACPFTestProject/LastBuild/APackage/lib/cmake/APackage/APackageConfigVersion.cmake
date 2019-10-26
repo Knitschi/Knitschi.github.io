@@ -9,12 +9,12 @@
 # The variable CVF_VERSION must be set before calling configure_file().
 
 
-set(PACKAGE_VERSION "2.0.3.20-db67")
+set(PACKAGE_VERSION "2.0.3.21-e816")
 
-if("2.0.3.20-db67" MATCHES "^([0-9]+\\.[0-9]+\\.[0-9]+)\\.") # strip the tweak version
+if("2.0.3.21-e816" MATCHES "^([0-9]+\\.[0-9]+\\.[0-9]+)\\.") # strip the tweak version
   set(CVF_VERSION_NO_TWEAK "${CMAKE_MATCH_1}")
 else()
-  set(CVF_VERSION_NO_TWEAK "2.0.3.20-db67")
+  set(CVF_VERSION_NO_TWEAK "2.0.3.21-e816")
 endif()
 
 if(PACKAGE_FIND_VERSION MATCHES "^([0-9]+\\.[0-9]+\\.[0-9]+)\\.") # strip the tweak version

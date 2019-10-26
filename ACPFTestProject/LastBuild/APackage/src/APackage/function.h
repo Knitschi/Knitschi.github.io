@@ -30,7 +30,7 @@ namespace a
 				}
 			}
 
-			if(a = 3) m_a += 4;
+			if(a == 3) m_a += 4;
 
 			switch(c)
 			{
