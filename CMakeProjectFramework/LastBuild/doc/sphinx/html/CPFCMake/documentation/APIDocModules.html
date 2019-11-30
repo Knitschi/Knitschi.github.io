@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-  <title>API Modules &mdash; CMakeProjectFramework 0.0.0.519-d8a9 Documentation</title>
+  <title>API Modules &mdash; CMakeProjectFramework 0.0.0.526-7707 Documentation</title>
 
     <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -45,7 +45,7 @@
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.519-d8a9 Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.526-7707 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="CPFCMake.html" accesskey="U">CPFCMake</a> &#187;</li> 
@@ -146,7 +146,9 @@ file.</p></li>
 </ul>
 <div class="section" id="cpfinitpackageproject">
 <span id="id3"></span><h3>cpfInitPackageProject()<a class="headerlink" href="#cpfinitpackageproject" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">cpfInitPackageProject()</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">cpfInitPackageProject(</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="no">LANGUAGES</span><span class="p">]</span><span class="w"></span>
+<span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>This macro is called at the beginning of a cpf-packages <em>CMakeLists.txt</em> file.
@@ -154,9 +156,18 @@ This function calls the <code class="code docutils literal notranslate"><span cl
 It automatically reads the version number of the package from the packages
 git repository or a provided version file and uses it to initiated the cmake
 variables <code class="code docutils literal notranslate"><span class="pre">PROJECT_VERSION</span></code> and <code class="code docutils literal notranslate"><span class="pre">PROJECT_VERSION_&lt;digit&gt;</span></code> variables.</p>
+<div class="section" id="cpfinitpackagemodule-arguments">
+<span id="id4"></span><h4>Arguments<a class="headerlink" href="#cpfinitpackagemodule-arguments" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="languages">
+<h5>LANGUAGES<a class="headerlink" href="#languages" title="Permalink to this headline">¶</a></h5>
+<p>The value of this argument is passed on to the underlying <code class="code docutils literal notranslate"><span class="pre">project()</span></code> call.
+It determines for which compilers cmake will look. When the argument is not given,
+the default value <code class="code docutils literal notranslate"><span class="pre">CXX</span> <span class="pre">C</span></code> is used.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="../../documentation/BasicConcepts.html#ciprojectandpackageprojects"><span class="std std-ref">CI Project vs. Package Projects</span></a></p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -164,11 +175,11 @@ variables <code class="code docutils literal notranslate"><span class="pre">PROJ
 <h2>Module cpfAddCppPackage.cmake<a class="headerlink" href="#module-cpfaddcpppackage-cmake" title="Permalink to this headline">¶</a></h2>
 <p>This module provides the following functions.</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#id4">cpfAddCppPackage()</a></p></li>
+<li><p><a class="reference internal" href="#id5">cpfAddCppPackage()</a></p></li>
 <li><p><a class="reference internal" href="#cpfqt5adduiandqrcfiles"><span class="std std-ref">cpfQt5AddUIAndQrcFiles()</span></a></p></li>
 </ul>
 <div class="section" id="cpfaddcpppackage">
-<span id="id4"></span><h3>cpfAddCppPackage()<a class="headerlink" href="#cpfaddcpppackage" title="Permalink to this headline">¶</a></h3>
+<span id="id5"></span><h3>cpfAddCppPackage()<a class="headerlink" href="#cpfaddcpppackage" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">cpfAddCppPackage(</span><span class="w"></span>
 <span class="w">    </span><span class="no">PACKAGE_NAMESPACE</span><span class="w"> </span><span class="nb">string</span><span class="w"></span>
 <span class="w">    </span><span class="no">TYPE</span><span class="w"> </span><span class="o">&lt;</span><span class="no">GUI_APP</span><span class="p">|</span><span class="no">CONSOLE_APP</span><span class="p">|</span><span class="no">LIB</span><span class="p">|</span><span class="no">INTERFACE_LIB</span><span class="o">&gt;</span><span class="w"></span>
@@ -341,7 +352,7 @@ documentation generation.</p>
 </div>
 </div>
 <div class="section" id="cpfaddcpppackage-arguments">
-<span id="id5"></span><h4>Arguments<a class="headerlink" href="#cpfaddcpppackage-arguments" title="Permalink to this headline">¶</a></h4>
+<span id="id6"></span><h4>Arguments<a class="headerlink" href="#cpfaddcpppackage-arguments" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="package-namespace">
 <h5>PACKAGE_NAMESPACE<a class="headerlink" href="#package-namespace" title="Permalink to this headline">¶</a></h5>
 <p>The parameter is used in the following ways:</p>
@@ -419,8 +430,8 @@ are not included.</p>
 <p>All files that belong to the production target. If the target is an executable,
 there should be a <code class="code docutils literal notranslate"><span class="pre">main.cpp</span></code> that is used for the executable.</p>
 </div>
-<div class="section" id="id6">
-<h5>PRODUCTION_FILES<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id7">
+<h5>PRODUCTION_FILES<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h5>
 <p>For packages of type <code class="code docutils literal notranslate"><span class="pre">GUI_APP</span></code> or <code class="code docutils literal notranslate"><span class="pre">CONSOLE_APP</span></code>, this variable that must be
 added to the executable itself. On windows this can be <code class="code docutils literal notranslate"><span class="pre">.rc</span></code> files or the
 icon for the executable.</p>
@@ -616,7 +627,7 @@ Setting this argument overrides the value of the global <code class="code docuti
 </div>
 </div>
 <div class="section" id="cpfqt5adduiandqrcfiles">
-<span id="id7"></span><h3>cpfQt5AddUIAndQrcFiles()<a class="headerlink" href="#cpfqt5adduiandqrcfiles" title="Permalink to this headline">¶</a></h3>
+<span id="id8"></span><h3>cpfQt5AddUIAndQrcFiles()<a class="headerlink" href="#cpfqt5adduiandqrcfiles" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">cpfQt5AddUIAndQrcFiles(</span><span class="w"> </span><span class="nb">sources</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
@@ -669,8 +680,8 @@ function when Qt is used in combination with pre-compiled headers.</p>
 </div>
 <p>This function creates a target that does nothing, but is only used as a file container.
 This makes sure that the files are included in a Visual Studio solution.</p>
-<div class="section" id="id8">
-<h4>Arguments<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id9">
+<h4>Arguments<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="sources">
 <h5>SOURCES<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h5>
 <p>A list of files that are added to the package. The paths must be relative to the
@@ -686,7 +697,7 @@ current source directory or absolute.</p>
 <li><p>cpfAddDoxygenPackage()</p></li>
 </ul>
 <div class="section" id="cpfadddoxygenpackage">
-<span id="id9"></span><h3>cpfAddDoxygenPackage()<a class="headerlink" href="#cpfadddoxygenpackage" title="Permalink to this headline">¶</a></h3>
+<span id="id10"></span><h3>cpfAddDoxygenPackage()<a class="headerlink" href="#cpfadddoxygenpackage" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">cpfAddFilePackage(</span><span class="w"></span>
 <span class="w">    </span><span class="p">[</span><span class="no">PROJECT_NAME</span><span class="w"> </span><span class="nb">name</span><span class="p">]</span><span class="w"></span>
 <span class="w">    </span><span class="no">DOXYGEN_CONFIG_FILE</span><span class="w"> </span><span class="nb">absPath</span><span class="w"></span>
@@ -708,8 +719,8 @@ any other package.</p>
 <p>All files specified with the key-word arguments are added to the targets source files.</p>
 <p>More information about the documentation generation can be found on the page <a class="reference internal" href="DocumentationTargets.html#documentationgeneration"><span class="std std-ref">Documentation generation</span></a> and in the
 <a class="reference internal" href="#cpfadddoxygenpackage"><span class="std std-ref">cpfAddDoxygenPackage()</span></a> tutorial.</p>
-<div class="section" id="id10">
-<h4>Arguments<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id11">
+<h4>Arguments<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="project-name">
 <h5>PROJECT_NAME<a class="headerlink" href="#project-name" title="Permalink to this headline">¶</a></h5>
 <p>The value of this argument is the name that appears in the header of the doxygen
@@ -751,8 +762,8 @@ Changing them in the given template will have no effect.</p>
 <h5>DOXYGEN_STYLESHEET_FILE<a class="headerlink" href="#doxygen-stylesheet-file" title="Permalink to this headline">¶</a></h5>
 <p>Absolute path to the used DoxygenStylesheet.css file.</p>
 </div>
-<div class="section" id="id11">
-<h5>SOURCES<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id12">
+<h5>SOURCES<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h5>
 <p>Additional files that will be parsed by doxygen and that can contain global documentation.</p>
 </div>
 <div class="section" id="additional-packages">
@@ -797,6 +808,7 @@ The directory will be created in the <code class="code docutils literal notransl
 <div class="section" id="cpfaddsphinxpackage">
 <h3>cpfAddSphinxPackage()<a class="headerlink" href="#cpfaddsphinxpackage" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">cpfAddSphinxPackage(</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="no">SOURCE_DIR</span><span class="p">]</span><span class="w">                    </span><span class="nb">absDir</span><span class="w"></span>
 <span class="w">    </span><span class="p">[</span><span class="no">CONFIG_FILE_DIR</span><span class="p">]</span><span class="w">               </span><span class="nb">absDir</span><span class="w"></span>
 <span class="w">    </span><span class="p">[</span><span class="no">OTHER_FILES</span><span class="p">]</span><span class="w">                   </span><span class="nb">file1</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
 <span class="w">    </span><span class="p">[</span><span class="no">OUTPUT_SUBDIR</span><span class="p">]</span><span class="w">                 </span><span class="nb">relDir</span><span class="w"></span>
@@ -808,8 +820,14 @@ The directory will be created in the <code class="code docutils literal notransl
 <p>This function creates a target that runs the python based sphinx documentation generator
 using a given configuration file. The source directory for sphinx is the <code class="code docutils literal notranslate"><span class="pre">&lt;rootdir&gt;/Sources</span></code>
 directory.</p>
-<div class="section" id="id12">
-<h4>Arguments<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id13">
+<h4>Arguments<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="source-dir">
+<h5>SOURCE_DIR<a class="headerlink" href="#source-dir" title="Permalink to this headline">¶</a></h5>
+<p>The base directory in which sphinx searches for files that contribute to the documentation.
+When the argument is not given, <code class="code docutils literal notranslate"><span class="pre">CMAKE_SOURCE_DIR</span></code> is used in order to look for documentation
+files in all packages of the CI-project.</p>
+</div>
 <div class="section" id="config-file-dir">
 <h5>CONFIG_FILE_DIR<a class="headerlink" href="#config-file-dir" title="Permalink to this headline">¶</a></h5>
 <p>A relative path to the directory that holds the <code class="code docutils literal notranslate"><span class="pre">conf.py</span></code> file that configures your
@@ -865,7 +883,13 @@ may not always re-build the target after making changes to the source files.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-cpfinitpackagemodule-cmake">Module cpfInitPackageModule.cmake</a><ul>
-<li><a class="reference internal" href="#cpfinitpackageproject">cpfInitPackageProject()</a></li>
+<li><a class="reference internal" href="#cpfinitpackageproject">cpfInitPackageProject()</a><ul>
+<li><a class="reference internal" href="#cpfinitpackagemodule-arguments">Arguments</a><ul>
+<li><a class="reference internal" href="#languages">LANGUAGES</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-cpfaddcpppackage-cmake">Module cpfAddCppPackage.cmake</a><ul>
@@ -881,7 +905,7 @@ may not always re-build the target after making changes to the source files.</p>
 <li><a class="reference internal" href="#maintainer-email">MAINTAINER_EMAIL</a></li>
 <li><a class="reference internal" href="#public-header">PUBLIC_HEADER</a></li>
 <li><a class="reference internal" href="#production-files">PRODUCTION_FILES</a></li>
-<li><a class="reference internal" href="#id6">PRODUCTION_FILES</a></li>
+<li><a class="reference internal" href="#id7">PRODUCTION_FILES</a></li>
 <li><a class="reference internal" href="#public-fixture-header">PUBLIC_FIXTURE_HEADER</a></li>
 <li><a class="reference internal" href="#fixture-files">FIXTURE_FILES</a></li>
 <li><a class="reference internal" href="#test-files">TEST_FILES</a></li>
@@ -915,7 +939,7 @@ may not always re-build the target after making changes to the source files.</p>
 </li>
 <li><a class="reference internal" href="#module-cpfaddfilepackage-cmake">Module cpfAddFilePackage.cmake</a><ul>
 <li><a class="reference internal" href="#cpfaddfilepackage">cpfAddFilePackage()</a><ul>
-<li><a class="reference internal" href="#id8">Arguments</a><ul>
+<li><a class="reference internal" href="#id9">Arguments</a><ul>
 <li><a class="reference internal" href="#sources">SOURCES</a></li>
 </ul>
 </li>
@@ -925,12 +949,12 @@ may not always re-build the target after making changes to the source files.</p>
 </li>
 <li><a class="reference internal" href="#module-cpfadddoxygenpackage-cmake">Module cpfAddDoxygenPackage.cmake</a><ul>
 <li><a class="reference internal" href="#cpfadddoxygenpackage">cpfAddDoxygenPackage()</a><ul>
-<li><a class="reference internal" href="#id10">Arguments</a><ul>
+<li><a class="reference internal" href="#id11">Arguments</a><ul>
 <li><a class="reference internal" href="#project-name">PROJECT_NAME</a></li>
 <li><a class="reference internal" href="#doxygen-config-file">DOXYGEN_CONFIG_FILE</a></li>
 <li><a class="reference internal" href="#doxygen-layout-file">DOXYGEN_LAYOUT_FILE</a></li>
 <li><a class="reference internal" href="#doxygen-stylesheet-file">DOXYGEN_STYLESHEET_FILE</a></li>
-<li><a class="reference internal" href="#id11">SOURCES</a></li>
+<li><a class="reference internal" href="#id12">SOURCES</a></li>
 <li><a class="reference internal" href="#additional-packages">ADDITIONAL_PACKAGES</a></li>
 <li><a class="reference internal" href="#html-header">HTML_HEADER</a></li>
 <li><a class="reference internal" href="#html-footer">HTML_FOOTER</a></li>
@@ -945,7 +969,8 @@ may not always re-build the target after making changes to the source files.</p>
 </li>
 <li><a class="reference internal" href="#module-cpfaddsphinxpackage-cmake">Module cpfAddSphinxPackage.cmake</a><ul>
 <li><a class="reference internal" href="#cpfaddsphinxpackage">cpfAddSphinxPackage()</a><ul>
-<li><a class="reference internal" href="#id12">Arguments</a><ul>
+<li><a class="reference internal" href="#id13">Arguments</a><ul>
+<li><a class="reference internal" href="#source-dir">SOURCE_DIR</a></li>
 <li><a class="reference internal" href="#config-file-dir">CONFIG_FILE_DIR</a></li>
 <li><a class="reference internal" href="#other-files">OTHER_FILES</a></li>
 <li><a class="reference internal" href="#output-subdir">OUTPUT_SUBDIR</a></li>
@@ -1008,7 +1033,7 @@ may not always re-build the target after making changes to the source files.</p>
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.519-d8a9 Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.526-7707 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="CPFCMake.html" >CPFCMake</a> &#187;</li> 
