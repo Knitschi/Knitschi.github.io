@@ -7,8 +7,8 @@ $VAR1 = {
                          'fixture.h' => 1
                        },
           'Language' => 'C++',
-          'LibraryName' => 'MyLib_fixtures-debug.so.0.0.3.54-492f',
-          'LibraryVersion' => '0.0.3.54-492f',
+          'LibraryName' => 'MyLib_fixtures-debug.so.0.0.3.55-552d',
+          'LibraryVersion' => '0.0.3.55-552d',
           'MissedOffsets' => '1',
           'MissedRegs' => '1',
           'NameSpaces' => {
@@ -18,7 +18,7 @@ $VAR1 = {
                             'std::__exception_ptr' => 1
                           },
           'Needed' => {
-                        'MyLib-debug.so.0.0.3.54-492f' => 1,
+                        'MyLib-debug.so.0.0.3.55-552d' => 1,
                         'libc.so.6' => 1,
                         'libgcc_s.so.1' => 1,
                         'libm.so.6' => 1,
@@ -48,7 +48,7 @@ $VAR1 = {
                           },
           'SymbolVersion' => {},
           'Symbols' => {
-                         'MyLib_fixtures-debug.so.0.0.3.54-492f' => {
+                         'MyLib_fixtures-debug.so.0.0.3.55-552d' => {
                                                                       '_ZN5mylib9MyFixture5setUpEv' => 1,
                                                                       '_fini' => 1,
                                                                       '_init' => 1
@@ -77,7 +77,7 @@ $VAR1 = {
                                     }
                         },
           'UndefinedSymbols' => {
-                                  'MyLib_fixtures-debug.so.0.0.3.54-492f' => {
+                                  'MyLib_fixtures-debug.so.0.0.3.55-552d' => {
                                                                                '_ITM_deregisterTMCloneTable' => 0,
                                                                                '_ITM_registerTMCloneTable' => 0,
                                                                                '_Jv_RegisterClasses' => 0,
