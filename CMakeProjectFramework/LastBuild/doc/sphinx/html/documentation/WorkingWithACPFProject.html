@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-  <title>Working with a CPF Project &mdash; CMakeProjectFramework 0.0.0.530-7f1e Documentation</title>
+  <title>Working with a CPF Project &mdash; CMakeProjectFramework 0.0.0.550-f6f7 Documentation</title>
 
     <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -45,7 +45,7 @@
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../index.html">0.0.0.530-7f1e Documentation</a> &#187;
+    <a href="../index.html">0.0.0.550-f6f7 Documentation</a> &#187;
   </li>
  
       </ul>
@@ -105,8 +105,8 @@ The steps are implemented with the following <em>Python 3</em> scripts.</p>
 <ul class="simple">
 <li><p><strong>0_CopyScripts.py:</strong> Copies the other scripts to the projects root directory.</p></li>
 <li><p><strong>1_Configure.py:</strong> Adds a CMake configuration for the project.</p></li>
-<li><p><strong>2_Generate.py:</strong> Create the <em>make-files</em> for a project configuration.</p></li>
-<li><p><strong>3_Make.py:</strong> Build the project.</p></li>
+<li><p><strong>3_Generate.py:</strong> Create the <em>make-files</em> for a project configuration.</p></li>
+<li><p><strong>4_Make.py:</strong> Build the project.</p></li>
 </ul>
 <p>If you have your operating system configured to run <code class="code docutils literal notranslate"><span class="pre">.py</span></code> files with python 3, you can omit the explicit call to <code class="code docutils literal notranslate"><span class="pre">python</span></code> in the following command line examples.
 If this is not the case, make sure the <code class="code docutils literal notranslate"><span class="pre">python</span> <span class="pre">--version</span></code> call returns a 3.X version. On Linux you may need to use the command
@@ -176,11 +176,11 @@ to define <em>officially</em> supported compiler configurations and platforms.</
 <div class="section" id="the-generate-step">
 <span id="generatestep"></span><h3>The Generate Step<a class="headerlink" href="#the-generate-step" title="Permalink to this headline">¶</a></h3>
 <p>To execute the generate step run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...<span class="se">\A</span>CPFTestProject&gt; python 2_Generate.py VS
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...<span class="se">\A</span>CPFTestProject&gt; python 3_Generate.py VS
 </pre></div>
 </div>
 <p>on Windows or</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.../ACPFTestProject&gt; python3 2_Generate.py Gcc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.../ACPFTestProject&gt; python3 3_Generate.py Gcc
 </pre></div>
 </div>
 <p>on Linux in the project root directory.</p>
@@ -198,11 +198,11 @@ This is sometimes necessary when an existing configuration is changed.</p></li>
 <div class="section" id="the-build-step">
 <span id="buildstep"></span><h3>The Build Step<a class="headerlink" href="#the-build-step" title="Permalink to this headline">¶</a></h3>
 <p>To execute a full build run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...<span class="se">\A</span>CPFTestProject&gt; python 3_Make.py VS --target pipeline --config Debug
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...<span class="se">\A</span>CPFTestProject&gt; python 4_Make.py VS --target pipeline --config Debug
 </pre></div>
 </div>
 <p>on Windows or</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.../ACPFTestProject&gt; python3 3_Make.py Gcc --target pipeline
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.../ACPFTestProject&gt; python3 4_Make.py Gcc --target pipeline
 </pre></div>
 </div>
 <p>on Linux. This will compile the binaries as well as executing extra pipeline tasks like running the tests, do code analysis,
@@ -231,8 +231,8 @@ Many of the displayed directories do not exist in a freshly cloned CPF project.<
 │   .gitignore
 │   .gitmodules
 │   1_Configure.py
-│   2_Generate.py
-│   3_Make.py
+│   3_Generate.py
+│   4_Make.py
 │   README.rst
 │   ... <span class="o">[</span>other scripts that <span class="nb">help</span> with day to day tasks<span class="o">]</span>
 │
@@ -467,7 +467,7 @@ version number format of the <em>CPF</em>.</p>
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../index.html">0.0.0.530-7f1e Documentation</a> &#187;
+    <a href="../index.html">0.0.0.550-f6f7 Documentation</a> &#187;
   </li>
  
       </ul>

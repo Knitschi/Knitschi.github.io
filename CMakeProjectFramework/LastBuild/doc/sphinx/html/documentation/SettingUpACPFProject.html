@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-  <title>Setting up a CPF project &mdash; CMakeProjectFramework 0.0.0.530-7f1e Documentation</title>
+  <title>Setting up a CPF project &mdash; CMakeProjectFramework 0.0.0.550-f6f7 Documentation</title>
 
     <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -45,7 +45,7 @@
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../index.html">0.0.0.530-7f1e Documentation</a> &#187;
+    <a href="../index.html">0.0.0.550-f6f7 Documentation</a> &#187;
   </li>
  
       </ul>
@@ -134,8 +134,8 @@ Generated
 Configuration/**
 Configuration
 1_Configure.py
-2_Generate.py
-3_Make.py
+3_Generate.py
+4_Make.py
 </pre></div>
 </div>
 </div>
@@ -216,7 +216,7 @@ file as <code class="code docutils literal notranslate"><span class="pre">EXTERN
 Run the following commands in the project root directory.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; Sources\CPFBuildscripts\0_CopyScripts.py
 &gt; 1_Configure.py VS --inherits Windows
-&gt; 2_Generate.py
+&gt; 3_Generate.py
 </pre></div>
 </div>
 <p>This creates the <code class="code docutils literal notranslate"><span class="pre">Configuration</span></code> and <code class="code docutils literal notranslate"><span class="pre">Generated</span></code> directories parallel to your <code class="code docutils literal notranslate"><span class="pre">Sources</span></code> directory.
@@ -225,8 +225,8 @@ Your file tree should now look like this.</p>
 │   .gitignore
 │   .gitmodules
 │   1_Configure.py
-│   2_Generate.py
-│   3_Make.py
+│   3_Generate.py
+│   4_Make.py
 │
 ├───Configuration
 │       VS.config.cmake
@@ -399,9 +399,9 @@ This is required when adding additional test executables to the package.</p>
 <h4>Build the project<a class="headerlink" href="#build-the-project" title="Permalink to this headline">¶</a></h4>
 <p>With all the files in place we can now generate and build the project. Note that you have to run a fresh generate
 whenever you change the <code class="code docutils literal notranslate"><span class="pre">packages.cmake</span></code> file. A <em>fresh</em> generate is executed when the <code class="code docutils literal notranslate"><span class="pre">--clean</span></code>
-option is given to the <code class="code docutils literal notranslate"><span class="pre">2_Generate.py</span></code> script. After that you can build the pipeline target and run the application.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 2_Generate.py --clean
-&gt; 3_Make.py --target pipeline
+option is given to the <code class="code docutils literal notranslate"><span class="pre">3_Generate.py</span></code> script. After that you can build the pipeline target and run the application.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 3_Generate.py --clean
+&gt; 4_Make.py --target pipeline
 &gt; Generated\VS\BuildStage\Debug\MyApp\MyApp-debug
 MyApp (version 0.0.0.2-73cc-dirty) greets the world!
 </pre></div>
@@ -427,7 +427,7 @@ To create the new default configuration execute the following steps.</p>
 &gt; move Configuration\VS2017-shared.config.cmake Sources\CIBuildConfigurations
 &gt; rmdir /s /q Configuration
 &gt; 1_Configure.py VS --inherits VS2017-shared
-&gt; 2_Generate.py
+&gt; 3_Generate.py
 &gt; git add Sources\CIBuildConfigurations
 &gt; git commit . -m&quot;Adds the default configuration VS2017-shared.&quot;
 </pre></div>
@@ -628,8 +628,8 @@ we have to add it to the linked libraries of <code class="code docutils literal 
 </div>
 <p>You now have to commit the changes to <code class="code docutils literal notranslate"><span class="pre">MyCPFProject</span></code> and regenerate the make-files in order to finish adding the library package.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; git commit . -m&quot;Adds MyLib submodule and uses it in MyApp.&quot;
-&gt; 2_Generate.py
-&gt; 3_Make.py
+&gt; 3_Generate.py
+&gt; 4_Make.py
 &gt; Generated\VS\BuildStage\Debug\MyApp\MyApp-debug.exe
 MyLib (version 0.0.0) greets the world!
 MyApp (version 0.0.0.3-3d31) greets the world!
@@ -721,8 +721,8 @@ files that are used to build the test executable. the <code class="code docutils
 can be used to add linked libraries that are only used by the test executable. This could be a test-framework
 library for example. In this example our test executable does not depend on any other library so we leave this empty.</p>
 <p>You can now build and run your test executable by calling:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 2_Generate.py
-&gt; 3_Make.py --target runAllTests
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 3_Generate.py
+&gt; 4_Make.py --target runAllTests
 ...
 Run tests for MyLib
 
@@ -842,7 +842,7 @@ the test executable. If you need it in the tests of another package you have to 
 <div class="section" id="compile-and-run-the-fixture-code">
 <h4>Compile and run the fixture code<a class="headerlink" href="#compile-and-run-the-fixture-code" title="Permalink to this headline">¶</a></h4>
 <p>You can now compile and run your tests by calling</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 3_Make.py --target runAllTests
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 4_Make.py --target runAllTests
 ...
 Run tests for MyLib
 
@@ -909,7 +909,7 @@ We also set options for creating a <code class="code docutils literal notranslat
 <div class="section" id="create-the-distribution-package">
 <h4>Create the distribution package<a class="headerlink" href="#create-the-distribution-package" title="Permalink to this headline">¶</a></h4>
 <p>In order to create the specified packages, run</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 3_Make.py --target distributionPackages
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 4_Make.py --target distributionPackages
 </pre></div>
 </div>
 <p>You should now have a directory <code class="code docutils literal notranslate"><span class="pre">MyCPFProject/Generated/VS/html/Downloads/MyLib/LastBuild</span></code> with the three archives</p>
@@ -945,7 +945,7 @@ We now add cotire to our external packages in the <code class="code docutils lit
 </div>
 <p>As a last step we enable the use of cotire in our configuration.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 1_Configure.py VS --inherits VS2017-shared -D CPF_ENABLE_PRECOMPILED_HEADER=ON
-&gt; 2_Generate.py
+&gt; 3_Generate.py
 </pre></div>
 </div>
 <p>At this point we will not benefit much from using pre-compiled headers. Cotire will only
@@ -1050,7 +1050,7 @@ Finally we add the package to the repository and the <code class="code docutils 
 </pre></div>
 </div>
 <p>To harvest the fruits of your hard labor run</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 3_Make.py --target documentation
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 4_Make.py --target documentation
 </pre></div>
 </div>
 <p>You can now open <code class="code docutils literal notranslate"><span class="pre">Generated/VS/html/doxygen/html/index.html</span></code> in your browser to take a look at the generated html-page.
@@ -1196,7 +1196,7 @@ issue on github with your question.</p>
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../index.html">0.0.0.530-7f1e Documentation</a> &#187;
+    <a href="../index.html">0.0.0.550-f6f7 Documentation</a> &#187;
   </li>
  
       </ul>

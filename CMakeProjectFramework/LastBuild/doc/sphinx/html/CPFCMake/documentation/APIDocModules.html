@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-  <title>API Modules &mdash; CMakeProjectFramework 0.0.0.530-7f1e Documentation</title>
+  <title>API Modules &mdash; CMakeProjectFramework 0.0.0.550-f6f7 Documentation</title>
 
     <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -45,7 +45,7 @@
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.530-7f1e Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.550-f6f7 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="CPFCMake.html" accesskey="U">CPFCMake</a> &#187;</li> 
@@ -220,6 +220,8 @@ the default value <code class="code docutils literal notranslate"><span class="p
 <span class="w">    </span><span class="p">[</span><span class="no">ENABLE_RUN_TESTS_TARGET</span><span class="w"> </span><span class="nb">bool</span><span class="p">]</span><span class="w"></span>
 <span class="w">    </span><span class="p">[</span><span class="no">ENABLE_VALGRIND_TARGET</span><span class="w"> </span><span class="nb">bool</span><span class="p">]</span><span class="w"></span>
 <span class="w">    </span><span class="p">[</span><span class="no">ENABLE_VERSION_RC_FILE_GENERATION</span><span class="w"> </span><span class="nb">bool</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="no">TEST_EXE_ARGUMENTS</span><span class="w"> </span><span class="nb">arg1</span><span class="w"> </span><span class="p">[</span><span class="nb">arg2</span><span class="w"> </span><span class="p">...]]</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="no">HAS_GOOGLE_TEST_EXE</span><span class="w"> </span><span class="nb">bool</span><span class="p">]</span><span class="w"></span>
 <span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
@@ -624,6 +626,29 @@ version.rc file does not fit your needs, you can disable it’s generation
 with this option and provide your custom made <code class="code docutils literal notranslate"><span class="pre">.rc</span></code> file.
 Setting this argument overrides the value of the global <code class="code docutils literal notranslate"><span class="pre">CPF_ENABLE_VERSION_RC_FILE_GENERATION</span></code> variable for this package.</p>
 </div>
+<div class="section" id="test-exe-arguments">
+<h5>TEST_EXE_ARGUMENTS<a class="headerlink" href="#test-exe-arguments" title="Permalink to this headline">¶</a></h5>
+<p>This option can be used to pass a list of arguments to the test executable when building the <a class="reference internal" href="CustomTargets.html#runalltests-package"><span class="std std-ref">runAllTests_&lt;package&gt;</span></a> or <a class="reference internal" href="CustomTargets.html#runfasttests-package"><span class="std std-ref">runFastTests_&lt;package&gt;</span></a> targets.
+This can be usefull in cases where the test executable needs information from the build-system like a directory for test files etc.
+When using the “Visual Studio” generator family, these arguments are also set to the “Debugging -&gt; Command Arguments” option to make sure that the same arguments
+are passed to the test executable during debugging.</p>
+<p>Example
+.. code-block:: none</p>
+<blockquote>
+<div><dl class="simple">
+<dt>TEST_EXE_ARGUMENTS</dt><dd><p>–TestWorkingDirectory “${CMAKE_BINARY_DIR}/TestFiles”
+–TestDataDirectory “${CMAKE_SOURCE_DIR}/TestData”</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="has-google-test-exe">
+<h5>HAS_GOOGLE_TEST_EXE<a class="headerlink" href="#has-google-test-exe" title="Permalink to this headline">¶</a></h5>
+<p>This option only has an effect when using a Visual Studio Generator.
+When this option is set to true, <code class="code docutils literal notranslate"><span class="pre">cpfAddCppPackage()</span></code> will create an empty file <code class="code docutils literal notranslate"><span class="pre">&lt;test-exe&gt;.is_google_test</span></code> that lies beside the
+create test executable. Set this option to true when you use the &lt;a href=”<a class="reference external" href="https://github.com/csoltenborn/GoogleTestAdapter">https://github.com/csoltenborn/GoogleTestAdapter</a>”&gt;GoogleTestAdapter&lt;/a&gt;
+and it fails to find your tests.</p>
+</div>
 </div>
 </div>
 <div class="section" id="cpfqt5adduiandqrcfiles">
@@ -930,6 +955,8 @@ may not always re-build the target after making changes to the source files.</p>
 <li><a class="reference internal" href="#enable-run-tests-target">ENABLE_RUN_TESTS_TARGET</a></li>
 <li><a class="reference internal" href="#enable-valgrind-target">ENABLE_VALGRIND_TARGET</a></li>
 <li><a class="reference internal" href="#enable-version-rc-file-generation">ENABLE_VERSION_RC_FILE_GENERATION</a></li>
+<li><a class="reference internal" href="#test-exe-arguments">TEST_EXE_ARGUMENTS</a></li>
+<li><a class="reference internal" href="#has-google-test-exe">HAS_GOOGLE_TEST_EXE</a></li>
 </ul>
 </li>
 </ul>
@@ -1033,7 +1060,7 @@ may not always re-build the target after making changes to the source files.</p>
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.530-7f1e Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.550-f6f7 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="CPFCMake.html" >CPFCMake</a> &#187;</li> 

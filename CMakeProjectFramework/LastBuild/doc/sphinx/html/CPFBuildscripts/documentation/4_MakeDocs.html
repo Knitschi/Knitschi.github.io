@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-  <title>2_Generate.py &mdash; CMakeProjectFramework 0.0.0.530-7f1e Documentation</title>
+  <title>4_Make.py &mdash; CMakeProjectFramework 0.0.0.550-f6f7 Documentation</title>
 
     <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -19,8 +19,8 @@
     <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3_Make.py" href="3_MakeDocs.html" />
-    <link rel="prev" title="1_Configure.py" href="1_ConfigureDocs.html" />
+    <link rel="next" title="CPFMachines" href="../../CPFMachines/documentation/CPFMachines.html" />
+    <link rel="prev" title="3_Generate.py" href="3_GenerateDocs.html" />
   
  
 
@@ -32,10 +32,10 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="3_MakeDocs.html" title="3_Make.py"
+          <a href="../../CPFMachines/documentation/CPFMachines.html" title="CPFMachines"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="1_ConfigureDocs.html" title="1_Configure.py"
+          <a href="3_GenerateDocs.html" title="3_Generate.py"
              accesskey="P">previous</a> |</li>
   <li>
     <img src="../../_static/CPFLogo_16.png" alt=""
@@ -45,7 +45,7 @@
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.530-7f1e Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.550-f6f7 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" accesskey="U">CPFBuildscripts</a> &#187;</li> 
@@ -57,31 +57,65 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="generate-py">
-<h1>2_Generate.py<a class="headerlink" href="#generate-py" title="Permalink to this headline">¶</a></h1>
-<p>This script runs the CMake generate step that creates the native “make files” for you chosen generator.</p>
+  <div class="section" id="make-py">
+<h1>4_Make.py<a class="headerlink" href="#make-py" title="Permalink to this headline">¶</a></h1>
+<p>This script builds the targets in a CPF project.</p>
 <div class="section" id="command-line-interface">
 <h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Usage:
-    2_Generate.py <span class="o">[</span>&lt;config_name&gt;<span class="o">]</span> <span class="o">[</span>--clean<span class="o">]</span> <span class="o">[</span>--help<span class="o">]</span>
+    4_Make.py <span class="o">[</span>&lt;config_name&gt;<span class="o">]</span> <span class="o">[</span>--target &lt;target&gt;<span class="o">]</span> <span class="o">[</span>--config &lt;config&gt;<span class="o">]</span> <span class="o">[</span>--clean<span class="o">]</span> <span class="o">[</span>--cpus &lt;nr_cpus&gt;<span class="o">]</span> <span class="o">[</span>--help<span class="o">]</span>
 
-    Running this script will run CMake to generate the <span class="s2">&quot;make-files&quot;</span> <span class="k">for</span> the given
-    configuration. &lt;config_name&gt; must be the base-name of a configuration file
-    found in the <span class="s2">&quot;Configuration&quot;</span> sub-directory. After calling this script,
-    the makefiles can be found in the <span class="s2">&quot;Generated/&lt;config-name&gt; sub-directory.</span>
-<span class="s2">    When the &lt;config_name&gt; is given, an possibly existing &quot;</span>Generated/&lt;config-name&gt;<span class="s2">&quot;</span>
-<span class="s2">    directory will be deleted before running CMake. If the &lt;config_name&gt; option</span>
-<span class="s2">    is not given, the script will choose the first available config in the</span>
-<span class="s2">    &quot;</span>Configuration<span class="s2">&quot; directory. It will also not delete the &quot;</span>Generated/&lt;config-name&gt;<span class="s2">&quot;</span>
-<span class="s2">    directory, so this can be used for running CMake incrementally.</span>
-<span class="s2">    Note that when calling this for the first time, this step will download and</span>
-<span class="s2">    compile all dependencies that are handled with the hunter package manager,</span>
-<span class="s2">    so the execution may take some time.</span>
+    This script builds the given target in the given configuration.
 
-<span class="s2">Options:</span>
-<span class="s2">    -c --clean              Deletes the Generated/&lt;config_name&gt; directory before</span>
-<span class="s2">                            running CMake to get a clean build-tree.</span>
-<span class="s2">    -h --help               Shows this page.</span>
+    If no &lt;config_name&gt; is given, the first configuration that already
+    has a CMakeCache.txt file will be used.
+    If you specify a &lt;config_name&gt; and there is no CMakeCache.txt file
+    <span class="k">for</span> that config, 4_Make.py call 3_Generate.py in order to try
+    to create one.
+
+    If no &lt;target&gt; is given, the <span class="s2">&quot;ALL_BUILD&quot;</span> target will be build.
+
+Options:
+    -h --help               Show this
+    --target &lt;target&gt;       Specify the build target. For the options see the list below.
+    --config &lt;config&gt;       Specify the configuration <span class="k">for</span> multi-config build systems.
+                            This is usually Debug or Release.
+    --clean                 Use CMakes --clean-first option <span class="k">for</span> the build, which triggers a fresh rebuild.
+    --cpus &lt;nr_cpus&gt;        The number of cpu cores that should be used during the build.
+                            If no number is given, the number of available physical cores plus the number
+                            of hyper-threading cores will be used.
+
+Custom Targets:
+    The following custom targets may be available.
+    The availability depends on the project configuration.
+
+    Global Targets
+    - abi-compliance-checker
+    - acyclic
+    - ALL_BUILD <span class="o">(</span>Visual Studio<span class="o">)</span> / all <span class="o">(</span>Makefiles<span class="o">)</span>
+    - clang-format
+    - clang-tidy
+    - distributionPackages
+    - install
+    - opencppcoverage
+    - pipeline
+    - runAllTests
+    - runFastTests
+    - valgrind
+    - ZERO_CHECK <span class="o">(</span>Visual Studio<span class="o">)</span>
+
+    Package Targets
+    - abi-compliance-checker_&lt;package&gt;
+    - clang-format_&lt;binary-target&gt;
+    - clang-tidy_&lt;package&gt;
+    - distributionPackages_&lt;package&gt;
+    - opencppcoverage_&lt;package&gt;
+    - &lt;package&gt;
+    - &lt;package&gt;_fixtures
+    - &lt;package&gt;_tests
+    - runAllTests_&lt;package&gt;
+    - runFastTests_&lt;package&gt;
+    - valgrind_&lt;package&gt;
 </pre></div>
 </div>
 </div>
@@ -95,22 +129,22 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="../../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">2_Generate.py</a><ul>
+<li><a class="reference internal" href="#">4_Make.py</a><ul>
 <li><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="1_ConfigureDocs.html"
-                        title="previous chapter">1_Configure.py</a></p>
+  <p class="topless"><a href="3_GenerateDocs.html"
+                        title="previous chapter">3_Generate.py</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="3_MakeDocs.html"
-                        title="next chapter">3_Make.py</a></p>
+  <p class="topless"><a href="../../CPFMachines/documentation/CPFMachines.html"
+                        title="next chapter">CPFMachines</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/CPFBuildscripts/documentation/2_GenerateDocs.rst.txt"
+      <li><a href="../../_sources/CPFBuildscripts/documentation/4_MakeDocs.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -135,10 +169,10 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="3_MakeDocs.html" title="3_Make.py"
+          <a href="../../CPFMachines/documentation/CPFMachines.html" title="CPFMachines"
              >next</a> |</li>
         <li class="right" >
-          <a href="1_ConfigureDocs.html" title="1_Configure.py"
+          <a href="3_GenerateDocs.html" title="3_Generate.py"
              >previous</a> |</li>
   <li>
     <img src="../../_static/CPFLogo_16.png" alt=""
@@ -148,7 +182,7 @@
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.530-7f1e Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.550-f6f7 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" >CPFBuildscripts</a> &#187;</li> 
