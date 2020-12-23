@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Coexisting Versions as a Solution to the Dependency Versioning Problem in C++ &mdash; DependencyVersioningProblemPaper 1.0.0 documentation</title>
+  <title>Implementing the Coexisting Versions approach in a C++ codebase &mdash; DependencyVersioningProblemPaper 1.0.0 documentation</title>
   
 
   
@@ -35,7 +35,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introduction" href="Problem.html" /> 
+    <link rel="next" title="Conclusions" href="Conclusions.html" />
+    <link rel="prev" title="Introduction" href="Problem.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -49,7 +50,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> DependencyVersioningProblemPaper
+            <a href="index.html" class="icon icon-home"> DependencyVersioningProblemPaper
           
 
           
@@ -83,9 +84,9 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Problem.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Implementation.html">Implementing the <em>Coexisting Versions</em> approach in a C++ codebase</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Implementing the <em>Coexisting Versions</em> approach in a C++ codebase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
 </ul>
@@ -102,7 +103,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">DependencyVersioningProblemPaper</a>
+          <a href="index.html">DependencyVersioningProblemPaper</a>
         
       </nav>
 
@@ -131,15 +132,15 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li><em>Coexisting Versions</em> as a Solution to the Dependency Versioning Problem in C++</li>
+      <li>Implementing the <em>Coexisting Versions</em> approach in a C++ codebase</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/Implementation.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -152,36 +153,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="coexisting-versions-as-a-solution-to-the-dependency-versioning-problem-in-c">
-<h1><em>Coexisting Versions</em> as a Solution to the Dependency Versioning Problem in C++<a class="headerlink" href="#coexisting-versions-as-a-solution-to-the-dependency-versioning-problem-in-c" title="Permalink to this headline">¶</a></h1>
-<p>This article is still work in progress.</p>
-<div class="section" id="abstract">
-<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
-<p>In large software systems, codebases are usually composed of many libraries that form a complex dependency graph.
-Often one library is used by many other libraries which sometimes is called a diamond dependency.</p>
-<p>Todo add picture here.</p>
-<p>The <em>Dependency Versioning Problem</em> arises when one of the libraries in the tree is changed which means that a new version of the library is created.
-In this situation at one of the clients requires the new version of library, while others still require the old version.
-Currently the industry mainly uses 3 different approaches to work around this problem:</p>
-<ol class="arabic simple">
-<li><p>Make no changes. Do not change components so the problem does not arise.</p></li>
-<li><p>Semantic Versioning. Libraries define multiple versions of a dependency that they can use. A version must be found that satisfies the requirements of all clients.</p></li>
-<li><p>Only one Version. All clients are updated to use the new version of the library at the same time.</p></li>
-</ol>
-<p>There is a forth solution that has not been much discussed yet. Allow the library to exist in multiple versions in the dependency tree. This I call the <em>Coexisting Versions</em> approach.</p>
-<p>This article discusses the pros and cons of the all these approaches and explores how the <em>Coexisting Versions</em> can be implemented in a C++ codebase.</p>
-<div class="section" id="index">
-<h3>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h3>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Problem.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Implementation.html">Implementing the <em>Coexisting Versions</em> approach in a C++ codebase</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
-</ul>
-</div>
-</div>
-</div>
+  <div class="section" id="implementing-the-coexisting-versions-approach-in-a-c-codebase">
+<h1>Implementing the <em>Coexisting Versions</em> approach in a C++ codebase<a class="headerlink" href="#implementing-the-coexisting-versions-approach-in-a-c-codebase" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -192,8 +165,10 @@ Currently the industry mainly uses 3 different approaches to work around this pr
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Problem.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="Conclusions.html" class="btn btn-neutral float-right" title="Conclusions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="Problem.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
