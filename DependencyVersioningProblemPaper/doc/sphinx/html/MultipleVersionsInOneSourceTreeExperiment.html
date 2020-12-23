@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Notes on the “Versions are different dependencies” experiment &mdash; DependencyVersioningProblemPaper 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="References" href="References.html" />
+    <link rel="prev" title="How do Conan or vcpkg handle compatibility schemes?" href="Notes.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DependencyVersioningProblemPaper
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Problem.html">The Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solution.html">Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notes.html">How do Conan or vcpkg handle compatibility schemes?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notes.html#questions-for-conan">Questions for Conan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notes.html#ideas-for-automated-compatibility-determination">Ideas for automated compatibility determination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notes.html#is-compatibility-transitive">Is compatibility transitive?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Notes on the “Versions are different dependencies” experiment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#operations-for-adding-the-version-number-as-a-postfix-to-the-package-name-and-namespaces">Operations for adding the version number as a postfix to the package name and namespaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operations-for-globally-incrementing-the-version-number-of-dvplibc-1-0-0-to-dvplibc-1-1-0">Operations for globally incrementing the version number of dvpLibC_1_0_0 to dvpLibC_1_1_0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operations-for-incrementing-the-version-number-of-dvplibc-1-1-0-to-dvplibc-2-0-0-only-for-dvplibb1">Operations for incrementing the version number of dvpLibC_1_1_0 to dvpLibC_2_0_0 only for dvpLibB1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#type-transformations">Type transformations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#problems-with-cpf">Problems with CPF</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DependencyVersioningProblemPaper</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Notes on the “Versions are different dependencies” experiment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/MultipleVersionsInOneSourceTreeExperiment.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="notes-on-the-versions-are-different-dependencies-experiment">
+<h1>Notes on the “Versions are different dependencies” experiment<a class="headerlink" href="#notes-on-the-versions-are-different-dependencies-experiment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="operations-for-adding-the-version-number-as-a-postfix-to-the-package-name-and-namespaces">
+<h2>Operations for adding the version number as a postfix to the package name and namespaces<a class="headerlink" href="#operations-for-adding-the-version-number-as-a-postfix-to-the-package-name-and-namespaces" title="Permalink to this headline">¶</a></h2>
+<p>Switch submodule directories to one that contains the version.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">mv</span> <span class="n">Sources</span><span class="o">/</span><span class="n">dvpLibC</span> <span class="n">Sources</span><span class="o">/</span><span class="n">dvpLibC_1_0_0</span>
+<span class="n">git</span> <span class="n">mv</span> <span class="n">Sources</span><span class="o">/</span><span class="n">dvpLibB1</span> <span class="n">Sources</span><span class="o">/</span><span class="n">dvpLibB1_2_0_0</span>
+<span class="n">git</span> <span class="n">mv</span> <span class="n">Sources</span><span class="o">/</span><span class="n">dvpLibB2</span> <span class="n">Sources</span><span class="o">/</span><span class="n">dvpLibB2_1_0_0</span>
+<span class="n">git</span> <span class="n">mv</span> <span class="n">Sources</span><span class="o">/</span><span class="n">dvpLibA</span> <span class="n">Sources</span><span class="o">/</span><span class="n">dvpLibA_1_0_0</span>
+</pre></div>
+</div>
+<p>-&gt; Internal packages must not be post-fixed with a version number because they can only occur in one version.</p>
+<p>Change the variable names in the <code class="code docutils literal notranslate"><span class="pre">packages.cmake</span></code> file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># file packages.cmake</span>
+
+<span class="nb">set</span><span class="p">(</span> <span class="n">CPF_PACKAGES</span>
+        <span class="n">EXTERNAL</span> <span class="n">CPFCMake</span>
+    <span class="n">EXTERNAL</span> <span class="n">CPFBuildscripts</span>
+    <span class="n">EXTERNAL</span> <span class="n">dvpLibC_1_0_0</span>
+    <span class="n">EXTERNAL</span> <span class="n">dvpLibB1_2_0_0</span>
+    <span class="n">EXTERNAL</span> <span class="n">dvpLibB2_1_0_0</span>
+    <span class="n">OWNED</span> <span class="n">dvpLibA</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Update target references in LINKED_LIBS lists.</p>
+<p>Change all the includes to the target names with the version numbers.</p>
+<p>Append the version to the namespaces. VSAssist failed to rename the namespace usages in front of the function calls.</p>
+<p>At this point the project should build.</p>
+<dl class="simple">
+<dt>Problems:</dt><dd><ul class="simple">
+<li><p>A version can no longer be simply set by adding a tag to a commit, because the commit must already contain the version in the source code.</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="operations-for-globally-incrementing-the-version-number-of-dvplibc-1-0-0-to-dvplibc-1-1-0">
+<h2>Operations for globally incrementing the version number of dvpLibC_1_0_0 to dvpLibC_1_1_0<a class="headerlink" href="#operations-for-globally-incrementing-the-version-number-of-dvplibc-1-0-0-to-dvplibc-1-1-0" title="Permalink to this headline">¶</a></h2>
+<p>This documents what needs to be done to update the version of dvpLibC for all dependencies at the same time.</p>
+<p>Rename the namespace.
+Rename the external directory.
+Update all includes.
+Commit dvpLIbC and tag the commit with the new version.</p>
+</div>
+<div class="section" id="operations-for-incrementing-the-version-number-of-dvplibc-1-1-0-to-dvplibc-2-0-0-only-for-dvplibb1">
+<h2>Operations for incrementing the version number of dvpLibC_1_1_0 to dvpLibC_2_0_0 only for dvpLibB1<a class="headerlink" href="#operations-for-incrementing-the-version-number-of-dvplibc-1-1-0-to-dvplibc-2-0-0-only-for-dvplibb1" title="Permalink to this headline">¶</a></h2>
+<p>Add dvpLIbC as a second submodule.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Knitschi</span><span class="o">/</span><span class="n">dvpLibC</span><span class="o">.</span><span class="n">git</span> <span class="n">Sources</span><span class="o">/</span><span class="n">dvpLibC_2_0_0</span>
+</pre></div>
+</div>
+<p>Add dvpLibC_2_0_0 to the <code class="code docutils literal notranslate"><span class="pre">packages.cmake</span></code> file.</p>
+<p>Update the entry in libB1 LINKED_LIBRARIES list.</p>
+<p>Update the namespace in libC1_2_0_0 and libB1_2_0_0.</p>
+<p>Update the export macros.</p>
+<p>Fix compile errors in libA by transforming one type into the other.</p>
+<div class="section" id="type-transformations">
+<h3>Type transformations<a class="headerlink" href="#type-transformations" title="Permalink to this headline">¶</a></h3>
+<p>ValueType (all data public)</p>
+<dl class="simple">
+<dt>Nothing changed.</dt><dd><ul class="simple">
+<li><p>Copy values.</p></li>
+</ul>
+</dd>
+<dt>Function was added.</dt><dd><ul class="simple">
+<li><p>Copy values.</p></li>
+</ul>
+</dd>
+<dt>Function signature changed.</dt><dd><ul class="simple">
+<li><p>Copy values.</p></li>
+</ul>
+</dd>
+<dt>Function was removed.</dt><dd><ul class="simple">
+<li><p>Copy values.</p></li>
+</ul>
+</dd>
+<dt>Data member was added.</dt><dd><ul class="simple">
+<li><p>Copy values and find an appropriate one for the new value.</p></li>
+</ul>
+</dd>
+<dt>Data member was removed.</dt><dd><ul class="simple">
+<li><p>Copy existing values.</p></li>
+</ul>
+</dd>
+</dl>
+<p>ComplexType (private data and not copiable, passed around by pointer)</p>
+<dl class="simple">
+<dt>Nothing changed.</dt><dd><ul class="simple">
+<li><p>reinterpret cast.</p></li>
+</ul>
+</dd>
+<dt>Function added.</dt><dd><ul class="simple">
+<li><p>reinterpret cast.</p></li>
+</ul>
+</dd>
+<dt>Function signature changed.</dt><dd><ul class="simple">
+<li><p>reinterpret cast.</p></li>
+</ul>
+</dd>
+<dt>Function removed.</dt><dd><ul class="simple">
+<li><p>reinterpret cast.</p></li>
+</ul>
+</dd>
+<dt>Private data added.</dt><dd><ul class="simple">
+<li><p>?</p></li>
+</ul>
+</dd>
+<dt>Private data removed.</dt><dd><ul class="simple">
+<li><p>?</p></li>
+</ul>
+</dd>
+</dl>
+<p>Further Work:
+- libC1 should probably provide its own library/libraries for type transformations. How would that be organized?
+- Provide transformation from the last release version and maybe from the last stable release version.
+- Providing these transformation functions may only be feasible for lexical types.
+- Private linkage should be used as much as possible.</p>
+</div>
+<div class="section" id="problems-with-cpf">
+<h3>Problems with CPF<a class="headerlink" href="#problems-with-cpf" title="Permalink to this headline">¶</a></h3>
+<p>Export macros need to contain the version number. So maybe they need to be derived from the library name.
+The filename should stay the same though.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="References.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Notes.html" class="btn btn-neutral float-left" title="How do Conan or vcpkg handle compatibility schemes?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Knitschi
+      <span class="lastupdated">
+        Last updated on Dec 23, 2020.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

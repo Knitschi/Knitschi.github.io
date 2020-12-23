@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How do Conan or vcpkg handle compatibility schemes? &mdash; DependencyVersioningProblemPaper 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Notes on the “Versions are different dependencies” experiment" href="MultipleVersionsInOneSourceTreeExperiment.html" />
+    <link rel="prev" title="Solution" href="Solution.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DependencyVersioningProblemPaper
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Problem.html">The Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solution.html">Solution</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How do Conan or vcpkg handle compatibility schemes?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#answers">Answers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#questions-for-conan">Questions for Conan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#ideas-for-automated-compatibility-determination">Ideas for automated compatibility determination</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#package-side-tests-and-compatiblity-list">Package side tests and compatiblity list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Package side tests and compatiblity list</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#is-compatibility-transitive">Is compatibility transitive?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MultipleVersionsInOneSourceTreeExperiment.html">Notes on the “Versions are different dependencies” experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DependencyVersioningProblemPaper</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>How do Conan or vcpkg handle compatibility schemes?</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Notes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-do-conan-or-vcpkg-handle-compatibility-schemes">
+<h1>How do Conan or vcpkg handle compatibility schemes?<a class="headerlink" href="#how-do-conan-or-vcpkg-handle-compatibility-schemes" title="Permalink to this headline">¶</a></h1>
+<p>How does a package specify to which other versions of itself it is compatible?
+Is it possible to provide an exact list of compatible versions instead of semver rules or ranges?
+Are their any other common formats of specifying dependencies and compatibilites in the C++ world?</p>
+<p>I think that a fully automated solution would require a format that allows to specify a list of compatible versions for each dependency.
+Should this list be maintained by the client or the dependency?</p>
+<p>What format of dependency specification should be used in the CPF?
+Do we need to support multiple formats for multiple package manager?</p>
+<div class="section" id="answers">
+<h2>Answers<a class="headerlink" href="#answers" title="Permalink to this headline">¶</a></h2>
+<p>It looks like one vcpkg instance can only have one version of a dependency. There seems to be
+no mechanism for handling compatible versions.</p>
+<p>Conan allows to specify ranges of depended on versions, which but it does not work for custom version formats.
+However version specification expressions can be “ored” and I should check if that can be used to define a list
+of allowed versions.
+<a class="reference external" href="https://docs.conan.io/en/latest/versioning/version_ranges.html">https://docs.conan.io/en/latest/versioning/version_ranges.html</a>
+Conan does not compute a <em>joint</em> compatibility, it will use the version from the most down-stream requirement.
+It should be possible though to optian all requirements using conan and implement that functionality.
+Alternatively one could try to convince the conan guys to implement it :).</p>
+</div>
+</div>
+<div class="section" id="questions-for-conan">
+<h1>Questions for Conan<a class="headerlink" href="#questions-for-conan" title="Permalink to this headline">¶</a></h1>
+<p>How does configuration information get from the profile files in ~/.conan/profiles/
+into the cmake project? Must be via conanbuildinfo.cmake</p>
+</div>
+<div class="section" id="ideas-for-automated-compatibility-determination">
+<h1>Ideas for automated compatibility determination<a class="headerlink" href="#ideas-for-automated-compatibility-determination" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="package-side-tests-and-compatiblity-list">
+<h2>Package side tests and compatiblity list<a class="headerlink" href="#package-side-tests-and-compatiblity-list" title="Permalink to this headline">¶</a></h2>
+<p>The package must provide <em>Specification-Tests</em> for its public interface.
+If Specification-Tests of version A are passed by version B, we define that B is compatible
+and version A can be replaced by version B. The extent of the tests will then determine
+how true the compatibility statement really is.</p>
+<p>The CI system of the package then has to check combinations tests versions and production code versions
+and production code versions against each other to create the compatiblity list.</p>
+<p>In the C++ world we have to consider the two kinds of compatibility.
+API and ABI compatibility. To check the first we need to replace the source code
+of the package and the tests. To check the seconds it is enough to exange the shared
+libraries of the production package that are loaded by the test executable. Maybe it
+would be necessary to run the tests and libraries with some sort of runtime code analysis
+like an address sanitizer in order to detect problems that result from binary incompatibility.</p>
+<p>Disadvantage:
+The compatibilty list does not reflect the clients use-case. This means
+that it may not include versions that could be compatible for the client,
+or it may include versions that are not compatilbe for the client because
+the client relies on “unspecified” behavior.</p>
+</div>
+<div class="section" id="id1">
+<h2>Package side tests and compatiblity list<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>However in praxis a package client is more interested if package versions are compatible
+to his use-case, which may be more or less restricting than the tests that are provided
+by the package itself.</p>
+<p>In this case the CI-system would need to compile different package versions against the
+clients production code and run the tests of the clients production code.
+Would we need to do this for several combinations of package versions if multiple
+dependencies are involved?</p>
+<p>Disadvantage:
+This would require more compute resources as every client needs to run their own
+compatibility checks. This may take too much time to be practicable.</p>
+</div>
+</div>
+<div class="section" id="is-compatibility-transitive">
+<h1>Is compatibility transitive?<a class="headerlink" href="#is-compatibility-transitive" title="Permalink to this headline">¶</a></h1>
+<p>Case 1: -&gt; Not the case if tests change in any of the version increments.</p>
+<blockquote>
+<div><p>A has function that takes 10 seconds and test requires 15 seconds.</p>
+<p>B improves performance to 5 seconds and changes test to require 7 seconds.</p>
+<p>C makes any other unrelated compatible change.
+-&gt; A will not pass the tests of C.</p>
+</div></blockquote>
+<p>If tests do not change between versions, then compatibility is transitive.
+(If tests of A and B are the same, C will pass also the tests of A if it passes the tests of B)</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="MultipleVersionsInOneSourceTreeExperiment.html" class="btn btn-neutral float-right" title="Notes on the “Versions are different dependencies” experiment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Solution.html" class="btn btn-neutral float-left" title="Solution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Knitschi
+      <span class="lastupdated">
+        Last updated on Dec 23, 2020.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Solving the Dependency Versioning Problem in C++ &mdash; DependencyVersioningProblemPaper 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Problem" href="Problem.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+          
+
+          
+            <a href="#" class="icon icon-home"> DependencyVersioningProblemPaper
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="Problem.html">The Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solution.html">Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notes.html">How do Conan or vcpkg handle compatibility schemes?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notes.html#questions-for-conan">Questions for Conan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notes.html#ideas-for-automated-compatibility-determination">Ideas for automated compatibility determination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notes.html#is-compatibility-transitive">Is compatibility transitive?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MultipleVersionsInOneSourceTreeExperiment.html">Notes on the “Versions are different dependencies” experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">DependencyVersioningProblemPaper</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Solving the Dependency Versioning Problem in C++</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="solving-the-dependency-versioning-problem-in-c">
+<h1>Solving the Dependency Versioning Problem in C++<a class="headerlink" href="#solving-the-dependency-versioning-problem-in-c" title="Permalink to this headline">¶</a></h1>
+<p>This article is still work in progress.</p>
+<div class="section" id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<p>In large software systems, codebases are usually composed of many libraries that from a dependency graph.
+Often one library is used by many other libraries which causes diamond shaped dependency graphs.
+The <em>Dependency Versioning Problem</em> arises when one of the libraries in the tree is changed which means that a new version of the library is created.
+In this situation at one of the clients requires the new version of library, while others still require the old version.
+Currently the industry mainly uses 3 different approaches to work around this problem:</p>
+<ol class="arabic simple">
+<li><p>Make no changes. Do not change components so the problem does not arrise.</p></li>
+<li><p>Semantic Versioning. Libraries define multiple versions of a dependency that they can use. A version must be found that satisfies the requirements of all clients.</p></li>
+<li><p>Only one Version. All clients are updated to use the new version of the library at the same time.</p></li>
+</ol>
+<p>There is a forth solution that has not been much discussed yet. Allow the library to exist in multiple versions in the dependency tree.</p>
+<p>This article discusses the pros and cons of the all these aproaches and explores how the the forth aproach can be implemented for a C++ codebase.</p>
+<div class="section" id="index">
+<h3>Index<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Problem.html">The Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Solution.html">Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notes.html">How do Conan or vcpkg handle compatibility schemes?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notes.html#questions-for-conan">Questions for Conan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notes.html#ideas-for-automated-compatibility-determination">Ideas for automated compatibility determination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Notes.html#is-compatibility-transitive">Is compatibility transitive?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MultipleVersionsInOneSourceTreeExperiment.html">Notes on the “Versions are different dependencies” experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Problem.html" class="btn btn-neutral float-right" title="The Problem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Knitschi
+      <span class="lastupdated">
+        Last updated on Dec 23, 2020.
+      </span>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
