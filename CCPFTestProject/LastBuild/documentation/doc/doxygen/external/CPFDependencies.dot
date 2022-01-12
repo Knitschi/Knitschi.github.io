@@ -2,17 +2,35 @@ digraph "CPFTargetDependencyGraph" {
 node [
  fontsize = "11", fontname="Helvetica-Bold"
 ];
-    "node67" [ label="APackage" shape="house"];
-    "node46" [ label="BPackage" shape="polygon"];
-    "node67" -> "node46" // APackage -> BPackage
-    "node42" [ label="CPackage" shape="polygon"];
-    "node67" -> "node42" // APackage -> CPackage
-    "node24" [ label="EPackage" shape="box"];
-    "node67" -> "node24" // APackage -> EPackage
-    "node63" [ label="libAPackage" shape="polygon"];
-    "node67" -> "node63" // APackage -> libAPackage
-    "node63" -> "node46" // libAPackage -> BPackage
-    "node63" -> "node42" // libAPackage -> CPackage
-    "node63" -> "node24" // libAPackage -> EPackage
-    "node37" [ label="DPackage" shape="polygon"];
+subgraph clusterLegend {
+  label = "Legend";
+  color = black;
+  edge [ style = invis ];
+  legendNode0 [ label = "Executable", shape = egg ];
+  legendNode1 [ label = "Static Library", shape = octagon ];
+  legendNode2 [ label = "Shared Library", shape = doubleoctagon ];
+  legendNode3 [ label = "Module Library", shape = tripleoctagon ];
+  legendNode4 [ label = "Interface Library", shape = pentagon ];
+  legendNode5 [ label = "Object Library", shape = hexagon ];
+  legendNode6 [ label = "Unknown Library", shape = septagon ];
+  legendNode7 [ label = "Custom Target", shape = box ];
+  legendNode0 -> legendNode1 [ style = solid ];
+  legendNode0 -> legendNode2 [ style = solid ];
+  legendNode0 -> legendNode3;
+  legendNode1 -> legendNode4 [ label = "Interface", style = dashed ];
+  legendNode2 -> legendNode5 [ label = "Private", style = dotted ];
+  legendNode3 -> legendNode6 [ style = solid ];
+  legendNode0 -> legendNode7;
+}
+    "node0" [ label = "APackage\n(CCPFTestPackage::APackage)", shape = egg ];
+    "node1" [ label = "DPackage\n(CCPFTestPackage::DPackage)", shape = doubleoctagon ];
+    "node0" -> "node1"  // APackage -> DPackage
+    "node2" [ label = "libAPackage\n(CCPFTestPackage::libAPackage)", shape = doubleoctagon ];
+    "node3" [ label = "BPackage\n(CCPFTestPackage::BPackage)", shape = doubleoctagon ];
+    "node2" -> "node3"  // libAPackage -> BPackage
+    "node4" [ label = "CPackage\n(CCPFTestPackage::CPackage)", shape = doubleoctagon ];
+    "node2" -> "node4"  // libAPackage -> CPackage
+    "node5" [ label = "EPackage\n(CCPFTestPackage::EPackage)", shape = pentagon ];
+    "node2" -> "node5"  // libAPackage -> EPackage
+    "node0" -> "node2" [ style = dotted ] // APackage -> libAPackage
 }

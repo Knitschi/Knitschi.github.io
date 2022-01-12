@@ -2,20 +2,52 @@ digraph CPFTargetDependencyGraph {
 	node [fontname="Helvetica-Bold",
 		fontsize=11
 	];
-	node67	 [label=APackage,
-		shape=house];
-	node63	 [label=libAPackage,
-		shape=polygon];
-	node67 -> node63;
-	node46	 [label=BPackage,
-		shape=polygon];
-	node42	 [label=CPackage,
-		shape=polygon];
-	node24	 [label=EPackage,
-		shape=box];
-	node63 -> node46;
-	node63 -> node42;
-	node63 -> node24;
-	node37	 [label=DPackage,
-		shape=polygon];
+	subgraph clusterLegend {
+		graph [color=black,
+			label=Legend
+		];
+		edge [style=invis];
+		legendNode0		 [label=Executable,
+			shape=egg];
+		legendNode1		 [label="Static Library",
+			shape=octagon];
+		legendNode0 -> legendNode1		 [style=solid];
+		legendNode2		 [label="Shared Library",
+			shape=doubleoctagon];
+		legendNode0 -> legendNode2		 [style=solid];
+		legendNode3		 [label="Module Library",
+			shape=tripleoctagon];
+		legendNode0 -> legendNode3		 [style=invis];
+		legendNode7		 [label="Custom Target",
+			shape=box];
+		legendNode0 -> legendNode7		 [style=invis];
+		legendNode4		 [label="Interface Library",
+			shape=pentagon];
+		legendNode1 -> legendNode4		 [label=Interface,
+			style=dashed];
+		legendNode5		 [label="Object Library",
+			shape=hexagon];
+		legendNode2 -> legendNode5		 [label=Private,
+			style=dotted];
+		legendNode6		 [label="Unknown Library",
+			shape=septagon];
+		legendNode3 -> legendNode6		 [style=solid];
+	}
+	node0	 [label="APackage\n(CCPFTestPackage::APackage)",
+		shape=egg];
+	node1	 [label="DPackage\n(CCPFTestPackage::DPackage)",
+		shape=doubleoctagon];
+	node0 -> node1;
+	node2	 [label="libAPackage\n(CCPFTestPackage::libAPackage)",
+		shape=doubleoctagon];
+	node0 -> node2	 [style=dotted];
+	node3	 [label="BPackage\n(CCPFTestPackage::BPackage)",
+		shape=doubleoctagon];
+	node2 -> node3;
+	node4	 [label="CPackage\n(CCPFTestPackage::CPackage)",
+		shape=doubleoctagon];
+	node2 -> node4;
+	node5	 [label="EPackage\n(CCPFTestPackage::EPackage)",
+		shape=pentagon];
+	node2 -> node5;
 }

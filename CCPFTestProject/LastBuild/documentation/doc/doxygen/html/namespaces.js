@@ -1,8 +1,8 @@
 var namespaces =
 [
-    [ "a", "d2/dcf/namespacea.html", null ],
-    [ "b", "da/d70/namespaceb.html", null ],
-    [ "c", "de/d43/namespacec.html", null ],
-    [ "d", "df/d9e/namespaced.html", null ],
-    [ "e", "d6/de2/namespacee.html", null ]
+    [ "a", "namespacea.html", null ],
+    [ "b", "namespaceb.html", null ],
+    [ "c", "namespacec.html", null ],
+    [ "d", "namespaced.html", null ],
+    [ "e", "namespacee.html", null ]
 ];
