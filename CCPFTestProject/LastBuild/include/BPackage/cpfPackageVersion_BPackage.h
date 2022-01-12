@@ -7,7 +7,7 @@ namespace CCPFTestPackage
 {
 	inline const std::string& getPackageVersion()
 	{
-		static std::string version = "0.0.0.91-e0e5";
+		static std::string version = "0.0.0.92-3cd3";
 		return version;
 	}
 }

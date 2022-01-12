@@ -7,8 +7,8 @@ $VAR1 = {
                          'function.h' => 1
                        },
           'Language' => 'C++',
-          'LibraryName' => 'BPackage-debug.so.0.0.0.91-e0e5',
-          'LibraryVersion' => '0.0.0.91-e0e5',
+          'LibraryName' => 'BPackage-debug.so.0.0.0.92-3cd3',
+          'LibraryVersion' => '0.0.0.92-3cd3',
           'MissedOffsets' => '1',
           'MissedRegs' => '1',
           'NameSpaces' => {
@@ -36,7 +36,7 @@ $VAR1 = {
                           },
           'SymbolVersion' => {},
           'Symbols' => {
-                         'BPackage-debug.so.0.0.0.91-e0e5' => {
+                         'BPackage-debug.so.0.0.0.92-3cd3' => {
                                                                 '_ZN1b8functionEv' => 1
                                                               }
                        },
@@ -48,7 +48,7 @@ $VAR1 = {
                                  }
                         },
           'UndefinedSymbols' => {
-                                  'BPackage-debug.so.0.0.0.91-e0e5' => {
+                                  'BPackage-debug.so.0.0.0.92-3cd3' => {
                                                                          '_ITM_deregisterTMCloneTable' => 0,
                                                                          '_ITM_registerTMCloneTable' => 0,
                                                                          '_ZNSt8ios_base4InitC1Ev@GLIBCXX_3.4' => 0,

@@ -3,8 +3,8 @@
 #include <winresrc.h>
 
 VS_VERSION_INFO VERSIONINFO
-	FILEVERSION        0, 0, 0, 91	// We have to use the pseudo-release version here we get build errors.
-	PRODUCTVERSION     0, 0, 0, 91	// Sadly this means that this version is wrong for internal builds.
+	FILEVERSION        0, 0, 0, 92	// We have to use the pseudo-release version here we get build errors.
+	PRODUCTVERSION     0, 0, 0, 92	// Sadly this means that this version is wrong for internal builds.
 	FILEFLAGSMASK      0x3fL
 	FILEFLAGS          VS_FF_PRERELEASE
 	FILEOS             VOS_NT_WINDOWS32
@@ -17,12 +17,12 @@ VS_VERSION_INFO VERSIONINFO
 	BEGIN
 	VALUE "CompanyName", "" "\0"
 	VALUE "FileDescription", "Runs tests of the libAPackage library." "\0"
-	VALUE "FileVersion", "0.0.0.91-e0e5" "\0"
+	VALUE "FileVersion", "0.0.0.92-3cd3" "\0"
 	VALUE "InternalName", "libAPackage_tests" "\0"
 	VALUE "LegalCopyright", "" "\0"
 	VALUE "OriginalFilename", "libAPackage_tests-debug.exe" "\0"
 	VALUE "ProductName", "APackage"
-	VALUE "ProductVersion", "0.0.0.91-e0e5" "\0"
+	VALUE "ProductVersion", "0.0.0.92-3cd3" "\0"
 	END
 	END
 	BLOCK "VarFileInfo"
