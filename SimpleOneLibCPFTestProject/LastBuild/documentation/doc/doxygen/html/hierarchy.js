@@ -146,7 +146,7 @@ var hierarchy =
     [ "std::map< K, T >", null, null ],
     [ "std::multimap< K, T >", null, null ],
     [ "std::multiset< K >", null, null ],
-    [ "mylib::MyFixture", "d6/d59/classmylib_1_1_my_fixture.html", null ],
+    [ "mylib::MyFixture", "classmylib_1_1_my_fixture.html", null ],
     [ "std::priority_queue< T >", null, null ],
     [ "std::queue< T >", null, null ],
     [ "std::set< K >::reverse_iterator", null, null ],

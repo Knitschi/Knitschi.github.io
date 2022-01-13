@@ -2,6 +2,37 @@ digraph CPFTargetDependencyGraph {
 	node [fontname="Helvetica-Bold",
 		fontsize=11
 	];
-	node22	 [label=MyLib,
-		shape=polygon];
+	subgraph clusterLegend {
+		graph [color=black,
+			label=Legend
+		];
+		edge [style=invis];
+		legendNode0		 [label=Executable,
+			shape=egg];
+		legendNode1		 [label="Static Library",
+			shape=octagon];
+		legendNode0 -> legendNode1		 [style=solid];
+		legendNode2		 [label="Shared Library",
+			shape=doubleoctagon];
+		legendNode0 -> legendNode2		 [style=solid];
+		legendNode3		 [label="Module Library",
+			shape=tripleoctagon];
+		legendNode0 -> legendNode3		 [style=invis];
+		legendNode7		 [label="Custom Target",
+			shape=box];
+		legendNode0 -> legendNode7		 [style=invis];
+		legendNode4		 [label="Interface Library",
+			shape=pentagon];
+		legendNode1 -> legendNode4		 [label=Interface,
+			style=dashed];
+		legendNode5		 [label="Object Library",
+			shape=hexagon];
+		legendNode2 -> legendNode5		 [label=Private,
+			style=dotted];
+		legendNode6		 [label="Unknown Library",
+			shape=septagon];
+		legendNode3 -> legendNode6		 [style=solid];
+	}
+	node0	 [label="MyLib\n(mylib::MyLib)",
+		shape=doubleoctagon];
 }
