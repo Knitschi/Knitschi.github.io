@@ -2,27 +2,41 @@ digraph "CPFTargetDependencyGraph" {
 node [
  fontsize = "11", fontname="Helvetica-Bold"
 ];
-    "node95" [ label="APackage" shape="house"];
-    "node33" [ label="BPackage" shape="diamond"];
-    "node95" -> "node33" // APackage -> BPackage
-    "node60" [ label="CPackage" shape="diamond"];
-    "node95" -> "node60" // APackage -> CPackage
-    "node23" [ label="libSwitchWarningsOff" shape="box"];
-    "node60" -> "node23" // CPackage -> libSwitchWarningsOff
-    "node73" [ label="DPackage" shape="diamond"];
-    "node95" -> "node73" // APackage -> DPackage
-    "node85" [ label="EPackage" shape="polygon"];
-    "node95" -> "node85" // APackage -> EPackage
-    "node42" [ label="FPackage" shape="diamond"];
-    "node95" -> "node42" // APackage -> FPackage
-    "node51" [ label="GPackage" shape="box"];
-    "node95" -> "node51" // APackage -> GPackage
-    "node93" [ label="libAPackage" shape="diamond"];
-    "node95" -> "node93" // APackage -> libAPackage
-    "node93" -> "node33" // libAPackage -> BPackage
-    "node93" -> "node60" // libAPackage -> CPackage
-    "node93" -> "node73" // libAPackage -> DPackage
-    "node93" -> "node85" // libAPackage -> EPackage
-    "node93" -> "node42" // libAPackage -> FPackage
-    "node93" -> "node51" // libAPackage -> GPackage
+subgraph clusterLegend {
+  label = "Legend";
+  color = black;
+  edge [ style = invis ];
+  legendNode0 [ label = "Executable", shape = egg ];
+  legendNode1 [ label = "Static Library", shape = octagon ];
+  legendNode2 [ label = "Shared Library", shape = doubleoctagon ];
+  legendNode3 [ label = "Module Library", shape = tripleoctagon ];
+  legendNode4 [ label = "Interface Library", shape = pentagon ];
+  legendNode5 [ label = "Object Library", shape = hexagon ];
+  legendNode6 [ label = "Unknown Library", shape = septagon ];
+  legendNode7 [ label = "Custom Target", shape = box ];
+  legendNode0 -> legendNode1 [ style = solid ];
+  legendNode0 -> legendNode2 [ style = solid ];
+  legendNode0 -> legendNode3;
+  legendNode1 -> legendNode4 [ label = "Interface", style = dashed ];
+  legendNode2 -> legendNode5 [ label = "Private", style = dotted ];
+  legendNode3 -> legendNode6 [ style = solid ];
+  legendNode0 -> legendNode7;
+}
+    "node0" [ label = "APackage\n(a::APackage)", shape = egg ];
+    "node1" [ label = "libAPackage\n(a::libAPackage)", shape = octagon ];
+    "node2" [ label = "BPackage\n(b::BPackage)", shape = octagon ];
+    "node1" -> "node2"  // libAPackage -> BPackage
+    "node3" [ label = "CPackage\n(c::CPackage)", shape = doubleoctagon ];
+    "node4" [ label = "libSwitchWarningsOff\n(swo::libSwitchWarningsOff)", shape = pentagon ];
+    "node3" -> "node4"  // CPackage -> libSwitchWarningsOff
+    "node1" -> "node3"  // libAPackage -> CPackage
+    "node5" [ label = "DPackage\n(d::DPackage)", shape = doubleoctagon ];
+    "node1" -> "node5"  // libAPackage -> DPackage
+    "node6" [ label = "EPackage\n(e::EPackage)", shape = doubleoctagon ];
+    "node1" -> "node6"  // libAPackage -> EPackage
+    "node7" [ label = "FPackage\n(f::FPackage)", shape = doubleoctagon ];
+    "node1" -> "node7"  // libAPackage -> FPackage
+    "node8" [ label = "GPackage\n(g::GPackage)", shape = pentagon ];
+    "node1" -> "node8"  // libAPackage -> GPackage
+    "node0" -> "node1" [ style = dotted ] // APackage -> libAPackage
 }

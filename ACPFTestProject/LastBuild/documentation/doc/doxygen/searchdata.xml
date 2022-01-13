@@ -37,31 +37,31 @@
   </doc>
   <doc>
     <field name="type">group</field>
-    <field name="name">CPackageGroup</field>
-    <field name="url">group___c_package_group.html</field>
+    <field name="name">CPackage</field>
+    <field name="url">group___c_package.html</field>
     <field name="keywords">CPackage</field>
-    <field name="text">A C++ libary used for testing the CPF Links The links can be broken if no project configuration creates the linked pages Downloads Will work if distribution packages are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports CPackage The links will work if the package has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build ABI/API Compatibility Reports CPackage_fixtures The links will work if the package has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
+    <field name="text">Links The links can be broken if no project configuration creates the linked pages Downloads Will work if package archives are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports CPackage The links will work if the package-component has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build ABI/API Compatibility Reports CPackage_fixtures The links will work if the package-component has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
   </doc>
   <doc>
     <field name="type">group</field>
-    <field name="name">DPackageGroup</field>
-    <field name="url">group___d_package_group.html</field>
+    <field name="name">DPackage</field>
+    <field name="url">group___d_package.html</field>
     <field name="keywords">DPackage</field>
-    <field name="text">An empty C++ libary used for testing the CPF Links The links can be broken if no project configuration creates the linked pages Downloads Will work if distribution packages are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports DPackage The links will work if the package has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
+    <field name="text">Links The links can be broken if no project configuration creates the linked pages Downloads Will work if package archives are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports DPackage The links will work if the package-component has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
   </doc>
   <doc>
     <field name="type">group</field>
-    <field name="name">EPackageGroup</field>
-    <field name="url">group___e_package_group.html</field>
+    <field name="name">EPackage</field>
+    <field name="url">group___e_package.html</field>
     <field name="keywords">EPackage</field>
-    <field name="text">An empty C++ libary used for testing the CPF Links The links can be broken if no project configuration creates the linked pages Downloads Will work if distribution packages are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports EPackage The links will work if the package has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
+    <field name="text">Links The links can be broken if no project configuration creates the linked pages Downloads Will work if package archives are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports EPackage The links will work if the package-component has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
   </doc>
   <doc>
     <field name="type">group</field>
-    <field name="name">APackageGroup</field>
-    <field name="url">group___a_package_group.html</field>
+    <field name="name">APackage</field>
+    <field name="url">group___a_package.html</field>
     <field name="keywords">APackage</field>
-    <field name="text">An empty C++ command line application used for testing the CPF Links The links can be broken if no project configuration creates the linked pages Downloads Will work if distribution packages are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build</field>
+    <field name="text">Links The links can be broken if no project configuration creates the linked pages Downloads Will work if package archives are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build</field>
   </doc>
   <doc>
     <field name="type">namespace</field>
