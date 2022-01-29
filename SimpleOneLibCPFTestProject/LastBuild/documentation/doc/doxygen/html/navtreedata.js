@@ -24,6 +24,8 @@ var NAVTREE =
 [
   [ "SimpleOneLibCPFTestProject", "index.html", [
     [ "Overview", "index.html", null ],
+    [ "1.8.0 (2018-03-18)", "md__c_1_jenkins__simple_one_lib_c_p_f_test_project-vs2019-ninja-shared-debug__c__o__sources_external_cotire__h_i_s_t_o_r_y.html", null ],
+    [ "cotire manual", "md__c_1_jenkins__simple_one_lib_c_p_f_test_project-vs2019-ninja-shared-debug__c__o__sources_external_cotire__m_a_n_u_a_l.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -45,7 +47,9 @@ var NAVTREE =
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ]
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
+        [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -53,7 +57,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"_c_make_c_x_x_compiler_id_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
