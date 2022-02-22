@@ -7,8 +7,8 @@ Documentation generation
 The Doxygen Package
 -------------------
 
-Currently the CPF provides the \ref cpfAddDoxygenPackage function to integrate <a href="http://www.stack.nl/~dimitri/doxygen/download.html">Doxygen</a>
-based documentation generation into the CI-pipeline. Adding a doxygen package adds a custom
+Currently the CPF provides the \ref cpfAddDoxygenPackageComponent function to integrate <a href="http://www.stack.nl/~dimitri/doxygen/download.html">Doxygen</a>
+based documentation generation into the CI-pipeline. Adding a doxygen package-component adds a custom
 target that runs doxygen with all the owned packages as input.
 
 Searching
@@ -25,8 +25,7 @@ To make it work these points must be implemented.
   from the same version of doxygen that is used to generate the html files and the \c doxysearch.db search database.
 - The webserver must be configured to use cgi scripts, which is done by providing the serve-cgi-bin.conf file with the docker-image of the webserver.
   The Dockerfile makes sure the file is copied into the container.
-- The help generation needs to execute the \c doxyindexer.exe to create the \c doxysearch.db serach-index for the \c doxysearch.cgi. This is done in
-  the python script \c 7_GenerateDocumentation.py
+- The help generation needs to execute the \c doxyindexer.exe to create the \c doxysearch.db serach-index for the \c doxysearch.cgi.
 - The generated files must be copied to the documentation server container with the command
 
 .. code-block:: bash
@@ -38,7 +37,7 @@ To make it work these points must be implemented.
 Adding a dependency graph
 -------------------------
 
-CMake allows to generate a dependency graph for the packages in a CI-project.
+CMake allows to generate a dependency graph for the package-components in a CI-project.
 This dependency graph can be integrated into your doxygen documentation. The doxygen target
 will also create a second *transitive reduced* version of the dependency graph.
 The transitive reduced graph does not show direct dependencies when an indirect dependency exists. 

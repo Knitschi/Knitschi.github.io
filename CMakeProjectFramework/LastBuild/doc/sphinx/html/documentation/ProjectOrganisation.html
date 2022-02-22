@@ -1,20 +1,21 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-  <title>Project Organization &mdash; CMakeProjectFramework 0.0.0.553-6703 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <title>Project Organization &mdash; CMakeProjectFramework 0.0.0.581-6e03 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../_static/CPFLogo.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -45,9 +46,10 @@
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../index.html">0.0.0.553-6703 Documentation</a> &#187;
+    <a href="../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Project Organization</a></li> 
       </ul>
     </div>  
 
@@ -56,13 +58,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="project-organization">
+  <section id="project-organization">
 <h1>Project Organization<a class="headerlink" href="#project-organization" title="Permalink to this headline">¶</a></h1>
 <p>The CMakeProjectFramework master repository contains some of the documentation of the CMakeProjectFramework and provides the configuration
 for its official build job. The master repository also serves as an “owner” for the packages that implement the various aspects
 of the CI system. The packages are located in their own repositories and added as Git submodules to the master repository.</p>
 <p>The packages are:</p>
-<div class="section" id="package-dependencies">
+<section id="package-dependencies">
 <h2>Package Dependencies<a class="headerlink" href="#package-dependencies" title="Permalink to this headline">¶</a></h2>
 <p>Here is a simplified graph the illustrates the dependencies between the packages of the CMakeProjectFramework.</p>
 <div class="graphviz"><img src="../_images/graphviz-63877eb5017bcbe9234840ed925571d29aacd953.png" alt="digraph G {
@@ -91,24 +93,26 @@ of the CI system. The packages are located in their own repositories and added a
 by using package managers in <em>CPFCMake</em> to acquire all of the required third party software dependencies,
 instead of using the pre-installed software from the build slaves.</p>
 </div>
-</div>
-<div class="section" id="dependencies">
+</section>
+<section id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p>Add a description on how to get the dependencies with the supported package managers.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Project Organization</a><ul>
 <li><a class="reference internal" href="#package-dependencies">Package Dependencies</a></li>
 <li><a class="reference internal" href="#dependencies">Dependencies</a></li>
@@ -116,12 +120,17 @@ instead of using the pre-installed software from the build slaves.</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="SettingUpTheCPFCIInfrastructure.html"
-                        title="previous chapter">Setting up the CPF CI server infrastructure</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../CPFCMake/documentation/CPFCMake.html"
-                        title="next chapter">CPFCMake</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="SettingUpTheCPFCIInfrastructure.html"
+                          title="previous chapter">Setting up the CPF CI server infrastructure</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../CPFCMake/documentation/CPFCMake.html"
+                          title="next chapter">CPFCMake</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -133,12 +142,12 @@ instead of using the pre-installed software from the build slaves.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -163,14 +172,15 @@ instead of using the pre-installed software from the build slaves.</p>
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../index.html">0.0.0.553-6703 Documentation</a> &#187;
+    <a href="../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
- 
+
+        <li class="nav-item nav-item-this"><a href="">Project Organization</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Knitschi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

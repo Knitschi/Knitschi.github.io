@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  <title>Welcome to CPFBuildscripts &mdash; CMakeProjectFramework 0.0.0.581-6e03 Documentation</title>
+  <title>Glossary &mdash; CMakeProjectFramework 0.0.0.581-6e03 Documentation</title>
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
@@ -20,8 +20,7 @@
     <link rel="shortcut icon" href="../_static/CPFLogo.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="0_CopyScripts.py" href="documentation/0_CopyScriptsDocs.html" />
-    <link rel="prev" title="CPFBuildscripts" href="documentation/CPFBuildscripts.html" />
+    <link rel="prev" title="Welcome to CPFTests" href="../CPFTests/README.html" />
   
  
 
@@ -33,10 +32,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="documentation/0_CopyScriptsDocs.html" title="0_CopyScripts.py"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="documentation/CPFBuildscripts.html" title="CPFBuildscripts"
+          <a href="../CPFTests/README.html" title="Welcome to CPFTests"
              accesskey="P">previous</a> |</li>
   <li>
     <img src="../_static/CPFLogo_16.png" alt=""
@@ -49,8 +45,7 @@
     <a href="../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="documentation/CPFBuildscripts.html" accesskey="U">CPFBuildscripts</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Welcome to CPFBuildscripts</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Glossary</a></li> 
       </ul>
     </div>  
 
@@ -59,10 +54,34 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="welcome-to-cpfbuildscripts">
-<h1>Welcome to CPFBuildscripts<a class="headerlink" href="#welcome-to-cpfbuildscripts" title="Permalink to this headline">¶</a></h1>
-<p>Please note that this project is in an early, quick-moving stage. Interfaces are not stable.</p>
-<p>[Package documentation](<a class="reference external" href="https://knitschi.github.io/CMakeProjectFramework/LastBuild/doc/sphinx/html/CPFBuildscripts/documentation/CPFBuildscripts.html">https://knitschi.github.io/CMakeProjectFramework/LastBuild/doc/sphinx/html/CPFBuildscripts/documentation/CPFBuildscripts.html</a>)</p>
+  <section id="glossary">
+<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>CI Project</strong></p></td>
+<td><p>The top-level CMake project of a CPF project. The <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file of the CI Project is only used by this projects build-job. Therefore the CI project holds the files that are only required for the buildjob and that are not needed by other consumers of the contained packages. The CI project can hold one or more package projects.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Package</strong></p></td>
+<td><p>The package is the entity that can be consumed by other CI projects. It can contain one ore more package components. A package defines its external dependencies and has its own version.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Package Project</strong></p></td>
+<td><p>The package project is a CMake project that is defined in a <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file that is below the root <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file. The package project is intended to be included by other CI projects, so it should not impose any kind of build-configuration on the consuming CI project.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Package Component</strong></p></td>
+<td><p>A package component can hold one or more targets which often are C++ binaries like libraries or executables. The package component usually exists of one main-target that is of interest for the consumers and optionally of other auxiliary targets that may implement test or test utility libraries and other custom functionality.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Package Archive</strong></p></td>
+<td><p>The package archive is a file that may contain the main binary artefacts of a package, but it can also contain documentation or source files. The package archive can be a zip archive or similar format. This file is intended to be handed to consumers that do not have access to the packages sources.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Install Component</strong></p></td>
+<td><p>Install components are sets of files that are added to package archives. This can be components like binary files, source files or files that contain the documentation of the package.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 
 
@@ -74,18 +93,13 @@
         <div class="sphinxsidebarwrapper">
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="documentation/CPFBuildscripts.html"
-                          title="previous chapter">CPFBuildscripts</a></p>
-  </div>
-  <div>
-    <h4>Next topic</h4>
-    <p class="topless"><a href="documentation/0_CopyScriptsDocs.html"
-                          title="next chapter">0_CopyScripts.py</a></p>
+    <p class="topless"><a href="../CPFTests/README.html"
+                          title="previous chapter">Welcome to CPFTests</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/CPFBuildscripts/README.md.txt"
+      <li><a href="../_sources/documentation/Glossary.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -110,10 +124,7 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="documentation/0_CopyScriptsDocs.html" title="0_CopyScripts.py"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="documentation/CPFBuildscripts.html" title="CPFBuildscripts"
+          <a href="../CPFTests/README.html" title="Welcome to CPFTests"
              >previous</a> |</li>
   <li>
     <img src="../_static/CPFLogo_16.png" alt=""
@@ -126,8 +137,7 @@
     <a href="../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="documentation/CPFBuildscripts.html" >CPFBuildscripts</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Welcome to CPFBuildscripts</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Glossary</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

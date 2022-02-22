@@ -1,20 +1,21 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-  <title>The packages.cmake file &mdash; CMakeProjectFramework 0.0.0.553-6703 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <title>The packages.cmake file &mdash; CMakeProjectFramework 0.0.0.581-6e03 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cmake.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -45,10 +46,11 @@
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.553-6703 Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="CPFCMake.html" accesskey="U">CPFCMake</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="CPFCMake.html" accesskey="U">CPFCMake</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">The packages.cmake file</a></li> 
       </ul>
     </div>  
 
@@ -57,59 +59,48 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="the-packages-cmake-file">
+  <section id="the-packages-cmake-file">
 <span id="packagescmake"></span><h1>The packages.cmake file<a class="headerlink" href="#the-packages-cmake-file" title="Permalink to this headline">¶</a></h1>
-<p>The c packages.cmake file defines which sub-directories are added to CI-project. It is read when calling the
-ref cpfAddPackages function. The file must define the CMake variable c CPF_PACKAGES.
-The file must be located parallel to the root c CMakeLists.txt file.</p>
-<p>The content looks something like this.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">packages.cmake</span></code> file defines which sub-directories are added to CI-project. It is read when calling the
+<a class="reference internal" href="APIDocModules.html#cpfaddpackages"><span class="std std-ref">cpfAddPackages()</span></a> function. The file must define the CMake variable <code class="code docutils literal notranslate"><span class="pre">CPF_PACKAGES</span></code>.
+The file must be located parallel to the root <code class="code docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file.</p>
+<p>The content may look something like this.</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># File packages.cmake</span>
 
-<span class="nf">set(</span><span class="w"> </span><span class="no">CPF_PACKAGES</span><span class="w"></span>
-<span class="w">        </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">ExternalLib1</span><span class="w"></span>
-<span class="w">        </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">ExternalLib2</span><span class="w"></span>
-<span class="w">    </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">CPackage</span><span class="w"> </span><span class="no">BUILD_SHARED_LIBS</span><span class="w"> </span><span class="no">OFF</span><span class="w"> </span><span class="no">ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS</span><span class="w"> </span><span class="no">OFF</span><span class="w"></span>
-<span class="w">    </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">EPackage</span><span class="w"> </span><span class="no">BUILD_SHARED_LIBS</span><span class="w"> </span><span class="no">ON</span><span class="w"></span>
-<span class="w">    </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">APackage</span><span class="w"></span>
-<span class="w">    </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">documentation</span><span class="w"></span>
+<span class="nf">set(</span><span class="no">CPF_PACKAGES</span><span class="w"></span>
+<span class="w">      </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="nb">ExternalLib1</span><span class="w"></span>
+<span class="w">      </span><span class="no">EXTERNAL</span><span class="w"> </span><span class="na">bli/blub/ExternalLib2</span><span class="w"></span>
+<span class="w">      </span><span class="no">OWNED</span><span class="w"> </span><span class="na">Cpp/MyPackageA</span><span class="w"></span>
+<span class="w">      </span><span class="no">OWNED</span><span class="w"> </span><span class="na">Cpp/MyPackageB</span><span class="w"></span>
+<span class="w">      </span><span class="no">OWNED</span><span class="w"> </span><span class="nb">documentation</span><span class="w"></span>
 <span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
-<p>The list should contain some keywords and the package directories that belong to your CI-project.
+<p>The list should contain pairs in the shape of <code class="code docutils literal notranslate"><span class="pre">[EXTERNAL|OWNED]</span> <span class="pre">&lt;package-dir&gt;</span></code>.
+Note that the name of the lowest directory must be the same as the package name.
 The order of the packages is important. The lower-level packages must be listed first to make sure
 they exist when they are linked to the higher-level packages that come later in the list.
-The c EXTERNAL and c OWNED keywords determine if the package belongs to this CI-project or another one.
-See ref PackageOwnership.</p>
-<p>It is also possible to override some global variables per package. This can be used to force individual
-packages to be build as static libraries or disable some of the custom targets in external packages.
-Here is a list of the variables that can be overridden.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="no">BUILD_SHARED_LIBS</span><span class="w"></span>
-<span class="no">CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS</span><span class="w"></span>
-<span class="no">CPF_ENABLE_ABI_API_STABILITY_CHECK_TARGETS</span><span class="w"></span>
-<span class="no">CPF_ENABLE_CLANG_TIDY_TARGET</span><span class="w"></span>
-<span class="no">CPF_ENABLE_OPENCPPCOVERAGE_TARGET</span><span class="w"></span>
-<span class="no">CPF_ENABLE_PACKAGE_DOX_FILE_GENERATION</span><span class="w"></span>
-<span class="no">CPF_ENABLE_PRECOMPILED_HEADER</span><span class="w"></span>
-<span class="no">CPF_ENABLE_RUN_TESTS_TARGET</span><span class="w"></span>
-<span class="no">CPF_ENABLE_VALGRIND_TARGET</span><span class="w"></span>
-<span class="no">CPF_ENABLE_VERSION_RC_FILE_GENERATION</span><span class="w"></span>
-<span class="no">CPF_COMPILE_OPTIONS</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
+The <code class="code docutils literal notranslate"><span class="pre">EXTERNAL</span></code> and <code class="code docutils literal notranslate"><span class="pre">OWNED</span></code> keywords determine if the package belongs to this CI-project or another one.
+More about package ownership can be found in the <a class="reference internal" href="../../documentation/BasicConcepts.html#packageownership"><span class="std std-ref">Package Ownership</span></a> section.</p>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="CustomTargets.html"
-                        title="previous chapter">Custom targets</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="TestTargets.html"
-                        title="next chapter">Test targets</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="CustomTargets.html"
+                          title="previous chapter">Custom targets</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="TestTargets.html"
+                          title="next chapter">Test targets</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -121,12 +112,12 @@ Here is a list of the variables that can be overridden.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -151,15 +142,16 @@ Here is a list of the variables that can be overridden.</p>
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.553-6703 Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="CPFCMake.html" >CPFCMake</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="CPFCMake.html" >CPFCMake</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">The packages.cmake file</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Knitschi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

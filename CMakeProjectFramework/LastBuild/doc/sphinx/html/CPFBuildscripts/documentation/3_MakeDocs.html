@@ -1,26 +1,27 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-  <title>4_Make.py &mdash; CMakeProjectFramework 0.0.0.553-6703 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <title>3_Make.py &mdash; CMakeProjectFramework 0.0.0.581-6e03 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cmake.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="CPFMachines" href="../../CPFMachines/documentation/CPFMachines.html" />
-    <link rel="prev" title="3_Generate.py" href="3_GenerateDocs.html" />
+    <link rel="prev" title="2_Generate.py" href="2_GenerateDocs.html" />
   
  
 
@@ -35,7 +36,7 @@
           <a href="../../CPFMachines/documentation/CPFMachines.html" title="CPFMachines"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="3_GenerateDocs.html" title="3_Generate.py"
+          <a href="2_GenerateDocs.html" title="2_Generate.py"
              accesskey="P">previous</a> |</li>
   <li>
     <img src="../../_static/CPFLogo_16.png" alt=""
@@ -45,10 +46,11 @@
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.553-6703 Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" accesskey="U">CPFBuildscripts</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" accesskey="U">CPFBuildscripts</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">3_Make.py</a></li> 
       </ul>
     </div>  
 
@@ -57,20 +59,20 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="make-py">
-<h1>4_Make.py<a class="headerlink" href="#make-py" title="Permalink to this headline">¶</a></h1>
+  <section id="make-py">
+<h1>3_Make.py<a class="headerlink" href="#make-py" title="Permalink to this headline">¶</a></h1>
 <p>This script builds the targets in a CPF project.</p>
-<div class="section" id="command-line-interface">
+<section id="command-line-interface">
 <h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Usage:
-    4_Make.py <span class="o">[</span>&lt;config_name&gt;<span class="o">]</span> <span class="o">[</span>--target &lt;target&gt;<span class="o">]</span> <span class="o">[</span>--config &lt;config&gt;<span class="o">]</span> <span class="o">[</span>--clean<span class="o">]</span> <span class="o">[</span>--cpus &lt;nr_cpus&gt;<span class="o">]</span> <span class="o">[</span>--help<span class="o">]</span>
+    3_Make.py <span class="o">[</span>&lt;config_name&gt;<span class="o">]</span> <span class="o">[</span>--target &lt;target&gt;<span class="o">]</span> <span class="o">[</span>--config &lt;config&gt;<span class="o">]</span> <span class="o">[</span>--clean<span class="o">]</span> <span class="o">[</span>--cpus &lt;nr_cpus&gt;<span class="o">]</span> <span class="o">[</span>--help<span class="o">]</span>
 
-    This script builds the given target in the given configuration.
+    This script builds the given target <span class="k">in</span> the given configuration.
 
     If no &lt;config_name&gt; is given, the first configuration that already
     has a CMakeCache.txt file will be used.
     If you specify a &lt;config_name&gt; and there is no CMakeCache.txt file
-    <span class="k">for</span> that config, 4_Make.py call 3_Generate.py in order to try
+    <span class="k">for</span> that config, 3_Make.py call 2_Generate.py <span class="k">in</span> order to try
     to create one.
 
     If no &lt;target&gt; is given, the <span class="s2">&quot;ALL_BUILD&quot;</span> target will be build.
@@ -95,7 +97,7 @@ Custom Targets:
     - ALL_BUILD <span class="o">(</span>Visual Studio<span class="o">)</span> / all <span class="o">(</span>Makefiles<span class="o">)</span>
     - clang-format
     - clang-tidy
-    - distributionPackages
+    - packageArchives
     - install
     - opencppcoverage
     - pipeline
@@ -108,7 +110,7 @@ Custom Targets:
     - abi-compliance-checker_&lt;package&gt;
     - clang-format_&lt;binary-target&gt;
     - clang-tidy_&lt;package&gt;
-    - distributionPackages_&lt;package&gt;
+    - packageArchives_&lt;package&gt;
     - opencppcoverage_&lt;package&gt;
     - &lt;package&gt;
     - &lt;package&gt;_fixtures
@@ -118,33 +120,40 @@ Custom Targets:
     - valgrind_&lt;package&gt;
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../../index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">4_Make.py</a><ul>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">3_Make.py</a><ul>
 <li><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="3_GenerateDocs.html"
-                        title="previous chapter">3_Generate.py</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../../CPFMachines/documentation/CPFMachines.html"
-                        title="next chapter">CPFMachines</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="2_GenerateDocs.html"
+                          title="previous chapter">2_Generate.py</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../../CPFMachines/documentation/CPFMachines.html"
+                          title="next chapter">CPFMachines</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../../_sources/CPFBuildscripts/documentation/4_MakeDocs.rst.txt"
+      <li><a href="../../_sources/CPFBuildscripts/documentation/3_MakeDocs.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -152,12 +161,12 @@ Custom Targets:
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -172,7 +181,7 @@ Custom Targets:
           <a href="../../CPFMachines/documentation/CPFMachines.html" title="CPFMachines"
              >next</a> |</li>
         <li class="right" >
-          <a href="3_GenerateDocs.html" title="3_Generate.py"
+          <a href="2_GenerateDocs.html" title="2_Generate.py"
              >previous</a> |</li>
   <li>
     <img src="../../_static/CPFLogo_16.png" alt=""
@@ -182,15 +191,16 @@ Custom Targets:
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.553-6703 Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" >CPFBuildscripts</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" >CPFBuildscripts</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">3_Make.py</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Knitschi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

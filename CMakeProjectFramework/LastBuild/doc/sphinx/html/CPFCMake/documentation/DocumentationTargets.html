@@ -1,26 +1,27 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-  <title>Documentation generation &mdash; CMakeProjectFramework 0.0.0.553-6703 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <title>Documentation generation &mdash; CMakeProjectFramework 0.0.0.581-6e03 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cmake.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Versioning" href="Versioning.html" />
-    <link rel="prev" title="Distribution packages" href="DistributionPackages.html" />
+    <link rel="prev" title="Package Archives" href="PackageArchives.html" />
   
  
 
@@ -35,7 +36,7 @@
           <a href="Versioning.html" title="Versioning"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="DistributionPackages.html" title="Distribution packages"
+          <a href="PackageArchives.html" title="Package Archives"
              accesskey="P">previous</a> |</li>
   <li>
     <img src="../../_static/CPFLogo_16.png" alt=""
@@ -45,10 +46,11 @@
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.553-6703 Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="CPFCMake.html" accesskey="U">CPFCMake</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="CPFCMake.html" accesskey="U">CPFCMake</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Documentation generation</a></li> 
       </ul>
     </div>  
 
@@ -57,15 +59,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="documentation-generation">
+  <section id="documentation-generation">
 <span id="documentationgeneration"></span><h1>Documentation generation<a class="headerlink" href="#documentation-generation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="the-doxygen-package">
+<section id="the-doxygen-package">
 <h2>The Doxygen Package<a class="headerlink" href="#the-doxygen-package" title="Permalink to this headline">¶</a></h2>
-<p>Currently the CPF provides the ref cpfAddDoxygenPackage function to integrate &lt;a href=”<a class="reference external" href="http://www.stack.nl/~dimitri/doxygen/download.html">http://www.stack.nl/~dimitri/doxygen/download.html</a>”&gt;Doxygen&lt;/a&gt;
-based documentation generation into the CI-pipeline. Adding a doxygen package adds a custom
+<p>Currently the CPF provides the ref cpfAddDoxygenPackageComponent function to integrate &lt;a href=”<a class="reference external" href="http://www.stack.nl/~dimitri/doxygen/download.html">http://www.stack.nl/~dimitri/doxygen/download.html</a>”&gt;Doxygen&lt;/a&gt;
+based documentation generation into the CI-pipeline. Adding a doxygen package-component adds a custom
 target that runs doxygen with all the owned packages as input.</p>
-</div>
-<div class="section" id="searching">
+</section>
+<section id="searching">
 <h2>Searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h2>
 <p>The search functionality is configured to use the server-side search approach as described &lt;a href=”<a class="reference external" href="http://www.stack.nl/~dimitri/doxygen/manual/extsearch.html">http://www.stack.nl/~dimitri/doxygen/manual/extsearch.html</a>”&gt;here&lt;/a&gt;.
 To make it work these points must be implemented.</p>
@@ -78,17 +80,16 @@ The file c search/search.js in the doxygen directory should also contain a corre
 from the same version of doxygen that is used to generate the html files and the c doxysearch.db search database.</p></li>
 <li><p>The webserver must be configured to use cgi scripts, which is done by providing the serve-cgi-bin.conf file with the docker-image of the webserver.
 The Dockerfile makes sure the file is copied into the container.</p></li>
-<li><p>The help generation needs to execute the c doxyindexer.exe to create the c doxysearch.db serach-index for the c doxysearch.cgi. This is done in
-the python script c 7_GenerateDocumentation.py</p></li>
+<li><p>The help generation needs to execute the c doxyindexer.exe to create the c doxysearch.db serach-index for the c doxysearch.cgi.</p></li>
 <li><p>The generated files must be copied to the documentation server container with the command</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker cp /var/lib/jenkins/www/html docserver:/var/www
 </pre></div>
 </div>
-</div>
-<div class="section" id="adding-a-dependency-graph">
+</section>
+<section id="adding-a-dependency-graph">
 <h2>Adding a dependency graph<a class="headerlink" href="#adding-a-dependency-graph" title="Permalink to this headline">¶</a></h2>
-<p>CMake allows to generate a dependency graph for the packages in a CI-project.
+<p>CMake allows to generate a dependency graph for the package-components in a CI-project.
 This dependency graph can be integrated into your doxygen documentation. The doxygen target
 will also create a second <em>transitive reduced</em> version of the dependency graph.
 The transitive reduced graph does not show direct dependencies when an indirect dependency exists.
@@ -99,17 +100,19 @@ This resulst in a cleaner graph, which may sometimes be favoured to the complete
 </pre></div>
 </div>
 <p>to one of your doxygen comments.</p>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Documentation generation</a><ul>
 <li><a class="reference internal" href="#the-doxygen-package">The Doxygen Package</a></li>
 <li><a class="reference internal" href="#searching">Searching</a></li>
@@ -118,12 +121,17 @@ This resulst in a cleaner graph, which may sometimes be favoured to the complete
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="DistributionPackages.html"
-                        title="previous chapter">Distribution packages</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="Versioning.html"
-                        title="next chapter">Versioning</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="PackageArchives.html"
+                          title="previous chapter">Package Archives</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="Versioning.html"
+                          title="next chapter">Versioning</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -135,12 +143,12 @@ This resulst in a cleaner graph, which may sometimes be favoured to the complete
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -155,7 +163,7 @@ This resulst in a cleaner graph, which may sometimes be favoured to the complete
           <a href="Versioning.html" title="Versioning"
              >next</a> |</li>
         <li class="right" >
-          <a href="DistributionPackages.html" title="Distribution packages"
+          <a href="PackageArchives.html" title="Package Archives"
              >previous</a> |</li>
   <li>
     <img src="../../_static/CPFLogo_16.png" alt=""
@@ -165,15 +173,16 @@ This resulst in a cleaner graph, which may sometimes be favoured to the complete
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.553-6703 Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="CPFCMake.html" >CPFCMake</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="CPFCMake.html" >CPFCMake</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Documentation generation</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Knitschi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

@@ -1,20 +1,21 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-  <title>Machines and Container &mdash; CMakeProjectFramework 0.0.0.553-6703 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <title>Machines and Container &mdash; CMakeProjectFramework 0.0.0.581-6e03 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cmake.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -45,10 +46,11 @@
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.553-6703 Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="CPFMachines.html" accesskey="U">CPFMachines</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="CPFMachines.html" accesskey="U">CPFMachines</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Machines and Container</a></li> 
       </ul>
     </div>  
 
@@ -57,11 +59,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="machines-and-container">
+  <section id="machines-and-container">
 <h1>Machines and Container<a class="headerlink" href="#machines-and-container" title="Permalink to this headline">¶</a></h1>
 <p>This section contains information about the machines and containers that are used to host the services that are
 needed to run the CPF build-pipeline.</p>
-<div class="section" id="machine-setup">
+<section id="machine-setup">
 <h2>Machine Setup<a class="headerlink" href="#machine-setup" title="Permalink to this headline">¶</a></h2>
 <p>This section describes which machines, virtual machines and docker images are used to provide the development infrastructure
 for the CppCodeBase project.</p>
@@ -74,7 +76,7 @@ virtual machines plus scripts that will do the machine setup. This is supposed t
 state of the build-machines because all the scripts that define them are contained in the repository.</p>
 <p>Setting up the involved docker containers on Linux only requires the execution of the c setupDockerContainer.sh script that can be found in the
 c Infrastructure/DockerImages directory of the CppCodeBase.</p>
-<div class="section" id="starting-the-linux-docker-containers">
+<section id="starting-the-linux-docker-containers">
 <h3>Starting The Linux Docker Containers<a class="headerlink" href="#starting-the-linux-docker-containers" title="Permalink to this headline">¶</a></h3>
 <p>Currently the following machines are implemented as Linux based docker containers.</p>
 <ul class="simple">
@@ -92,15 +94,15 @@ c jenkins-master to the c Datenbunker.</p>
 Setting up the docker container changes the network settings of the host. This may cause the the
 c setupDockerContainer.sh script to fail when run multiple times in a row because connection to the
 internet can not be made. Restarting the machine on which the script is run will solve the problem.</p>
-</div>
-<div class="section" id="the-windows-slave">
+</section>
+<section id="the-windows-slave">
 <h3>The Windows Slave<a class="headerlink" href="#the-windows-slave" title="Permalink to this headline">¶</a></h3>
 <p>There is a virtual machine that is used as a build-slave for the parts of the pipeline that must be build on Windows.
 The machine runs the OpenSSH server that is shipped with Windows.
 All the tools that are needed for running the CPF pipeline jobs are installed manually.</p>
-</div>
-</div>
-<div class="section" id="the-jenkins-build-server">
+</section>
+</section>
+<section id="the-jenkins-build-server">
 <h2>The Jenkins Build Server<a class="headerlink" href="#the-jenkins-build-server" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The server is setup in the c jenkins-master container. Manual changes to the server via the web-interface
@@ -111,23 +113,25 @@ Therefore non-experimental changes must be implemented by changing the files in 
 <li><p>The pipeline script builds the c pipeline target on Linux and Windows in two configurations each.</p></li>
 <li><p>The pipeline script collects html output of the pipeline and copies it to a web-server.</p></li>
 </ul>
-</div>
-<div class="section" id="git">
+</section>
+<section id="git">
 <h2>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
 <p>The Git repository is hosted on the DatenBunker machine in the directory c /share/GitRepositories/CppCodeBase. The repository
 has a post-commit-hook that triggers the &lt;a href=”<a class="reference external" href="http://feldrechengeraet:8080/job/CppCodeBase_Build_PipeLine/">http://feldrechengeraet:8080/job/CppCodeBase_Build_PipeLine/</a>”&gt;CppCodeBase_Build_Pipeline&lt;/a&gt; job on the Jenkins server.</p>
 <p>todo Buy a more powerfull build-machine to reduce the overall pipeline time.</p>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Machines and Container</a><ul>
 <li><a class="reference internal" href="#machine-setup">Machine Setup</a><ul>
 <li><a class="reference internal" href="#starting-the-linux-docker-containers">Starting The Linux Docker Containers</a></li>
@@ -140,12 +144,17 @@ has a post-commit-hook that triggers the &lt;a href=”<a class="reference exter
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="JenkinsJob.html"
-                        title="previous chapter">The jenkins build-job</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="ManualTests.html"
-                        title="next chapter">Manual Tests</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="JenkinsJob.html"
+                          title="previous chapter">The jenkins build-job</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="ManualTests.html"
+                          title="next chapter">Manual Tests</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -157,12 +166,12 @@ has a post-commit-hook that triggers the &lt;a href=”<a class="reference exter
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -187,15 +196,16 @@ has a post-commit-hook that triggers the &lt;a href=”<a class="reference exter
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.553-6703 Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="CPFMachines.html" >CPFMachines</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="CPFMachines.html" >CPFMachines</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Machines and Container</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Knitschi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

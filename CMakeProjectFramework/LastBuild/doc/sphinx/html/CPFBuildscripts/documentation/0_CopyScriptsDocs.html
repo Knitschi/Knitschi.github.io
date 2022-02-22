@@ -1,20 +1,21 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-  <title>0_CopyScripts.py &mdash; CMakeProjectFramework 0.0.0.553-6703 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <title>0_CopyScripts.py &mdash; CMakeProjectFramework 0.0.0.581-6e03 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cmake.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../../_static/CPFLogo.svg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -45,10 +46,11 @@
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.553-6703 Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" accesskey="U">CPFBuildscripts</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" accesskey="U">CPFBuildscripts</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">0_CopyScripts.py</a></li> 
       </ul>
     </div>  
 
@@ -57,24 +59,72 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="copyscripts-py">
+  <section id="copyscripts-py">
 <span id="copyscripts"></span><h1>0_CopyScripts.py<a class="headerlink" href="#copyscripts-py" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="code docutils literal notranslate"><span class="pre">0_CopyScripts.py</span></code> script installs the other python scripts from CPFBuildscripts into the root directory of your CPF project.
 This script must be executed once after cloning a CPF project. The script does not take any arguments.</p>
+<section id="command-line-interface">
+<h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Usage:
+    0_CopyScripts.py --CPFCMake_DIR &lt;dir&gt; --CIBuildConfigurations_DIR &lt;dir&gt;
+
+    This script is used to copy the build scripts
+
+    1_Configure.py
+    2_Generate.py
+    3_Make.py
+
+    into the root directory of a CMakeProjectFramework repository.
+
+Options:
+
+--CPFCMake_DIR &lt;dir&gt;                The path to the directory of the CPFCMake package. It can be absolute or relative to
+                                    the projects root directroy.
+--CIBuildConfigurations_DIR &lt;dir&gt;   The path to the  directory that contains the .config.cmake files that
+                                    contain the default project configurations. It can be absolute or relative to
+                                    the projects root directroy.
+</pre></div>
 </div>
+</section>
+<section id="versioning">
+<h2>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">¶</a></h2>
+<p>The copying of the scripts brings the problem, that the copied scripts can be outdated when the client project
+updates CPFBuildscripts. All four copied scripts have a mechanism in place that compares the major version number
+of the CPFBuildscripts version from which the script was originally copied with major version number of the
+CPFBuildscripts package that it currently calls. If these are not the same, the scripts will abort with an error.</p>
+<p>This means that developers of CPFBuildscripts must increment the major version if changes are made that break existing
+copies of the four scripts.</p>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../README.html"
-                        title="previous chapter">Welcome to CPFBuildscripts</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="1_ConfigureDocs.html"
-                        title="next chapter">1_Configure.py</a></p>
+  <div>
+    <h3><a href="../../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">0_CopyScripts.py</a><ul>
+<li><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
+<li><a class="reference internal" href="#versioning">Versioning</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../README.html"
+                          title="previous chapter">Welcome to CPFBuildscripts</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="1_ConfigureDocs.html"
+                          title="next chapter">1_Configure.py</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -86,12 +136,12 @@ This script must be executed once after cloning a CPF project. The script does n
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -116,15 +166,16 @@ This script must be executed once after cloning a CPF project. The script does n
     <a href="https://github.com/Knitschi/CMakeProjectFramework">CMakeProjectFramework</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">0.0.0.553-6703 Documentation</a> &#187;
+    <a href="../../index.html">0.0.0.581-6e03 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" >CPFBuildscripts</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="CPFBuildscripts.html" >CPFBuildscripts</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">0_CopyScripts.py</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Knitschi.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

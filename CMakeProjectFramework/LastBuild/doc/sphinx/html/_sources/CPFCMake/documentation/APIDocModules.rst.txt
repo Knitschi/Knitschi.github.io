@@ -20,7 +20,7 @@ Here are some examples to explain how the function argument notation must be int
   or more paths to source files. If not otherwise specified, paths must be absolute or relative to :code:`CMAKE_CURRENT_SOURCE_DIR`.
 - :code:`[ENABLE_CLANG_TIDY_TARGET bool]`: The function expects the optional key-word :code:`ENABLE_CLANG_TIDY_TARGET` followed by
   either :code:`TRUE` or :code:`FALSE`.
-- :code:`DISTRIBUTION_PACKAGE_FORMATS <7Z|TBZ2|TGZ ...>`: The function expects the required key-word :code:`DISTRIBUTION_PACKAGE_FORMATS` to be followed by
+- :code:`PACKAGE_ARCHIVE_FORMATS <7Z|TBZ2|TGZ ...>`: The function expects the required key-word :code:`PACKAGE_ARCHIVE_FORMATS` to be followed by
   one or multiple values of the listed enum :code:`7Z`, :code:`TBZ2` and :code:`TGZ`.
 
 
@@ -43,7 +43,7 @@ In a function call this could look like this:
 
 .. code-block:: cmake
 
-  cpfAddCppPackage(
+  cpfAddCppPackageComponent(
       ...
       PLUGIN_DEPENDENCIES  
           PLUGIN_DIRECTORY plugin
@@ -113,23 +113,40 @@ in a Visual Studio solution.
 
 
 *********************************
-Module cpfInitPackageModule.cmake
+Module cpfPackageProject.cmake
 *********************************
 
 This module provides the following function.
 
-- cpfInitPackageProject()
+- cpfPackageProject()
+- cpfFinalizePackageProject()
 
 
-.. _cpfInitPackageProject:
+.. _cpfPackageProject:
 
-cpfInitPackageProject()
-=======================
+cpfPackageProject()
+===================
 
 .. code-block:: cmake
 
-  cpfInitPackageProject(
-      [LANGUAGES]
+  cpfPackageProject(
+      COMPONENTS component_subdir1 component_subdir2 ...
+      TARGET_NAMESPACE string
+      [BRIEF_DESCRIPTION string]
+      [LONG_DESCRIPTION string]
+      [OWNER string]
+      [WEBPAGE_URL string]
+      [MAINTAINER_EMAIL string]
+      [LANGUAGES language1 language2 ...]
+      [PACKAGE_ARCHIVES
+          PACKAGE_ARCHIVE_CONTENT_TYPE <CT_RUNTIME|CT_RUNTIME_PORTABLE excludedTargets|CT_DEVELOPER|CT_SOURCES|CT_DOCUMENTATION>
+          PACKAGE_ARCHIVE_FORMATS <7Z|TBZ2|TGZ|TXZ|TZ|ZIP|DEB ...>
+          [PACKAGE_ARCHIVE_FORMAT_OPTIONS 
+              [SYSTEM_PACKAGES_DEB packageListString ]
+          ]
+          [PACKAGE_ARCHIVE_CONTENT_TYPE ...] 
+      ...]
+      [VERSION_COMPATIBILITY_SCHEME [ExactVersion] ]
   )
 
 
@@ -140,7 +157,7 @@ git repository or a provided version file and uses it to initiated the cmake
 variables :code:`PROJECT_VERSION` and :code:`PROJECT_VERSION_<digit>` variables.
 
 
-.. _cpfInitPackageModule_arguments:
+.. _cpfPackageProject_arguments:
 
 Arguments
 ---------
@@ -157,32 +174,170 @@ the default value :code:`CXX C` is used.
   :ref:`CIProjectAndPackageProjects`
 
 
-*****************************
-Module cpfAddCppPackage.cmake
-*****************************
+TARGET_NAMESPACE
+^^^^^^^^^^^^^^^^^
+
+As a namespace for the packages cmake target names.
+When clients of your package import your targets they will have to use that namespace like this:
+
+.. code-block:: cmake
+
+    find_package(YourPackage COMPONENTS YourLib)
+
+    add_executable(TheirExe)
+    target_link_libraries(TheirExe yourTargetNamespace::YourLib)
+
+It is also reccomended that you use this internally as well because it makes your
+cmake code ignorant to the fact if a target is imported or *inlined*.
+
+
+BRIEF_DESCRIPTION
+^^^^^^^^^^^^^^^^^
+
+A short description in one sentence about what the package does. This is only relevant if a 
+debian package archive is created.
+
+
+LONG_DESCRIPTION
+^^^^^^^^^^^^^^^^
+
+A longer description of the package. This is only relevant if a 
+debian package archive is created.
+
+
+OWNER
+^^^^^
+
+The value is only used when compiling with MSVC. It is than used in the copyright notice 
+that is displayed on the *Details* tab of the file-properties window of the generated binary
+files. 
+
+If you plan to allow using a package as :code:`EXTERNAL` package in some other CI-project,
+you have to hard-code this value in the packages CMakeLists file. Using a variable from the
+CI-project in order to remove duplication between your packages will not work, because clients
+will not have the value of that variable.
+
+
+WEBPAGE_URL
+^^^^^^^^^^^
+
+A web address from where the source-code and/or the documentation of the package can be obtained.
+This is required for Debian packages.
+
+
+MAINTAINER_EMAIL
+^^^^^^^^^^^^^^^^
+
+An email address under which the maintainers of the package can be reached.
+This is only used when creating Debian package archives.
+
+
+PACKAGE_ARCHIVES
+^^^^^^^^^^^^^^^^^^^^^
+
+This keyword opens a sub-list of arguments that are used to specify a list of packages that have the same content, but different formats.
+The argument can be given multiple times, in order to define a variety of package formats and content types.
+The argument takes two lists as sub-arguments. A package archive is created for each combination of the
+elements in the sub-argument lists.
+For example: 
+argument :code:`PACKAGE_ARCHIVES PACKAGE_ARCHIVE_CONTENT_TYPE CT_RUNTIME_PORTABLE PACKAGE_ARCHIVE_FORMATS ZIP;7Z`
+will cause the creation of a zip and a 7z archive that both contain the packages executables and all depended on shared libraries.
+Adding another argument :code:`PACKAGE_ARCHIVES PACKAGE_ARCHIVE_CONTENT_TYPE CT_RUNTIME PACKAGE_ARCHIVE_FORMATS DEB`
+will cause the additional creation of a debian package that relies on external dependencies being provided by other packages.
+
+**Sub-Options:**
+
+PACKAGE_ARCHIVE_CONTENT_TYPE 
+"""""""""""""""""""""""""""""""""               
+
+- :code:`CT_RUNTIME`: The package archive contains the executables and shared libraries that are produced by this package.
+  This can be used for packages that either do not depend on any shared libraries or only on shared libraries that
+  are provided externally by the system.
+
+- :code:`CT_RUNTIME_PORTABLE listExcludedTargets`: The package archive will include the packages executables 
+  and shared libraries and all depended on shared libraries. This is useful for creating *portable* packages
+  that do not rely on any system provided shared libraries.
+  The :code:`CT_RUNTIME_PORTABLE` keyword can be followed by a list of depended on targets that belong
+  to shared libraries that should not be included in the package, because they are provided by the system. 
+
+- :code:`CT_DEVELOPER`: The package archive will include all package binaries, header files and cmake config files for 
+  importing the package in another project. This content type is supposed to be used for binary library packages
+  that are used in other projects. Note that for msvc debug configurations the package will also include source files
+  to allow debugging into the package. The package does not include dependencies which are supposed to be imported
+  separately by consuming projects.
+
+- :code:`CT_SOURCES`: The package archive contains the files that are needed to compile the package.
+
+
+PACKAGE_ARCHIVE_FORMATS
+""""""""""""""""""""""""""""
+
+- :code:`7Z |TBZ2 | TGZ | TXZ | TZ | ZIP`: Packs the distributed files into one of the following archive formats: .7z, .tar.bz2, .tar.gz, .tar.xz, tar.Z, .zip
+- :code:`DEB`: Creates a debian package .deb file. This will only be created when the dpkg tool is available.
+
+PACKAGE_ARCHIVE_FORMAT_OPTIONS
+"""""""""""""""""""""""""""""""""""
+
+A list of keyword arguments that contain further options for the creation of the package archives.
+
+- :code:`[SYSTEM_PACKAGES_DEB]`: This is only relevant when using the DEB package format. 
+  The option must be a string that contains the names and versions of the debian packages 
+  that provide the excluded shared libraries from the :code:`CT_RUNTIME` option. E.g. :code:`libc6 (>= 2.3.1-6), libc6 (< 2.4)`
+  on which the package depends.
+
+
+VERSION_COMPATIBILITY_SCHEME
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This option determines which versions of the package are can compatible to each other. This is only
+of interest for shared library packages. For compatible versions it should be possible to replace
+an older version with a newer one by simply replacing the library file or on linux by changing the symlink
+that points to the used library. Not that it is still the developers responsibility to implement the
+library in a compatible way. This option will only influence which symlinks are created, output file names
+and the version.cmake files that are used to import the library.
+
+.. note:: 
+
+  Currently only :code:`ExactVersion` scheme is available, so you do not need to set this option.
+
+
+**Schemes:**
+
+- :code:`ExactVersion`: This option means, that different versions of the library are not compatible.
+  This is the most simple scheme and relieves developers from the burdon of keeping things compatible.
+
+
+.. _cpfFinalizePackageProject:
+
+cpfFinalizePackageProject()
+===========================
+
+In single component packages this must be called after adding the component.
+It will create some custom targets that are required for installing and creating package archives.
+
+
+**************************************
+Module cpfAddCppPackageComponent.cmake
+**************************************
 
 This module provides the following functions.
 
 
-- `cpfAddCppPackage()`_
+- `cpfAddCppPackageComponent()`_
 - :ref:`cpfQt5AddUIAndQrcFiles`
 
 
-.. _cpfAddCppPackage:
+.. _cpfAddCppPackageComponent:
 
-cpfAddCppPackage()
-==================
+cpfAddCppPackageComponent()
+===========================
 
 .. code-block:: cmake
 
-  cpfAddCppPackage(
-      PACKAGE_NAMESPACE string
+  cpfAddCppPackageComponent(
       TYPE <GUI_APP|CONSOLE_APP|LIB|INTERFACE_LIB>
       [BRIEF_DESCRIPTION string]
       [LONG_DESCRIPTION string]
-      [OWNER string]
-      [WEBPAGE_URL string]
-      [MAINTAINER_EMAIL string]
       [PUBLIC_HEADER file1 [file2 ...]]
       [PRODUCTION_FILES file1 [file2 ...]]
       [EXE_FILES file1 [file2 ...]]
@@ -196,15 +351,6 @@ cpfAddCppPackage()
           PLUGIN_DIRECTORY dir
           PLUGIN_TARGETS target1 [target2 ...]
       ...]
-      [DISTRIBUTION_PACKAGES
-          DISTRIBUTION_PACKAGE_CONTENT_TYPE <CT_RUNTIME|CT_RUNTIME_PORTABLE excludedTargets|CT_DEVELOPER|CT_SOURCES>
-          DISTRIBUTION_PACKAGE_FORMATS <7Z|TBZ2|TGZ|TXZ|TZ|ZIP|DEB ...>
-          [DISTRIBUTION_PACKAGE_FORMAT_OPTIONS 
-              [SYSTEM_PACKAGES_DEB packageListString ]
-          ]
-          [DISTRIBUTION_PACKAGE_CONTENT_TYPE ...] 
-      ...]
-      [VERSION_COMPATIBILITY_SCHEME [ExactVersion] ]
       [ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS bool]
       [ENABLE_ABI_API_STABILITY_CHECK_TARGETS bool]
       [ENABLE_CLANG_FORMAT_TARGETS bool]
@@ -217,29 +363,30 @@ cpfAddCppPackage()
       [ENABLE_VERSION_RC_FILE_GENERATION bool]
       [TEST_EXE_ARGUMENTS arg1 [arg2 ...]]
       [HAS_GOOGLE_TEST_EXE bool]
+      [CPP_NAMESPACE] string
   )
 
 
-Adds a C++ package to a CPF project. The name of the package is the same as the
-name of the directory in which the packages CMakeLists.txt file is located.
-The function provides a large list of options that allow defining the features that the package should provide.
+Adds a C++ package-component to a CPF project. The name of the package-component is the same as the
+name of the directory in which the package-components CMakeLists.txt file is located.
+The function provides a large list of options that allow defining the features that the package-component should provide.
 
-A C++ package consists of a main binary target that has the same name as the package and some helper binary targets for tests and test utilities.
+A C++ package-component consists of a main binary target that has the same name as the package-component and some helper binary targets for tests and test utilities.
 The names of the created targets are:
 
 .. code-block:: none
 
   # Binary Targets of MyPackage
-  MyPackage             # The executable or library
-  libMyPackage          # The implementation library.
-  MyPackage_fixtures    # A library for test test utility code.
-  MyPackage_tests       # A text executabl.
+  MyComponent             # The executable or library
+  libMyComponent          # The implementation library.
+  MyComponent_fixtures    # A library for test test utility code.
+  MyComponent_tests       # A text executabl.
 
-  # Alias Targets of MyPackage with PACKAGE_NAMESPACE mypckg
-  mypckg::MyPackage
-  mypckg::libMyPackage
-  mypckg::MyPackage_fixtures
-  mypckg::MyPackage_tests
+  # Alias Targets of MyComponent with TARGET_NAMESPACE mypckg
+  mypckg::MyComponent
+  mypckg::libMyComponent
+  mypckg::MyComponent_fixtures
+  mypckg::MyComponent_tests
 
 
 The function will create alias targets for all binary targets that have the package namespace prepended.
@@ -256,29 +403,33 @@ documentation generation.
 Example
 -------
 
-Here is an example that uses :code:`cpfAddCppPackage()` in a :code:`CMakeLists.txt` file to create C++ library package.
+Here is an example that uses :code:`cpfAddCppPackageComponent()` in a :code:`CMakeLists.txt` file to create C++ library package.
 
 .. code-block:: cmake
 
   # MyLib/CMakeLists.txt
 
-  include(cpfAddCppPackage)
+  include(cpfAddCppPackageComponent)
   include(cpfConstants)
 
-  set( PACKAGE_NAMESPACE myl )
-
-  set( briefDescription "My awsome library." )
-
-  set( longDescription 
-  "Here you can go on in length about how awsome your library is."
+  cpfPackageProject(
+      TARGET_NAMESPACE                      myl
+      WEBPAGE_URL                           "http://www.awsomelib.com/index.html"
+      MAINTAINER_EMAIL                      "hans@awsomelib.com"
+      COMPONENTS                            SINGLE_COMPONENT
+      PACKAGE_ARCHIVES
+        PACKAGE_ARCHIVE_CONTENT_TYPE 	CT_DEVELOPER
+        PACKAGE_ARCHIVE_FORMATS 		7Z
+      PACKAGE_ARCHIVES
+        PACKAGE_ARCHIVE_CONTENT_TYPE 	CT_RUNTIME
+        PACKAGE_ARCHIVE_FORMATS 		ZIP
+      PACKAGE_ARCHIVES
+        PACKAGE_ARCHIVE_CONTENT_TYPE   CT_RUNTIME Qt5::Core Qt5::Test Qt5::Gui_GL Qt5::QXcbIntegrationPlugin
+        PACKAGE_ARCHIVE_FORMATS DEB
+        PACKAGE_ARCHIVE_FORMAT_OPTIONS SYSTEM_PACKAGES_DEB "libqt5core5a, libqt5gui5" 
   )
 
-  cpfInitPackageProject(
-	  PACKAGE_NAME
-	  ${PACKAGE_NAMESPACE}
-  )
-
-  ################# Define package files #################
+  ################# Define package-component files #################
   set( PACKAGE_PUBLIC_HEADERS
       MyFunction.h
   )
@@ -317,32 +468,9 @@ Here is an example that uses :code:`cpfAddCppPackage()` in a :code:`CMakeLists.t
       PLUGIN_TARGETS		MyPlugin
   )
 
-  set( archiveDevPackageOptions
-      DISTRIBUTION_PACKAGE_CONTENT_TYPE 	CT_DEVELOPER
-      DISTRIBUTION_PACKAGE_FORMATS 		7Z
-  )
-
-  set( archiveUserPackageOptions
-      DISTRIBUTION_PACKAGE_CONTENT_TYPE 	CT_RUNTIME
-      DISTRIBUTION_PACKAGE_FORMATS 		ZIP
-  )
-
-  set( debianPackageOptions
-      DISTRIBUTION_PACKAGE_CONTENT_TYPE
-          CT_RUNTIME Qt5::Core Qt5::Test Qt5::Gui_GL Qt5::QXcbIntegrationPlugin
-      DISTRIBUTION_PACKAGE_FORMATS DEB
-      DISTRIBUTION_PACKAGE_FORMAT_OPTIONS SYSTEM_PACKAGES_DEB "libqt5core5a, libqt5gui5" 
-  )
-
   ################# Add Package #################
-  cpfAddCppPackage( 
-      PACKAGE_NAME            ${PACKAGE_NAME}
-      PACKAGE_NAMESPACE       ${PACKAGE_NAMESPACE}
-      WEBPAGE_URL             "http://www.awsomelib.com/index.html"
-      MAINTAINER_EMAIL        "hans@awsomelib.com"
+  cpfAddCppPackageComponent( 
       TYPE                    LIB
-      BRIEF_DESCRIPTION       ${briefDescription}
-      LONG_DESCRIPTION        ${longDescription}
       PUBLIC_HEADER           ${PACKAGE_PUBLIC_HEADERS}
       PRODUCTION_FILES        ${PACKAGE_PRODUCTION_FILES}
       FIXTURE_FILES           ${PACKAGE_FIXTURE_FILES}
@@ -351,30 +479,15 @@ Here is an example that uses :code:`cpfAddCppPackage()` in a :code:`CMakeLists.t
       LINKED_TEST_LIBRARIES   ${PACKAGE_LINKED_TEST_LIBRARIES}
       PLUGIN_DEPENDENCIES     ${qtPlatformPlugins}
       PLUGIN_DEPENDENCIES     ${myPlugin}
-      DISTRIBUTION_PACKAGES   ${archiveDevPackageOptions}
-      DISTRIBUTION_PACKAGES   ${archiveUserPackageOptions}
-      DISTRIBUTION_PACKAGES   ${debianPackageOptions}
   )
 
+  cpfFinalizePackageProject()
 
-.. _cpfAddCppPackage_arguments:
+
+.. _cpfAddCppPackageComponent_arguments:
 
 Arguments
 ---------
-
-PACKAGE_NAMESPACE
-^^^^^^^^^^^^^^^^^
-
-The parameter is used in the following ways:
-
-- CPFCMake assumes, this is the C++ namespace that you use in the package.
-- The name is used as a namespace in the packages generated C++ version header file.
-- As a namespace for the packages cmake target names.
-- The value is used as a part of the packages generated export macro which must be 
-  prepended to all exported classes and functions in a library.
-- If you use the :code:`ENABLE_PACKAGE_DOX_FILES_GENERATION` option, the default package documentation 
-  page will generate a documentation of that namespace.
-
 
 TYPE
 ^^^^
@@ -390,56 +503,16 @@ The type of the main binary target of the package.
 BRIEF_DESCRIPTION
 ^^^^^^^^^^^^^^^^^
 
-A short description in one sentence about what the package does. This is included
-in the generated documentation page of the package and in some distribution package
-types. It is also displayed on the *Details* tab of the file-properties window of 
-the generated main binary file when compiling with MSVC.
+A short description in one sentence about what the package-component does. This is included
+in the generated documentation page of the package-component and in some package archive
+types. On Windows it is also displayed on the *Details* tab of the file-properties window of 
+the generated main binary file.
 
 
 LONG_DESCRIPTION
 ^^^^^^^^^^^^^^^^
 
-A longer description of the package. This is included
-in the generated documentation page of the package and in some distribution package
-types.
-
-
-OWNER
-^^^^^
-
-The value is only used when compiling with MSVC. It is than used in the copyright notice 
-that is displayed on the *Details* tab of the file-properties window of the generated binary
-files. 
-
-If you plan to allow using a package as :code:`EXTERNAL` package in some other CI-project,
-you have to hard-code this value in the packages CMakeLists file. Using a variable from the
-CI-project in order to remove duplication between your packages will not work, because clients
-will not have the value of that variable.
-
-
-WEBPAGE_URL
-^^^^^^^^^^^
-
-A web address from where the source-code and/or the documentation of the package can be obtained.
-This is required for Debian packages.
-
-If you plan to allow using a package as :code:`EXTERNAL` package in some other CI-project,
-you have to hard-code this value in the packages CMakeLists file. Using a variable from the
-CI-project in order to remove duplication between your packages will not work, because clients
-will not have the value of that variable.
-
-
-MAINTAINER_EMAIL
-^^^^^^^^^^^^^^^^
-
-An email address under which the maintainers of the package can be reached.
-This is required for Debian packages.
-Setting this argument overrides the value of the global :code:`CPF_MAINTAINER_EMAIL` variable for this package.
-
-If you plan to allow using a package as :code:`EXTERNAL` package in some other CI-project,
-you have to hard-code this value in the packages CMakeLists file. Using a variable from the
-CI-project in order to remove duplication between your packages will not work, because clients
-will not have the value of that variable.
+A longer description of the package. This is included in the generated doxygen documentation page of the package-component.
 
 
 PUBLIC_HEADER
@@ -447,7 +520,7 @@ PUBLIC_HEADER
 
 All header files that declare functions or classes that are supposed to be
 used by consumers of a library package. The public headers will automatically
-be put into binary distribution packages, while header files in the :code:`PRODUCTION_FILES`
+be put into binary package archives, while header files in the :code:`PRODUCTION_FILES`
 are not included.
 
 
@@ -461,7 +534,7 @@ there should be a :code:`main.cpp` that is used for the executable.
 PRODUCTION_FILES
 ^^^^^^^^^^^^^^^^
 
-For packages of type :code:`GUI_APP` or :code:`CONSOLE_APP`, this variable that must be
+For package-components of type :code:`GUI_APP` or :code:`CONSOLE_APP`, this variable that must be
 added to the executable itself. On windows this can be :code:`.rc` files or the
 icon for the executable.
 
@@ -484,6 +557,8 @@ TEST_FILES
 
 All files that belong to the test executable target.
 
+
+.. _COMPILE_OPTIONS:
 
 COMPILE_OPTIONS
 ^^^^^^^^^^^^^^^
@@ -516,10 +591,10 @@ PLUGIN_DEPENDENCIES
 This keyword opens a sub-list of arguments that are used to define plugin dependencies of the package. 
 Multiple :code:`PLUGIN_DEPENDENCIES` sub-lists can be given to allow having multiple plugin subdirectories.
 
-The plugin targets are shared libraries that are explicitly loaded by the packages executables and on which the
+The plugin targets are shared libraries that are explicitly loaded by the package-components executables and on which the
 package has no link dependency. If a target in the list does not exist when the function is called,
 it will be silently ignored. If a given target is an internal target, an artificial dependency between
-the plugin target and the packages executables is created to make sure the plugin is compilation is up-to-date before the
+the plugin target and the package-components executables is created to make sure the plugin is compilation is up-to-date before the
 executable is build.
 
 Adding this options makes sure that the plugin library is build before the executable and copied besides it
@@ -533,80 +608,7 @@ must be deployed so they are found by the executable. This if often a :code:`plu
 :code:`PLUGIN_TARGETS`: The name of the targets that provide the plugin libraries.
 
 
-DISTRIBUTION_PACKAGES
-^^^^^^^^^^^^^^^^^^^^^
-
-This keyword opens a sub-list of arguments that are used to specify a list of packages that have the same content, but different formats.
-The argument can be given multiple times, in order to define a variety of package formats and content types.
-The argument takes two lists as sub-arguments. A distribution package is created for each combination of the
-elements in the sub-argument lists.
-For example: 
-argument :code:`DISTRIBUTION_PACKAGES DISTRIBUTION_PACKAGE_CONTENT_TYPE CT_RUNTIME_PORTABLE DISTRIBUTION_PACKAGE_FORMATS ZIP;7Z`
-will cause the creation of a zip and a 7z archive that both contain the packages executables and all depended on shared libraries.
-Adding another argument :code:`DISTRIBUTION_PACKAGES DISTRIBUTION_PACKAGE_CONTENT_TYPE CT_RUNTIME DISTRIBUTION_PACKAGE_FORMATS DEB`
-will cause the additional creation of a debian package that relies on external dependencies being provided by other packages.
-
-**Sub-Options:**
-
-DISTRIBUTION_PACKAGE_CONTENT_TYPE 
-"""""""""""""""""""""""""""""""""               
-
-- :code:`CT_RUNTIME`: The distribution-package contains the executables and shared libraries that are produced by this package.
-  This can be used for packages that either do not depend on any shared libraries or only on shared libraries that
-  are provided externally by the system.
-
-- :code:`CT_RUNTIME_PORTABLE listExcludedTargets`: The distribution-package will include the packages executables 
-  and shared libraries and all depended on shared libraries. This is useful for creating *portable* packages
-  that do not rely on any system provided shared libraries.
-  The :code:`CT_RUNTIME_PORTABLE` keyword can be followed by a list of depended on targets that belong
-  to shared libraries that should not be included in the package, because they are provided by the system. 
-
-- :code:`CT_DEVELOPER`: The distribution-package will include all package binaries, header files and cmake config files for 
-  importing the package in another project. This content type is supposed to be used for binary library packages
-  that are used in other projects. Note that for msvc debug configurations the package will also include source files
-  to allow debugging into the package. The package does not include dependencies which are supposed to be imported
-  separately by consuming projects.
-
-- :code:`CT_SOURCES`: The distribution-package contains the files that are needed to compile the package.
-
-
-DISTRIBUTION_PACKAGE_FORMATS
-""""""""""""""""""""""""""""
-
-- :code:`7Z |TBZ2 | TGZ | TXZ | TZ | ZIP`: Packs the distributed files into one of the following archive formats: .7z, .tar.bz2, .tar.gz, .tar.xz, tar.Z, .zip
-- :code:`DEB`: Creates a debian package .deb file. This will only be created when the dpkg tool is available.
-
-DISTRIBUTION_PACKAGE_FORMAT_OPTIONS
-"""""""""""""""""""""""""""""""""""
-
-A list of keyword arguments that contain further options for the creation of the distribution packages.
-
-- :code:`[SYSTEM_PACKAGES_DEB]`: This is only relevant when using the DEB package format. 
-  The option must be a string that contains the names and versions of the debian packages 
-  that provide the excluded shared libraries from the :code:`CT_RUNTIME` option. E.g. :code:`libc6 (>= 2.3.1-6), libc6 (< 2.4)`
-  on which the package depends.
-
-
-VERSION_COMPATIBILITY_SCHEME
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This option determines which versions of the package are can compatible to each other. This is only
-of interest for shared library packages. For compatible versions it should be possible to replace
-an older version with a newer one by simply replacing the library file or on linux by changing the symlink
-that points to the used library. Not that it is still the developers responsibility to implement the
-library in a compatible way. This option will only influence which symlinks are created, output file names
-and the version.cmake files that are used to import the library.
-
-.. note:: 
-
-  Currently only :code:`ExactVersion` scheme is available, so you do not need to set this option.
-
-
-**Schemes:**
-
-- :code:`ExactVersion`: This option means, that different versions of the library are not compatible.
-  This is the most simple scheme and relieves developers from the burdon of keeping things compatible.
-
+.. _ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS:
 
 ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -616,6 +618,8 @@ This option is ignored on non-Linux platforms.
 Setting this argument overrides the value of the global :code:`CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS` variable for this package.
 
 
+.. _ENABLE_ABI_API_STABILITY_CHECK_TARGETS:
+
 ENABLE_ABI_API_STABILITY_CHECK_TARGETS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -623,6 +627,8 @@ This option can be used to enable or disable the enforcement of version compatib
 and the last release version. It requires option :code:`ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS` to be set.
 Setting this argument overrides the value of the global :code:`CPF_ENABLE_ABI_API_STABILITY_CHECK_TARGETS` variable for this package.
 
+
+.. _ENABLE_CLANG_FORMAT_TARGETS:
 
 ENABLE_CLANG_FORMAT_TARGETS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -641,6 +647,9 @@ Enabling the clang-format target requires two dependencies.
    argument to your project to make it visible in the Visual Studio solution. 
    Read the `clang-format`_ documentation to see what you have to put into that file.
 
+
+.. _ENABLE_CLANG_TIDY_TARGET:
+
 ENABLE_CLANG_TIDY_TARGET
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -648,6 +657,8 @@ This option can be used to enable or disable the :ref:`clang-tidy_package` targe
 This option is ignored if the compiler is not clang.
 Setting this argument overrides the value of the global :code:`CPF_ENABLE_CLANG_TIDY_TARGET` variable for this package.
 
+
+.. _ENABLE_OPENCPPCOVERAGE_TARGET:
 
 ENABLE_OPENCPPCOVERAGE_TARGET
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -657,11 +668,13 @@ This option is ignored on non-Windows platforms.
 Setting this argument overrides the value of the global :code:`CPF_ENABLE_OPENCPPCOVERAGE_TARGET` variable for this package.
 
 
+.. _ENABLE_PACKAGE_DOX_FILE_GENERATION:
+
 ENABLE_PACKAGE_DOX_FILE_GENERATION
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If this option is given, the package will generate a standard package documentation :code:`.dox` file.
-The file contains the brief and long package description as well as some links to other generated
+If this option is given, the package-component will generate a standard package-component documentation :code:`.dox` file.
+The file contains the brief and long package-component description as well as some links to other generated
 html content like test-coverage reports or abi-compatibility reports.
 Setting this argument overrides the value of the global :code:`CPF_ENABLE_PACKAGE_DOX_FILE_GENERATION` variable for this package.
 
@@ -674,13 +687,17 @@ binary targets. Using the this option requires the cotire dependency.
 Setting this argument overrides the value of the global :code:`CPF_ENABLE_PRECOMPILED_HEADER` variable for this package.
 
 
+.. _ENABLE_RUN_TESTS_TARGET:
+
 ENABLE_RUN_TESTS_TARGET
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 This option can be used to enable or disable the :ref:`runAllTests_package` and :ref:`runFastTests_package`
-targets. The option is ignored if the package does not have a test executable.
+targets. The option is ignored if the package-component does not have a test executable.
 Setting this argument overrides the value of the global :code:`CPF_ENABLE_RUN_TESTS_TARGET` variable for this package.
 
+
+.. _ENABLE_VALGRIND_TARGET:
 
 ENABLE_VALGRIND_TARGET
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -695,9 +712,8 @@ ENABLE_VERSION_RC_FILE_GENERATION
 
 By default the CPF generates a version.rc file for MSVC that is used
 to inject some version information into the binary files. If this
-version.rc file does not fit your needs, you can disable it's generation
+version.rc file does not fit your needs, you can disable its generation
 with this option and provide your custom made :code:`.rc` file.
-Setting this argument overrides the value of the global :code:`CPF_ENABLE_VERSION_RC_FILE_GENERATION` variable for this package.
 
 
 TEST_EXE_ARGUMENTS
@@ -721,10 +737,16 @@ HAS_GOOGLE_TEST_EXE
 ^^^^^^^^^^^^^^^^^^^
 
 This option only has an effect when using a Visual Studio Generator.
-When this option is set to true, :code:`cpfAddCppPackage()` will create an empty file :code:`<test-exe>.is_google_test` that lies beside the
+When this option is set to true, :code:`cpfAddCppPackageComponent()` will create an empty file :code:`<test-exe>.is_google_test` that lies beside the
 create test executable. Set this option to true when you use the <a href="https://github.com/csoltenborn/GoogleTestAdapter">GoogleTestAdapter</a> 
 and it fails to find your tests.
 
+
+CPP_NAMESPACE
+^^^^^^^^^^^^^
+
+The C++ namespace that is used in the generated cpfPackageVersion_<package>.h header file. It defaults to the :code:`TARGET_NAMESPACE` of the
+current package project if not given.
 
 
 .. _cpfQt5AddUIAndQrcFiles:
@@ -747,7 +769,7 @@ function when Qt is used in combination with pre-compiled headers.
 
   :ref:`CotireQtIncompatibility`
 
-The function can be used like shown below before calling :ref:`cpfAddCppPackage`.
+The function can be used like shown below before calling :ref:`cpfAddCppPackageComponent`.
 
 .. code-block:: cmake
 
@@ -766,7 +788,7 @@ The function can be used like shown below before calling :ref:`cpfAddCppPackage`
 
   cpfQt5AddUIAndQrcFiles( sources )
 
-  cpfAddCppPackage( 
+  cpfAddCppPackageComponent( 
       ...
       PRODUCTION_FILES ${sources}
       ...
@@ -774,21 +796,21 @@ The function can be used like shown below before calling :ref:`cpfAddCppPackage`
 
 
 
-******************************
-Module cpfAddFilePackage.cmake
-******************************
+***************************************
+Module cpfAddFilePackageComponent.cmake
+***************************************
 
 This module provides the following function.
 
-- cpfAddFilePackage()
+- cpfAddFilePackageComponent()
 
 
-cpfAddFilePackage()
-===================
+cpfAddFilePackageComponent()
+============================
 
 .. code-block:: cmake
 
-  cpfAddFilePackage(
+  cpfAddFilePackageComponent(
       SOURCES file1 ...    
   )
 
@@ -806,23 +828,23 @@ A list of files that are added to the package. The paths must be relative to the
 current source directory or absolute.
 
 
-*********************************
-Module cpfAddDoxygenPackage.cmake
-*********************************
+******************************************
+Module cpfAddDoxygenPackageComponent.cmake
+******************************************
 
 This module provides the following function.
 
-- cpfAddDoxygenPackage()
+- cpfAddDoxygenPackageComponent()
 
 
-.. _cpfAddDoxygenPackage:
+.. _cpfAddDoxygenPackageComponent:
 
-cpfAddDoxygenPackage()
-======================
+cpfAddDoxygenPackageComponent()
+===============================
 
 .. code-block:: cmake
 
-  cpfAddFilePackage(
+  cpfAddDoxygenPackageComponent(
       [PROJECT_NAME name]
       DOXYGEN_CONFIG_FILE absPath
       DOXYGEN_LAYOUT_FILE absPath
@@ -834,17 +856,18 @@ cpfAddDoxygenPackage()
       [PROJECT_LOGO absPath]
       [PLANTUML_JAR_PATH absPath]
       [RUN_DOXYINDEXER]
+      [DOXYGEN_BIN_DIR]
   )
 
 
-This function adds a package that runs the doxygen documentation generator on the owned packages of your CI-project.
-The package can also contain extra files containing global documentation that does not belong to
+This function adds a package-component that runs the doxygen documentation generator on the owned packages of your CI-project.
+The package-component can also contain extra files containing global documentation that does not belong to
 any other package.
 
 All files specified with the key-word arguments are added to the targets source files.
 
 More information about the documentation generation can be found on the page :ref:`DocumentationGeneration` and in the 
-:ref:`CPFAddDoxygenPackage` tutorial.
+:ref:`cpfAddDoxygenPackageComponent` tutorial.
 
 Arguments
 ---------
@@ -863,7 +886,7 @@ DOXYGEN_CONFIG_FILE
 This must be set to the absolute path of the Doxygen configuration file. You should be aware that the file
 is not directly passed to Doxygen. In order to inject the values of CMake variables into the Doxygen configuration,
 the file is used as a template to generate the file :code:`Generated/\<config\>/_CPF/documentation/tempDoxygenConfig.txt`.
-This generated file is the one that is used as the input for the call of Doxygen. After building the new package for the first
+This generated file is the one that is used as the input for the call of Doxygen. After building the new package-component for the first
 time you can open the file and see that it overwrites some values of the configuration variables at the bottom of the file.
 
 The following variables in the configuration file are overwritten.
@@ -874,7 +897,7 @@ Changing them in the given template will have no effect.
   PROJECT_NAME                (set to the value of the PROJECT_NAME option)
   OUTPUT_DIRECTORY            (set to "Generated/<config>/html/doxygen")
   HTML_OUTPUT                 (set to "html")
-  INPUT                       (set to Sources and the directories with the generated package documentation dox files)
+  INPUT                       (set to Sources and the directories with the generated package-component documentation dox files)
   EXCLUDE                     (set to the external packages source directories that are not listed in ADDITIONAL_PACKAGES)
   DOTFILE_DIRS                (set to "Generated/<config>/html/doxygen/external")
   LAYOUT_FILE                 (set to the path of the DOXYGEN_LAYOUT_FILE option)
@@ -941,20 +964,30 @@ directory that is required when using the server-side search feature of doxygen.
 The directory will be created in the :code:`Generated/\<config\>/html/cgi-bin` directory.
 
 
-********************************
-Module cpfAddSphinxPackage.cmake
-********************************
+.. _DOXYGEN_BIN_DIR:
+
+DOXYGEN_BIN_DIR
+^^^^^^^^^^^^^^^
+
+This option can be set to the directory that contains the doxygen executable if CPFCMake is not able to find the correct one.
+
+
+.. _cpfAddSphinxPackageComponent:
+
+*****************************************
+Module cpfAddSphinxPackageComponent.cmake
+*****************************************
 
 This module provides the following function.
 
-- cpfAddSphinxPackage()
+- cpfAddSphinxPackageComponent()
 
-cpfAddSphinxPackage()
-=====================
+cpfAddSphinxPackageComponent()
+==============================
 
 .. code-block:: cmake
 
-  cpfAddSphinxPackage(
+  cpfAddSphinxPackageComponent(
       [SOURCE_DIR]                    absDir
       [CONFIG_FILE_DIR]               absDir
       [OTHER_FILES]                   file1 ...
@@ -976,13 +1009,13 @@ SOURCE_DIR
 
 The base directory in which sphinx searches for files that contribute to the documentation.
 When the argument is not given, :code:`CMAKE_SOURCE_DIR` is used in order to look for documentation
-files in all packages of the CI-project.
+files in all package-components of the CI-project.
 
 CONFIG_FILE_DIR
 ^^^^^^^^^^^^^^^
 
 A relative path to the directory that holds the :code:`conf.py` file that configures your
-sphinx project. When not given, the source directory of the package is used.
+sphinx project. When not given, the source directory of the package-component is used.
 
 OTHER_FILES
 ^^^^^^^^^^^
@@ -1007,6 +1040,59 @@ when you use the :code:`source_suffix` variable in your sphinx config file
 to enable the parsing of other file types. Getting this wrong will break the
 out-of-date mechanism for the created target. This means that the build-system
 may not always re-build the target after making changes to the source files.
+
+
+.. _cpfAddPythonPackageComponent:
+
+*****************************************
+Module cpfAddPythonPackageComponent.cmake
+*****************************************
+
+This module provides the following function.
+
+- cpfAddPythonPackageComponent()
+
+
+cpfAddPythonPackageComponent()
+==============================
+
+.. code-block:: cmake
+
+  cpfAddPythonPackageComponent(
+      SOURCES                           file1 ...
+      [TEST_SCRIPT]                     relativeScriptPath
+      [TEST_SCRIPT_ARGUMENTS]           args
+  )
+
+
+This functions adds a file package that contains the given source files. It can also create
+unit test run targets if the :code:`TEST_SCRIPT` is given. The function will create a
+:code:`cpfPackageVersion_<package-component>.py` file in the packages source directory which
+can be used to retrieve the version of the component. This file should be generated in
+the binary directory but due to lacking python knowledge I currently do not know how to
+handle this situation. So the current work-around is to git-ignore the generated file in
+the source tree.
+
+
+Arguments
+---------
+
+SOURCES
+^^^^^^^
+
+A list with all the files that belong to the package component. Paths can be either relative
+to the current source directory or absolute.
+
+TEST_SCRIPT
+^^^^^^^^^^^
+
+A path to a pathon file that runs the unit tests of the package-component. If this is given
+an extra runAllTests_<package-component> target is created that can be build to run the tests.
+
+TEST_SCRIPT_ARGUMENTS
+^^^^^^^^^^^^^^^^^^^^^
+
+This can be used to hand additional arguments to the :code:`TEST_SCRIPT`.
 
 
 
