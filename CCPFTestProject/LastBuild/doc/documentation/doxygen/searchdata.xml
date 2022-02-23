@@ -3,84 +3,119 @@
   <doc>
     <field name="type">source</field>
     <field name="name">function.h</field>
-    <field name="url">_a_package_2function_8h_source.html#l00001</field>
+    <field name="url">a00785_source.html#l00001</field>
     <field name="keywords"></field>
     <field name="text">a LIBAPACKAGE_EXPORT</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">function.h</field>
-    <field name="url">_b_package_2function_8h_source.html#l00001</field>
+    <field name="url">a00788_source.html#l00001</field>
     <field name="keywords"></field>
     <field name="text">b BPACKAGE_EXPORT</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">function.h</field>
-    <field name="url">_c_package_2function_8h_source.html#l00001</field>
+    <field name="url">a00791_source.html#l00001</field>
     <field name="keywords"></field>
     <field name="text">c CPACKAGE_EXPORT</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">function.h</field>
-    <field name="url">_d_package_2function_8h_source.html#l00001</field>
+    <field name="url">a00794_source.html#l00001</field>
     <field name="keywords"></field>
     <field name="text">d DPACKAGE_EXPORT</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">function.h</field>
-    <field name="url">_e_package_2function_8h_source.html#l00001</field>
+    <field name="url">a00797_source.html#l00001</field>
     <field name="keywords"></field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">function.h</field>
-    <field name="url">_e_package_2function_8h_source.html#l00003</field>
+    <field name="url">a00797_source.html#l00003</field>
     <field name="keywords"></field>
     <field name="text">e</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">function.h</field>
-    <field name="url">_e_package_2function_8h_source.html#l00005</field>
+    <field name="url">a00797_source.html#l00005</field>
     <field name="keywords"></field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">fixture.h</field>
-    <field name="url">_a_package_2_tests_2fixture_8h_source.html#l00001</field>
+    <field name="url">a00809_source.html#l00001</field>
     <field name="keywords"></field>
     <field name="text">a LIBAPACKAGE_FIXTURES_EXPORT fixture</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">fixture.h</field>
-    <field name="url">_b_package_2_tests_2fixture_8h_source.html#l00001</field>
+    <field name="url">a00812_source.html#l00001</field>
     <field name="keywords"></field>
     <field name="text">b BPACKAGE_FIXTURES_EXPORT fixture</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">fixture.h</field>
-    <field name="url">_e_package_2_tests_2fixture_8h_source.html#l00001</field>
+    <field name="url">a00815_source.html#l00001</field>
     <field name="keywords"></field>
     <field name="text">e</field>
   </doc>
   <doc>
     <field name="type">source</field>
     <field name="name">fixture.h</field>
-    <field name="url">_e_package_2_tests_2fixture_8h_source.html#l00006</field>
+    <field name="url">a00815_source.html#l00006</field>
     <field name="keywords"></field>
     <field name="text">EPACKAGE_FIXTURES_EXPORT MyFixture setUp</field>
   </doc>
   <doc>
     <field name="type">file</field>
+    <field name="name">APackageDocumentation.dox</field>
+    <field name="url">a00110.html</field>
+    <field name="keywords">APackageDocumentation.dox</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">BPackageDocumentation.dox</field>
+    <field name="url">a00107.html</field>
+    <field name="keywords">BPackageDocumentation.dox</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">CPackageDocumentation.dox</field>
+    <field name="url">a00104.html</field>
+    <field name="keywords">CPackageDocumentation.dox</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">DPackageDocumentation.dox</field>
+    <field name="url">a00101.html</field>
+    <field name="keywords">DPackageDocumentation.dox</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
+    <field name="name">EPackageDocumentation.dox</field>
+    <field name="url">a00098.html</field>
+    <field name="keywords">EPackageDocumentation.dox</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
     <field name="name">function.cpp</field>
-    <field name="url">_a_package_2function_8cpp.html</field>
+    <field name="url">a00773.html</field>
     <field name="keywords">function.cpp</field>
     <field name="text"></field>
   </doc>
@@ -88,14 +123,14 @@
     <field name="type">function</field>
     <field name="name">a::function</field>
     <field name="args">()</field>
-    <field name="url">namespacea.html#aa25dbc064e943e5cb4b5d8600a0b1b93</field>
+    <field name="url">a00119.html#aa25dbc064e943e5cb4b5d8600a0b1b93</field>
     <field name="keywords">function a::function a function a::function a function a::function a</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">function.cpp</field>
-    <field name="url">_b_package_2function_8cpp.html</field>
+    <field name="url">a00776.html</field>
     <field name="keywords">function.cpp</field>
     <field name="text"></field>
   </doc>
@@ -103,14 +138,14 @@
     <field name="type">function</field>
     <field name="name">b::function</field>
     <field name="args">()</field>
-    <field name="url">namespaceb.html#a29402823ed1ea8a89fca96f9556dee5a</field>
+    <field name="url">a00120.html#a29402823ed1ea8a89fca96f9556dee5a</field>
     <field name="keywords">function b::function b function b::function b function b::function b</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">function.cpp</field>
-    <field name="url">_c_package_2function_8cpp.html</field>
+    <field name="url">a00779.html</field>
     <field name="keywords">function.cpp</field>
     <field name="text"></field>
   </doc>
@@ -118,14 +153,14 @@
     <field name="type">function</field>
     <field name="name">c::function</field>
     <field name="args">()</field>
-    <field name="url">namespacec.html#a7242e69a9e69d3fee6247d077ccc3aac</field>
+    <field name="url">a00121.html#a7242e69a9e69d3fee6247d077ccc3aac</field>
     <field name="keywords">function c::function c function c::function c function c::function c</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">function.cpp</field>
-    <field name="url">_d_package_2function_8cpp.html</field>
+    <field name="url">a00782.html</field>
     <field name="keywords">function.cpp</field>
     <field name="text"></field>
   </doc>
@@ -133,42 +168,42 @@
     <field name="type">function</field>
     <field name="name">d::function</field>
     <field name="args">()</field>
-    <field name="url">namespaced.html#ae8b14e4f4249db79f243e02121e13d6c</field>
+    <field name="url">a00122.html#ae8b14e4f4249db79f243e02121e13d6c</field>
     <field name="keywords">function d::function d function d::function d function d::function d</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">function.h</field>
-    <field name="url">_a_package_2function_8h.html</field>
+    <field name="url">a00785.html</field>
     <field name="keywords">function.h</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">function.h</field>
-    <field name="url">_b_package_2function_8h.html</field>
+    <field name="url">a00788.html</field>
     <field name="keywords">function.h</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">function.h</field>
-    <field name="url">_c_package_2function_8h.html</field>
+    <field name="url">a00791.html</field>
     <field name="keywords">function.h</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">function.h</field>
-    <field name="url">_d_package_2function_8h.html</field>
+    <field name="url">a00794.html</field>
     <field name="keywords">function.h</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">function.h</field>
-    <field name="url">_e_package_2function_8h.html</field>
+    <field name="url">a00797.html</field>
     <field name="keywords">function.h</field>
     <field name="text"></field>
   </doc>
@@ -176,14 +211,14 @@
     <field name="type">function</field>
     <field name="name">e::function</field>
     <field name="args">()</field>
-    <field name="url">namespacee.html#ade9512cd47b8b92092ef5023e6289614</field>
+    <field name="url">a00123.html#ade9512cd47b8b92092ef5023e6289614</field>
     <field name="keywords">function e::function e function e::function e</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">main.cpp</field>
-    <field name="url">main_8cpp.html</field>
+    <field name="url">a00077.html</field>
     <field name="keywords">main.cpp</field>
     <field name="text"></field>
   </doc>
@@ -191,14 +226,14 @@
     <field name="type">function</field>
     <field name="name">main</field>
     <field name="args">()</field>
-    <field name="url">main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4</field>
+    <field name="url">a00077.html#ae66f6b31b5ad750f1fe042a706a4e3d4</field>
     <field name="keywords">main</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">fixture.cpp</field>
-    <field name="url">_a_package_2_tests_2fixture_8cpp.html</field>
+    <field name="url">a00800.html</field>
     <field name="keywords">fixture.cpp</field>
     <field name="text"></field>
   </doc>
@@ -206,14 +241,14 @@
     <field name="type">function</field>
     <field name="name">a::fixture</field>
     <field name="args">()</field>
-    <field name="url">namespacea.html#a2e16f127b0718295328c752ad157f0df</field>
+    <field name="url">a00119.html#a2e16f127b0718295328c752ad157f0df</field>
     <field name="keywords">fixture a::fixture a fixture a::fixture a fixture a::fixture a</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">fixture.cpp</field>
-    <field name="url">_b_package_2_tests_2fixture_8cpp.html</field>
+    <field name="url">a00803.html</field>
     <field name="keywords">fixture.cpp</field>
     <field name="text"></field>
   </doc>
@@ -221,42 +256,42 @@
     <field name="type">function</field>
     <field name="name">b::fixture</field>
     <field name="args">()</field>
-    <field name="url">namespaceb.html#a7527fe22c30e164cb702b5bd5b0c826b</field>
+    <field name="url">a00120.html#a7527fe22c30e164cb702b5bd5b0c826b</field>
     <field name="keywords">fixture b::fixture b fixture b::fixture b fixture b::fixture b</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">fixture.cpp</field>
-    <field name="url">_e_package_2_tests_2fixture_8cpp.html</field>
+    <field name="url">a00806.html</field>
     <field name="keywords">fixture.cpp</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">fixture.h</field>
-    <field name="url">_a_package_2_tests_2fixture_8h.html</field>
+    <field name="url">a00809.html</field>
     <field name="keywords">fixture.h</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">fixture.h</field>
-    <field name="url">_b_package_2_tests_2fixture_8h.html</field>
+    <field name="url">a00812.html</field>
     <field name="keywords">fixture.h</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">fixture.h</field>
-    <field name="url">_e_package_2_tests_2fixture_8h.html</field>
+    <field name="url">a00815.html</field>
     <field name="keywords">fixture.h</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">tests_main.cpp</field>
-    <field name="url">_a_package_2_tests_2tests__main_8cpp.html</field>
+    <field name="url">a00818.html</field>
     <field name="keywords">tests_main.cpp</field>
     <field name="text"></field>
   </doc>
@@ -264,14 +299,14 @@
     <field name="type">function</field>
     <field name="name">main</field>
     <field name="args">()</field>
-    <field name="url">_a_package_2_tests_2tests__main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4</field>
+    <field name="url">a00818.html#ae66f6b31b5ad750f1fe042a706a4e3d4</field>
     <field name="keywords">main</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">tests_main.cpp</field>
-    <field name="url">_b_package_2_tests_2tests__main_8cpp.html</field>
+    <field name="url">a00821.html</field>
     <field name="keywords">tests_main.cpp</field>
     <field name="text"></field>
   </doc>
@@ -279,14 +314,14 @@
     <field name="type">function</field>
     <field name="name">main</field>
     <field name="args">()</field>
-    <field name="url">_b_package_2_tests_2tests__main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4</field>
+    <field name="url">a00821.html#ae66f6b31b5ad750f1fe042a706a4e3d4</field>
     <field name="keywords">main</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">tests_main.cpp</field>
-    <field name="url">_e_package_2_tests_2tests__main_8cpp.html</field>
+    <field name="url">a00824.html</field>
     <field name="keywords">tests_main.cpp</field>
     <field name="text"></field>
   </doc>
@@ -294,70 +329,133 @@
     <field name="type">function</field>
     <field name="name">main</field>
     <field name="args">(int, char **)</field>
-    <field name="url">_e_package_2_tests_2tests__main_8cpp.html#a2c3f6775325c30275d11c6abee2db6a0</field>
+    <field name="url">a00824.html#a2c3f6775325c30275d11c6abee2db6a0</field>
     <field name="keywords">main</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">CPFPackageDependencyRequirements.cmake</field>
-    <field name="url">_c_p_f_package_dependency_requirements_8cmake.html</field>
+    <field name="url">a00089.html</field>
     <field name="keywords">CPFPackageDependencyRequirements.cmake</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">CCPFTestProjectDocs.dox</field>
-    <field name="url">_c_c_p_f_test_project_docs_8dox.html</field>
+    <field name="url">a00092.html</field>
     <field name="keywords">CCPFTestProjectDocs.dox</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">file</field>
     <field name="name">packages.cmake</field>
-    <field name="url">packages_8cmake.html</field>
+    <field name="url">a00095.html</field>
     <field name="keywords">packages.cmake</field>
     <field name="text"></field>
   </doc>
   <doc>
+    <field name="type">group</field>
+    <field name="name">EPackage</field>
+    <field name="url">a00113.html</field>
+    <field name="keywords">EPackage</field>
+    <field name="text">Links The links can be broken if no project configuration creates the linked pages Downloads Will work if package archives are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports EPackage The links will work if the package-component has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration ABI/API Compatibility Reports EPackage_fixtures The links will work if the package-component has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
+  </doc>
+  <doc>
+    <field name="type">group</field>
+    <field name="name">DPackage</field>
+    <field name="url">a00114.html</field>
+    <field name="keywords">DPackage</field>
+    <field name="text">Links The links can be broken if no project configuration creates the linked pages Downloads Will work if package archives are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports DPackage The links will work if the package-component has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
+  </doc>
+  <doc>
+    <field name="type">group</field>
+    <field name="name">CPackage</field>
+    <field name="url">a00115.html</field>
+    <field name="keywords">CPackage</field>
+    <field name="text">Links The links can be broken if no project configuration creates the linked pages Downloads Will work if package archives are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports CPackage The links will work if the package-component has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
+  </doc>
+  <doc>
+    <field name="type">group</field>
+    <field name="name">BPackage</field>
+    <field name="url">a00116.html</field>
+    <field name="keywords">BPackage</field>
+    <field name="text">Links The links can be broken if no project configuration creates the linked pages Downloads Will work if package archives are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports BPackage The links will work if the package-component has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build ABI/API Compatibility Reports BPackage_fixtures The links will work if the package-component has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
+  </doc>
+  <doc>
+    <field name="type">group</field>
+    <field name="name">APackage</field>
+    <field name="url">a00117.html</field>
+    <field name="keywords">APackage</field>
+    <field name="text">An empty C++ command line application that depends on the other packages This tests the following The options for including runtime dependencies of external components in the package archives This can be plugin dependencies or directly linked libraries Package archives contain generated source files Links The links can be broken if no project configuration creates the linked pages Downloads Will work if package archives are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build</field>
+  </doc>
+  <doc>
     <field name="type">namespace</field>
     <field name="name">a</field>
-    <field name="url">namespacea.html</field>
+    <field name="url">a00119.html</field>
     <field name="keywords">a</field>
-    <field name="text"></field>
+    <field name="text">The namespace of the APackage package</field>
+  </doc>
+  <doc>
+    <field name="type">namespace</field>
+    <field name="name">B</field>
+    <field name="url">a00127.html</field>
+    <field name="keywords">B</field>
+    <field name="text">The namespace of the BPackage package</field>
   </doc>
   <doc>
     <field name="type">namespace</field>
     <field name="name">b</field>
-    <field name="url">namespaceb.html</field>
+    <field name="url">a00120.html</field>
     <field name="keywords">b</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">namespace</field>
+    <field name="name">C</field>
+    <field name="url">a00126.html</field>
+    <field name="keywords">C</field>
+    <field name="text">The namespace of the CPackage package</field>
+  </doc>
+  <doc>
+    <field name="type">namespace</field>
     <field name="name">c</field>
-    <field name="url">namespacec.html</field>
+    <field name="url">a00121.html</field>
     <field name="keywords">c</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">namespace</field>
+    <field name="name">D</field>
+    <field name="url">a00125.html</field>
+    <field name="keywords">D</field>
+    <field name="text">The namespace of the DPackage package</field>
+  </doc>
+  <doc>
+    <field name="type">namespace</field>
     <field name="name">d</field>
-    <field name="url">namespaced.html</field>
+    <field name="url">a00122.html</field>
     <field name="keywords">d</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">namespace</field>
+    <field name="name">E</field>
+    <field name="url">a00124.html</field>
+    <field name="keywords">E</field>
+    <field name="text">The namespace of the EPackage package</field>
+  </doc>
+  <doc>
+    <field name="type">namespace</field>
     <field name="name">e</field>
-    <field name="url">namespacee.html</field>
+    <field name="url">a00123.html</field>
     <field name="keywords">e</field>
     <field name="text"></field>
   </doc>
   <doc>
     <field name="type">class</field>
     <field name="name">e::MyFixture</field>
-    <field name="url">classe_1_1_my_fixture.html</field>
+    <field name="url">a00675.html</field>
     <field name="keywords">MyFixture</field>
     <field name="text"></field>
   </doc>
@@ -365,7 +463,7 @@
     <field name="type">function</field>
     <field name="name">e::MyFixture::setUp</field>
     <field name="args">()</field>
-    <field name="url">classe_1_1_my_fixture.html#a2c2ac6d568de2512b585515101f45c1a</field>
+    <field name="url">a00675.html#a2c2ac6d568de2512b585515101f45c1a</field>
     <field name="keywords">setUp e::MyFixture::setUp e::MyFixture</field>
     <field name="text"></field>
   </doc>

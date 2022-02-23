@@ -25,6 +25,7 @@ var NAVTREE =
 [
   [ "CCPFTestProject", "index.html", [
     [ "The CCPFTestProject CI-Project", "index.html", null ],
+    [ "Modules", "modules.html", "modules" ],
     [ "Classes", "annotated.html", [
       [ "Class Index", "classes.html", null ]
     ] ],
@@ -34,7 +35,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"classes.html"
+"a00113.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -33,21 +33,21 @@ digraph CPFTargetDependencyGraph {
 			shape=septagon];
 		legendNode3 -> legendNode6		 [style=solid];
 	}
-	node0	 [label="APackage\n(CCPFTestPackage::APackage)",
+	node0	 [label="APackage\n(A::APackage)",
 		shape=egg];
-	node1	 [label="DPackage\n(CCPFTestPackage::DPackage)",
+	node1	 [label="DPackage\n(D::DPackage)",
 		shape=doubleoctagon];
 	node0 -> node1;
-	node2	 [label="libAPackage\n(CCPFTestPackage::libAPackage)",
+	node2	 [label="libAPackage\n(A::libAPackage)",
 		shape=doubleoctagon];
 	node0 -> node2	 [style=dotted];
-	node3	 [label="BPackage\n(CCPFTestPackage::BPackage)",
+	node3	 [label="BPackage\n(B::BPackage)",
 		shape=doubleoctagon];
 	node2 -> node3;
-	node4	 [label="CPackage\n(CCPFTestPackage::CPackage)",
+	node4	 [label="CPackage\n(C::CPackage)",
 		shape=doubleoctagon];
 	node2 -> node4;
-	node5	 [label="EPackage\n(CCPFTestPackage::EPackage)",
+	node5	 [label="EPackage\n(E::EPackage)",
 		shape=pentagon];
 	node2 -> node5;
 }

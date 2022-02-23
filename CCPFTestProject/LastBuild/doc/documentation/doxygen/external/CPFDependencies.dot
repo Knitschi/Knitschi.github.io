@@ -22,15 +22,15 @@ subgraph clusterLegend {
   legendNode3 -> legendNode6 [ style = solid ];
   legendNode0 -> legendNode7;
 }
-    "node0" [ label = "APackage\n(CCPFTestPackage::APackage)", shape = egg ];
-    "node1" [ label = "DPackage\n(CCPFTestPackage::DPackage)", shape = doubleoctagon ];
+    "node0" [ label = "APackage\n(A::APackage)", shape = egg ];
+    "node1" [ label = "DPackage\n(D::DPackage)", shape = doubleoctagon ];
     "node0" -> "node1"  // APackage -> DPackage
-    "node2" [ label = "libAPackage\n(CCPFTestPackage::libAPackage)", shape = doubleoctagon ];
-    "node3" [ label = "BPackage\n(CCPFTestPackage::BPackage)", shape = doubleoctagon ];
+    "node2" [ label = "libAPackage\n(A::libAPackage)", shape = doubleoctagon ];
+    "node3" [ label = "BPackage\n(B::BPackage)", shape = doubleoctagon ];
     "node2" -> "node3"  // libAPackage -> BPackage
-    "node4" [ label = "CPackage\n(CCPFTestPackage::CPackage)", shape = doubleoctagon ];
+    "node4" [ label = "CPackage\n(C::CPackage)", shape = doubleoctagon ];
     "node2" -> "node4"  // libAPackage -> CPackage
-    "node5" [ label = "EPackage\n(CCPFTestPackage::EPackage)", shape = pentagon ];
+    "node5" [ label = "EPackage\n(E::EPackage)", shape = pentagon ];
     "node2" -> "node5"  // libAPackage -> EPackage
     "node0" -> "node2" [ style = dotted ] // APackage -> libAPackage
 }
