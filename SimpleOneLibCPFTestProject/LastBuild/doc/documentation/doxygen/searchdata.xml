@@ -23,6 +23,13 @@
   </doc>
   <doc>
     <field name="type">file</field>
+    <field name="name">MyLibDocumentation.dox</field>
+    <field name="url">_my_lib_documentation_8dox.html</field>
+    <field name="keywords">MyLibDocumentation.dox</field>
+    <field name="text"></field>
+  </doc>
+  <doc>
+    <field name="type">file</field>
     <field name="name">ProjectDocumentation.dox</field>
     <field name="url">_project_documentation_8dox.html</field>
     <field name="keywords">ProjectDocumentation.dox</field>
@@ -95,11 +102,18 @@
     <field name="text"></field>
   </doc>
   <doc>
+    <field name="type">group</field>
+    <field name="name">MyLib</field>
+    <field name="url">group___my_lib.html</field>
+    <field name="keywords">MyLib</field>
+    <field name="text">A C++ library used for testing the CPF Links The links can be broken if no project configuration creates the linked pages Downloads Will work if package archives are created OpenCppCoverage Reports Will work if at least one test target and the CPF_ENABLE_OPENCPPCOVERAGE_TARGET option is enabled for a windows build ABI/API Compatibility Reports MyLib The links will work if the package-component has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build ABI/API Compatibility Reports MyLib_fixtures The links will work if the package-component has a test target and the CPF_ENABLE_ABI_API_COMPATIBILITY_REPORT_TARGETS option is set for a Linux debug configuration Last build to current build Last release to current build</field>
+  </doc>
+  <doc>
     <field name="type">namespace</field>
     <field name="name">mylib</field>
     <field name="url">namespacemylib.html</field>
     <field name="keywords">mylib</field>
-    <field name="text"></field>
+    <field name="text">The namespace of the MyLib package</field>
   </doc>
   <doc>
     <field name="type">class</field>

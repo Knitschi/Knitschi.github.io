@@ -23,4 +23,6 @@ subgraph clusterLegend {
   legendNode0 -> legendNode7;
 }
     "node0" [ label = "MyLib\n(mylib::MyLib)", shape = doubleoctagon ];
+    "node1" [ label = "example_unity", shape = egg ];
+    "node2" [ label = "example", shape = egg ];
 }

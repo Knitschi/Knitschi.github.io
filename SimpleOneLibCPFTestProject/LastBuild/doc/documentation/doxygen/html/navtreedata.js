@@ -24,6 +24,7 @@ var NAVTREE =
 [
   [ "SimpleOneLibCPFTestProject", "index.html", [
     [ "Overview", "index.html", null ],
+    [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
