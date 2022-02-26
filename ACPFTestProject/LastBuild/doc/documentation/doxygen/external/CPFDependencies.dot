@@ -30,13 +30,13 @@ subgraph clusterLegend {
     "node4" [ label = "libSwitchWarningsOff\n(swo::libSwitchWarningsOff)", shape = pentagon ];
     "node3" -> "node4"  // CPackage -> libSwitchWarningsOff
     "node1" -> "node3"  // libAPackage -> CPackage
-    "node5" [ label = "DPackage\n(d::DPackage)", shape = doubleoctagon ];
-    "node1" -> "node5"  // libAPackage -> DPackage
-    "node6" [ label = "EPackage\n(e::EPackage)", shape = doubleoctagon ];
-    "node1" -> "node6"  // libAPackage -> EPackage
-    "node7" [ label = "FPackage\n(f::FPackage)", shape = doubleoctagon ];
-    "node1" -> "node7"  // libAPackage -> FPackage
-    "node8" [ label = "GPackage\n(g::GPackage)", shape = pentagon ];
-    "node1" -> "node8"  // libAPackage -> GPackage
+    "node5" [ label = "Component1\n(f::Component1)", shape = doubleoctagon ];
+    "node1" -> "node5"  // libAPackage -> Component1
+    "node6" [ label = "Component2\n(f::Component2)", shape = pentagon ];
+    "node1" -> "node6"  // libAPackage -> Component2
+    "node7" [ label = "DPackage\n(d::DPackage)", shape = doubleoctagon ];
+    "node1" -> "node7"  // libAPackage -> DPackage
+    "node8" [ label = "EPackage\n(e::EPackage)", shape = doubleoctagon ];
+    "node1" -> "node8"  // libAPackage -> EPackage
     "node0" -> "node1" [ style = dotted ] // APackage -> libAPackage
 }
